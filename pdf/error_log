@@ -1,0 +1,10 @@
+[18-Oct-2020 19:43:42 UTC] PHP Warning:  mysqli_fetch_object() expects parameter 1 to be mysqli_result, boolean given in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 242
+[18-Oct-2020 19:43:42 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 251
+[18-Oct-2020 19:47:06 UTC] PHP Warning:  mysqli_fetch_object() expects parameter 1 to be mysqli_result, boolean given in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 242
+[18-Oct-2020 19:47:06 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 251
+[18-Oct-2020 19:48:33 UTC] PHP Warning:  mysqli_fetch_object() expects parameter 1 to be mysqli_result, boolean given in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 242
+[18-Oct-2020 19:48:33 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 252
+[18-Oct-2020 19:49:43 UTC] PHP Warning:  mysqli_fetch_object() expects parameter 1 to be mysqli_result, boolean given in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 242
+[18-Oct-2020 19:49:43 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 252
+[18-Oct-2020 19:50:16 UTC] PHP Warning:  mysqli_fetch_object() expects parameter 1 to be mysqli_result, boolean given in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 242
+[18-Oct-2020 19:50:58 UTC] PHP Warning:  mysqli_fetch_object() expects parameter 1 to be mysqli_result, boolean given in /home/aaravsoftware/public_html/mbmc/pdf/demand_note.php on line 242

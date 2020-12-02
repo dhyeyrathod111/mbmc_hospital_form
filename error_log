@@ -1,0 +1,84 @@
+[22-Jul-2020 12:26:09 UTC] PHP Fatal error:  Call to a member function getAppData() on null in /home/aaravsoftware/public_html/mbmc/application/controllers/GodownController.php on line 178
+[22-Jul-2020 12:28:27 UTC] PHP Fatal error:  Call to a member function getAppData() on null in /home/aaravsoftware/public_html/mbmc/application/controllers/GodownController.php on line 178
+[22-Jul-2020 12:48:41 UTC] PHP Parse error:  syntax error, unexpected ''.base_url().'' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';' in /home/aaravsoftware/public_html/mbmc/application/views/applications/tempLic/editRenewal.php on line 158
+[22-Jul-2020 12:53:36 UTC] PHP Parse error:  syntax error, unexpected '/' in /home/aaravsoftware/public_html/mbmc/application/views/applications/tempLic/editRenewal.php on line 167
+[23-Jul-2020 05:32:25 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 75
+[23-Jul-2020 05:32:26 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 75
+[23-Jul-2020 05:32:26 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 75
+[23-Jul-2020 05:51:17 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 97
+[23-Jul-2020 05:51:19 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 97
+[23-Jul-2020 05:51:20 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 97
+[23-Jul-2020 06:01:34 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 97
+[23-Jul-2020 06:01:35 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 97
+[23-Jul-2020 06:01:35 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 97
+[23-Jul-2020 06:31:24 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 136
+[23-Jul-2020 06:31:24 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 136
+[23-Jul-2020 06:31:24 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/aaravsoftware/public_html/mbmc/application/views/includes/sidenav.php on line 136
+[28-Jul-2020 05:50:45 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 42
+[28-Jul-2020 05:50:47 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 42
+[28-Jul-2020 05:52:21 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 42
+[28-Jul-2020 05:52:24 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 42
+[28-Jul-2020 05:53:13 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:02 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:04 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:11 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:12 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:15 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:20 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:21 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:00:52 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:01:13 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:01:14 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:02:16 UTC] PHP Fatal error:  Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:06:00 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:06:25 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:09:23 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:09:30 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:09:32 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:09:54 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:13:02 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:13:06 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:14:13 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:14:25 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:14:33 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:14:46 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:14:49 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:15:11 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:15:12 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[28-Jul-2020 06:16:42 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/aaravsoftware/public_html/mbmc/application/views/auth/login.php on line 41
+[03-Sep-2020 10:41:29 UTC] PHP Fatal error:  Call to undefined method Add_complaint_table::getTreeNo() in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 143
+[08-Sep-2020 11:17:44 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:17:44 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:17:47 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:17:48 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:17:51 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:17:51 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:17:54 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:17:54 UTC] PHP Parse error:  syntax error, unexpected '"SELECT * FROM `permission_acc' (T_CONSTANT_ENCAPSED_STRING) in /home/aaravsoftware/public_html/mbmc/application/models/Add_complaint_table.php on line 108
+[08-Sep-2020 11:24:58 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 1364
+[08-Sep-2020 11:25:04 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 1364
+[08-Sep-2020 11:25:31 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 1364
+[08-Sep-2020 11:25:36 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 1364
+[08-Sep-2020 11:25:43 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 1364
+[08-Sep-2020 11:58:28 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/aaravsoftware/public_html/mbmc/application/controllers/UsersController.php on line 222
+[08-Sep-2020 11:58:42 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/aaravsoftware/public_html/mbmc/application/controllers/UsersController.php on line 222
+[08-Sep-2020 11:58:47 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/aaravsoftware/public_html/mbmc/application/controllers/UsersController.php on line 222
+[25-Sep-2020 06:17:12 UTC] PHP Fatal error:  Call to undefined method Users_table::getRolesByDept() in /home/aaravsoftware/public_html/mbmc/application/controllers/UsersController.php on line 271
+[25-Sep-2020 06:17:16 UTC] PHP Fatal error:  Call to undefined method Users_table::getRolesByDept() in /home/aaravsoftware/public_html/mbmc/application/controllers/UsersController.php on line 271
+[25-Sep-2020 06:36:02 UTC] PHP Fatal error:  Call to undefined method DepositInspectionModel::getPermissionType() in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 1355
+[25-Sep-2020 06:38:29 UTC] PHP Fatal error:  Call to undefined method DepositInspectionModel::getPermissionType() in /home/aaravsoftware/public_html/mbmc/application/controllers/TreeCuttingController.php on line 1355
+[25-Sep-2020 11:02:56 UTC] PHP Fatal error:  Call to undefined method CI_Loader::decrypt() in /home/aaravsoftware/public_html/mbmc/application/views/users/edit.php on line 99
+[19-Oct-2020 09:01:10 UTC] PHP Fatal error:  Call to undefined method Pwd_applications_table::getaddlength() in /home/aaravsoftware/public_html/mbmc/application/controllers/LetterController.php on line 92
+[10-Nov-2020 09:22:48 UTC] PHP Fatal error:  Call to a member function print_debugger() on null in /home/aaravsoftware/public_html/mbmc/application/helpers/emailtrigger_helper.php on line 68
+[10-Nov-2020 09:37:50 UTC] PHP Fatal error:  Call to undefined method PwdController::print_debugger() in /home/aaravsoftware/public_html/mbmc/application/helpers/emailtrigger_helper.php on line 68
+[18-Nov-2020 08:55:32 UTC] PHP Fatal error:  Class 'CI_Controller' not found in /home/aaravsoftware/public_html/mbmc/system/core/CodeIgniter.php on line 369
+[18-Nov-2020 08:55:32 UTC] PHP Fatal error:  Class 'CI_Controller' not found in /home/aaravsoftware/public_html/mbmc/system/core/CodeIgniter.php on line 369
+[18-Nov-2020 09:32:34 UTC] PHP Fatal error:  Call to undefined method CI_Router::method() in /home/aaravsoftware/public_html/mbmc/application/views/letters/header_letter.php on line 4
+[22-Nov-2020 16:55:57 UTC] PHP Fatal error:  Call to undefined function hospital_document_config() in /home/aaravsoftware/public_html/mbmc/application/controllers/HospitalController.php on line 597
+[22-Nov-2020 16:59:56 UTC] PHP Fatal error:  Call to undefined function hospital_document_config() in /home/aaravsoftware/public_html/mbmc/application/controllers/HospitalController.php on line 597
+[22-Nov-2020 17:01:13 UTC] PHP Fatal error:  Call to undefined function hospital_document_config() in /home/aaravsoftware/public_html/mbmc/application/controllers/HospitalController.php on line 597
+[22-Nov-2020 20:16:04 UTC] PHP Fatal error:  Call to undefined function hospital_payment_document_config() in /home/aaravsoftware/public_html/mbmc/application/controllers/HospitalController.php on line 817
+[22-Nov-2020 20:16:45 UTC] PHP Fatal error:  Call to undefined function hospital_payment_document_config() in /home/aaravsoftware/public_html/mbmc/application/controllers/HospitalController.php on line 817
+[22-Nov-2020 20:22:16 UTC] PHP Fatal error:  Cannot redeclare class Common in /home/aaravsoftware/public_html/mbmc/application/controllers/Common.php on line 0
+[22-Nov-2020 20:22:25 UTC] PHP Fatal error:  Cannot redeclare class Common in /home/aaravsoftware/public_html/mbmc/application/controllers/Common.php on line 0
+[22-Nov-2020 20:25:31 UTC] PHP Fatal error:  Cannot redeclare class Common in /home/aaravsoftware/public_html/mbmc/application/controllers/Common.php on line 0
