@@ -267,3 +267,24 @@ function image_formate_in_array_clinic($application_images , $application)
 	endforeach;
 	return json_decode(json_encode($final_iamge_array));
 }
+function image_formate_in_array_lab($application_images , $application)
+{
+	if (count($application_images) > 0) {
+		foreach ($application_images as  $oneImage) :
+			if ($oneImage->image_id == $application->ownership_agreement) {
+				$final_iamge_array['ownership_agreement'] = $oneImage;
+			} else if ($oneImage->image_id == $application->tax_receipt) {
+				$final_iamge_array['tax_receipt'] = $oneImage;
+			} else if ($oneImage->image_id == $application->doc_certificate) {
+				$final_iamge_array['doc_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->aadhaar_card) {
+				$final_iamge_array['aadhaar_card'] = $oneImage;
+			} else if ($oneImage->image_id == $application->bio_medical_certificate) {
+				$final_iamge_array['bio_medical_certificate'] = $oneImage;
+			} 
+		endforeach;
+		return json_decode(json_encode($final_iamge_array));
+	} else {
+		return FALSE;
+	}
+}

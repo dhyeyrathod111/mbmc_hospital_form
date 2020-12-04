@@ -113,9 +113,9 @@
 
 	    	$condition = '';
 
-	    	$previous_role_id = $this->db->query("SELECT role_id FROM mbmc.permission_access where dept_id = 1 AND status = 1 AND role_id < ".$this->authorised_user['role_id']." ORDER BY access_id DESC LIMIT 1")->result_array();
+	    	$previous_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 1 AND status = 1 AND role_id < ".$this->authorised_user['role_id']." ORDER BY access_id DESC LIMIT 1")->result_array();
 
-	    	$final_role_id = $this->db->query("SELECT role_id FROM mbmc.permission_access where dept_id = 1 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
+	    	$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 1 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
 
 	    	switch ($approval_status) {
 	    		case 'new':
@@ -615,7 +615,7 @@
 		}
 		public function getChildAppsByRefrenceNumber($referenceno,$app_id)
 		{
-			$sql_str = "SELECT * FROM pwd_applications WHERE reference_no = ".$referenceno." AND id NOT IN (SELECT MIN(id) FROM mbmc.pwd_applications pa WHERE reference_no = ".$referenceno.") AND file_closure_status = 0";
+			$sql_str = "SELECT * FROM pwd_applications WHERE reference_no = ".$referenceno." AND id NOT IN (SELECT MIN(id) FROM pwd_applications pa WHERE reference_no = ".$referenceno.") AND file_closure_status = 0";
 			return $this->db->query($sql_str)->result();
 		}
 	}

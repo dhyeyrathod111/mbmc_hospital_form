@@ -31,31 +31,19 @@ class LabController extends Common {
 	public function edit() {
 
 		$lab_id = base64_decode($this->uri->segment(3));
-		$result = $this->lab_applications_table->getAllApplicationsDetailsById($lab_id);
-		$get_staff_details = $this->lab_staff_details_table->getStaffDetailsById($result['app_id']);
-		$file['ownership_agreement'] = $result['ownership_agreement_id'];
-		$file['tax_receipt'] = $result['tax_receipt_id'];
-		$file['doc_certificate'] = $result['doc_certificate_id'];
-		$file['reg_certificate'] = $result['reg_certificate_id'];
-		$file['staff_certificate'] = $result['staff_certificate_id'];
-		$file['nursing_staff_deg_certificate'] = $result['nursing_staff_deg_certificate_id'];
-		$file['nursing_staff_reg_certificate'] = $result['nursing_staff_reg_certificate_id'];
-		$file['bio_des_certificate'] = $result['bio_des_certificate_id'];
-		$file['society_noc'] = $result['society_noc_id'];
-		$file['fire_noc'] = $result['fire_noc_id'];
-		foreach ($file as $key => $value) {
-			$get_attachments = $this->image_details_table->getImageDetailsById($value);
-			$file_data[] = array('name' => $get_attachments['image_name'], 'path' => base_url().'uploads/lab/'.$get_attachments['image_name']);
+		$lab_details = $this->lab_applications_table->getApplicationByID($lab_id);
+		if (!empty($lab_details)) {
+			$application_images = $this->lab_applications_table->getImageByApplication($lab_details);
+			$this->data['application'] = $lab_details;
+			$this->data['lab_staff'] = $this->lab_applications_table->getlabStaffByAppID($lab_id);
+			$this->data['appimages'] = image_formate_in_array_lab($application_images,$lab_details);
+			$this->data['designation'] = $this->designation_master_table->getAllDesignation();
+			$this->data['qualification'] = $this->qualification_master_table->getAllQualification();
+			$this->load->view('applications/lab/edit',$this->data);
+		} else {
+			return redirect('lab/user_apps_list');
 		}
-		$data['designation'] = $this->designation_master_table->getAllDesignation();
-		$data['qualification'] = $this->qualification_master_table->getAllQualification();
-		$data['staff_details'] = $get_staff_details;
-		$data['users'] = $result;
-		$data['files'] = $file_data;
-		$this->load->view('applications/lab/edit',$data);
 	}
-
-
 	public function get_lists()	{
 
 		$data = $row = array();
@@ -87,16 +75,16 @@ class LabController extends Common {
             $applicant_email_id = $lab['applicant_email_id'];
             $applicant_mobile_no = $lab['applicant_mobile_no'];
             // $applicant_nationality = $lab['applicant_nationality'];
-            $technical_qualification = $lab['technical_qualification'];
-            $un_reg_medical_practice = ($lab['un_reg_medical_practice'] == '1') ? 'Yes' : 'NO';
+            // $technical_qualification = $lab['technical_qualification'];
+            // $un_reg_medical_practice = ($lab['un_reg_medical_practice'] == '1') ? 'Yes' : 'NO';
             // $applicant_address = $lab['applicant_address'];
             $lab_name = $lab['lab_name'];
             $lab_address = $lab['lab_address'];
-			$contact_no = $lab['contact_no'];
-            $contact_person = $lab['contact_person'];
-            $floor_space = $lab['floor_space'];
-            $maternity_beds = $lab['maternity_beds'];
-            $patient_beds = $lab['patient_beds'];
+			// $contact_no = $lab['contact_no'];
+            // $contact_person = $lab['contact_person'];
+            // $floor_space = $lab['floor_space'];
+            // $maternity_beds = $lab['maternity_beds'];
+            // $patient_beds = $lab['patient_beds'];
             $status = $lab['status'];
 
             $dept_id = $this->applications_details_table->getDeptId($lab['app_id'])['dept_id'];
@@ -138,7 +126,7 @@ class LabController extends Common {
             
             $remarks = '<a type="button" data-toggle="modal" data-lab="'.$lab['id'].'" data-app="'.$lab['app_id'].'"  data-target="#modal-remarks" class="remarks_button btn btn-sm btn-primary white">Remarks</a>';
 
-            $action = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$lab['ownership_agreement'].','.$lab['tax_receipt'].','.$lab['doc_certificate'].','.$lab['reg_certificate'].','.$lab['staff_certificate'].','.$lab['nursing_staff_deg_certificate'].','.$lab['nursing_staff_reg_certificate'].','.$lab['bio_des_certificate'].','.$lab['society_noc'].','.$lab['fire_noc'].'" data-lab="'.$lab['id'].'" data-app="'.$lab['app_id'].'"  data-target="#modal-doc" class="doc_button anchor "><i class=" nav-icon fas fa-file"></i></a>
+            $action = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$lab['ownership_agreement'].','.$lab['tax_receipt'].','.$lab['doc_certificate'].','.$lab['bio_medical_certificate'].','.$lab['doc_certificate'].'" data-lab="'.$lab['id'].'" data-app="'.$lab['app_id'].'"  data-target="#modal-doc" class="doc_button anchor "><i class=" nav-icon fas fa-file"></i></a>
             	<a aria-label="Edit" data-microtip-position="top" role="tooltip" href="'.base_url().'lab/edit/'.base64_encode($id).'" class="anchor nav-link-icon">
               		        <i class="nav-icon fas fa-edit"></i>
                         </a>'.$inspection_form_btn.' '.$payment_btn;
@@ -256,34 +244,17 @@ class LabController extends Common {
 		$app_id = $this->get_last_app_id();
 		$inertStack = array(
 			'app_id' => ++$app_id,
+			'lab_name' => $this->security->xss_clean($this->input->post('lab_name')),
+			'lab_address' => $this->security->xss_clean($this->input->post('lab_address')),
 			'applicant_name' => $this->security->xss_clean($this->input->post('applicant_name')),
+			'applicant_address' => $this->security->xss_clean($this->input->post('applicant_address')),
 			'applicant_email_id' => $this->security->xss_clean($this->input->post('applicant_email_id')),
 			'applicant_mobile_no' => $this->security->xss_clean($this->input->post('applicant_mobile_no')),
 			'applicant_alternate_no' => $this->security->xss_clean($this->input->post('applicant_alternate_no')),
-			'applicant_address' => $this->security->xss_clean($this->input->post('applicant_address')),
-			'applicant_nationality' => $this->security->xss_clean($this->input->post('applicant_nationality')),
-			'technical_qualification' => $this->security->xss_clean($this->input->post('technical_qualification')),
-			'situation_registration' => $this->security->xss_clean($this->input->post('situation_of_registration')),
-			'fee_charges' => $this->security->xss_clean($this->input->post('fee_charges')),
-			'un_reg_medical_practice' => 1,
-			'lab_name' => $this->security->xss_clean($this->input->post('lab_name')),
-			'contact_person' => $this->security->xss_clean($this->input->post('contact_person')),
-			'contact_no' => $this->security->xss_clean($this->input->post('contact_no')),
-			'lab_address' => $this->security->xss_clean($this->input->post('lab_address')),
-			'floor_space' => $this->security->xss_clean($this->input->post('floor_space')),
-			'check_up_details' => $this->security->xss_clean($this->input->post('check_up_details')),
-			'sanitary_details' => $this->security->xss_clean($this->input->post('sanitary_details')),
-			'others' => $this->security->xss_clean($this->input->post('others')),
-			'maternity_beds' => $this->security->xss_clean($this->input->post('maternity_beds')),
-			'patient_beds' => $this->security->xss_clean($this->input->post('patient_beds')),
-			'alien_name' => $this->security->xss_clean($this->input->post('alien_name')),
-			'alien_details' => $this->security->xss_clean($this->input->post('alien_details')),
-			'application_date' => $this->security->xss_clean($this->input->post('application_date')),
-			'name_of_nursinghome' => $this->security->xss_clean($this->input->post('name_of_nursinghome')),
-			'address_of_nursinghome' => $this->security->xss_clean($this->input->post('address_of_nursinghome')),
-			'arrng_immunization_of_the_employees' => $this->security->xss_clean($this->input->post('arrng_immunization_of_the_employees')),
-			'sanitary_conveniences_for_emp' => $this->security->xss_clean($this->input->post('sanitary_conveniences_for_emp')),
-			'food_arrangements' => $this->security->xss_clean($this->input->post('food_arrangements')),
+			'lab_telephone_no' => $this->security->xss_clean($this->input->post('lab_telephone_no')),
+			'applicant_qualification' => $this->security->xss_clean($this->input->post('applicant_qualification')),
+			'bio_medical_valid_date' => $this->security->xss_clean($this->input->post('bio_medical_valid_date')),
+			'cold_chain_facilities' => $this->security->xss_clean($this->input->post('cold_chain_facilities')),
 			'created_at' => date('Y-m-d H:i:s'),
 			'application_type' => $this->security->xss_clean($this->input->post('application_type')),
 			'user_id' => $this->authorised_user['user_id'],
@@ -322,9 +293,10 @@ class LabController extends Common {
         }
         if (!empty($this->input->post('id')) && $this->input->post('id') != '') {
         	$lab_id = $this->input->post('id');
+        	unset($inertStack['app_id']);unset($inertStack['created_at']);unset($inertStack['application_type']);unset($inertStack['user_id']);
+        	$this->lab_applications_table->lab_revolution($inertStack,$lab_id);
         } else {
-        	$lab_id = $this->lab_applications_table->create_lab($inertStack);
-
+        	$lab_id = $this->lab_applications_table->lab_revolution($inertStack);
         	$applications_details = array(
     			'application_id' => $inertStack['app_id'],
     			'dept_id' => $this->department_table->getDepartmentByName('Medical'),
@@ -336,19 +308,16 @@ class LabController extends Common {
     		$app_status_remark = $this->lab_applications_table->insert_application_details($applications_details);
         }
         $this->lab_applications_table->storelabDocument($document_data_stack,$lab_id);
-        $staffStackPayload = [];$postData = $this->input->post();
-		foreach ($postData['staff_name'] as $key => $oneStaff) {
-			$stafInfoStack['app_id'] = $inertStack['app_id'];
-			$stafInfoStack['staff_name'] = $oneStaff;
-			$stafInfoStack['age'] = $postData['staff_age'][$key];
-			$stafInfoStack['design_id'] = $postData['staff_designation'][$key];
-			$stafInfoStack['qual_id'] = $postData['staff_qualification'][$key];
-			$stafInfoStack['staff_accommodation'] = $postData['staff_accommodation'][$key];
-			$stafInfoStack['status'] = TRUE;
-			$stafInfoStack['created_at'] = date('Y-m-d H:i:s');
+        $staffStackPayload = [];$postdata = $this->input->post();
+		foreach ($postdata['sr_number_lab_Staff'] as $key => $oneStaffsrno) {
+			$stafInfoStack['app_id'] = $lab_id;
+			$stafInfoStack['sr_number_lab_Staff'] = $oneStaffsrno;
+			$stafInfoStack['name_lab_Staff'] = $postdata['name_lab_Staff'][$key];
+			$stafInfoStack['designation_lab_Staff'] = $postdata['designation_lab_Staff'][$key];
+			$stafInfoStack['qualification_lab_Staff'] = $postdata['qualification_lab_Staff'][$key];
 			array_push($staffStackPayload,$stafInfoStack);
 		}
-		if ($this->lab_applications_table->reCreationlabStaff($staffStackPayload,$postData['app_id'])) {
+		if ($this->lab_applications_table->reCreationlabStaff($staffStackPayload,$lab_id)) {
 			$this->response['status'] = TRUE;
 			$this->response['message'] = "lab has been created successfully...!!!";
 		} else {
@@ -591,7 +560,8 @@ class LabController extends Common {
     		$tempArray[] = $oneApp->applicant_mobile_no;
     		$tempArray[] = $oneApp->lab_name;
     		$tempArray[] = $oneApp->application_status;
-    		$tempArray[] = '<a class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a><a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
+    		$tempArray[] = '<a href="'.base_url('lab/edit/'.base64_encode($oneApp->id)).'" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+    						<a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
     		array_push($finalDatatableStack,$tempArray);
     	endforeach ;
     	$output = array(

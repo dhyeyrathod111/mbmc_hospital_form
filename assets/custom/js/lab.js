@@ -2,6 +2,24 @@
 
 // Dhyey Rathod start
 
+    $(document).on('change','input[type=radio][name=bio_medical]',event => {
+        let is_bio_medical = event.target.value;
+        if (is_bio_medical == 'Yes') {
+            $('.bio_medical_valid_date_container').show('slow');
+        } else if (is_bio_medical == 'No') {
+            $('.bio_medical_valid_date_container').hide('slow');
+        }
+    });
+
+    $(document).on('change','input[type=radio][name=immunization_is_carried]',event => {
+        let is_immunization_is_carried = event.target.value;
+        if (is_immunization_is_carried == 'Yes') {
+            $('.cold_chain_facilities_container').show('slow');
+        } else if (is_immunization_is_carried == 'No') {
+            $('.cold_chain_facilities_container').hide('slow');
+        }
+    });
+
     const load_user_apps_datatable = props => {
         var dataTable = $('#lab_userapps_table').DataTable({
             "processing": true,
@@ -26,7 +44,7 @@
         });
     }
 
-    $(document).on('change', '#fromDate,#toDate', load_user_apps_datatable());
+    $(document).on('change', '#fromDate,#toDate', ()=>load_user_apps_datatable());
 
 
     $( "#payment_approvel_form" ).validate({
@@ -261,21 +279,17 @@ const userListDataTable = () => {
 
 
 
-$(document).on('ready',()=>{
+$(document).ready(function(){
+
 
 
     // Dhyey code start
-    $('#staff_designation').selectpicker('destroy');
-    $('#approval_status').selectpicker('destroy');
-    $('#staff_qualification').selectpicker('destroy');
-    $("#application_date_lab").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd',autoclose: true});
-    $("#Certificate_expirydate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd',autoclose: true});
+    $('#staff_designation,#approval_status,#staff_qualification,#designation_lab_Staff,#qualification_lab_Staff').selectpicker('destroy');
 
-
+    $("#application_date_lab").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
+    $("#Certificate_expirydate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
+    $("#bio_medical_valid_date").datepicker({ dateFormat: 'yy-mm-dd'});
     $("#lab-form :input").each((index , item)=>item.setAttribute('autocomplete','off'));
-
-
-
     // Dhyey code end 
 
 
@@ -378,53 +392,50 @@ $(document).on('ready',()=>{
 
   $( "#lab-form" ).validate({
     rules: {
-      application_no: {
-        required: true,
-      },
-      applicant_name: {
-        required: true,
-      },
-      applicant_email_id: {
-        required: true,
-        email: true
-      },
-      applicant_mobile_no: {
-        required: true,
-        maxlength: 10,
-      },
-      applicant_address:{
-        required: true,
-      },
-      // letter_no: "required",
-      applicant_nationality: {
-        required: true,
-      },
-      technical_qualification: {
-        required: true,
-      },
-      lab_name: {
-        required: true,
-      },
-      contact_person: {
-        required: true,
-      },
-      contact_no: {
-        required: true,
-      },
-      lab_address: {
-        required: true,
-      },
-      floor_space: {
-        required: true,
-      },
-      maternity_beds: {
-        required: true,
-      },
-      patient_beds: {
-        required: true,
-      },
-     
-
+      // application_no: {
+      //   required: true,
+      // },
+      // applicant_name: {
+      //   required: true,
+      // },
+      // applicant_email_id: {
+      //   required: true,
+      //   email: true
+      // },
+      // applicant_mobile_no: {
+      //   required: true,
+      //   maxlength: 10,
+      // },
+      // applicant_address:{
+      //   required: true,
+      // },
+      // applicant_nationality: {
+      //   required: true,
+      // },
+      // technical_qualification: {
+      //   required: true,
+      // },
+      // lab_name: {
+      //   required: true,
+      // },
+      // contact_person: {
+      //   required: true,
+      // },
+      // contact_no: {
+      //   required: true,
+      // },
+      // lab_address: {
+      //   required: true,
+      // },
+      // floor_space: {
+      //   required: true,
+      // },
+      // maternity_beds: {
+      //   required: true,
+      // },
+      // patient_beds: {
+      //   required: true,
+      // },
     },
     messages: {
       applicant_name: "Please provide user name.",
@@ -452,6 +463,7 @@ $(document).on('ready',()=>{
     },
 
     invalidHandler: function(event, validator) {
+      // 'this' refers to the form
       var errors = validator.numberOfInvalids();
       console.log(errors);
       if(errors) {
@@ -461,7 +473,7 @@ $(document).on('ready',()=>{
           $("div.error span").html(message);
           $("div.error").show();
       } else {
-          $("div.error").hide();
+          $("div.error").hide('slow');
       }
     },
 
@@ -590,7 +602,7 @@ $(document).on('ready',()=>{
             $("div.error span").html(message);
             $("div.error").show();
         } else {
-            $("div.error").hide();
+            $("div.error").hide('slow');
         }
       },
       submitHandler: function(form,e) {
@@ -617,7 +629,6 @@ $(document).on('ready',()=>{
 
     $('#ownership_agreement').change(function() {
       var file = $('#ownership_agreement')[0].files[0].name;
-      // alert(file);
       $('#ownership_agreement_name').html(file);
       $('#ownership_agreement_name_id').val(file);
     });
@@ -629,51 +640,23 @@ $(document).on('ready',()=>{
     });
 
     $('#doc_certificate').change(function() {
-    var file = $('#doc_certificate')[0].files[0].name;
-    $('#doc_certificate_name').text(file);
-    $('#doc_certificate_name_id').val(file);
-  });
+      var file = $('#doc_certificate')[0].files[0].name;
+      console.log(file);
+      $('#doc_certificate_name').text(file);
+      $('#doc_certificate_name_id').val(file);
+    });
 
-  $('#reg_certificate').change(function() {
-    var file = $('#reg_certificate')[0].files[0].name;
-    $('#reg_certificate_name').text(file);
-    $('#reg_certificate_name_id').val(file);
-  });
+    $('#bio_medical_certificate').change(function() {
+      var file = $('#bio_medical_certificate')[0].files[0].name;
+      console.log(file);
+      $('#bio_medical_certificate_name').text(file);
+      $('#bio_medical_certificate_name_id').val(file);
+    });
 
-  $('#staff_certificate').change(function() {
-    var file = $('#staff_certificate')[0].files[0].name;
-    $('#staff_certificate_name').text(file);
-    $('#staff_certificate_name_id').val(file);
-  });
-
-  $('#nursing_staff_deg_certificate').change(function() {
-    var file = $('#nursing_staff_deg_certificate')[0].files[0].name;
-    $('#nursing_staff_deg_certificate_name').text(file);
-    $('#nursing_staff_deg_certificate_name_id').val(file);
-  });
-
-  $('#nursing_staff_reg_certificate').change(function() {
-    var file = $('#nursing_staff_reg_certificate')[0].files[0].name;
-    $('#nursing_staff_reg_certificate_name').text(file);
-    $('#nursing_staff_reg_certificate_name_id').val(file);
-  });
-
-  $('#bio_des_certificate').change(function() {
-    var file = $('#bio_des_certificate')[0].files[0].name;
-    $('#bio_des_certificate_name').text(file);
-    $('#bio_des_certificate_name_id').val(file);
-  });
-
-  $('#society_noc').change(function() {
-    var file = $('#society_noc')[0].files[0].name;
-    $('#society_noc_name').text(file);
-    $('#society_noc_name_id').val(file);
-  });
-
-  $('#fire_noc').change(function() {
-    var file = $('#fire_noc')[0].files[0].name;
-    $('#fire_noc_name').text(file);
-    $('#society_noc_name_id').val(file);
+  $('#aadhaar_card').change(function() {
+    var file = $('#aadhaar_card')[0].files[0].name;
+    $('#aadhaar_card_name').text(file);
+    $('#aadhaar_card_id').val(file);
   });
 
 });

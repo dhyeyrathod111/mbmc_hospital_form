@@ -84,7 +84,7 @@
 <hr />
 <div class="row submit_button_inspection_form" style="display: block;">
     <input type="hidden" value="<?= $application->app_id ?>" name="app_id">
-    <input type="hidden" value="3" name="sub_dept_id">
+    <input type="hidden" value="1" name="sub_dept_id">
     <button data-dismiss="modal" class="btn btn-primary">cancel</button>
     <button type="submit" id="inspection_form_submitbtn" class="btn btn-success" style="float: right;">Submit</button>
 </div>

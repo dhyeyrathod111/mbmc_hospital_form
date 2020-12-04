@@ -51,8 +51,6 @@ class ClinicController extends Common {
         $user_id = $session_userdata[0]['user_id'];
         $role_id = $session_userdata[0]['role_id'];
         $clinicList = $this->clinic_applications_table->getclinicsDataForDatatable(FALSE,$_POST);
-
-
         $clinicCount = $this->clinic_applications_table->getclinicsDataForDatatable(TRUE,$_POST);
         $i = $_POST['start'];
 

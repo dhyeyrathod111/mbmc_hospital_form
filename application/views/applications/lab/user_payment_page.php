@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body login-card-body">
                     <div id="alert_message"></div>
-                    <form id="payment_from" action="<?php echo base_url('payment/user_payment_process') ?>" method="post" enctype="multipart/form-data">
+                    <form id="payment_from" action="<?php echo base_url('payment/lab_user_payment_process') ?>" method="post" enctype="multipart/form-data">
                         <div class="mb-3 form-group">
                             <label for="email_id" class="text-info" placeholder="Email">Payment Type:</label><br>
                             <select name="payment_method" class="browser-default custom-select">
