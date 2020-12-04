@@ -5,6 +5,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
+
+                    <h3 class="text-center mt-1">
+                        <label for="email_id" class="text-info">Application for Registration/Renewal of registration under section 5 of the Bombay Nursing Home Registration Act, 1949</label>
+                    </h3>
+                    <hr />
+
                     <form role="form" class="hospital-form" id="hospital-form" method="post" enctype="multipart/form-data">
                         <div class="card-header">
                             <div class="row">
@@ -310,7 +316,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 supervision_container" style="display: none;">
-                                    <label for="supervision_name">Supervision Details:</label>
+                                    <label for="supervision_name">Supervisor Details:</label>
                                     <table class="table supervision_table">
                                         <thead>
                                             <tr class="text-center">
@@ -331,12 +337,13 @@
                                             <?php endforeach ; ?>
                                         </tbody>
                                     </table>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="alien_name">Proportion of the qualified</label>
-                                            <i class="fas fa-info-circle" title="Proportion of the qualified and unqualified nurses on the nursing staff."></i>
-                                            <input type="text" value="<?= $application->proportion_of_qualified ?>" class="form-control" name="proportion_of_qualified">
-                                        </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="alien_name">Proportion of the qualified</label>
+                                        <i class="fas fa-info-circle" title="Proportion of the qualified and unqualified nurses on the nursing staff."></i>
+                                        <input type="text" value="<?= $application->proportion_of_qualified ?>" class="form-control" name="proportion_of_qualified">
                                     </div>
                                 </div>
 
@@ -451,6 +458,33 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Other nursing home or business</label>
+                                        <i class="fas fa-info-circle" title="Whether the applicant is interested in any other nursing home or business"></i>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="other_bussness" value="Yes">
+                                            <label class="form-check-label">
+                                                Yes
+                                            </label>
+                                        </div>   
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="other_bussness" value="No">
+                                            <label class="form-check-label">
+                                                No
+                                          </label>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="col-12 other_bussness_container" style="display: none;">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" name="other_business_address"><?= $application->other_business_address ?></textarea>
+                                    </div>
+                                </div>
+
+
+
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="alien_name">Other nursing home or business:</label>
@@ -460,7 +494,40 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <?php if ($application->application_type == 2) : ?>
+
+                            <div class="card-header mt-5">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 class="card-title">
+                                            <label for="email_id" class="text-info">For Renewal of Registration:</label>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="alien_name">nummber of expiry of the certificate</label>
+                                            <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
+                                            <input placeholder="MH/THN/MBMC/YYYY" type="text" class="form-control" name="no_of_expiry_certificate">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="alien_name">date of expiry of the certificate</label>
+                                            <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
+                                            <input type="text" readonly class="form-control" id="date_of_expiry_certificate" name="date_of_expiry_certificate">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php endif ; ?>
+
+
                         <div class="card-header mt-5">
                             <div class="row">
                                 <div class="col-12">
@@ -471,7 +538,9 @@
                             </div>
                         </div>
 
-                        <!-- <div class="card-body">
+                        <div class="card-body">
+
+
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
@@ -485,10 +554,19 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="ownership_agreement_name" class="text-info"> Please select a document</label>
-                                        <input type="hidden" name="ownership_agreement_name" id="ownership_agreement_name_id">
-                                    </h3>
+                                    <?php if (!empty($appimages->ownership_agreement)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="ownership_agreement_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->ownership_agreement->image_enc_name) ?>"><?= $appimages->ownership_agreement->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="ownership_agreement_name" id="ownership_agreement_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="ownership_agreement_name" class="text-info">Please select a document</label>
+                                            <input type="hidden" name="ownership_agreement_name" id="ownership_agreement_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -504,10 +582,19 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="tax_receipt_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="tax_receipt_name" id="tax_receipt_name_id">
-                                    </h3>
+                                    <?php if (!empty($appimages->tax_receipt)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="tax_receipt_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->tax_receipt->image_enc_name) ?>"><?= $appimages->tax_receipt->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="tax_receipt_name" id="tax_receipt_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="tax_receipt_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="tax_receipt_name" id="tax_receipt_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -523,10 +610,19 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="doc_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="doc_certificate_name" id="doc_certificate_name_id">
-                                    </h3>
+                                    <?php if (!empty($appimages->doc_certificate)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="doc_certificate_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->doc_certificate->image_enc_name) ?>"><?= $appimages->doc_certificate->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="doc_certificate_name" id="doc_certificate_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="doc_certificate_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="doc_certificate_name" id="doc_certificate_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -542,10 +638,19 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="reg_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="reg_certificate_name" id="reg_certificate_name_id">
-                                    </h3>
+                                    <?php if (!empty($appimages->reg_certificate)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="reg_certificate_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->reg_certificate->image_enc_name) ?>"><?= $appimages->reg_certificate->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="reg_certificate_name" id="reg_certificate_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="reg_certificate_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="reg_certificate_name" id="reg_certificate_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -561,10 +666,20 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="staff_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="staff_certificate_name" id="staff_certificate_name_id">
-                                    </h3>
+
+                                    <?php if (!empty($appimages->staff_certificate)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="staff_certificate_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->staff_certificate->image_enc_name) ?>"><?= $appimages->staff_certificate->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="staff_certificate_name" id="staff_certificate_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="staff_certificate_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="staff_certificate_name" id="staff_certificate_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -580,16 +695,26 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="nursing_staff_deg_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="nursing_staff_deg_certificate_name" id="nursing_staff_deg_certificate_name_id">
-                                    </h3>
+
+                                    <?php if (!empty($appimages->nursing_staff_deg_certificate)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="nursing_staff_deg_certificate_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->nursing_staff_deg_certificate->image_enc_name) ?>"><?= $appimages->nursing_staff_deg_certificate->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="nursing_staff_deg_certificate_name" id="nursing_staff_deg_certificate_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="nursing_staff_deg_certificate_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="nursing_staff_deg_certificate_name" id="nursing_staff_deg_certificate_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="nursing_staff_reg_certificate">Nursing Staff Degree Certificate<span class="red">*</span></label>
+                                        <label for="nursing_staff_reg_certificate">Nursing Staff registration Certificate<span class="red">*</span></label>
                                         <div class="form-group">
                                             <div class="custom-file">
                                                 <input type="file" name="nursing_staff_reg_certificate" id="nursing_staff_reg_certificate" class="custom-file-input">
@@ -599,10 +724,19 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="nursing_staff_reg_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="nursing_staff_reg_certificate_name" id="nursing_staff_reg_certificate_name_id">
-                                    </h3>
+                                    <?php if (!empty($appimages->nursing_staff_reg_certificate)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="nursing_staff_reg_certificate_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->nursing_staff_reg_certificate->image_enc_name) ?>"><?= $appimages->nursing_staff_reg_certificate->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="nursing_staff_reg_certificate_name" id="nursing_staff_reg_certificate_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="nursing_staff_reg_certificate_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="nursing_staff_reg_certificate_name" id="nursing_staff_reg_certificate_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -618,13 +752,23 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="bio_des_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="bio_des_certificate_name" id="bio_des_certificate_name_id">
-                                    </h3>
+
+                                    <?php if (!empty($appimages->bio_des_certificate)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="bio_des_certificate_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->bio_des_certificate->image_enc_name) ?>"><?= $appimages->bio_des_certificate->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="bio_des_certificate_name" id="bio_des_certificate_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="bio_des_certificate_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="bio_des_certificate_name" id="bio_des_certificate_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
-                            <div class="row">
+                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="society_noc">Society NOC<span class="red">*</span></label>
@@ -637,10 +781,19 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="society_noc_name" id="society_noc_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="society_noc_name" id="society_noc_name_id">
-                                    </h3>
+                                    <?php if (!empty($appimages->society_noc)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="society_noc_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->society_noc->image_enc_name) ?>"><?= $appimages->society_noc->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="society_noc_name" id="society_noc_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="society_noc_name" id="society_noc_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="society_noc_name" id="society_noc_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -656,23 +809,37 @@
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="fire_noc_name" id="fire_noc_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="fire_noc_name" id="fire_noc_name_id">
-                                    </h3>
+                                    <?php if (!empty($appimages->fire_noc)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="" id="fire_noc_name" class="text-info">
+                                                <a target="_blank" href="<?= base_url('uploads/hospital/'.$appimages->fire_noc->image_enc_name) ?>"><?= $appimages->fire_noc->image_name ?></a>
+                                            </label>
+                                            <input type="hidden" name="fire_noc_name" id="fire_noc_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label for="fire_noc_name" id="fire_noc_name"  class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="fire_noc_name" id="fire_noc_name_id">
+                                        </h3>
+                                    <?php endif ; ?>  
                                 </div>
-                            </div>
-                        </div> -->
-
-                        <div class="card-body">
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input type="checkbox" <?= ($application->promise == 1) ? 'checked' : ''; ?> class="form-check-input" name="promise" id="promise">
-                                    <label class="form-check-label" for="exampleCheck1">I solemnly declare that the above statements are true to the best of my knowledge and belief.</label>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" <?= ($application->promise == 1) ? 'checked' : ''; ?> value="1" class="form-check-input" name="promise" id="promise">
+                                        <label class="form-check-label" for="exampleCheck1">I solemnly declare that the above statements are true to the best of my knowledge and belief.</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center text-danger">
+                                    <p><b>Note:</b> The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(I.e home having maternity and non-maternity wards). In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="card-footer">
                             <div class="row center">

@@ -5,12 +5,18 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
+
+                    <h3 class="text-center mt-1">
+                        <label for="email_id" class="text-info">Application Form for License to run Dispensary/ Clinic /Day Care Center /Path. Lab./ X-ray Center/ Physiotherapy Center, etc. Under section 386 of Maharashtra Municipal Corporation Act, 1949.</label>
+                    </h3>
+                    <hr />
+
                     <form role="form" class="clinic-form" id="clinic-form" method="post" enctype="multipart/form-data">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-12">
                                     <h3 class="card-title">
-                                        <label for="email_id" class="text-info">Personal Information</label>
+                                        <label for="email_id" class="text-info">Applicant Details</label>
                                     </h3>
                                 </div>
                             </div>
@@ -35,307 +41,184 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="applicant_name">Applicant Name<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="applicant_name" id="applicant_name" placeholder="Enter Applicant name">
+                                        <label for="applicant_name">Name Clinic<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Full name of the Dispensary/ Clinic"></i>
+                                        <input type="text" class="form-control" name="clinic_name" id="clinic_name" placeholder="Enter Name of the Dispensary/ Clinic">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="email_id">Applicant Email Id<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="applicant_email_id" id="applicant_email_id" placeholder="Enter email Id">
+                                        <label for="applicant_name">Telephone No of Clinic<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Full name of the Dispensary/ Clinic"></i>
+                                        <input type="text" class="form-control" name="clinic_telephone_no" id="clinic_telephone_no" placeholder="Enter Telephone No">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12">
                                     <div class="form-group">
-                                        <label for="technical_qualification">Application date<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="application_date" id="application_date_clinic" placeholder="Application date">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="mobile_no">Applicant Mobile no<span class="red">*</span></label>
-                                        <input type="number" class="form-control" name="applicant_mobile_no" id="applicant_mobile_no" placeholder="Enter mobile no">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label  for="alert_mobile_no">Alternate Mobile no<span class="grey"> (optional)</span></label>
-                                        <input type="number" class="form-control" name="applicant_alternate_no" id="applicant_alternate_no" placeholder="Enter alternate mobile no">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alert_mobile_no">Applicant Address<span class="red">*</span></label>
-                                        <textarea type="text" class="form-control" name="applicant_address" id="applicant_address" placeholder="Enter Address"></textarea> 
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alert_mobile_no">Nationality of Applicant<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="applicant_nationality" id="applicant_nationality" placeholder="Enter applicant nationality">
-                                    </div>
-                                </div>
-                                
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="technical_qualification">Technical qualification<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="technical_qualification" id="technical_qualification" placeholder="Enter technical qualification">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alert_mobile_no">Situation of Registration<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="situation_of_registration" id="situation_of_registration" placeholder="Enter Situation of Registration">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alert_mobile_no">Fee Charges<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="fee_charges" id="fee_charges" placeholder="Enter Fee Charges">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alert_mobile_no">Certificate expirydate<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="Certificate_expirydate" id="Certificate_expirydate" placeholder="Enter Certificate expirydate">
+                                        <label for="alert_mobile_no">Address of the Clinic<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Address of the Dispensary/ Clinic, etc"></i>
+                                        <textarea type="text" rows="5" class="form-control" name="clinic_address" id="clinic_address" placeholder="Enter Address"></textarea> 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <label for="email_id" class="text-info">clinic Information</label>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="clinic_name">Name of clinic<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="clinic_name" id="clinic_name" placeholder="Enter clinic name">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="contact_no">Contact No<span class="red">*</span></label>
-                                        <input type="number" class="form-control" name="contact_no" id="contact_no" placeholder="Enter landline no">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="contact_person">Contact Person<span class="red">*</span></label>
-                                        <input type="text" name="contact_person" class="form-control" id="contact_person" placeholder="Enter Name of contact person">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="clinic_address">clinic Address<span class="red">*</span></label>
-                                        <textarea type="text" class="form-control" name="clinic_address" id="applicant_address" placeholder="Enter clinic address"></textarea> 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <label for="email_id" class="text-info">Nursing home Information</label>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_name">Name of nursing home<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="name_of_nursinghome" id="alien_name" placeholder="Enter alien name">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_name">Address of nursing home</label>
-                                        <input type="text" class="form-control" name="address_of_nursinghome" id="alien_name" placeholder="Enter alien name">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_name">arrng_immunization_of_the_employees</label>
-                                        <input type="text" class="form-control" name="arrng_immunization_of_the_employees" id="arrng_immunization_of_the_employees" placeholder="Enter alien name">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_name">sanitary_conveniences_for_emp</label>
-                                        <input type="text" class="form-control" name="sanitary_conveniences_for_emp" id="sanitary_conveniences_for_emp" placeholder="Enter alien name">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <label for="email_id" class="text-info">Premises Information</label>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="floor_space">Floor Space<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="floor_space" id="floor_space" placeholder="Enter floor space">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="check_up_details">Medical check up details<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="check_up_details" id="check_up_details" placeholder="Enter check up details">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="floor_space_kitchen">Floor Space for kitchen<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="floor_space_kitchen" id="floor_space_kitchen" placeholder="Enter floor space">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="sanitary_details">Sanitary conveniences Details<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="sanitary_details" id="sanitary_details" placeholder="Enter sanitary details">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="storage_details">Storage and service food Details<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="storage_details" id="storage_details" placeholder="Enter storage details">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="others">Others<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="others" id="others" placeholder="Enter storage others">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="maternity_beds">No. of maternity beds<span class="red">*</span></label>
-                                        <input type="number" class="form-control" name="maternity_beds" id="maternity_beds" placeholder="Enter no. of maternity beds">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="patient_beds">No. of patient beds<span class="red">*</span></label>
-                                        <input type="number" class="form-control" name="patient_beds" id="patient_beds" placeholder="Enter no. of patient beds">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <label for="email_id" class="text-info">Staff Information</label>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class = "col-10"></div>
-                                <div class = "col-2">
-                                    <button type="button" id="addRow" class="form-control btn btn-md btn-info">Add</button>
-                                </div>
-                            </div>
-                            <br>  
+                        <div class="card-header mt-5">
                             <div class="row">
                                 <div class="col-12">
+                                    <h3 class="card-title">
+                                        <label for="email_id" class="text-info">Applicant Details:</label>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Full Name<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Full name of applicant"></i>
+                                        <input type="text" class="form-control" name="applicant_name" id="applicant_name" placeholder="Enter full Name of Applicant">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Qualification<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Qualification of applicant"></i>
+                                        <input type="text" class="form-control" name="applicant_qualification" id="applicant_qualification" placeholder="Enter Qualification of Applicant">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Mobile number<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Mobile number applicant"></i>
+                                        <input type="text" class="form-control" name="applicant_mobile_no" id="applicant_mobile_no" placeholder="Enter Mobile number of Applicant">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Alternate mobile number<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Enter Alternate mobile number"></i>
+                                        <input type="text" class="form-control" name="applicant_alternate_no" id="applicant_alternate_no" placeholder="Enter Qualification of Applicant">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Email<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="applicant Email id"></i>
+                                        <input type="text" class="form-control" name="applicant_email_id" id="applicant_email_id" placeholder="Enter Email id of Applicant">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Address<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Full address of applicant"></i>
+                                        <textarea type="text" rows="5" class="form-control" name="applicant_address" id="applicant_address" placeholder="Enter Address of applicant"></textarea> 
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label>Clinic staff details:</label>
+                                    <i class="fas fa-info-circle" title="Details of Medical /Paramedical Staff Working"></i>
                                     <table class="table staff_grid">
                                         <thead>
                                             <tr class = "text-center">
-                                                <th>Staff Name</th>
+                                                <th>SR No</th>
+                                                <th>Name</th>
                                                 <th>Designation</th>
-                                                <th>Age</th>
                                                 <th>Qualification</th>
-                                                <th>Acomodation</th>
-                                                <th>Action</th>
+                                                <th><button type="button" id="addRow" class="btn btn-sm btn-primary">Add</button></th>
                                             </tr>
                                         </thead>
-                                        <tbody class = "tableBody">
+                                        <tbody class="tableBody">
                                             <tr id="oneStaffField">
                                                 <td>
-                                                    <input class="form-control" type="text" id="staff_name" name="staff_name[]">
+                                                    <input class="form-control" type="number" id="sr_number_clinic_Staff" name="sr_number_clinic_Staff[]" multiple>
                                                 </td>
                                                 <td>
-                                                    <select class="form-control" name="staff_designation[]" id="staff_designation">
-                                                        <option value="">---Select staff designation---</option>
+                                                    <input class="form-control" type="text" id="name_clinic_Staff" name="name_clinic_Staff[]" multiple>
+                                                </td>
+                                                <td>
+                                                    <select class="form-control" name="designation_clinic_Staff[]" id="designation_clinic_Staff">
+                                                        <option value="">---Select designation---</option>
                                                         <?php foreach ($designation as $desig) : ?>
                                                             <option value="<?= $desig['design_id'] ?>"><?= $desig['design_title'] ?></option>
                                                         <?php endforeach ; ?>
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="number" id="staff_age" name="staff_age[]">
-                                                </td>
-                                                <td>
-                                                    <select class="form-control" name="staff_qualification[]" id="staff_qualification">
-                                                        <option value="">---Select staff qualification---</option>
+                                                    <select class="form-control" name="qualification_clinic_Staff[]" id="qualification_clinic_Staff">
+                                                        <option value="">---Select qualification---</option>
                                                         <?php foreach ($qualification as $quali) : ?>
                                                             <option value="<?= $quali['qual_id'] ?>"><?= $quali['qual_title'] ?></option>
                                                         <?php endforeach ; ?>
                                                     </select>
                                                 </td>
-                                                <td>
-                                                    <input class="form-control" type="text" id="staff_accommodation" name="staff_accommodation[]">
-                                                </td>
-                                                <td style="vertical-align:inherit;cursor: pointer;"><i class="fas fa-trash fa-lg delete_row"></i></td>
+                                                <td style="vertical-align:inherit;cursor: pointer;"><i class="fas fa-trash fa-lg delete_row fa-2x"></i></td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <label for="email_id" class="text-info">Alien Information</label>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_name">Alien Name<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="alien_name" id="alien_name" placeholder="Enter alien name">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>immunization is carried</label>
+                                            <i class="fas fa-info-circle" title="Whether immunization is carried out in the clinic"></i>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="immunization_is_carried" value="Yes">
+                                                <label class="form-check-label">
+                                                    Yes
+                                                </label>
+                                            </div>   
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="immunization_is_carried" value="No">
+                                                <label class="form-check-label">
+                                                    No
+                                              </label>
+                                            </div> 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_details">Alien Details<span class="grey">&nbsp;(optional)</span></label>
-                                        <input type="text" class="form-control" name="alien_details" id="alien_details" placeholder="Enter alien details">
+                                    <div class="col-12 cold_chain_facilities_container" style="display: none;">
+                                        <div class="form-group">
+                                            <label>Give details of cold chain facilities available:</label>
+                                            <textarea class="form-control" rows="5" name="cold_chain_facilities"></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <label class="text-info">Other Business</label>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_name">Other business</label>
-                                        <input type="text" class="form-control" name="other_business" id="alien_name" placeholder="Other business details">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Bio-Medical</label>
+                                            <i class="fas fa-info-circle" title="Certificate regarding Bio-Medical Waste Management"></i>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="bio_medical" value="Yes">
+                                                <label class="form-check-label">
+                                                    Yes
+                                                </label>
+                                            </div>   
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="bio_medical" value="No">
+                                                <label class="form-check-label">
+                                                    No
+                                              </label>
+                                            </div> 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="alien_name">Other business details</label>
-                                        <input type="text" class="form-control" name="other_business" id="other_business_details" placeholder="Enter Other business details">
+                                    <div class="col-6 bio_medical_valid_date_container" style="display: none;">
+                                        <div class="form-group">
+                                            <label>Valid up to:</label>
+                                            <input class="form-control" id="bio_medical_valid_date" name="bio_medical_valid_date" readonly type="text" >
+                                        </div>
                                     </div>
+
                                 </div>
-                                
                             </div>
                         </div>
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <label for="email_id" class="text-info">Attachments</label>
-                            </h3>
+                        <div class="card-header mt-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="card-title">
+                                        <label class="text-info">Attachments</label>
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -371,7 +254,7 @@
                                 </div>
                                 <div class="col-6" style="">
                                     <h3 class="card-title link-margin">
-                                        <label for="" id="tax_receipt_name"  class="text-info"> Please select a document </label>
+                                        <label for="" id="tax_receipt_name" class="text-info"> Please select a document </label>
                                         <input type="hidden" name="tax_receipt_name" id="tax_receipt_name_id">
                                     </h3>
                                 </div>
@@ -390,144 +273,49 @@
                                 </div>
                                 <div class="col-6" style="">
                                     <h3 class="card-title link-margin">
-                                        <label for="" id="doc_certificate_name"  class="text-info"> Please select a document </label>
+                                        <label for="" id="doc_certificate_name" class="text-info"> Please select a document </label>
                                         <input type="hidden" name="doc_certificate_name" id="doc_certificate_name_id">
                                     </h3>
                                 </div>
                             </div>
-                            <!-- <div class="row">
+                            <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="reg_certificate">Doctor Registration Certificate<span class="red">*</span></label>
+                                        <label for="bio_medical_certificate">Bio Medical certificate<span class="red">*</span></label>
                                         <div class="form-group">
                                             <div class="custom-file">
-                                                <input type="file" name="reg_certificate" id="reg_certificate" class="custom-file-input">
-                                                <label class="custom-file-label" for="reg_certificate">Choose file</label>
+                                                <input type="file" name="bio_medical_certificate" id="bio_medical_certificate" class="custom-file-input">
+                                                <label class="custom-file-label" for="bio_medical_certificate">Choose file</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
                                     <h3 class="card-title link-margin">
-                                        <label for="" id="reg_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="reg_certificate_name" id="reg_certificate_name_id">
+                                        <label for="" id="bio_medical_certificate_name" class="text-info"> Please select a document </label>
+                                        <input type="hidden" name="bio_medical_certificate_name" id="bio_medical_certificate_name_id">
                                     </h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="staff_certificate">Paramedical Staff Certificate<span class="red">*</span></label>
+                                        <label for="society_noc">Aadhaar Card<span class="red">*</span></label>
                                         <div class="form-group">
                                             <div class="custom-file">
-                                                <input type="file" name="staff_certificate" id="staff_certificate" class="custom-file-input">
-                                                <label class="custom-file-label" for="staff_certificate">Choose file</label>
+                                                <input type="file" name="aadhaar_card" id="aadhaar_card" class="custom-file-input">
+                                                <label class="custom-file-label" for="aadhaar_card">Choose file</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6" style="">
                                     <h3 class="card-title link-margin">
-                                        <label for="" id="staff_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="staff_certificate_name" id="staff_certificate_name_id">
-                                    </h3>
-                                </div>
-                            </div> -->
-                            <!-- <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="nursing_staff_deg_certificate">Nursing Staff Degree Certificate<span class="red">*</span></label>
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input type="file" name="nursing_staff_deg_certificate" id="nursing_staff_deg_certificate" class="custom-file-input">
-                                                <label class="custom-file-label" for="nursing_staff_deg_certificate">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="nursing_staff_deg_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="nursing_staff_deg_certificate_name" id="nursing_staff_deg_certificate_name_id">
+                                        <label for="aadhaar_card_name" id="aadhaar_card_name" class="text-info"> Please select a document </label>
+                                        <input type="hidden" name="aadhaar_card_name" id="aadhaar_card_name_id">
                                     </h3>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="nursing_staff_reg_certificate">Nursing Staff Degree Certificate<span class="red">*</span></label>
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input type="file" name="nursing_staff_reg_certificate" id="nursing_staff_reg_certificate" class="custom-file-input">
-                                                <label class="custom-file-label" for="nursing_staff_reg_certificate">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="nursing_staff_reg_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="nursing_staff_reg_certificate_name" id="nursing_staff_reg_certificate_name_id">
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="bio_des_certificate">Bio Disposal waste certificate<span class="red">*</span></label>
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input type="file" name="bio_des_certificate" id="bio_des_certificate" class="custom-file-input">
-                                                <label class="custom-file-label" for="bio_des_certificate">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="" id="bio_des_certificate_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="bio_des_certificate_name" id="bio_des_certificate_name_id">
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="society_noc">Society NOC<span class="red">*</span></label>
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input type="file" name="society_noc" id="society_noc" class="custom-file-input">
-                                                <label class="custom-file-label" for="society_noc">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="society_noc_name" id="society_noc_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="society_noc_name" id="society_noc_name_id">
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="fire_noc">Fire Department NOC<span class="red">*</span></label>
-                                        <div class="form-group">
-                                            <div class="custom-file">
-                                                <input type="file" name="fire_noc" id="fire_noc" class="custom-file-input">
-                                                <label class="custom-file-label" for="fire_noc">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6" style="">
-                                    <h3 class="card-title link-margin">
-                                        <label for="fire_noc_name" id="fire_noc_name"  class="text-info"> Please select a document </label>
-                                        <input type="hidden" name="fire_noc_name" id="fire_noc_name_id">
-                                    </h3>
-                                </div>
-                            </div> -->
                             <div class="row">
                                 <div class="col-12">
                                     <h3 class="card-title">
@@ -539,10 +327,18 @@
                                             </li>
                                             <li>
                                                 <i class="text-danger fas fa-exclamation-circle"></i>
-                                                <span class="text-danger" >File size should Not be more than 5 MB.</span>
+                                                <span class="text-danger">File size should Not be more than 5 MB.</span>
                                             </li>
                                         </ul>
                                     </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center text-danger">
+                                    <p><b>Note:</b> The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(I.e home having maternity and non-maternity wards). In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>

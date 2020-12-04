@@ -1,14 +1,40 @@
 
 
 // Dhyey Rathod start
-    
+
+
+    $(document).on('change','input[type=radio][name=other_bussness]',event => {
+        let is_midwife = event.target.value;
+        if (is_midwife == 'Yes') {
+            $('.other_bussness_container').show('slow')
+        } else if (is_midwife == 'No') {
+            $('.other_bussness_container').hide('slow');
+        }
+    });    
+
+    // $(document).on('change','input[type=radio][name=is_midwife]',event => {
+    //     let is_midwife = event.target.value;
+    //     if (is_midwife == 'Yes') {
+    //         $('.midwife_container').show('slow')
+    //     } else if (is_midwife == 'No') {
+    //         $('.midwife_container').hide('slow');
+    //     }
+    // });
+    // $(document).on('click','.addmidwifebtn',event => {
+    //     $('#onemidwifeField').clone().appendTo(".midwifeTableBody");
+    // });
+    // $(document).on('click','.midwifeDeleteBtn',event => {
+    //     if ($('.midwife_table tr').length > 2) {
+    //         event.target.parentElement.parentElement.remove();
+    //     }
+    // });
 
     $(document).on('change','input[type=radio][name=is_midwife]',event => {
         let is_midwife = event.target.value;
         if (is_midwife == 'Yes') {
-            $('.midwife_container').show();
+            $('.midwife_container').show('slow')
         } else if (is_midwife == 'No') {
-            $('.midwife_container').hide();
+            $('.midwife_container').hide('slow');
         }
     });
     $(document).on('click','.addmidwifebtn',event => {
@@ -24,9 +50,9 @@
     $(document).on('change','input[type=radio][name=is_supervision]',event => {
         let is_supervision = event.target.value;
         if (is_supervision == 'Yes') {
-            $('.supervision_container').show();
+            $('.supervision_container').show('slow')
         } else if (is_supervision == 'No') {
-            $('.supervision_container').hide();
+            $('.supervision_container').hide('slow');
         }
     });
     $(document).on('click','.addsupervisionbtn',event => {
@@ -71,9 +97,9 @@
     $(document).on('change','input[type=radio][name=is_alien]',event => {
         let is_alien = event.target.value;
         if (is_alien == 'Yes') {
-            $('.alien_container').show();
+            $('.alien_container').show('slow')
         } else if (is_alien == 'No') {
-            $('.alien_container').hide();
+            $('.alien_container').hide('slow');
         }
     });
     $(document).on('click','.addalienbtn',event => {
@@ -362,6 +388,7 @@ $(document).ready(function(){
     // Dhyey code start
     $('#staff_designation,#fs_for_kitchen_user_type,#approval_status,#staff_qualification').selectpicker('destroy');
     $("#application_date_hospital").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
+    $("#date_of_expiry_certificate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
     $("#Certificate_expirydate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
     $("#hospital-form :input").each((index , item)=>item.setAttribute('autocomplete','off'));
     // Dhyey code end 
@@ -548,9 +575,9 @@ $(document).ready(function(){
           ? 'You missed 1 field. It has been highlighted'
           : 'You missed ' + errors + ' fields. They have been highlighted';
           $("div.error span").html(message);
-          $("div.error").show();
+          $("div.error").show('slow')
       } else {
-          $("div.error").hide();
+          $("div.error").hide('slow');
       }
     },
 
@@ -563,8 +590,6 @@ $(document).ready(function(){
             dataType: "Json",data: form_data,processData:false,contentType:false,
             cache:false,async:false,
             success : response => {
-                debugger ; return ;
-
                 if (response.status) {
                     swal("Good Job!",response.message,"success").then(() => location.reload());
                 } else {
@@ -572,7 +597,6 @@ $(document).ready(function(){
                 }
             },
             error: response => {
-              debugger ; return ;
                 swal("Opps...!!",'Sorry, we have to face some technical issues please try again later.',"error").then(() => location.reload());
             }
         });
@@ -680,9 +704,9 @@ $(document).ready(function(){
             ? 'You missed 1 field. It has been highlighted'
             : 'You missed ' + errors + ' fields. They have been highlighted';
             $("div.error span").html(message);
-            $("div.error").show();
+            $("div.error").show('slow')
         } else {
-            $("div.error").hide();
+            $("div.error").hide('slow');
         }
       },
       submitHandler: function(form,e) {

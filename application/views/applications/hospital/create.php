@@ -5,6 +5,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
+
+                    <h3 class="text-center mt-1">
+                        <label for="email_id" class="text-info">Application for Registration/Renewal of registration under section 5 of the Bombay Nursing Home Registration Act, 1949</label>
+                    </h3>
+                    <hr />
+
                     <form role="form" class="hospital-form" id="hospital-form" method="post" enctype="multipart/form-data">
                         <div class="card-header">
                             <div class="row">
@@ -48,7 +54,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label  for="alert_mobile_no">Alternate Mobile no<span class="grey"> (optional)</span></label>
+                                        <label  for="alert_mobile_no">Alternate Mo no<span class="grey"> (optional)</span></label>
                                         <input type="number" class="form-control" name="applicant_alternate_no" id="applicant_alternate_no" placeholder="Enter alternate mobile no">
                                     </div>
                                 </div>
@@ -313,7 +319,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 supervision_container" style="display: none;">
-                                    <label for="supervision_name">Supervision Details:</label>
+                                    <label for="supervision_name">Supervisor Details:</label>
                                     <table class="table supervision_table">
                                         <thead>
                                             <tr class="text-center">
@@ -332,12 +338,13 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="alien_name">Proportion of the qualified</label>
-                                            <i class="fas fa-info-circle" title="Proportion of the qualified and unqualified nurses on the nursing staff."></i>
-                                            <input type="text" class="form-control" name="proportion_of_qualified">
-                                        </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="alien_name">Proportion of the qualified</label>
+                                        <i class="fas fa-info-circle" title="Proportion of the qualified and unqualified nurses on the nursing staff."></i>
+                                        <input type="text" class="form-control" name="proportion_of_qualified">
                                     </div>
                                 </div>
 
@@ -448,17 +455,67 @@
                                 </div>
 
 
-                                
 
-                                <div class="col-4">
+                                <div class="col-12">
                                     <div class="form-group">
-                                        <label for="alien_name">Other nursing home or business:</label>
+                                        <label>Other nursing home or business</label>
                                         <i class="fas fa-info-circle" title="Whether the applicant is interested in any other nursing home or business"></i>
-                                        <input type="text" class="form-control" name="other_business_address">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="other_bussness" value="Yes">
+                                            <label class="form-check-label">
+                                                Yes
+                                            </label>
+                                        </div>   
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="other_bussness" value="No">
+                                            <label class="form-check-label">
+                                                No
+                                          </label>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="col-12 other_bussness_container" style="display: none;">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="5" name="other_business_address"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+                        <?php if ($application_type == 2) : ?>
+
+                            <div class="card-header mt-5">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3 class="card-title">
+                                            <label for="email_id" class="text-info">For Renewal of Registration:</label>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="alien_name">nummber of expiry of the certificate</label>
+                                            <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
+                                            <input placeholder="MH/THN/MBMC/YYYY" type="text" class="form-control" name="no_of_expiry_certificate">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="alien_name">date of expiry of the certificate</label>
+                                            <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
+                                            <input type="text" readonly class="form-control" id="date_of_expiry_certificate" name="date_of_expiry_certificate">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php endif ; ?>
+
                         
                         <div class="card-header mt-5">
                             <div class="row">
@@ -470,7 +527,7 @@
                             </div>
                         </div>
 
-                        <!-- <div class="card-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
@@ -660,17 +717,26 @@
                                         <input type="hidden" name="fire_noc_name" id="fire_noc_name_id">
                                     </h3>
                                 </div>
-                            </div>
-                        </div> -->
-
-                        <div class="card-body">
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">I solemnly declare that the above statements are true to the best of my knowledge and belief.</label>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input type="checkbox"  name="promise" value="1" class="form-check-input" id="promise">
+                                        <label class="form-check-label" for="exampleCheck1">I solemnly declare that the above statements are true to the best of my knowledge and belief.</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center text-danger">
+                                    <p><b>Note:</b> The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(I.e home having maternity and non-maternity wards). In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+
 
 
                         <div class="card-footer">

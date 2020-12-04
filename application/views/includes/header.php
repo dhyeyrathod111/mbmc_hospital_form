@@ -106,13 +106,24 @@
                     if($slug_name == 'create') {
                         if ($app_name == 'garden') {
                             echo '<h3>Application form for tree cutting / Tree transplantation / Tree NOC / Tree trimming.</h3>';
-                        } else {
+                        } else if ($app_name == 'hospital') {
+                            echo "<h3> FORM B (See rules 4 & 6) </h3>";
+                        } else if ($app_name == 'clinic') {
+                            echo "<h3> MIRA BHAINDER MUNCIPAL CORPORATION HEALTH DEPARTMENT</h3>";
+                        }
+
+                        else {
                             echo '<h3 style="margin: -3% 0% 0% -11%;">Add Details</h3>';
                         }   
                     } elseif($slug_name == 'edit') {
                         if ($app_name == 'garden') {
                             echo '<h3>Application form for tree cutting / Tree transplantation / Tree NOC / Tree trimming.</h3>';
-                        } else {
+                        } else if ($app_name == 'hospital') {
+                            echo "<h3> FORM B (See rules 4 & 6) </h3>";
+                        } else if($app_name == 'clinic'){
+                            echo "<h3> MIRA BHAINDER MUNCIPAL CORPORATION HEALTH DEPARTMENT</h3>";
+                        }  
+                        else {
                             echo '<h3 style="margin: -3% 0% 0% -1%;">Edit Details</h3>';
                         }    
                     } else {

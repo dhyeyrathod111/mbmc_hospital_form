@@ -76,7 +76,7 @@
             <h3>SEE RULE – 5</h3>
         </div>
         <div class="col-12"> 
-            <p>This is to certify that Dr <?= $application->applicant_name ?>. has been registered under the Bombay Nursing Home Registration Act 1949 in respect of. Situated at <?= $application->situation_registration ?>  And has been authorized to carry out the said nursing home.</p>
+            <p>This is to certify that Dr <?= $application->applicant_name ?>. has been registered under the Bombay Nursing Home Registration Act 1949 in respect of. Situated at And has been authorized to carry out the said nursing home.</p>
         </div>
         <br />
         <div class="col-12">

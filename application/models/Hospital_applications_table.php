@@ -444,6 +444,24 @@
 			$this->db->where('app_id',$application_id);
 			return $this->db->get()->result();
 		}
+		public function getImageByApplication($app)
+		{
+			$this->db->select('*');
+			$this->db->from('image_details');
+			$this->db->where_in('image_id',[
+				$app->ownership_agreement,
+				$app->tax_receipt,
+				$app->doc_certificate,
+				$app->reg_certificate,
+				$app->staff_certificate,
+				$app->nursing_staff_deg_certificate,
+				$app->nursing_staff_reg_certificate,
+				$app->bio_des_certificate,
+				$app->society_noc,
+				$app->fire_noc,
+			]);
+			return $this->db->get()->result();
+		}
 	    // Dhyey rahtod end
 	}
 

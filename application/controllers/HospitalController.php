@@ -33,6 +33,7 @@ class HospitalController extends Common {
 		$hospital_id = base64_decode($this->uri->segment(3));
 		$hospital_details = $this->hospital_applications_table->getApplicationByID($hospital_id);
 		if (!empty($hospital_details)) :
+			$application_images = $this->hospital_applications_table->getImageByApplication($hospital_details);
 			$this->data['application'] = $hospital_details;
 			$this->data['designation'] = $this->designation_master_table->getAllDesignation();
 			$this->data['FS_bedrooms'] = $this->hospital_applications_table->getFloreSpaceForBedroomsByAppID($hospital_id);
@@ -44,6 +45,7 @@ class HospitalController extends Common {
 			$this->data['aliens'] = $this->hospital_applications_table->getHospitalAlienByAppID($hospital_id);
 			$this->data['feescharges'] = $this->hospital_applications_table->getHospitalFeeschargesByAppID($hospital_id);
 			$this->data['qualification'] = $this->qualification_master_table->getAllQualification();
+			$this->data['appimages'] = image_formate_in_array($application_images,$hospital_details);
 			$this->load->view('applications/hospital/edit',$this->data);
 		else :
 			return redirect('hospital/user_apps_list');
@@ -83,13 +85,13 @@ class HospitalController extends Common {
             $applicant_mobile_no = $hospital['applicant_mobile_no'];
             // $applicant_nationality = $hospital['applicant_nationality'];
             $technical_qualification = $hospital['technical_qualification'];
-            $un_reg_medical_practice = ($hospital['un_reg_medical_practice'] == '1') ? 'Yes' : 'NO';
+            // $un_reg_medical_practice = ($hospital['un_reg_medical_practice'] == '1') ? 'Yes' : 'NO';
             // $applicant_address = $hospital['applicant_address'];
             $hospital_name = $hospital['hospital_name'];
             $hospital_address = $hospital['hospital_address'];
-			$contact_no = $hospital['contact_no'];
-            $contact_person = $hospital['contact_person'];
-            $floor_space = $hospital['floor_space'];
+			// $contact_no = $hospital['contact_no'];
+            // $contact_person = $hospital['contact_person'];
+            // $floor_space = $hospital['floor_space'];
             $maternity_beds = $hospital['maternity_beds'];
             $patient_beds = $hospital['patient_beds'];
             $status = $hospital['status'];
@@ -276,6 +278,12 @@ class HospitalController extends Common {
 			'promise' => $this->security->xss_clean($this->input->post('promise')),
 			'user_id' => $this->authorised_user['user_id'],
 		);
+
+		if ($inertStack['application_type'] == 2) {
+			$inertStack['no_of_expiry_certificate'] = $this->security->xss_clean($this->input->post('no_of_expiry_certificate'));
+			$inertStack['date_of_expiry_certificate'] = $this->security->xss_clean($this->input->post('date_of_expiry_certificate'));
+		}
+
 		$image_upload_error = '';$document_data_stack = [];
 		foreach ($_FILES as $key => $oneImage) {
 			if (!empty($_FILES[$key]['name']) && $_FILES[$key]['error'] == 0) {

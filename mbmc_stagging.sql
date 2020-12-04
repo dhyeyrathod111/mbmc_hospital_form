@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2020 at 09:14 PM
+-- Generation Time: Dec 04, 2020 at 09:09 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -371,7 +371,22 @@ INSERT INTO `applications_details` (`application_id`, `dept_id`, `sub_dept_id`, 
 (81, 5, 0, 1, 0, '2020-12-02 18:25:06', '2020-12-02 18:25:06'),
 (82, 5, 0, 1, 0, '2020-12-02 18:28:08', '2020-12-02 18:28:08'),
 (83, 5, 0, 1, 0, '2020-12-02 18:37:58', '2020-12-02 18:37:58'),
-(84, 5, 0, 1, 0, '2020-12-02 18:42:39', '2020-12-02 18:42:39');
+(84, 5, 0, 1, 0, '2020-12-02 18:42:39', '2020-12-02 18:42:39'),
+(85, 5, 0, 1, 0, '2020-12-03 11:32:54', '2020-12-03 11:32:54'),
+(86, 5, 0, 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(87, 5, 2, 1, 0, '2020-12-04 15:43:37', '2020-12-04 15:43:37'),
+(88, 5, 2, 1, 0, '2020-12-04 15:44:02', '2020-12-04 15:44:02'),
+(89, 5, 0, 1, 0, '2020-12-04 15:48:33', '2020-12-04 15:48:33'),
+(90, 5, 2, 1, 0, '2020-12-04 15:52:42', '2020-12-04 15:52:42'),
+(91, 5, 2, 1, 0, '2020-12-04 15:55:40', '2020-12-04 15:55:40'),
+(92, 5, 2, 1, 0, '2020-12-04 15:58:21', '2020-12-04 15:58:21'),
+(93, 5, 2, 1, 0, '2020-12-04 16:00:35', '2020-12-04 16:00:35'),
+(94, 5, 2, 1, 0, '2020-12-04 16:19:03', '2020-12-04 16:19:03'),
+(95, 5, 2, 1, 0, '2020-12-04 16:20:06', '2020-12-04 16:20:06'),
+(96, 5, 2, 1, 0, '2020-12-04 16:31:03', '2020-12-04 16:31:03'),
+(97, 5, 0, 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(98, 5, 2, 1, 0, '2020-12-04 19:29:40', '2020-12-04 19:29:40'),
+(99, 5, 2, 1, 0, '2020-12-04 20:27:32', '2020-12-04 20:27:32');
 
 -- --------------------------------------------------------
 
@@ -480,7 +495,13 @@ INSERT INTO `application_remarks` (`id`, `app_id`, `dept_id`, `sub_dept_id`, `us
 (82, 3, 3, 3, 34, 6, 'asdasdas', 1, 32, 1, 0, '2020-11-27 17:57:55', '2020-11-27 17:57:55'),
 (83, 3, 3, 3, 35, 25, 'asdadasd', 1, 87, 1, 0, '2020-11-27 18:05:54', '2020-11-27 18:05:54'),
 (84, 3, 3, 3, 36, 4, 'asdasdad', 1, 91, 1, 0, '2020-11-27 18:24:43', '2020-11-27 18:24:43'),
-(85, 5, 3, 3, 29, 3, 'Approved by Clerk test', 0, 28, 1, 0, '2020-11-30 17:46:02', '2020-11-30 17:46:02');
+(85, 5, 3, 3, 29, 3, 'Approved by Clerk test', 0, 28, 1, 0, '2020-11-30 17:46:02', '2020-11-30 17:46:02'),
+(86, 96, 5, 1, 24, 3, 'sadsadas asdsadasd', 0, 16, 1, 0, '2020-12-04 20:55:30', '2020-12-04 20:55:30'),
+(87, 99, 5, 1, 24, 3, 'adasdasdsa', 0, 16, 1, 0, '2020-12-04 20:55:47', '2020-12-04 20:55:47'),
+(88, 96, 5, 1, 25, 22, 'qwewq asdasd adasdas', 0, 81, 1, 0, '2020-12-04 20:57:05', '2020-12-04 20:57:05'),
+(89, 99, 5, 1, 25, 22, 'dasd adasdas', 0, 81, 1, 0, '2020-12-04 20:58:28', '2020-12-04 20:58:28'),
+(90, 99, 5, 1, 26, 23, 'asdasdad', 0, 83, 1, 0, '2020-12-04 21:00:58', '2020-12-04 21:00:58'),
+(91, 99, 5, 1, 27, 24, 'asdasdad', 0, 85, 1, 0, '2020-12-04 21:01:24', '2020-12-04 21:01:24');
 
 -- --------------------------------------------------------
 
@@ -1252,7 +1273,11 @@ INSERT INTO `app_status_level` (`status_id`, `dept_id`, `role_id`, `status_title
 (89, 3, 13, 'Approve by commissioner', 1, 0, 1, 2, 0, '2020-11-27 18:05:14', '2020-11-27 18:05:14'),
 (90, 3, 13, 'Rejected by commissioner', 1, 1, 1, 2, 0, '2020-11-27 18:05:14', '2020-11-27 18:05:14'),
 (91, 3, 4, 'Approve by commissioner', 1, 0, 1, 0, 0, '2020-11-27 18:20:41', '2020-11-27 18:20:41'),
-(92, 3, 4, 'Rejected by commissioner', 1, 1, 1, 0, 0, '2020-11-27 18:20:41', '2020-11-27 18:20:41');
+(92, 3, 4, 'Rejected by commissioner', 1, 1, 1, 0, 0, '2020-11-27 18:20:41', '2020-11-27 18:20:41'),
+(93, 15, 26, 'Approved ', 1, 0, 1, 0, 0, '2020-12-04 17:33:09', '2020-12-04 17:33:09'),
+(94, 15, 26, 'Approved ', 0, 0, 1, 0, 0, '2020-12-04 17:34:30', '2020-12-04 17:34:30'),
+(95, 15, 26, 'Approved by $*%##', 1, 0, 1, 0, 0, '2020-12-04 18:07:33', '2020-12-04 18:07:33'),
+(96, 15, 26, '                                                                    ', 1, 0, 1, 0, 0, '2020-12-04 18:10:28', '2020-12-04 18:10:28');
 
 -- --------------------------------------------------------
 
@@ -1640,7 +1665,43 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `token`, `login_time`, `ip_address
 (359, 29, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI5Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZ2FyZGVuY2xlcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJHcmFkZW4gQ2xlcmsiLCJ1c2VyX21vYmlsZSI6IjEyMzQ1Njc4MDkiLCJkZXB0X2lkIjoiMyIsInBhc3N3b3JkIjoiJD', '2020-11-23 04:25:18', '192.168.1.63', 'Chrome', '87.0.4280.66', 'Windows 8.1', '2020-11-30 20:56:02'),
 (360, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.66', 'Windows 8.1', '2020-12-01 16:00:59'),
 (361, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.66', 'Windows 8.1', '2020-12-02 10:44:20'),
-(362, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.66', 'Windows 10', '2020-12-02 17:03:21');
+(362, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.66', 'Windows 10', '2020-12-02 17:03:21'),
+(363, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.66', 'Windows 8.1', '2020-12-03 11:21:58'),
+(364, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.66', 'Windows 10', '2020-12-03 12:26:01'),
+(365, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.66', 'Windows 10', '2020-12-03 17:38:33'),
+(366, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 10:33:58'),
+(367, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 13:24:08'),
+(368, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 15:43:56'),
+(369, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 16:49:30'),
+(370, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 16:52:37'),
+(371, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 16:57:09'),
+(372, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:01:21'),
+(373, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:01:39'),
+(374, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:02:05'),
+(375, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:02:24'),
+(376, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:02:35'),
+(377, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 17:08:56'),
+(378, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:12:44'),
+(379, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:16:24'),
+(380, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:17:48'),
+(381, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:20:54'),
+(382, 37, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjM3Iiwicm9sZV9pZCI6IjI2Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6ImFiY0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6ImFiYyIsInVzZXJfbW9iaWxlIjoiMTIzNDU2Nzg5OCIsImRlcHRfaWQiOiIxNSIsInBhc3N3b3JkIjoiJDJhJDA4JE8zazdoYmJvTG', '2020-12-04 17:31:22', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:31:50'),
+(383, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:32:21'),
+(384, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 17:50:55'),
+(385, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 17:55:31'),
+(386, 37, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjM3Iiwicm9sZV9pZCI6IjI2Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6ImFiY0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6ImFiYyIsInVzZXJfbW9iaWxlIjoiMTIzNDU2Nzg5OCIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkTzNrN2hiYm9MbW', '2020-12-04 17:31:22', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:56:47'),
+(387, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 17:57:06'),
+(388, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-04 18:24:48'),
+(389, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 20:28:07'),
+(390, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 20:45:52'),
+(391, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 20:48:22'),
+(392, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 20:56:01'),
+(393, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 20:57:44'),
+(394, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 20:58:11'),
+(395, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 20:59:21'),
+(396, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 21:00:46'),
+(397, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 21:01:13'),
+(398, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-04 21:04:00');
 
 -- --------------------------------------------------------
 
@@ -1656,59 +1717,68 @@ CREATE TABLE `clinic_applications` (
   `applicant_mobile_no` varchar(11) NOT NULL,
   `applicant_alternate_no` varchar(255) NOT NULL,
   `applicant_address` longtext NOT NULL,
-  `applicant_nationality` varchar(11) NOT NULL,
-  `technical_qualification` varchar(255) NOT NULL,
-  `un_reg_medical_practice` tinyint(1) NOT NULL,
+  `applicant_qualification` varchar(255) NOT NULL,
   `clinic_name` text NOT NULL,
-  `contact_person` varchar(255) NOT NULL,
-  `contact_no` varchar(255) NOT NULL,
   `clinic_address` longtext NOT NULL,
-  `floor_space` varchar(255) NOT NULL,
-  `check_up_details` varchar(255) NOT NULL,
-  `floor_space_kitchen` varchar(255) NOT NULL,
-  `sanitary_details` varchar(255) NOT NULL,
-  `storage_details` varchar(255) NOT NULL,
-  `others` varchar(255) NOT NULL,
-  `maternity_beds` varchar(255) NOT NULL,
-  `patient_beds` text NOT NULL,
-  `alien_name` varchar(255) NOT NULL,
-  `alien_details` varchar(255) NOT NULL,
+  `clinic_telephone_no` varchar(255) NOT NULL,
   `ownership_agreement` int(11) NOT NULL,
   `tax_receipt` int(11) NOT NULL,
+  `bio_medical_certificate` int(11) NOT NULL DEFAULT '0',
   `doc_certificate` int(11) NOT NULL,
-  `reg_certificate` int(11) NOT NULL,
-  `staff_certificate` int(11) NOT NULL,
-  `nursing_staff_deg_certificate` int(11) NOT NULL,
-  `nursing_staff_reg_certificate` int(11) NOT NULL,
-  `bio_des_certificate` int(11) NOT NULL,
-  `society_noc` int(11) NOT NULL,
-  `fire_noc` int(11) NOT NULL,
+  `aadhaar_card` int(11) NOT NULL DEFAULT '0',
+  `bio_medical_valid_date` date DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `is_deleted` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `application_date` date DEFAULT NULL,
-  `situation_registration` varchar(255) DEFAULT NULL,
-  `name_of_nursinghome` varchar(255) DEFAULT NULL,
-  `address_of_nursinghome` text,
-  `arrng_immunization_of_the_employees` text,
-  `sanitary_conveniences_for_emp` text,
-  `food_arrangements` text,
-  `fee_charges` text,
-  `other_business` text,
-  `other_business_details` text,
-  `certificate_expirydate` text,
   `user_id` int(11) NOT NULL,
   `application_type` int(11) NOT NULL COMMENT '1 = new application , 2 = renewal application',
-  `health_officer` int(11) NOT NULL DEFAULT '0'
+  `health_officer` int(11) NOT NULL DEFAULT '0',
+  `cold_chain_facilities` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clinic_applications`
 --
 
-INSERT INTO `clinic_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_nationality`, `technical_qualification`, `un_reg_medical_practice`, `clinic_name`, `contact_person`, `contact_no`, `clinic_address`, `floor_space`, `check_up_details`, `floor_space_kitchen`, `sanitary_details`, `storage_details`, `others`, `maternity_beds`, `patient_beds`, `alien_name`, `alien_details`, `ownership_agreement`, `tax_receipt`, `doc_certificate`, `reg_certificate`, `staff_certificate`, `nursing_staff_deg_certificate`, `nursing_staff_reg_certificate`, `bio_des_certificate`, `society_noc`, `fire_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `application_date`, `situation_registration`, `name_of_nursinghome`, `address_of_nursinghome`, `arrng_immunization_of_the_employees`, `sanitary_conveniences_for_emp`, `food_arrangements`, `fee_charges`, `other_business`, `other_business_details`, `certificate_expirydate`, `user_id`, `application_type`, `health_officer`) VALUES
-(1, 53, 'brendita', 'brendita@yopmail.com', '7896541235', '7896541235', 'Iste doloribus ullam', 'Proident om', 'QWE', 1, 'Sarah Gross', 'Aperiam maiores dict', '7896541235', 'Velit quis pariatur', 'Debitis iste amet v', 'Libero ut debitis vo', '', 'Aut possimus unde a', '', 'Ea sed est ea accusa', '30', '66', 'Barbara Dodson', 'Provident delectus', 254, 255, 256, 0, 0, 0, 0, 0, 0, 0, 85, 0, '2020-11-26 17:26:08', '2020-11-26 17:34:31', '2020-11-28', 'Et suscipit cumque i', 'Mechelle Hutchinson', 'Rhea Wheeler', 'Sit qui possimus e', 'Laboris quaerat prov', '', 'Ducimus est volupta', NULL, NULL, NULL, 23, 1, 3);
+INSERT INTO `clinic_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_qualification`, `clinic_name`, `clinic_address`, `clinic_telephone_no`, `ownership_agreement`, `tax_receipt`, `bio_medical_certificate`, `doc_certificate`, `aadhaar_card`, `bio_medical_valid_date`, `status`, `is_deleted`, `created_at`, `updated_at`, `user_id`, `application_type`, `health_officer`, `cold_chain_facilities`) VALUES
+(1, 96, 'Lysandra Hobbs', 'wewytyh@yopmail.com', 'Sed tempore', 'Dicta quidem omnis a', 'Odit sed et ipsum ut', 'Explicabo Consequat', 'Kelsie Mckenzie', 'Culpa expedita modi ', '+1 (909) 867-9106', 299, 300, 302, 301, 303, '0000-00-00', 81, 0, '2020-12-04 16:31:03', '2020-12-04 20:57:05', 23, 1, 3, ''),
+(2, 98, 'Xandra Winters', 'sebodyg@yopmail.com', 'Quia vel mi', 'Irure laboriosam de', 'Aspernatur qui in si', 'Sed maxime officia o', 'Barclay Greer', 'HEllo', '+1 (853) 247-2709', 320, 321, 323, 322, 324, '2020-12-16', 0, 0, '2020-12-04 19:29:40', '0000-00-00 00:00:00', 23, 1, 0, 'Hello world'),
+(3, 99, 'Savita maheta', 'savitamaheta@yopmail.com', '7845126598', '7539514568', 'Eiusmod necessitatib', 'HSC', 'Priya patel', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or ', '7896541235', 325, 326, 328, 327, 329, '2020-12-16', 85, 0, '2020-12-04 20:27:32', '2020-12-04 21:01:24', 23, 1, 3, 'Commodi sed officia ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clinic_staff`
+--
+
+CREATE TABLE `clinic_staff` (
+  `id` int(11) NOT NULL,
+  `app_id` int(11) NOT NULL,
+  `sr_number_clinic_Staff` int(11) DEFAULT NULL,
+  `name_clinic_Staff` varchar(255) DEFAULT NULL,
+  `designation_clinic_Staff` int(11) DEFAULT NULL,
+  `qualification_clinic_Staff` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clinic_staff`
+--
+
+INSERT INTO `clinic_staff` (`id`, `app_id`, `sr_number_clinic_Staff`, `name_clinic_Staff`, `designation_clinic_Staff`, `qualification_clinic_Staff`, `created_at`) VALUES
+(23, 2, 345, 'Ashton Mcgowan', 3, '2', '2020-12-04 14:54:19'),
+(24, 2, 345, 'Ashton Mcgowan', 3, '1', '2020-12-04 14:54:19'),
+(25, 3, 84, 'Tanner Fry', 5, '3', '2020-12-04 14:57:33'),
+(26, 3, 474, 'Calvin Kidd', 3, '2', '2020-12-04 14:57:33'),
+(27, 3, 705, 'Tamara Lindsey', 5, '3', '2020-12-04 14:57:33'),
+(28, 3, 856, 'Darryl Tillman', 5, '4', '2020-12-04 14:57:33'),
+(29, 3, 734, 'George Manning', 5, '1', '2020-12-04 14:57:33'),
+(30, 1, 55, 'Regan Barrera', 3, '2', '2020-12-04 15:24:45'),
+(31, 1, 320, 'Judith Williams', 5, '3', '2020-12-04 15:24:45'),
+(32, 1, 882, 'Dai Clay', 5, '3', '2020-12-04 15:24:45'),
+(33, 1, 644, 'Demetria Holden', 1, '3', '2020-12-04 15:24:45'),
+(34, 1, 79, 'Eliana Lara', 4, '1', '2020-12-04 15:24:45');
 
 -- --------------------------------------------------------
 
@@ -1907,7 +1977,7 @@ INSERT INTO `department_table` (`dept_id`, `dept_title`, `department_mail_id`, `
 (2, 'Storage', '', 'Storage department', 2, 1, '2020-03-21 00:00:00', '2020-03-30 12:27:28'),
 (3, 'Garden', 'garden@yopmail.com', 'Tree', 1, 0, '2020-03-23 14:02:44', '2020-11-27 16:37:16'),
 (4, 'Tree Cutting', '', 'Tree', 2, 1, '2020-03-23 14:03:41', '2020-06-01 09:09:22'),
-(5, 'Medical', 'Medical@yopmail.com', 'medical Health ', 1, 0, '2020-03-30 12:27:12', '2020-11-22 17:27:43'),
+(5, 'Medical', 'Medical@yopmail.com', 'medical Health ', 1, 0, '2020-03-30 12:27:12', '2020-12-04 17:55:09'),
 (6, 'Hall', '', 'hall', 1, 0, '2020-04-04 11:19:06', '2020-04-04 11:22:48'),
 (7, 'trade', '', 'Trade Fact lic', 1, 0, '2020-04-15 14:02:44', '2020-04-15 14:02:44'),
 (8, 'godown', '', 'Godown Lic', 1, 0, '2020-04-15 14:02:44', '2020-04-15 14:02:44'),
@@ -1916,7 +1986,8 @@ INSERT INTO `department_table` (`dept_id`, `dept_title`, `department_mail_id`, `
 (11, 'advertisement', '', 'advertisement', 1, 0, '2020-05-08 00:00:00', '2020-08-28 07:44:59'),
 (12, 'Mandap', '', 'Mandap', 1, 0, '2020-07-17 00:00:00', '2020-07-17 00:00:00'),
 (13, 'Marriage', '', 'Marriage', 1, 0, '2020-07-17 00:00:00', '2020-07-17 00:00:00'),
-(14, 'Head', '', 'Head Department', 1, 0, '2020-09-10 09:14:50', '2020-09-10 09:14:50');
+(14, 'Head', '', 'Head Department', 1, 0, '2020-09-10 09:14:50', '2020-09-10 09:14:50'),
+(15, 'Test Medical', 'test@abc.com', 'medical health department', 1, 0, '2020-12-04 17:29:13', '2020-12-04 17:29:13');
 
 -- --------------------------------------------------------
 
@@ -2266,7 +2337,18 @@ INSERT INTO `hospital_alien` (`id`, `app_id`, `name`, `age`, `qualification`, `n
 (22, 3, 'Reed Sanchez', 8, 'Et accusantium liber', 'Necessitatibus disti'),
 (23, 3, 'Jane Strickland', 41, 'Et nulla laudantium', 'Vero in do reiciendi'),
 (24, 3, 'Kyra Sampson', 3, 'Qui exercitation lor', 'Dolor adipisci volup'),
-(25, 3, 'Levi Carr', 70, 'Eos enim magnam ver', 'Molestiae sint omnis');
+(25, 3, 'Levi Carr', 70, 'Eos enim magnam ver', 'Molestiae sint omnis'),
+(58, 4, 'Alice Vaughn', 84, 'Modi minim culpa qu', 'Rerum reprehenderit'),
+(59, 4, 'Louis Clay', 89, 'Doloremque sint et ', 'Ratione autem impedi'),
+(60, 4, 'Breanna Olson', 71, 'Officiis non earum d', 'Iste sit et non ips'),
+(61, 4, 'Cassidy Salinas', 85, 'Similique minus magn', 'Non veniam eum volu'),
+(72, 5, 'Karly Benson', 39, 'Nulla aut molestiae ', 'Ut ut iste non qui l'),
+(73, 5, 'Ariana King', 17, 'Qui quibusdam magni ', 'Minus aut in quam it'),
+(74, 5, 'Cody Castillo', 31, 'Duis rerum in praese', 'Ex corrupti volupta'),
+(75, 5, 'Elliott Cote', 55, 'Nobis exercitation c', 'Dolores eaque sed qu'),
+(76, 5, 'Larissa Vang', 97, 'Ratione deserunt quo', 'Est non lorem facili'),
+(77, 6, '', 0, '', ''),
+(78, 7, 'Kirsten Pollard', 59, 'Fuga Natus mollitia', 'Voluptate consequatu');
 
 -- --------------------------------------------------------
 
@@ -2313,18 +2395,24 @@ CREATE TABLE `hospital_applications` (
   `storage_arrangements` varchar(500) DEFAULT NULL,
   `other_business_address` text,
   `accomodation` text,
-  `proportion_of_qualified` int(11) DEFAULT '0',
-  `promise` int(11) NOT NULL DEFAULT '0'
+  `proportion_of_qualified` varchar(255) DEFAULT NULL,
+  `promise` int(11) NOT NULL DEFAULT '0',
+  `no_of_expiry_certificate` varchar(255) DEFAULT NULL,
+  `date_of_expiry_certificate` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hospital_applications`
 --
 
-INSERT INTO `hospital_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_nationality`, `technical_qualification`, `hospital_name`, `hospital_address`, `others`, `maternity_beds`, `patient_beds`, `ownership_agreement`, `tax_receipt`, `doc_certificate`, `reg_certificate`, `staff_certificate`, `arrangement_for_checkup`, `nursing_staff_deg_certificate`, `nursing_staff_reg_certificate`, `bio_des_certificate`, `society_noc`, `fire_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `situation_registration`, `user_id`, `application_type`, `health_officer`, `detail_arrange_sanitary_employee`, `detail_arrange_sanitary_patients`, `storage_arrangements`, `other_business_address`, `accomodation`, `proportion_of_qualified`, `promise`) VALUES
-(1, 82, 'Anjolie James', 'hamiq@yopmail.com', '89', '54', 'Labore consequuntur ', 'Ex consequa', 'Provident ex deleni', 'Gage Cross', 'Sit non neque vitae ', 'Optio placeat illo', '145', '321', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:28:08', '0000-00-00 00:00:00', 'Est dolore deserunt', 23, 1, 0, 'Perferendis perferen', 'Non cumque itaque ut', 'Quia saepe quibusdam', 'Consectetur sit si', 'Deserunt ullam qui i', NULL, 0),
-(2, 83, 'Maxine Rice', 'gizu@yopmail.com', '3216547895', '3216547895', 'Veritatis hic dolor ', 'Aliquid ill', 'Culpa esse autem te', 'Kiara Simpson', 'Aut et molestiae qua', 'Duis cillum consequa', '791', '411', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:37:58', '0000-00-00 00:00:00', 'Dolor id nisi culpa ', 23, 1, 0, 'Voluptates consequun', 'In et quis beatae ni', 'Totam exercitationem', 'Ducimus reiciendis ', 'Deleniti at eius ess', NULL, 0),
-(3, 84, 'Jeenal patel test', 'jeenalpatel@yopmail.com', '7896541235', '7896541235', 'Ullamco iure porro v', 'Atque sit a', 'Cupiditate nisi cons', 'Provident aliquip e', 'Provident aliquip e', 'Aut ipsam aliquid at', '341', '277', 0, 0, 0, 0, 0, 'asdasdas', 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:42:38', '0000-00-00 00:00:00', 'Quam iusto officia d', 23, 1, 0, 'Nostrum unde enim an', 'Sed odio sit sed vol', 'Quae impedit vitae ', 'Possimus rem conseq', 'Dolores cumque quod ', 0, 1);
+INSERT INTO `hospital_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_nationality`, `technical_qualification`, `hospital_name`, `hospital_address`, `others`, `maternity_beds`, `patient_beds`, `ownership_agreement`, `tax_receipt`, `doc_certificate`, `reg_certificate`, `staff_certificate`, `arrangement_for_checkup`, `nursing_staff_deg_certificate`, `nursing_staff_reg_certificate`, `bio_des_certificate`, `society_noc`, `fire_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `situation_registration`, `user_id`, `application_type`, `health_officer`, `detail_arrange_sanitary_employee`, `detail_arrange_sanitary_patients`, `storage_arrangements`, `other_business_address`, `accomodation`, `proportion_of_qualified`, `promise`, `no_of_expiry_certificate`, `date_of_expiry_certificate`) VALUES
+(1, 82, 'Anjolie James', 'hamiq@yopmail.com', '89', '54', 'Labore consequuntur ', 'Ex consequa', 'Provident ex deleni', 'Gage Cross', 'Sit non neque vitae ', 'Optio placeat illo', '145', '321', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:28:08', '2020-12-02 18:37:58', 'Est dolore deserunt', 23, 1, 0, 'Perferendis perferen', 'Non cumque itaque ut', 'Quia saepe quibusdam', 'Consectetur sit si', 'Deserunt ullam qui i', NULL, 0, NULL, NULL),
+(2, 83, 'Maxine Rice', 'gizu@yopmail.com', '3216547895', '3216547895', 'Veritatis hic dolor ', 'Aliquid ill', 'Culpa esse autem te', 'Kiara Simpson', 'Aut et molestiae qua', 'Duis cillum consequa', '791', '411', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:37:58', '2020-12-02 18:37:58', 'Dolor id nisi culpa ', 23, 1, 0, 'Voluptates consequun', 'In et quis beatae ni', 'Totam exercitationem', 'Ducimus reiciendis ', 'Deleniti at eius ess', NULL, 0, NULL, NULL),
+(3, 84, 'Jeenal patel test', 'jeenalpatel@yopmail.com', '7896541235', '7896541235', 'Ullamco iure porro v', 'Atque sit a', 'Cupiditate nisi cons', 'Provident aliquip e', 'Provident aliquip e', 'Aut ipsam aliquid at', '341', '277', 0, 0, 0, 0, 0, 'asdasdas', 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:42:38', '2020-12-02 18:37:58', 'Quam iusto officia d', 23, 1, 0, 'Nostrum unde enim an', 'Sed odio sit sed vol', 'Quae impedit vitae ', 'Possimus rem conseq', 'Dolores cumque quod ', '0', 1, NULL, NULL),
+(4, 85, 'Ankita patel', 'ankitapatel@yopmail.com', '7896541234', '7896541234', 'Eiusmod culpa conseq', 'Minus ex in', 'Dolore exercitatione', 'Accusantium ad sed q', 'Accusantium ad sed q', 'Aut occaecat perspic', '996', '360', 257, 258, 259, 260, 261, 'Nesciunt alias anim', 0, 0, 0, 0, 262, 0, 0, '2020-12-03 11:32:54', '2020-12-02 18:37:58', 'Qui ullamco qui quae', 23, 1, 0, 'Quae explicabo Cons', 'Ratione optio labor', 'Minus aliquam nihil ', 'Eu ipsum voluptatem', 'Dolores sapiente deb', '0', 1, NULL, NULL),
+(5, 86, 'rashmi khan', 'rashmikhan@yopmail.com', '7896543215', '7896543215', 'Ex aliquam eveniet ', 'Numquam inv', 'Sit sint magna lab', 'Labore incididunt vo', 'Labore incididunt vo', 'Pariatur Ut omnis e', '293', '601', 263, 264, 265, 266, 267, 'Corporis libero lore', 268, 269, 270, 273, 272, 0, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49', 'Consequatur similiq', 23, 1, 0, 'Molestiae est commod', 'Quisquam elit aut l', 'Provident maiores d', 'Ea non qui dolore el', 'Dolores est voluptat', '0', 1, NULL, NULL),
+(6, 89, 'Nick', 'smn101296@gmail.com', '1234567890', '0987654321', 'Juhu', 'Indian', 'qualification ', 'ABC Nursing Home ', 'Mumbai', 'NA', '5', '5', 0, 0, 0, 0, 0, 'On the ground floor ', 0, 0, 0, 0, 0, 0, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00', 'Home branch mumbai ', 22, 2, 0, '3', '5', 'in the kitchen ', '', 'NA', '', 0, '', ''),
+(7, 97, 'Kim Hanson', 'suman.kattimani@aaravsoftware.com', '83', '96', 'Qui suscipit reicien', 'Et ut in do', 'Ut autem ut est ad q', 'Aurelia Hill', 'Tenetur enim dolorem', 'Dolorem doloremque e', '337', '50', 304, 305, 306, 307, 308, 'Laborum est reprehe', 309, 310, 311, 312, 313, 0, 0, '2020-12-04 17:15:59', '0000-00-00 00:00:00', 'Pariatur Aute elit', 22, 1, 0, 'Sequi odio minim min', 'Cupiditate consequun', 'Qui fuga Ipsa reru', 'Veniam consectetur ', 'Facilis quia asperio', 'Eveniet maxime volu', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2356,7 +2444,17 @@ INSERT INTO `hospital_fee_charges` (`id`, `app_id`, `sr_no`, `service`, `charges
 (21, 3, 927, 'Quia libero sit dol', 13),
 (22, 3, 404, 'Doloremque quae et f', 73),
 (23, 3, 317, 'Laudantium dolorum ', 2),
-(24, 3, 911, 'Impedit doloribus d', 8);
+(24, 3, 911, 'Impedit doloribus d', 8),
+(57, 4, 812, 'In voluptatem Aut a', 51),
+(58, 4, 179, 'Assumenda non labore', 72),
+(59, 4, 71, 'Cumque dolor sunt a', 12),
+(60, 4, 980, 'Dolores voluptatem s', 69),
+(69, 5, 926, 'A dignissimos perspi', 12),
+(70, 5, 19, 'Mollit labore except', 77),
+(71, 5, 634, 'Modi recusandae A s', 66),
+(72, 5, 722, 'Praesentium omnis di', 63),
+(73, 6, 0, '', 0),
+(74, 7, 919, 'Aut sint ullamco mi', 12);
 
 -- --------------------------------------------------------
 
@@ -2388,7 +2486,20 @@ INSERT INTO `hospital_florespace_for_bedrooms` (`id`, `app_id`, `floor_number`, 
 (21, 3, '632', 81, 218),
 (22, 3, '289', 93, 790),
 (23, 3, '838', 47, 913),
-(24, 3, '89', 4, 43);
+(24, 3, '89', 4, 43),
+(65, 4, '558', 22, 739),
+(66, 4, '315', 96, 220),
+(67, 4, '299', 63, 484),
+(68, 4, '516', 68, 721),
+(69, 4, '642', 58, 14),
+(80, 5, '274', 77, 585),
+(81, 5, '520', 57, 641),
+(82, 5, '693', 15, 233),
+(83, 5, '731', 76, 884),
+(84, 5, '804', 95, 875),
+(85, 6, '1', 3, 6),
+(86, 6, '2', 3, 6),
+(87, 7, '234', 71, 629);
 
 -- --------------------------------------------------------
 
@@ -2421,7 +2532,20 @@ INSERT INTO `hospital_florespace_for_kitchen` (`id`, `app_id`, `room_name`, `flo
 (21, 3, 'Regina Valentine', 'Regina Valentine', '30', 1),
 (22, 3, 'Todd Mcclain', 'Todd Mcclain', '59', 1),
 (23, 3, 'Clare Cote', 'Clare Cote', '85', 1),
-(24, 3, 'Bertha Phelps', 'Bertha Phelps', '14', 1);
+(24, 3, 'Bertha Phelps', 'Bertha Phelps', '14', 1),
+(65, 4, 'Ori Kent', 'Ori Kent', '85', 2),
+(66, 4, 'Forrest Combs', 'Forrest Combs', '63', 1),
+(67, 4, 'Nayda Workman', 'Nayda Workman', '22', 1),
+(68, 4, 'Calista Schultz', 'Calista Schultz', '54', 1),
+(69, 4, 'Xavier Allison', 'Xavier Allison', '93', 2),
+(80, 5, 'Yardley Keith', 'Yardley Keith', '16', 1),
+(81, 5, 'Liberty Dennis', 'Liberty Dennis', '68', 2),
+(82, 5, 'Brynn Bryan', 'Brynn Bryan', '99', 2),
+(83, 5, 'Fuller Norton', 'Fuller Norton', '74', 2),
+(84, 5, 'Faith Keller', 'Faith Keller', '26', 2),
+(85, 6, 'kitchen', '1st floor ', '270', 2),
+(86, 6, 'servant room', '1st floor ', '270', 2),
+(87, 7, 'Reece Jimenez', 'Daniel Alvarez', '89', 2);
 
 -- --------------------------------------------------------
 
@@ -2454,6 +2578,14 @@ CREATE TABLE `hospital_inspection_form` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `hospital_inspection_form`
+--
+
+INSERT INTO `hospital_inspection_form` (`id`, `app_id`, `sub_dept_id`, `doc_degree_certificate`, `doc_reg_mmc`, `bio_medical_valid_date`, `mpcb_certificate_valid_date`, `agreement_copy`, `tax_recipes`, `nursing_certificate`, `noc_from_society`, `noc_from_town_planning_mbmc`, `no_of_beds`, `no_of_toilets`, `noc_from_fire_dept`, `general_observation`, `labour_room_availability`, `created_at`, `updated_at`, `created_by`, `approved_by`, `status`) VALUES
+(1, 96, 1, 1, 1, '2020-12-08', '2020-12-23', 1, 0, 1, 1, 1, 13, 14, 0, 1, 1, '2020-12-04 15:27:24', NULL, 25, 0, 1),
+(2, 99, 1, 1, 1, '2020-12-07', '2020-12-16', 0, 0, 1, 0, 1, 14, 12, 0, 1, 0, '2020-12-04 15:28:52', NULL, 25, 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -2484,7 +2616,19 @@ INSERT INTO `hospital_midwife` (`id`, `app_id`, `name`, `age`, `qualification`) 
 (21, 3, 'Hop Vance', 1, 'Non et sit tempora '),
 (22, 3, 'Zephr Harper', 85, 'Ut quod reprehenderi'),
 (23, 3, 'Sawyer Melendez', 67, 'Neque aperiam alias '),
-(24, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu');
+(24, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu'),
+(65, 4, 'Jana Eaton', 44, 'Quam Nam facilis rem'),
+(66, 4, 'India Potter', 77, 'Enim sed ullamco et '),
+(67, 4, 'Kadeem Benson', 51, 'Ea vero qui expedita'),
+(68, 4, 'Gary Gilbert', 89, 'Fugiat est vitae co'),
+(69, 4, 'Shay Weeks', 94, 'Veniam voluptas est'),
+(80, 5, 'Celeste Austin', 41, 'Adipisci ipsa ullam'),
+(81, 5, 'Guinevere Blankenship', 43, 'Quaerat earum molest'),
+(82, 5, 'Todd Atkinson', 84, 'In consequuntur magn'),
+(83, 5, 'Jonah Gilbert', 46, 'Vitae omnis sit anim'),
+(84, 5, 'Janna Velazquez', 62, 'Quos est odit ea dol'),
+(85, 6, '', 0, ''),
+(86, 7, 'Quin Yang', 82, 'Nihil repudiandae at');
 
 -- --------------------------------------------------------
 
@@ -2522,7 +2666,21 @@ INSERT INTO `hospital_staff_details` (`id`, `app_id`, `staff_name`, `age`, `desi
 (21, 3, 'Abra Montgomery', '95', 1, NULL, 3, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
 (22, 3, 'Carlos Garcia', '20', 6, NULL, 1, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
 (23, 3, 'Hasad Rivera', '78', 2, NULL, 4, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
-(24, 3, 'Leslie Lawson', '27', 6, NULL, 3, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00');
+(24, 3, 'Leslie Lawson', '27', 6, NULL, 3, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
+(65, 4, 'Alexander Quinn', '45', 1, NULL, 4, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
+(66, 4, 'Clio Sanford', '58', 2, NULL, 4, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
+(67, 4, 'Ulric Suarez', '74', 6, NULL, 2, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
+(68, 4, 'Barbara Soto', '18', 4, NULL, 2, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
+(69, 4, 'Amy Lloyd', '37', 6, NULL, 3, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
+(80, 5, 'Tamekah Ball', '42', 6, NULL, 2, 1, 0, '2020-12-03 15:48:24', '0000-00-00 00:00:00'),
+(81, 5, 'Graham Patel', '93', 6, NULL, 3, 1, 0, '2020-12-03 15:48:24', '0000-00-00 00:00:00'),
+(82, 5, 'Pamela Rivas', '39', 5, NULL, 1, 1, 0, '2020-12-03 15:48:24', '0000-00-00 00:00:00'),
+(83, 5, 'Lacey Compton', '28', 1, NULL, 1, 1, 0, '2020-12-03 15:48:24', '0000-00-00 00:00:00'),
+(84, 5, 'Kasper Bush', '84', 3, NULL, 3, 1, 0, '2020-12-03 15:48:24', '0000-00-00 00:00:00'),
+(85, 6, 'Bob', '45', 1, NULL, 1, 1, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00'),
+(86, 6, 'alice', '45', 4, NULL, 2, 1, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00'),
+(87, 6, 'harry', '78', 3, NULL, 3, 1, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00'),
+(88, 7, 'Allegra Deleon', '22', 4, NULL, 3, 1, 0, '2020-12-04 17:15:59', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -2554,7 +2712,19 @@ INSERT INTO `hospital_supervision` (`id`, `app_id`, `name`, `age`, `qualificatio
 (21, 3, 'Hop Vance', 1, 'Non et sit tempora '),
 (22, 3, 'Zephr Harper', 85, 'Ut quod reprehenderi'),
 (23, 3, 'Sawyer Melendez', 67, 'Neque aperiam alias '),
-(24, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu');
+(24, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu'),
+(65, 4, 'Jana Eaton', 44, 'Quam Nam facilis rem'),
+(66, 4, 'India Potter', 77, 'Enim sed ullamco et '),
+(67, 4, 'Kadeem Benson', 51, 'Ea vero qui expedita'),
+(68, 4, 'Gary Gilbert', 89, 'Fugiat est vitae co'),
+(69, 4, 'Shay Weeks', 94, 'Veniam voluptas est'),
+(80, 5, 'Celeste Austin', 41, 'Adipisci ipsa ullam'),
+(81, 5, 'Guinevere Blankenship', 43, 'Quaerat earum molest'),
+(82, 5, 'Todd Atkinson', 84, 'In consequuntur magn'),
+(83, 5, 'Jonah Gilbert', 46, 'Vitae omnis sit anim'),
+(84, 5, 'Janna Velazquez', 62, 'Quos est odit ea dol'),
+(85, 6, '', 0, ''),
+(86, 7, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -2587,7 +2757,15 @@ INSERT INTO `hospital_surgeon_information` (`id`, `app_id`, `name`, `age`, `qual
 (21, 3, 'Akeem Phelps', 58, 'Eum dolore voluptate', 'In ad quo officia qu'),
 (22, 3, 'Merrill Stokes', 63, 'Pariatur Saepe qui ', 'Dolorum quaerat quo '),
 (23, 3, 'Dalton Jensen', 18, 'Qui nulla voluptas i', 'Minim eius atque sus'),
-(24, 3, 'Hayes Simpson', 83, 'Consequatur similiqu', 'Voluptatem iure qua');
+(24, 3, 'Hayes Simpson', 83, 'Consequatur similiqu', 'Voluptatem iure qua'),
+(65, 4, 'Berk Farmer', 10, 'Est veniam aliquip ', 'Maiores aliquam ipsa'),
+(66, 4, 'Kadeem Duran', 79, 'Dolor id blanditiis', 'Quisquam vero illo d'),
+(67, 4, 'Gavin Horn', 81, 'Aut non dolor eius o', 'Quaerat rerum fugiat'),
+(68, 4, 'Jaime Stuart', 71, 'In rerum animi quia', 'Illo sint ipsum vol'),
+(69, 4, 'Mufutau Delacruz', 95, 'Laborum Autem disti', 'Mollitia magnam lore'),
+(72, 5, 'Fuller Maynard', 87, 'Nulla porro tempore', 'Blanditiis ea earum '),
+(73, 6, 'nick', 45, 'mbbs', ''),
+(74, 7, 'Hakeem Garrison', 62, 'Quasi veritatis in v', 'Est doloremque sed ');
 
 -- --------------------------------------------------------
 
@@ -2890,7 +3068,80 @@ INSERT INTO `image_details` (`image_id`, `image_name`, `image_enc_name`, `image_
 (253, '300_13.jpg', 'd253cdb9c8b75694e811e18c844e62b6.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/d253cdb9c8b75694e811e18c844e62b6.jpg', '108.11', 1, 0, '2020-11-26 17:24:45', '2020-11-26 17:24:45'),
 (254, '300_1.jpg', '1a1d2796bc3ac87b0c49743c28925943.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/1a1d2796bc3ac87b0c49743c28925943.jpg', '83.47', 1, 0, '2020-11-26 17:26:08', '2020-11-26 17:26:08'),
 (255, '300_18.jpg', 'd41e33d625edfbac1797e555f22c9ab1.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/d41e33d625edfbac1797e555f22c9ab1.jpg', '55.05', 1, 0, '2020-11-26 17:26:08', '2020-11-26 17:26:08'),
-(256, '300_20.jpg', '3bb752b9b764b4204e48c28f35f64c4a.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/3bb752b9b764b4204e48c28f35f64c4a.jpg', '75.78', 1, 0, '2020-11-26 17:26:08', '2020-11-26 17:26:08');
+(256, '300_20.jpg', '3bb752b9b764b4204e48c28f35f64c4a.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/3bb752b9b764b4204e48c28f35f64c4a.jpg', '75.78', 1, 0, '2020-11-26 17:26:08', '2020-11-26 17:26:08'),
+(257, '100_14.jpg', 'dd3ecf6f0e229b892ae3814ba6338ab3.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/dd3ecf6f0e229b892ae3814ba6338ab3.jpg', '16.85', 1, 0, '2020-12-03 11:32:54', '2020-12-03 11:32:54'),
+(258, '300_2.jpg', '4c9d6d319bd1dd2d066fa93313027ec9.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/4c9d6d319bd1dd2d066fa93313027ec9.jpg', '82.67', 1, 0, '2020-12-03 11:32:54', '2020-12-03 11:32:54'),
+(259, '300_3.jpg', '4bd9fc4897062fec694922f0c542b636.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/4bd9fc4897062fec694922f0c542b636.jpg', '80.05', 1, 0, '2020-12-03 11:32:54', '2020-12-03 11:32:54'),
+(260, '100_14.jpg', '1f3b07537b5676a8e782f2c609b51146.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/1f3b07537b5676a8e782f2c609b51146.jpg', '16.85', 1, 0, '2020-12-03 15:13:50', '2020-12-03 15:13:50'),
+(261, '100_6.jpg', 'bd0044215a493ba1ba12310fa71ce8d2.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/bd0044215a493ba1ba12310fa71ce8d2.jpg', '14.82', 1, 0, '2020-12-03 15:14:13', '2020-12-03 15:14:13'),
+(262, '100_7.jpg', '8c479bcba022d8f14997c7f99bf38304.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/8c479bcba022d8f14997c7f99bf38304.jpg', '13.36', 1, 0, '2020-12-03 15:14:37', '2020-12-03 15:14:37'),
+(263, '300_11.jpg', '0a075918d65c819faf787e0b46b305f2.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/0a075918d65c819faf787e0b46b305f2.jpg', '80.46', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(264, '300_14.jpg', 'b5add0e097fecb415fad26f8b16e9ae1.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/b5add0e097fecb415fad26f8b16e9ae1.jpg', '87.93', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(265, '300_3.jpg', '28f9ee22833bfd988fcbd0035787b99f.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/28f9ee22833bfd988fcbd0035787b99f.jpg', '80.05', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(266, '100_13.jpg', '774e77037e96f0ae4c30a943a506fbeb.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/774e77037e96f0ae4c30a943a506fbeb.jpg', '17.49', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(267, '300_6.jpg', '72e0e1ef462517f47ad552c38999938e.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/72e0e1ef462517f47ad552c38999938e.jpg', '86.33', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(268, '300_3.jpg', '22026f1fced6a4b59ec9fb0ed0f0b175.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/22026f1fced6a4b59ec9fb0ed0f0b175.jpg', '80.05', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(269, '300_23.jpg', '2373de83711a86bed93ab512c2188f5f.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/2373de83711a86bed93ab512c2188f5f.jpg', '56.1', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(270, '300_11.jpg', 'f82120bff412dc3c08111ef0f1b8484a.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/f82120bff412dc3c08111ef0f1b8484a.jpg', '80.46', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(271, '300_9.jpg', 'ea508e7cae5713ef171b2857b213f20e.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/ea508e7cae5713ef171b2857b213f20e.jpg', '66.84', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(272, '300_21.jpg', 'd70ef171b318eb7a0be6305d73f4d52b.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/d70ef171b318eb7a0be6305d73f4d52b.jpg', '83.2', 1, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49'),
+(273, '100_10.jpg', 'b64bf31c846ef1b48efa75eb0c7ac3ee.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/b64bf31c846ef1b48efa75eb0c7ac3ee.jpg', '12.44', 1, 0, '2020-12-03 15:43:17', '2020-12-03 15:43:17'),
+(274, '300_2.jpg', '249d14fddfb123a51ab31aaae81a8f1e.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/249d14fddfb123a51ab31aaae81a8f1e.jpg', '82.67', 1, 0, '2020-12-04 15:52:42', '2020-12-04 15:52:42'),
+(275, '300_3.jpg', 'dc66e7c96a2eea3e44bf7d93e6c7bdb3.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/dc66e7c96a2eea3e44bf7d93e6c7bdb3.jpg', '80.05', 1, 0, '2020-12-04 15:52:42', '2020-12-04 15:52:42'),
+(276, '300_14.jpg', '2f488d1768e6c7c31ef8b105c9551f8e.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/2f488d1768e6c7c31ef8b105c9551f8e.jpg', '87.93', 1, 0, '2020-12-04 15:52:42', '2020-12-04 15:52:42'),
+(277, '300_5.jpg', '55cdc8286427574ad38fd4729769f65b.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/55cdc8286427574ad38fd4729769f65b.jpg', '96.19', 1, 0, '2020-12-04 15:52:42', '2020-12-04 15:52:42'),
+(278, '300_4.jpg', '4c95bb9a1688a9c11c27688de3856164.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/4c95bb9a1688a9c11c27688de3856164.jpg', '63.73', 1, 0, '2020-12-04 15:52:42', '2020-12-04 15:52:42'),
+(279, '100_14.jpg', '7adf0342e4b26f4a2edd90a609b729d9.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/7adf0342e4b26f4a2edd90a609b729d9.jpg', '16.85', 1, 0, '2020-12-04 15:55:40', '2020-12-04 15:55:40'),
+(280, '300_11.jpg', 'f6515e0b4c1e263108bfcc6845f0bc3b.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/f6515e0b4c1e263108bfcc6845f0bc3b.jpg', '80.46', 1, 0, '2020-12-04 15:55:40', '2020-12-04 15:55:40'),
+(281, '300_4.jpg', 'afa5b7498343afa53447b558dd63054b.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/afa5b7498343afa53447b558dd63054b.jpg', '63.73', 1, 0, '2020-12-04 15:55:40', '2020-12-04 15:55:40'),
+(282, '300_8.jpg', '24145e0226c59d8de0c7bc04dfe600e4.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/24145e0226c59d8de0c7bc04dfe600e4.jpg', '82.96', 1, 0, '2020-12-04 15:55:40', '2020-12-04 15:55:40'),
+(283, '300_15.jpg', '0e27bebe690085587b3415173208099b.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/0e27bebe690085587b3415173208099b.jpg', '84.15', 1, 0, '2020-12-04 15:55:40', '2020-12-04 15:55:40'),
+(284, '100_14.jpg', 'c08e7475152a20b849eb5083b090770b.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/c08e7475152a20b849eb5083b090770b.jpg', '16.85', 1, 0, '2020-12-04 15:58:21', '2020-12-04 15:58:21'),
+(285, '100_9.jpg', '95cdcc326afd77fd486b6665c0f42cc8.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/95cdcc326afd77fd486b6665c0f42cc8.jpg', '11.37', 1, 0, '2020-12-04 15:58:21', '2020-12-04 15:58:21'),
+(286, '100_5.jpg', 'f85e91ddc12ca7cc21b7fea3195bf8e5.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/f85e91ddc12ca7cc21b7fea3195bf8e5.jpg', '16.68', 1, 0, '2020-12-04 15:58:21', '2020-12-04 15:58:21'),
+(287, '100_6.jpg', 'bccc0cc2dc68a36ab25750b4e4940e88.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/bccc0cc2dc68a36ab25750b4e4940e88.jpg', '14.82', 1, 0, '2020-12-04 15:58:21', '2020-12-04 15:58:21'),
+(288, '300_1.jpg', 'b99dda940c8ed1e705dc84ee6ffae6ba.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/b99dda940c8ed1e705dc84ee6ffae6ba.jpg', '83.47', 1, 0, '2020-12-04 15:58:21', '2020-12-04 15:58:21'),
+(289, '100_14.jpg', '80d9705b73fa22140ebef113d012837c.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/80d9705b73fa22140ebef113d012837c.jpg', '16.85', 1, 0, '2020-12-04 16:00:35', '2020-12-04 16:00:35'),
+(290, '100_2.jpg', '671c9d5a24c8d438a20661e245065e59.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/671c9d5a24c8d438a20661e245065e59.jpg', '12.75', 1, 0, '2020-12-04 16:00:35', '2020-12-04 16:00:35'),
+(291, '300_4.jpg', '35ecf125994d0cf5dee7677cfe98e4d0.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/35ecf125994d0cf5dee7677cfe98e4d0.jpg', '63.73', 1, 0, '2020-12-04 16:00:35', '2020-12-04 16:00:35'),
+(292, '300_6.jpg', 'a6ce9ed5446d4869f81b7ede82d23b4c.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/a6ce9ed5446d4869f81b7ede82d23b4c.jpg', '86.33', 1, 0, '2020-12-04 16:00:35', '2020-12-04 16:00:35'),
+(293, '300_11.jpg', 'a346d4438cf24f9cffa6ed696a15a327.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/a346d4438cf24f9cffa6ed696a15a327.jpg', '80.46', 1, 0, '2020-12-04 16:00:35', '2020-12-04 16:00:35'),
+(294, '100_13.jpg', '3a719f4b24c6d03ab5b7a9d1426e4b99.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/3a719f4b24c6d03ab5b7a9d1426e4b99.jpg', '17.49', 1, 0, '2020-12-04 16:20:06', '2020-12-04 16:20:06'),
+(295, '300_12.jpg', '1de4db9b58d71e4f709346e3f4079fc5.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/1de4db9b58d71e4f709346e3f4079fc5.jpg', '80.58', 1, 0, '2020-12-04 16:20:06', '2020-12-04 16:20:06'),
+(296, '300_10.jpg', '636b0d450675dfc91ff5fa954422792a.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/636b0d450675dfc91ff5fa954422792a.jpg', '75.07', 1, 0, '2020-12-04 16:20:06', '2020-12-04 16:20:06'),
+(297, '300_14.jpg', '34d3065e5fdc538bd3d47a94271ea7b9.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/34d3065e5fdc538bd3d47a94271ea7b9.jpg', '87.93', 1, 0, '2020-12-04 16:20:06', '2020-12-04 16:20:06'),
+(298, '300_1.jpg', '5a520fb1ad7c6283e8e5bec07f06b011.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/5a520fb1ad7c6283e8e5bec07f06b011.jpg', '83.47', 1, 0, '2020-12-04 16:20:06', '2020-12-04 16:20:06'),
+(299, '300_1.jpg', '4ed2c3c64c21d5049667783308642890.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/4ed2c3c64c21d5049667783308642890.jpg', '83.47', 1, 0, '2020-12-04 16:31:03', '2020-12-04 16:31:03'),
+(300, '300_11.jpg', 'f4017730913b1fae6291ae34dae7f853.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/f4017730913b1fae6291ae34dae7f853.jpg', '80.46', 1, 0, '2020-12-04 16:31:03', '2020-12-04 16:31:03'),
+(301, '300_13.jpg', '381a41fea2116f04a2c01b364e55907c.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/381a41fea2116f04a2c01b364e55907c.jpg', '108.11', 1, 0, '2020-12-04 16:31:03', '2020-12-04 16:31:03'),
+(302, '300_13.jpg', 'c874a6e1b50961d363bc1bd7d39cc329.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/c874a6e1b50961d363bc1bd7d39cc329.jpg', '108.11', 1, 0, '2020-12-04 16:31:03', '2020-12-04 16:31:03'),
+(303, '300_4.jpg', 'd1b172dc2b8cdb3f059825d8d8e0e3e2.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/d1b172dc2b8cdb3f059825d8d8e0e3e2.jpg', '63.73', 1, 0, '2020-12-04 16:31:03', '2020-12-04 16:31:03'),
+(304, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', 'a33108c1ec7a58593d2cd03aaf9b3ba9.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/a33108c1ec7a58593d2cd03aaf9b3ba9.pdf', '2.96', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(305, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', '653069e5eb7ff6bd445a7195546991d4.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/653069e5eb7ff6bd445a7195546991d4.pdf', '2.96', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(306, 'd48dc3cc6014b5186ea723639a45b8b8.pdf', 'bffb08170465cd8206d8362621cf15f8.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/bffb08170465cd8206d8362621cf15f8.pdf', '305.44', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(307, 'd48dc3cc6014b5186ea723639a45b8b8.pdf', '737de7425302bc0f229b57ff6fd49b97.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/737de7425302bc0f229b57ff6fd49b97.pdf', '305.44', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(308, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', '4c5e70acd19c22ba3e2c0e7e06514048.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/4c5e70acd19c22ba3e2c0e7e06514048.pdf', '2.96', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(309, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', 'a7f536d0f60d1701bb5b8dc28f2eb032.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/a7f536d0f60d1701bb5b8dc28f2eb032.pdf', '2.96', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(310, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', 'b2cd304563df2bc9f10aa2716e13b0fe.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/b2cd304563df2bc9f10aa2716e13b0fe.pdf', '2.96', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(311, 'd48dc3cc6014b5186ea723639a45b8b8.pdf', 'ac140c51bf9c0bcaabe8048a62c14c72.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/ac140c51bf9c0bcaabe8048a62c14c72.pdf', '305.44', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(312, 'd48dc3cc6014b5186ea723639a45b8b8.pdf', '4ec68170ebfd1bbab8f9e04b81c2409b.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/4ec68170ebfd1bbab8f9e04b81c2409b.pdf', '305.44', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(313, 'd48dc3cc6014b5186ea723639a45b8b8.pdf', '1f3795055fc8e51ce2a4d178ffa042a2.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/1f3795055fc8e51ce2a4d178ffa042a2.pdf', '305.44', 1, 0, '2020-12-04 17:15:59', '2020-12-04 17:15:59'),
+(314, '100_14.jpg', '89e7568bb2142652bed71d4871f84881.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/89e7568bb2142652bed71d4871f84881.jpg', '16.85', 1, 0, '2020-12-04 19:29:40', '2020-12-04 19:29:40'),
+(315, '300_11.jpg', 'c1207846562c13d80c62d50e4568d103.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/c1207846562c13d80c62d50e4568d103.jpg', '80.46', 1, 0, '2020-12-04 19:29:40', '2020-12-04 19:29:40'),
+(316, '300_11.jpg', '33bf0bbb22418cc18ae925d53f4b69ea.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/33bf0bbb22418cc18ae925d53f4b69ea.jpg', '80.46', 1, 0, '2020-12-04 19:29:40', '2020-12-04 19:29:40'),
+(317, '300_13.jpg', 'ca534fdb18512b470ab2832ce116e955.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/ca534fdb18512b470ab2832ce116e955.jpg', '108.11', 1, 0, '2020-12-04 19:29:40', '2020-12-04 19:29:40'),
+(318, '300_4.jpg', '0abb023bb09e1d8aca52b8a9c4c66937.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/0abb023bb09e1d8aca52b8a9c4c66937.jpg', '63.73', 1, 0, '2020-12-04 19:29:40', '2020-12-04 19:29:40'),
+(319, 'demo14.jpg', '33df5656a1b69eafcd22f072b11aae06.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/33df5656a1b69eafcd22f072b11aae06.jpg', '125.4', 1, 0, '2020-12-04 20:22:15', '2020-12-04 20:22:15'),
+(320, 'demo18.jpg', '5d64b19cd30f8b8ae081639a45846942.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/5d64b19cd30f8b8ae081639a45846942.jpg', '135.23', 1, 0, '2020-12-04 20:24:04', '2020-12-04 20:24:04'),
+(321, 'demo21.jpg', '3866e18794c4c6ef12277a0b40bba1e7.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/3866e18794c4c6ef12277a0b40bba1e7.jpg', '142.55', 1, 0, '2020-12-04 20:24:19', '2020-12-04 20:24:19'),
+(322, 'demo17.jpg', '791782f5c2efacf761fb0f7b58353388.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/791782f5c2efacf761fb0f7b58353388.jpg', '117.24', 1, 0, '2020-12-04 20:24:19', '2020-12-04 20:24:19'),
+(323, 'demo3.jpg', 'd153c00ecf74469c1dfe09391639d2a5.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/d153c00ecf74469c1dfe09391639d2a5.jpg', '152.29', 1, 0, '2020-12-04 20:24:19', '2020-12-04 20:24:19'),
+(324, 'demo22.jpg', 'bd87dcde6bcb33fa7831d56486b1cbf6.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/bd87dcde6bcb33fa7831d56486b1cbf6.jpg', '120.96', 1, 0, '2020-12-04 20:24:19', '2020-12-04 20:24:19'),
+(325, 'demo1.jpg', '0a1fe3b24bf73e6e6c2e7d410c7e1d98.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/0a1fe3b24bf73e6e6c2e7d410c7e1d98.jpg', '154.14', 1, 0, '2020-12-04 20:27:32', '2020-12-04 20:27:32'),
+(326, 'demo2.jpg', 'c44658a4bf6c257bbbddc8e6762d44c4.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/c44658a4bf6c257bbbddc8e6762d44c4.jpg', '135.47', 1, 0, '2020-12-04 20:27:32', '2020-12-04 20:27:32'),
+(327, 'demo3.jpg', 'abfd7a9cb35c47c4cff0e2ec5f7d9fa7.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/abfd7a9cb35c47c4cff0e2ec5f7d9fa7.jpg', '152.29', 1, 0, '2020-12-04 20:27:32', '2020-12-04 20:27:32'),
+(328, 'demo4.jpg', 'b5eafdb5cd59cc0614f90d8321f56bc9.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/b5eafdb5cd59cc0614f90d8321f56bc9.jpg', '148.79', 1, 0, '2020-12-04 20:27:32', '2020-12-04 20:27:32'),
+(329, 'demo5.jpg', '1a393e3f33d30b8f2f87c3f6bfec1312.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/1a393e3f33d30b8f2f87c3f6bfec1312.jpg', '142.4', 1, 0, '2020-12-04 20:27:32', '2020-12-04 20:27:32');
 
 -- --------------------------------------------------------
 
@@ -3183,7 +3434,8 @@ INSERT INTO `payment` (`pay_id`, `app_id`, `dept_id`, `remark_id`, `payment_sele
 (16, 34, 5, 0, 2, '1100', '6b19b763c4f0255c50ac8d2875c6f35d.pdf', 0, 0, 2, '2020-11-23 08:27:10', '2020-11-23 08:29:14', '2020-11-23 13:57:10'),
 (22, 47, 5, 0, 2, '5100', '32fde7dda6721956748e333ab527488e.jpg', 0, 0, 2, '2020-11-25 13:36:54', '2020-11-25 13:37:19', '2020-11-25 19:06:54'),
 (23, 51, 5, 0, 2, '5100', 'b7948feea0c5e4b3e159b157943dfa0d.jpg', 0, 0, 2, '2020-11-26 07:05:58', '2020-11-26 07:21:19', '2020-11-26 12:35:58'),
-(25, 53, 5, 0, 2, '2100', 'e6b0a92ef3312daedf812b97663dc7cd.jpg', 0, 0, 2, '2020-11-26 12:01:20', '2020-11-26 12:01:56', '2020-11-26 17:31:20');
+(25, 53, 5, 0, 2, '2100', 'e6b0a92ef3312daedf812b97663dc7cd.jpg', 0, 0, 2, '2020-11-26 12:01:20', '2020-11-26 12:01:56', '2020-11-26 17:31:20'),
+(26, 99, 5, 0, 2, '2100', '366ef39655ce3c97f2c9d0c629bfe411.jpg', 0, 0, 2, '2020-12-04 15:30:03', '2020-12-04 15:30:28', '2020-12-04 21:00:03');
 
 -- --------------------------------------------------------
 
@@ -3285,10 +3537,10 @@ INSERT INTO `permission_access` (`access_id`, `dept_id`, `role_id`, `payable_sta
 (53, 1, 8, 2, 1, '2020-10-19 08:26:02', '2020-10-19 08:26:02', 0),
 (54, 1, 17, 2, 1, '2020-10-19 08:26:02', '2020-10-19 08:26:02', 0),
 (55, 1, 18, 1, 1, '2020-10-19 08:26:02', '2020-10-19 08:26:02', 0),
-(57, 5, 3, 2, 1, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
-(58, 5, 22, 2, 1, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
-(59, 5, 23, 2, 1, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
-(60, 5, 24, 1, 1, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
+(57, 5, 3, 2, 2, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
+(58, 5, 22, 2, 2, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
+(59, 5, 23, 2, 2, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
+(60, 5, 24, 1, 2, '2020-11-22 17:27:43', '2020-11-22 17:27:43', 1),
 (61, 3, 3, 2, 2, '2020-11-27 11:07:02', '2020-11-27 11:07:02', 0),
 (62, 3, 15, 2, 2, '2020-11-27 11:07:02', '2020-11-27 11:07:02', 0),
 (63, 3, 6, 1, 2, '2020-11-27 11:07:02', '2020-11-27 11:07:02', 0),
@@ -3297,7 +3549,13 @@ INSERT INTO `permission_access` (`access_id`, `dept_id`, `role_id`, `payable_sta
 (66, 3, 15, 2, 1, '2020-11-27 11:07:16', '2020-11-27 11:07:16', 0),
 (67, 3, 6, 1, 1, '2020-11-27 11:07:16', '2020-11-27 11:07:16', 0),
 (68, 3, 25, 1, 1, '2020-11-27 11:07:16', '2020-11-27 11:07:16', 0),
-(69, 3, 4, 1, 1, '2020-11-27 11:07:16', '2020-11-27 11:07:16', 0);
+(69, 3, 4, 1, 1, '2020-11-27 11:07:16', '2020-11-27 11:07:16', 0),
+(70, 15, 26, 2, 1, '2020-12-04 11:59:13', '2020-12-04 11:59:13', 0),
+(71, 5, 3, 2, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
+(72, 5, 22, 2, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
+(73, 5, 23, 2, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
+(74, 5, 24, 1, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
+(75, 5, 26, 2, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0);
 
 -- --------------------------------------------------------
 
@@ -3701,7 +3959,8 @@ INSERT INTO `roles_table` (`role_id`, `role_title`, `is_superadmin`, `status`, `
 (22, 'health officer', 0, 1, 0, '2020-11-22 17:26:19', '2020-11-22 17:26:19'),
 (23, 'junior doctor', 0, 1, 0, '2020-11-22 17:26:40', '2020-11-22 17:26:40'),
 (24, 'senior doctor', 0, 1, 0, '2020-11-22 17:27:00', '2020-11-22 17:27:00'),
-(25, 'Additional commissioner', 0, 1, 0, '2020-11-27 16:35:48', '2020-11-27 16:35:48');
+(25, 'Additional commissioner', 0, 1, 0, '2020-11-27 16:35:48', '2020-11-27 16:35:48'),
+(26, 'Test Role Medical ', 0, 1, 0, '2020-12-04 17:27:58', '2020-12-04 17:27:58');
 
 -- --------------------------------------------------------
 
@@ -4021,7 +4280,8 @@ INSERT INTO `users_table` (`user_id`, `role_id`, `ward_id`, `email_id`, `user_na
 (33, 15, 0, 'grdsuperint@yopmail.com', 'garden superintendent', '7894563215', 3, '$2a$08$b5qHMpWUl7.MGlR/P9d2t.ys768UaX8HBnoKFFv0hDuf.cHg5RAI.', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:39:52', '2020-11-27 17:39:52', 0),
 (34, 6, 0, 'dyptcomm@yopmail.com', 'dypt commissioner', '7812456598', 3, '$2a$08$vMeLzn1feO/E9ojCBsAkOu.kz4D6nCG5jaIG.9PBHH3q607cLbHEm', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:40:45', '2020-11-27 17:40:45', 0),
 (35, 25, 0, 'addcommi@yopmail.com', 'additional commissioner', '9832453614', 3, '$2a$08$zjaHe.VzkIGhWNWk7F5sVeMs9BCxMoBWdWh5BjFv6vkQHoicwlAnC', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:42:01', '2020-11-27 17:42:01', 0),
-(36, 4, 0, 'commissioner@yopmail.com', 'commissioner', '9832784565', 3, '$2a$08$6YFIGWYIJKojQqNCoMZuw.eeKyMCt37gxx3EaD/.nyZmZ5hJHno/2', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:42:37', '2020-11-27 17:42:37', 0);
+(36, 4, 0, 'commissioner@yopmail.com', 'commissioner', '9832784565', 3, '$2a$08$6YFIGWYIJKojQqNCoMZuw.eeKyMCt37gxx3EaD/.nyZmZ5hJHno/2', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:42:37', '2020-11-27 17:42:37', 0),
+(37, 26, 0, 'abc@yopmail.com', 'abc', '1234567898', 5, '$2a$08$O3k7hbboLmiEmpyMaDWuhOw92W1GIK41W8IBwp2vhCKI/K/uftDP2', 0, 0, 1, NULL, 1, 0, '2020-12-04 17:31:22', '2020-12-04 17:56:29', 0);
 
 -- --------------------------------------------------------
 
@@ -4167,7 +4427,9 @@ CREATE TABLE `ward` (
 INSERT INTO `ward` (`ward_id`, `dept_id`, `role_id`, `ward_title`, `status`, `created_at`, `updated_at`, `is_deleted`, `sub_dept_id`) VALUES
 (1, 1, 8, 'ward one', 1, '2020-10-10 12:41:05', NULL, 0, 0),
 (2, 1, 8, 'word two', 1, '2020-10-10 12:41:22', NULL, 0, 0),
-(3, 5, 22, 'officer group 1', 1, '2020-11-22 23:04:03', '2020-11-24 15:13:06', 0, 1);
+(3, 5, 22, 'ward B', 1, '2020-11-22 23:04:03', '2020-12-04 11:21:54', 0, 1),
+(4, 5, 22, 'ward A', 1, '2020-12-04 16:50:18', NULL, 0, 0),
+(5, 5, 22, 'Ward C', 1, '2020-12-04 17:20:10', NULL, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -4233,6 +4495,12 @@ ALTER TABLE `auth_sessions`
 -- Indexes for table `clinic_applications`
 --
 ALTER TABLE `clinic_applications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `clinic_staff`
+--
+ALTER TABLE `clinic_staff`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4614,12 +4882,12 @@ ALTER TABLE `adv_type`
 -- AUTO_INCREMENT for table `applications_details`
 --
 ALTER TABLE `applications_details`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT for table `application_remarks`
 --
 ALTER TABLE `application_remarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 --
 -- AUTO_INCREMENT for table `app_premssion`
 --
@@ -4629,17 +4897,22 @@ ALTER TABLE `app_premssion`
 -- AUTO_INCREMENT for table `app_status_level`
 --
 ALTER TABLE `app_status_level`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 --
 -- AUTO_INCREMENT for table `auth_sessions`
 --
 ALTER TABLE `auth_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=363;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=399;
 --
 -- AUTO_INCREMENT for table `clinic_applications`
 --
 ALTER TABLE `clinic_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `clinic_staff`
+--
+ALTER TABLE `clinic_staff`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `closed_application_table`
 --
@@ -4669,7 +4942,7 @@ ALTER TABLE `defect_laiblity_logs`
 -- AUTO_INCREMENT for table `department_table`
 --
 ALTER TABLE `department_table`
-  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `dept_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `deposit_inspection_fees`
 --
@@ -4724,52 +4997,52 @@ ALTER TABLE `hall_type`
 -- AUTO_INCREMENT for table `hospital_alien`
 --
 ALTER TABLE `hospital_alien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT for table `hospital_applications`
 --
 ALTER TABLE `hospital_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `hospital_fee_charges`
 --
 ALTER TABLE `hospital_fee_charges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT for table `hospital_florespace_for_bedrooms`
 --
 ALTER TABLE `hospital_florespace_for_bedrooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `hospital_florespace_for_kitchen`
 --
 ALTER TABLE `hospital_florespace_for_kitchen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `hospital_inspection_form`
 --
 ALTER TABLE `hospital_inspection_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `hospital_midwife`
 --
 ALTER TABLE `hospital_midwife`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `hospital_staff_details`
 --
 ALTER TABLE `hospital_staff_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 --
 -- AUTO_INCREMENT for table `hospital_supervision`
 --
 ALTER TABLE `hospital_supervision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `hospital_surgeon_information`
 --
 ALTER TABLE `hospital_surgeon_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT for table `illuminate`
 --
@@ -4779,7 +5052,7 @@ ALTER TABLE `illuminate`
 -- AUTO_INCREMENT for table `image_details`
 --
 ALTER TABLE `image_details`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=330;
 --
 -- AUTO_INCREMENT for table `joint_visit_extentions`
 --
@@ -4819,12 +5092,12 @@ ALTER TABLE `mandap_applications`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `permission_access`
 --
 ALTER TABLE `permission_access`
-  MODIFY `access_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `access_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `permission_type_pwd`
 --
@@ -4874,7 +5147,7 @@ ALTER TABLE `road_type_logs`
 -- AUTO_INCREMENT for table `roles_table`
 --
 ALTER TABLE `roles_table`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `service_charge_details`
 --
@@ -4924,7 +5197,7 @@ ALTER TABLE `unit_master`
 -- AUTO_INCREMENT for table `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `user_dept_table`
 --
@@ -4939,7 +5212,7 @@ ALTER TABLE `user_permissions`
 -- AUTO_INCREMENT for table `ward`
 --
 ALTER TABLE `ward`
-  MODIFY `ward_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ward_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -31,32 +31,19 @@ class ClinicController extends Common {
 	public function edit() {
 
 		$clinic_id = base64_decode($this->uri->segment(3));
-		$result = $this->clinic_applications_table->getAllApplicationsDetailsById($clinic_id);
-		$get_staff_details = $this->clinic_staff_details_table->getStaffDetailsById($result['app_id']);
-		$file['ownership_agreement'] = $result['ownership_agreement_id'];
-		$file['tax_receipt'] = $result['tax_receipt_id'];
-		$file['doc_certificate'] = $result['doc_certificate_id'];
-		$file['reg_certificate'] = $result['reg_certificate_id'];
-		$file['staff_certificate'] = $result['staff_certificate_id'];
-		$file['nursing_staff_deg_certificate'] = $result['nursing_staff_deg_certificate_id'];
-		$file['nursing_staff_reg_certificate'] = $result['nursing_staff_reg_certificate_id'];
-		$file['bio_des_certificate'] = $result['bio_des_certificate_id'];
-		$file['society_noc'] = $result['society_noc_id'];
-		$file['fire_noc'] = $result['fire_noc_id'];
-		foreach ($file as $key => $value) {
-			$get_attachments = $this->image_details_table->getImageDetailsById($value);
-			$file_data[] = array('name' => $get_attachments['image_name'], 'path' => base_url().'uploads/clinic/'.$get_attachments['image_name']);
+		$clinic_details = $this->clinic_applications_table->getApplicationByID($clinic_id);
+		if (!empty($clinic_details)) {
+			$application_images = $this->clinic_applications_table->getImageByApplication($clinic_details);
+			$this->data['application'] = $clinic_details;
+			$this->data['clinic_staff'] = $this->clinic_applications_table->getClinicStaffByAppID($clinic_id);
+			$this->data['appimages'] = image_formate_in_array_clinic($application_images,$clinic_details);
+			$this->data['designation'] = $this->designation_master_table->getAllDesignation();
+			$this->data['qualification'] = $this->qualification_master_table->getAllQualification();
+			$this->load->view('applications/clinic/edit',$this->data);
+		} else {
+			return redirect('clinic/user_apps_list');
 		}
-		$data['designation'] = $this->designation_master_table->getAllDesignation();
-		$data['qualification'] = $this->qualification_master_table->getAllQualification();
-		$data['staff_details'] = $get_staff_details;
-		$data['users'] = $result;
-		$data['files'] = $file_data;
-		$this->load->view('applications/clinic/edit',$data);
 	}
-
-
-
 	public function get_lists()	{
 
 		$data = $row = array();
@@ -64,6 +51,8 @@ class ClinicController extends Common {
         $user_id = $session_userdata[0]['user_id'];
         $role_id = $session_userdata[0]['role_id'];
         $clinicList = $this->clinic_applications_table->getclinicsDataForDatatable(FALSE,$_POST);
+
+
         $clinicCount = $this->clinic_applications_table->getclinicsDataForDatatable(TRUE,$_POST);
         $i = $_POST['start'];
 
@@ -88,16 +77,16 @@ class ClinicController extends Common {
             $applicant_email_id = $clinic['applicant_email_id'];
             $applicant_mobile_no = $clinic['applicant_mobile_no'];
             // $applicant_nationality = $clinic['applicant_nationality'];
-            $technical_qualification = $clinic['technical_qualification'];
-            $un_reg_medical_practice = ($clinic['un_reg_medical_practice'] == '1') ? 'Yes' : 'NO';
+            // $technical_qualification = $clinic['technical_qualification'];
+            // $un_reg_medical_practice = ($clinic['un_reg_medical_practice'] == '1') ? 'Yes' : 'NO';
             // $applicant_address = $clinic['applicant_address'];
             $clinic_name = $clinic['clinic_name'];
             $clinic_address = $clinic['clinic_address'];
-			$contact_no = $clinic['contact_no'];
-            $contact_person = $clinic['contact_person'];
-            $floor_space = $clinic['floor_space'];
-            $maternity_beds = $clinic['maternity_beds'];
-            $patient_beds = $clinic['patient_beds'];
+			// $contact_no = $clinic['contact_no'];
+            // $contact_person = $clinic['contact_person'];
+            // $floor_space = $clinic['floor_space'];
+            // $maternity_beds = $clinic['maternity_beds'];
+            // $patient_beds = $clinic['patient_beds'];
             $status = $clinic['status'];
 
             $dept_id = $this->applications_details_table->getDeptId($clinic['app_id'])['dept_id'];
@@ -139,7 +128,7 @@ class ClinicController extends Common {
             
             $remarks = '<a type="button" data-toggle="modal" data-clinic="'.$clinic['id'].'" data-app="'.$clinic['app_id'].'"  data-target="#modal-remarks" class="remarks_button btn btn-sm btn-primary white">Remarks</a>';
 
-            $action = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$clinic['ownership_agreement'].','.$clinic['tax_receipt'].','.$clinic['doc_certificate'].','.$clinic['reg_certificate'].','.$clinic['staff_certificate'].','.$clinic['nursing_staff_deg_certificate'].','.$clinic['nursing_staff_reg_certificate'].','.$clinic['bio_des_certificate'].','.$clinic['society_noc'].','.$clinic['fire_noc'].'" data-clinic="'.$clinic['id'].'" data-app="'.$clinic['app_id'].'"  data-target="#modal-doc" class="doc_button anchor "><i class=" nav-icon fas fa-file"></i></a>
+            $action = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$clinic['ownership_agreement'].','.$clinic['tax_receipt'].','.$clinic['doc_certificate'].','.$clinic['bio_medical_certificate'].','.$clinic['doc_certificate'].'" data-clinic="'.$clinic['id'].'" data-app="'.$clinic['app_id'].'"  data-target="#modal-doc" class="doc_button anchor "><i class=" nav-icon fas fa-file"></i></a>
             	<a aria-label="Edit" data-microtip-position="top" role="tooltip" href="'.base_url().'clinic/edit/'.base64_encode($id).'" class="anchor nav-link-icon">
               		        <i class="nav-icon fas fa-edit"></i>
                         </a>'.$inspection_form_btn.' '.$payment_btn;
@@ -257,34 +246,17 @@ class ClinicController extends Common {
 		$app_id = $this->get_last_app_id();
 		$inertStack = array(
 			'app_id' => ++$app_id,
+			'clinic_name' => $this->security->xss_clean($this->input->post('clinic_name')),
+			'clinic_address' => $this->security->xss_clean($this->input->post('clinic_address')),
 			'applicant_name' => $this->security->xss_clean($this->input->post('applicant_name')),
+			'applicant_address' => $this->security->xss_clean($this->input->post('applicant_address')),
 			'applicant_email_id' => $this->security->xss_clean($this->input->post('applicant_email_id')),
 			'applicant_mobile_no' => $this->security->xss_clean($this->input->post('applicant_mobile_no')),
 			'applicant_alternate_no' => $this->security->xss_clean($this->input->post('applicant_alternate_no')),
-			'applicant_address' => $this->security->xss_clean($this->input->post('applicant_address')),
-			'applicant_nationality' => $this->security->xss_clean($this->input->post('applicant_nationality')),
-			'technical_qualification' => $this->security->xss_clean($this->input->post('technical_qualification')),
-			'situation_registration' => $this->security->xss_clean($this->input->post('situation_of_registration')),
-			'fee_charges' => $this->security->xss_clean($this->input->post('fee_charges')),
-			'un_reg_medical_practice' => 1,
-			'clinic_name' => $this->security->xss_clean($this->input->post('clinic_name')),
-			'contact_person' => $this->security->xss_clean($this->input->post('contact_person')),
-			'contact_no' => $this->security->xss_clean($this->input->post('contact_no')),
-			'clinic_address' => $this->security->xss_clean($this->input->post('clinic_address')),
-			'floor_space' => $this->security->xss_clean($this->input->post('floor_space')),
-			'check_up_details' => $this->security->xss_clean($this->input->post('check_up_details')),
-			'sanitary_details' => $this->security->xss_clean($this->input->post('sanitary_details')),
-			'others' => $this->security->xss_clean($this->input->post('others')),
-			'maternity_beds' => $this->security->xss_clean($this->input->post('maternity_beds')),
-			'patient_beds' => $this->security->xss_clean($this->input->post('patient_beds')),
-			'alien_name' => $this->security->xss_clean($this->input->post('alien_name')),
-			'alien_details' => $this->security->xss_clean($this->input->post('alien_details')),
-			'application_date' => $this->security->xss_clean($this->input->post('application_date')),
-			'name_of_nursinghome' => $this->security->xss_clean($this->input->post('name_of_nursinghome')),
-			'address_of_nursinghome' => $this->security->xss_clean($this->input->post('address_of_nursinghome')),
-			'arrng_immunization_of_the_employees' => $this->security->xss_clean($this->input->post('arrng_immunization_of_the_employees')),
-			'sanitary_conveniences_for_emp' => $this->security->xss_clean($this->input->post('sanitary_conveniences_for_emp')),
-			'food_arrangements' => $this->security->xss_clean($this->input->post('food_arrangements')),
+			'clinic_telephone_no' => $this->security->xss_clean($this->input->post('clinic_telephone_no')),
+			'applicant_qualification' => $this->security->xss_clean($this->input->post('applicant_qualification')),
+			'bio_medical_valid_date' => $this->security->xss_clean($this->input->post('bio_medical_valid_date')),
+			'cold_chain_facilities' => $this->security->xss_clean($this->input->post('cold_chain_facilities')),
 			'created_at' => date('Y-m-d H:i:s'),
 			'application_type' => $this->security->xss_clean($this->input->post('application_type')),
 			'user_id' => $this->authorised_user['user_id'],
@@ -323,9 +295,10 @@ class ClinicController extends Common {
         }
         if (!empty($this->input->post('id')) && $this->input->post('id') != '') {
         	$clinic_id = $this->input->post('id');
+        	unset($inertStack['app_id']);unset($inertStack['created_at']);unset($inertStack['application_type']);unset($inertStack['user_id']);
+        	$this->clinic_applications_table->clinic_revolution($inertStack,$clinic_id);
         } else {
-        	$clinic_id = $this->clinic_applications_table->create_clinic($inertStack);
-
+        	$clinic_id = $this->clinic_applications_table->clinic_revolution($inertStack);
         	$applications_details = array(
     			'application_id' => $inertStack['app_id'],
     			'dept_id' => $this->department_table->getDepartmentByName('Medical'),
@@ -337,19 +310,16 @@ class ClinicController extends Common {
     		$app_status_remark = $this->clinic_applications_table->insert_application_details($applications_details);
         }
         $this->clinic_applications_table->storeclinicDocument($document_data_stack,$clinic_id);
-        $staffStackPayload = [];$postData = $this->input->post();
-		foreach ($postData['staff_name'] as $key => $oneStaff) {
-			$stafInfoStack['app_id'] = $inertStack['app_id'];
-			$stafInfoStack['staff_name'] = $oneStaff;
-			$stafInfoStack['age'] = $postData['staff_age'][$key];
-			$stafInfoStack['design_id'] = $postData['staff_designation'][$key];
-			$stafInfoStack['qual_id'] = $postData['staff_qualification'][$key];
-			$stafInfoStack['staff_accommodation'] = $postData['staff_accommodation'][$key];
-			$stafInfoStack['status'] = TRUE;
-			$stafInfoStack['created_at'] = date('Y-m-d H:i:s');
+        $staffStackPayload = [];$postdata = $this->input->post();
+		foreach ($postdata['sr_number_clinic_Staff'] as $key => $oneStaffsrno) {
+			$stafInfoStack['app_id'] = $clinic_id;
+			$stafInfoStack['sr_number_clinic_Staff'] = $oneStaffsrno;
+			$stafInfoStack['name_clinic_Staff'] = $postdata['name_clinic_Staff'][$key];
+			$stafInfoStack['designation_clinic_Staff'] = $postdata['designation_clinic_Staff'][$key];
+			$stafInfoStack['qualification_clinic_Staff'] = $postdata['qualification_clinic_Staff'][$key];
 			array_push($staffStackPayload,$stafInfoStack);
 		}
-		if ($this->clinic_applications_table->reCreationclinicStaff($staffStackPayload,$postData['app_id'])) {
+		if ($this->clinic_applications_table->reCreationclinicStaff($staffStackPayload,$clinic_id)) {
 			$this->response['status'] = TRUE;
 			$this->response['message'] = "clinic has been created successfully...!!!";
 		} else {
@@ -592,7 +562,8 @@ class ClinicController extends Common {
     		$tempArray[] = $oneApp->applicant_mobile_no;
     		$tempArray[] = $oneApp->clinic_name;
     		$tempArray[] = $oneApp->application_status;
-    		$tempArray[] = '<a class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a><a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
+    		$tempArray[] = '<a href="'.base_url('clinic/edit/'.base64_encode($oneApp->id)).'" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+    						<a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
     		array_push($finalDatatableStack,$tempArray);
     	endforeach ;
     	$output = array(

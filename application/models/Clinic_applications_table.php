@@ -99,8 +99,8 @@
 
 		public function getclinicsDataForDatatable($count=FALSE,$postdata)
 		{
-			$previous_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND sub_dept_id = 1 AND status = 1 AND role_id < ".$this->authorised_user['role_id']." ORDER BY access_id DESC LIMIT 1")->result_array();
-	    	$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND sub_dept_id = 1 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
+			$previous_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND status = 1 AND role_id < ".$this->authorised_user['role_id']." ORDER BY access_id DESC LIMIT 1")->result_array();
+	    	$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
 	    	$condition = '';$approval_status = $postdata['approval_status'];
 
 	    	switch ($approval_status) {
@@ -136,7 +136,7 @@
 	    		$condition .= " AND clinic_data.payment_status = 2";
 	    	}
 	    	
-			$sql_string = "SELECT clinic_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.sub_dept_id = 1 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS clinic_inspection_done FROM mbmc.clinic_applications ha) AS clinic_data WHERE 1 = 1".$condition;
+			$sql_string = "SELECT clinic_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS clinic_inspection_done FROM mbmc.clinic_applications ha) AS clinic_data WHERE 1 = 1".$condition;
 			if ($count == TRUE) {
 	    		return $this->db->query($sql_string)->num_rows();
 	    	} else {
@@ -240,6 +240,20 @@
     			return 0;
     		}
     	}
+
+    	public function clinic_revolution($payload,$clinic_id = 0)
+    	{
+    		if ($clinic_id != 0) {
+    			return $this->db->where('id', $clinic_id)->update($this->table,$payload);
+    		} else {
+    			if ($this->db->insert($this->table,$payload)) {
+	    			return $this->db->insert_id();
+	    		} else {
+	    			return 0;
+	    		}
+    		}
+    	}
+
     	public function insert_application_details($application_stack)
 		{
 			return $this->db->insert('applications_details',$application_stack);
@@ -255,8 +269,8 @@
 		}
 		public function reCreationclinicStaff($staffStackPayload,$app_id)
 		{
-			$this->db->delete('hospital_staff_details',['app_id' => $app_id]);
-			return $this->db->insert_batch('hospital_staff_details', $staffStackPayload);
+			$this->db->delete('clinic_staff',['app_id' => $app_id]);
+			return $this->db->insert_batch('clinic_staff', $staffStackPayload);
 		}
 		public function getUserclinicDataTable($count=FALSE,$postData)
 		{
@@ -341,6 +355,41 @@
 	    		return $this->db->query($sql_string)->result();
 	    	}
 		}
+
+
+
+
+		public function getApplicationByID($application_id)
+		{
+			$this->db->select('*');
+			$this->db->from('clinic_applications');
+			$this->db->where('id',$application_id);
+			return $this->db->get()->row();
+		}
+		public function getImageByApplication($app)
+		{
+			$this->db->select('*');
+			$this->db->from('image_details');
+			$this->db->where_in('image_id',[
+				$app->ownership_agreement,
+				$app->tax_receipt,
+				$app->doc_certificate,
+				$app->bio_medical_certificate,
+				$app->aadhaar_card
+			]);
+			return $this->db->get()->result();
+		}
+		public function getClinicStaffByAppID($app_id)
+		{
+			$this->db->select('*');
+			$this->db->from('clinic_staff');
+			$this->db->where('app_id',$app_id);
+			return $this->db->get()->result();
+		}
+
+
+
+
 	    // Dhyey rahtod end
 	}
 
