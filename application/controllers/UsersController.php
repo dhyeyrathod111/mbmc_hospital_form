@@ -38,6 +38,7 @@ class UsersController extends Common {
         );
         $data['user_ward'] = $this->users_table->getWordForUsers($condition_payload);
 
+        
 
         $this->load->view('users/edit',$data);
     }

@@ -41,69 +41,77 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="applicant_name">Applicant Name<span class="red">*</span></label>
+                                        <label for="applicant_name">1.Applicant Name<span class="red">*</span></label>
                                         <i class="fas fa-info-circle" title="Full name of the Applicant"></i>
                                         <input type="text" class="form-control" name="applicant_name" id="applicant_name" placeholder="Enter Applicant name">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="mobile_no">Mobile Number<span class="red">*</span></label>
-                                        <input type="number" class="form-control" name="applicant_mobile_no" id="applicant_mobile_no" placeholder="Enter mobile no">
+                                        <label for="mobile_no">1.a. Mobile Number<span class="red">*</span></label>
+                                        <input type="number" class="form-control" name="applicant_mobile_no" id="applicant_mobile_no" placeholder="Enter mobile number">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label  for="alert_mobile_no">Alternate Mo no<span class="grey"> (optional)</span></label>
-                                        <input type="number" class="form-control" name="applicant_alternate_no" id="applicant_alternate_no" placeholder="Enter alternate mobile no">
+                                        <label  for="alert_mobile_no">1.b. Alternate Mobile Number<span class="grey"> (optional)</span></label>
+                                        <input type="number" class="form-control" name="applicant_alternate_no" id="applicant_alternate_no" placeholder="Enter alternate mobile number">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="email_id">E-mail Address<span class="red">*</span></label>
+                                        <label for="email_id">1.c. E-mail Address<span class="red">*</span></label>
                                         <i class="fas fa-info-circle" title="Note Notifications and documents will be shared on this email id"></i>
                                         <input type="text" class="form-control" name="applicant_email_id" id="applicant_email_id" placeholder="Enter email Id">
                                     </div>
                                 </div>
                                 <div class="col-4">
+                                <div class="form-group">
+                                        <label for="alert_mobile_no">2.Residential Address<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Full residential address of the applicant"></i>
+                                        <textarea type="text" rows="1" class="form-control" name="applicant_address" id="applicant_address" placeholder="Enter Address"></textarea> 
+                                    </div>
+                                </div>
+                                <div class="col-4">
                                     <div class="form-group">
-                                        <label for="technical_qualification">Technical Qualifications<span class="red">*</span></label>
+                                        <label for="technical_qualification">3.Technical Qualifications<span class="red">*</span></label>
                                         <input type="text" class="form-control" name="technical_qualification" id="technical_qualification" placeholder="Enter technical qualification">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alert_mobile_no">Nationality of the Applicant<span class="red">*</span></label>
+                                        <label for="alert_mobile_no">4.Nationality of the Applicant<span class="red">*</span></label>
                                         <input type="text" class="form-control" name="applicant_nationality" id="applicant_nationality" placeholder="Enter applicant nationality">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alert_mobile_no">Situation of the registered office<span class="red">*</span></label>
+                                        <label for="alert_mobile_no">5.Situation of the registered office<span class="red">*</span></label>
                                         <i class="fas fa-info-circle" title="Situation of the registered or principal office of the Company, Society, Association or other body corporate"></i>
                                         <input type="text" class="form-control" name="situation_of_registration" id="situation_of_registration" placeholder="Enter Situation of Registration">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alien_name">Name of the Nursing Home<span class="grey"></span></label>
-                                        <input type="text" class="form-control" name="name_of_nursinghome" id="alien_name" placeholder="Enter alien name">
+                                        <label for="alien_name">6.Name of the Nursing Home<span class="grey"></span></label>
+                                         <i class="fas fa-info-circle" title="Name and other particulars of the nursing home in respect of which the registration is applied for"></i>
+                                        <input type="text" class="form-control" name="name_of_nursinghome" id="alien_name" placeholder="Enter Name of the Nursing home">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alien_name">Location of Nursing Home</label>
+                                        <label for="alien_name">7.Location of Nursing Home</label>
                                         <i class="fas fa-info-circle" title="Place where the nursing home is situated"></i>
                                         <input type="text" class="form-control" name="address_of_nursinghome" placeholder="Enter Location name">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <!-- <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alert_mobile_no">Residential Address<span class="red">*</span></label>
+                                        <label for="alert_mobile_no">2.Residential Address<span class="red">*</span></label>
                                         <i class="fas fa-info-circle" title="Full residential address of the applicant"></i>
                                         <textarea type="text" rows="1" class="form-control" name="applicant_address" id="applicant_address" placeholder="Enter Address"></textarea> 
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="card-header mt-5">
@@ -119,8 +127,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="floor_space">Floor space of bed rooms provided for the<span class="red">*</span></label>
-                                            <i class="fas fa-info-circle" title="number of floor and bed count."></i>
+                                        <label for="floor_space">8.a. Floor space of bed rooms<span class="red">*</span></label>
+                                            <i class="fas fa-info-circle" title="Floor space of bed rooms provided for the patients giving number of beds"></i>
                                         <span id="add_one_flore" class="float-right btn btn-sm btn-primary">Add</span>
                                         <div class="flore_container mt-2">
                                             <div class="row mb-3 flore_details_container" id="singel_flore_data">
@@ -142,20 +150,20 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="alien_name">Arrangements made for medical check-up:</label>
+                                        <label for="alien_name">8.b. Arrangements made for medical check-up</label>
                                         <i class="fas fa-info-circle" title="Arrangements made for medical check-up and immunization of the employees."></i>
                                         <textarea class="form-control" name="arrangement_for_checkup" rows="5"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="alien_name">Floor Space of kitchen, servant’s rooms:</label>
-                                    <i class="fas fa-info-circle" title="Arrangements made for medical check-up and immunization of the employees."></i>
+                                    <label for="alien_name">8.c. Floor Space of kitchen, servant’s rooms, etc</label>
+                                    <i class="fas fa-info-circle" title="Floor space of kitchen, servant's rooms and other rooms giving details of user and area of each room"></i>
                                     <table class="table fsk_table">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>Room name</th>
                                                 <th>Floor Name</th>
-                                                <th>Area</th>
+                                                <th>Area(sq.ft)</th>
                                                 <th>User (patients/employee)</th>
                                                 <th><a class="btn-primary btn btn-sm fsk_add_row" href="javascript:void(0)">Add</a></th>
                                             </tr>
@@ -179,28 +187,28 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alien_name">sanitary for employee</label>
-                                        <i class="fas fa-info-circle" title="number of Details of arrangement made for sanitary for employee"></i>
+                                        <label for="alien_name">8.d. sanitary for employees</label>
+                                        <i class="fas fa-info-circle" title="Details of arrangement made for sanitary for employee giving their number"></i>
                                         <input type="text" class="form-control" name="detail_arrange_sanitary_employee">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alien_name">sanitary for patients</label>
-                                        <i class="fas fa-info-circle" title="number of Details of arrangement made for sanitary for patients"></i>
+                                        <label for="alien_name">8.d. sanitary for patients</label>
+                                        <i class="fas fa-info-circle" title="Details of arrangement made for sanitary for patients giving their number"></i>
                                         <input type="text" class="form-control" name="detail_arrange_sanitary_patients">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alien_name">Arrangements made for storage</label>
+                                        <label for="alien_name">8.e. Arrangements made for storage</label>
                                         <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
                                         <input type="text" class="form-control" name="storage_arrangements">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="alien_name">Other purpose</label>
+                                        <label for="alien_name">9.Other purpose</label>
                                         <i class="fas fa-info-circle" title="Whether the nursing home or any premises used in connection therewith are used or are to be used for purposes other than that of carrying on a nursing home."></i>
                                         <textarea class="form-control" name="other_purpose" rows="5"></textarea>
                                     </div>
@@ -208,14 +216,14 @@
 
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alien_name">Maternity beds Number:</label>
-                                        <i class="fas fa-info-circle" title="Total Number of beds for Maternity patients"></i>
+                                        <label for="alien_name">10.a. Maternity beds</label>
+                                        <i class="fas fa-info-circle" title="Total Number of beds for Maternity patients."></i>
                                         <input type="text" class="form-control" name="maternity_beds_number">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="alien_name">patients beds numebr</label>
+                                        <label for="alien_name">10.b. Patients beds</label>
                                         <i class="fas fa-info-circle" title="Total Number of beds for other patients."></i>
                                         <input type="text" class="form-control" name="patients_beds_number">
                                     </div>
@@ -224,7 +232,7 @@
 
 
                                 <div class="col-12">
-                                    <label for="alien_name">Nursing Staff Information:</label>
+                                    <label for="alien_name">11.Nursing Staff Information</label>
                                     
                                     <table class="table staff_grid">
                                         <thead>
@@ -268,14 +276,14 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="alien_name">Accomodation:</label>
+                                        <label for="alien_name">12.Accomodation</label>
                                         <i class="fas fa-info-circle" title="Place of Accomodation."></i>
                                         <textarea class="form-control" name="Accomodation" rows="5"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
-                                    <label>Physician / Surgeon Information:</label>
+                                    <label>13.Physician / Surgeon Information</label>
                                     <table class="table surgeon_table">
                                         <thead>
                                             <tr class="text-center">
@@ -302,7 +310,7 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Nursing home is under the supervision</label>
+                                        <label>14.a. Nursing home is under the supervision</label>
                                         <i class="fas fa-info-circle" title="Whether the nursing home is under the supervision of a qualified medical practitioner / qualified nurse"></i>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="is_supervision" value="Yes">
@@ -319,7 +327,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 supervision_container" style="display: none;">
-                                    <label for="supervision_name">Supervisor Details:</label>
+                                    <label for="supervision_name">Supervisor Details</label>
                                     <table class="table supervision_table">
                                         <thead>
                                             <tr class="text-center">
@@ -342,7 +350,7 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="alien_name">Proportion of the qualified</label>
+                                        <label for="alien_name">14.b. Proportion of the qualified</label>
                                         <i class="fas fa-info-circle" title="Proportion of the qualified and unqualified nurses on the nursing staff."></i>
                                         <input type="text" class="form-control" name="proportion_of_qualified">
                                     </div>
@@ -350,14 +358,14 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Any midwife is employed</label>
-                                        <i class="fas fa-info-circle" title="Whether any unregistered medical practitioner or unqualified midwife is employed for nursing any patient in the nursing home."></i>
+                                        <label>15.a. Nursing home is under the supervision</label>
+                                        <i class="fas fa-info-circle" title="Whether the nursing home is under the supervision of a qualified nurse or midwife."></i>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="is_midwife" value="Yes">
                                             <label class="form-check-label">
                                                 Yes
                                             </label>
-                                        </div>   
+                                        </div>  
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="is_midwife" value="No">
                                             <label class="form-check-label">
@@ -388,10 +396,26 @@
                                     </table>
                                 </div>
 
+                                <!--<div class='col-12'>
+                                        <div calss="form-group">
+                                        <label>15.b. Unregisterd medical staff</label>
+                                        <i class="fas fa-info-circle" title="Whether any unregistered medical practitioner or unqualified midwife is employed for nursing any patient in the nursing home." ></i>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="is_unqmidwife"  value="Yes">
+                                            <label class="form-check-label">
+                                                Yes
+                                            </label>
+                                        </div>
+                                        <div class="form-check>
+                                            <input class="form-check-input" type="radio" name="is_unqmidwife" value="No">
+                                            <label class="form-check">
+                                                No
+                                                </label>
+                                        </div>-->
 
-                                <div class="col-12">
+                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Whether any person of Alien nationality</label>
+                                        <label>16.Whether any person of Alien nationality</label>
                                         <i class="fas fa-info-circle" title="Whether any person of Alien nationality is employed in the nursing home."></i>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="is_alien" value="Yes">
@@ -433,7 +457,7 @@
 
 
                                 <div class="col-12">
-                                    <label for="alien_name">Fees Charges:</label>
+                                    <label for="alien_name">17.Fees Charges:</label>
                                     <table class="table fees_table">
                                         <thead>
                                             <tr class="text-center">
@@ -458,7 +482,7 @@
 
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Other nursing home or business</label>
+                                        <label>18.Other nursing home or business</label>
                                         <i class="fas fa-info-circle" title="Whether the applicant is interested in any other nursing home or business"></i>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="other_bussness" value="Yes">
@@ -476,7 +500,7 @@
                                 </div>
                                 <div class="col-12 other_bussness_container" style="display: none;">
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="5" name="other_business_address"></textarea>
+                                        <textarea class="form-control" rows="5" name="other_business_address" placeholder="Enter details of the place where such business is conducted."></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -499,15 +523,15 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="alien_name">nummber of expiry of the certificate</label>
-                                            <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
-                                            <input placeholder="MH/THN/MBMC/YYYY" type="text" class="form-control" name="no_of_expiry_certificate">
+                                            <label for="alien_name">19.Certificate Number</label>
+                                            <i class="fas fa-info-circle" title="Number of certificate of registration."></i>
+                                            <input placeholder="MH/THN/MBMC/YYYY-Certificate Number " type="text" class="form-control" name="no_of_expiry_certificate">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="alien_name">date of expiry of the certificate</label>
-                                            <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
+                                            <label for="alien_name">Date of expiry</label>
+                                            <i class="fas fa-info-circle" title="Date of expiry of the certificate."></i>
                                             <input type="text" readonly class="form-control" id="date_of_expiry_certificate" name="date_of_expiry_certificate">
                                         </div>
                                     </div>
@@ -720,7 +744,7 @@
                                 <div class="col-12">
                                     <div class="form-check">
                                         <input type="checkbox"  name="promise" value="1" class="form-check-input" id="promise">
-                                        <label class="form-check-label" for="exampleCheck1">I solemnly declare that the above statements are true to the best of my knowledge and belief.</label>
+                                        <label class="form-check-label" for="exampleCheck1"><b>I solemnly declare that the above statements are true to the best of my knowledge and belief.</b></label>
                                     </div>
                                 </div>
                             </div>
@@ -730,14 +754,15 @@
 
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12 text-center text-danger">
-                                    <p><b>Note:</b> The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(I.e home having maternity and non-maternity wards). In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
-                                    <p></p>
+                                <div class="col-12 text-left text-danger">
+                                    <p><b>Note:</b><br>
+                                     *The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(i.e home having maternity and non-maternity wards).<br> In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
+                                    <p>*The queries made in item 15 should be answered only when the nursing home is a maternity or mixed home(i.e home having maternity and non-maternity wards).<br> In case of a mixed home, the queries should be answered with reference to the maternity ward.</p>
                                 </div>
                             </div>
                         </div>
 
-
+                        
 
                         <div class="card-footer">
                             <div class="row center">

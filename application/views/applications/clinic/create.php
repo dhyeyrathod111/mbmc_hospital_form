@@ -41,22 +41,22 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="applicant_name">Name Clinic<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Full name of the Dispensary/ Clinic"></i>
-                                        <input type="text" class="form-control" name="clinic_name" id="clinic_name" placeholder="Enter Name of the Dispensary/ Clinic">
+                                        <label for="applicant_name">Name of the Dispensary/ Clinic, etc<span class="red">*</span></label>
+                                        <!-- <i class="fas fa-info-circle" title="Full name of the Dispensary/ Clinic, etc "></i> -->
+                                        <input type="text" class="form-control" name="clinic_name" id="clinic_name" placeholder="Enter Name of the Dispensary/ Clinic, etc">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label for="applicant_name">Telephone No of Clinic<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Full name of the Dispensary/ Clinic"></i>
-                                        <input type="text" class="form-control" name="clinic_telephone_no" id="clinic_telephone_no" placeholder="Enter Telephone No">
+                                        <label for="applicant_name">Telephone No. of Clinic<span class="red">*</span></label>
+                                        <!-- <i class="fas fa-info-circle" title=""></i> -->
+                                        <input type="text" class="form-control" name="clinic_telephone_no" id="clinic_telephone_no" placeholder="Enter Telephone No.">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="alert_mobile_no">Address of the Clinic<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Address of the Dispensary/ Clinic, etc"></i>
+                                        <label for="alert_mobile_no">Address of the Dispensary/ Clinic, etc<span class="red">*</span></label>
+                                        <!-- <i class="fas fa-info-circle" title="Address of the Dispensary/ Clinic, etc"></i> -->
                                         <textarea type="text" rows="5" class="form-control" name="clinic_address" id="clinic_address" placeholder="Enter Address"></textarea> 
                                     </div>
                                 </div>
@@ -77,53 +77,53 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Full Name<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Full name of applicant"></i>
+                                        <!-- <i class="fas fa-info-circle" title="Full name of applicant"></i> -->
                                         <input type="text" class="form-control" name="applicant_name" id="applicant_name" placeholder="Enter full Name of Applicant">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label>Qualification<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Qualification of applicant"></i>
+                                        <!-- <i class="fas fa-info-circle" title="Qualification of applicant"></i> -->
                                         <input type="text" class="form-control" name="applicant_qualification" id="applicant_qualification" placeholder="Enter Qualification of Applicant">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label>Mobile number<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Mobile number applicant"></i>
+                                        <label>Mobile No.<span class="red">*</span></label>
+                                        <!-- <i class="fas fa-info-circle" title="Mobile number of applicant"></i> -->
                                         <input type="text" class="form-control" name="applicant_mobile_no" id="applicant_mobile_no" placeholder="Enter Mobile number of Applicant">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label>Alternate mobile number<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Enter Alternate mobile number"></i>
-                                        <input type="text" class="form-control" name="applicant_alternate_no" id="applicant_alternate_no" placeholder="Enter Qualification of Applicant">
+                                        <label>Alternate Mobile No.<span class="red">*</span></label>
+                                        <!-- <i class="fas fa-info-circle" title="Enter Alternate mobile number"></i> -->
+                                        <input type="text" class="form-control" name="applicant_alternate_no" id="applicant_alternate_no" placeholder="Enter alternate mobile number">
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <label>Email<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="applicant Email id"></i>
+                                        <label>Email id<span class="red">*</span></label>
+                                        <i class="fas fa-info-circle" title="Note * This email-id will be used for further communications "></i>
                                         <input type="text" class="form-control" name="applicant_email_id" id="applicant_email_id" placeholder="Enter Email id of Applicant">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Address<span class="red">*</span></label>
-                                        <i class="fas fa-info-circle" title="Full address of applicant"></i>
-                                        <textarea type="text" rows="5" class="form-control" name="applicant_address" id="applicant_address" placeholder="Enter Address of applicant"></textarea> 
+                                        <label>Residential Address<span class="red">*</span></label>
+                                        <!-- <i class="fas fa-info-circle" title="Full address of applicant"></i> -->
+                                        <textarea type="text" rows="5" class="form-control" name="applicant_address" id="applicant_address" placeholder="Enter Address of Applicant"></textarea> 
                                     </div>
                                 </div>
 
                                 <div class="col-12">
-                                    <label>Clinic staff details:</label>
-                                    <i class="fas fa-info-circle" title="Details of Medical /Paramedical Staff Working"></i>
+                                    <label>Details of Medical /Paramedical Staff Working</label>
+                                    <!-- <i class="fas fa-info-circle" title="Details of Medical /Paramedical Staff Working"></i> -->
                                     <table class="table staff_grid">
                                         <thead>
                                             <tr class = "text-center">
-                                                <th>SR No</th>
+                                                <th>Sr No. </th>
                                                 <th>Name</th>
                                                 <th>Designation</th>
                                                 <th>Qualification</th>
@@ -160,8 +160,8 @@
                                     </table>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label>immunization is carried</label>
-                                            <i class="fas fa-info-circle" title="Whether immunization is carried out in the clinic"></i>
+                                            <label>Whether immunization is carried out in the clinic </label>
+                                            <!-- <i class="fas fa-info-circle" title="Whether immunization is carried out in the clinic"></i> -->
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="immunization_is_carried" value="Yes">
                                                 <label class="form-check-label">
@@ -178,15 +178,15 @@
                                     </div>
                                     <div class="col-12 cold_chain_facilities_container" style="display: none;">
                                         <div class="form-group">
-                                            <label>Give details of cold chain facilities available:</label>
+                                            <label>Give details of cold chain facilities available</label>
                                             <textarea class="form-control" rows="5" name="cold_chain_facilities"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label>Bio-Medical</label>
-                                            <i class="fas fa-info-circle" title="Certificate regarding Bio-Medical Waste Management"></i>
+                                            <label>Certificate regarding Bio-Medical Waste Management </label>
+                                            <!-- <i class="fas fa-info-circle" title="Certificate regarding Bio-Medical Waste Management"></i> -->
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="bio_medical" value="Yes">
                                                 <label class="form-check-label">
@@ -203,7 +203,7 @@
                                     </div>
                                     <div class="col-6 bio_medical_valid_date_container" style="display: none;">
                                         <div class="form-group">
-                                            <label>Valid up to:</label>
+                                            <label>Valid up to</label>
                                             <input class="form-control" id="bio_medical_valid_date" name="bio_medical_valid_date" readonly type="text" >
                                         </div>
                                     </div>
@@ -334,13 +334,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12 text-center text-danger">
-                                    <p><b>Note:</b> The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(I.e home having maternity and non-maternity wards). In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
-                                    <p></p>
-                                </div>
-                            </div>
+                        
                         </div>
                         <div class="card-footer">
                             <div class="row center">

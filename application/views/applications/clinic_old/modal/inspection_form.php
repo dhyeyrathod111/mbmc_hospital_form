@@ -3,23 +3,23 @@
 <?php if (empty($insection_form)) : ?> 
 <div class="row">
     <div class="form-group col-6">
-        <label for="exampleFormControlInput1">Bio-Medical waste disposal Certificate valid upto:</label>
+        <label for="exampleFormControlInput1">Bio-Medical wast valid upto:</label>
         <input readonly type="text" id="bio_medical_valid_date" name="bio_medical_valid_date" class="form-control">
     </div>   
-   <!-- <div class="form-group col-6">
+    <div class="form-group col-6">
         <label for="exampleFormControlInput1">MPCB Certificate valid upto:</label>
         <input readonly type="text" id="mpcb_certificate_valid_date" name="mpcb_certificate_valid_date" class="form-control">
-    </div>  -->
+    </div> 
 </div>                    
-<!--<div class="row">
+<div class="row">
     <div class="form-group col-6">
         <label for="exampleFormControlInput1">No of beds:</label>
         <input type="number" name="no_of_beds" class="form-control">
-    </div>-->
-    <!-- <div class="form-group col-6">
+    </div>
+    <div class="form-group col-6">
         <label for="exampleFormControlInput1">No of toilets:</label>
         <input type="number" name="no_of_toilets" class="form-control">
-    </div> -->
+    </div>
 </div>
 <div class="form-check">
     <input class="form-check-input" name="doc_degree_certificate" type="checkbox">
@@ -30,13 +30,13 @@
 <div class="form-check">
     <input class="form-check-input" name="agreement_copy" type="checkbox">
     <label class="form-check-label" for="defaultCheck1">
-        Doctor's Registration form MMC.
+        Doctor Ragistration form MMC.
     </label>
 </div>
 <div class="form-check">
     <input class="form-check-input" name="doc_reg_mmc" type="checkbox">
     <label class="form-check-label" for="defaultCheck1">
-        Agreement Copy / Leave & license copy.
+        Ageement Copy / Leave & license copy.
     </label>
 </div>
 <div class="form-check">
@@ -45,7 +45,7 @@
         Tax Receipt.
     </label>
 </div>
-<!-- <div class="form-check">
+<div class="form-check">
     <input class="form-check-input" name="nursing_certificate" type="checkbox">
     <label class="form-check-label" for="defaultCheck1">
         Nursing certificate from Maharashtra Nursing Council.
@@ -54,7 +54,7 @@
 <div class="form-check">
     <input class="form-check-input" name="noc_from_society" type="checkbox">
     <label class="form-check-label" for="defaultCheck1">
-        NOC from society for clinic/nursing home.
+        NOC from society for hospital/nursing home.
     </label>
 </div>
 <div class="form-check">
@@ -81,10 +81,10 @@
         Labour Room if available is well equipped  with all instruments. O.T. Well equipment with saprate wash room & emergency drug.
     </label>
 </div>
- --><hr />
+<hr />
 <div class="row submit_button_inspection_form" style="display: block;">
     <input type="hidden" value="<?= $application->app_id ?>" name="app_id">
-    <input type="hidden" value="1" name="sub_dept_id">
+    <input type="hidden" value="2" name="sub_dept_id">
     <button data-dismiss="modal" class="btn btn-primary">cancel</button>
     <button type="submit" id="inspection_form_submitbtn" class="btn btn-success" style="float: right;">Submit</button>
 </div>
@@ -147,7 +147,7 @@
 <div class="form-check">
     <input class="form-check-input" <?= ($insection_form->noc_from_society == 1) ? "checked" : '' ?> name="noc_from_society" type="checkbox">
     <label class="form-check-label" for="defaultCheck1">
-        NOC from society for clinic/nursing home.
+        NOC from society for hospital/nursing home.
     </label>
 </div>
 <div class="form-check">

@@ -293,7 +293,7 @@
 		{
 			$this->db->select('*');
 			$this->db->from('ward');
-			$this->db->where(['dept_id'=>5,'sub_dept_id'=>1,'is_deleted'=>0]);
+			$this->db->where(['dept_id'=>5,'is_deleted'=>0]);
 			return $this->db->get()->result();
 		}
 		public function getApplicationByAppID($app_id)

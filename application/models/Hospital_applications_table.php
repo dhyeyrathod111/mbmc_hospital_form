@@ -136,7 +136,7 @@
 	    		$condition .= " AND hospital_data.payment_status = 2";
 	    	}
 	    	
-			$sql_string = "SELECT hospital_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.sub_dept_id = 1 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS hospital_inspection_done FROM hospital_applications ha) AS hospital_data WHERE 1 = 1".$condition;
+			$sql_string = "SELECT hospital_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS hospital_inspection_done FROM hospital_applications ha) AS hospital_data WHERE 1 = 1".$condition;
 			if ($count == TRUE) {
 	    		return $this->db->query($sql_string)->num_rows();
 	    	} else {
@@ -322,7 +322,7 @@
 		{
 			$this->db->select('*');
 			$this->db->from('ward');
-			$this->db->where(['dept_id'=>5,'sub_dept_id'=>1,'is_deleted'=>0]);
+			$this->db->where(['dept_id'=>5,'is_deleted'=>0]);
 			return $this->db->get()->result();
 		}
 		public function getApplicationByAppID($app_id)
