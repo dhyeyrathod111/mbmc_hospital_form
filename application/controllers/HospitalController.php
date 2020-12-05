@@ -497,9 +497,10 @@ class HospitalController extends Common {
 			'general_observation' => !empty($poststack['general_observation']) ? 1 : 0,
 			'labour_room_availability' => !empty($poststack['labour_room_availability']) ? 1 : 0,
 			'status' => 1,
-			'sub_dept_id' => $poststack['sub_dept_id'],
+			'sub_dept_id' => 1,
 			'created_by' => $this->authorised_user['user_id'],
 		);
+
 		if ($this->hospital_applications_table->create_inspection_form($inspection_form_array)) {
 			$this->response['status'] = TRUE;
 			$this->response['message'] = "inspection report has been created successfully.";

@@ -379,21 +379,28 @@ class LabController extends Common {
 		$inspection_form_array = array(
 			'app_id' => $poststack['app_id'],
 			'bio_medical_valid_date' => $poststack['bio_medical_valid_date'],
-			'mpcb_certificate_valid_date' => $poststack['mpcb_certificate_valid_date'],
-			'no_of_beds' => !empty($poststack['no_of_beds']) ? $poststack['no_of_beds'] : 0,
-			'no_of_toilets' => !empty($poststack['no_of_toilets']) ? $poststack['no_of_toilets'] : 0,
 			'doc_degree_certificate' => !empty($poststack['doc_degree_certificate']) ? 1 : 0,
 			'doc_reg_mmc' => !empty($poststack['doc_reg_mmc']) ? 1 : 0,
 			'agreement_copy' => !empty($poststack['agreement_copy']) ? 1 : 0,
 			'tax_recipes' => !empty($poststack['tax_recipes']) ? 1 : 0,
-			'nursing_certificate' => !empty($poststack['nursing_certificate']) ? 1 : 0,
-			'noc_from_society' => !empty($poststack['noc_from_society']) ? 1 : 0,
-			'noc_from_town_planning_mbmc' => !empty($poststack['noc_from_town_planning_mbmc']) ? 1 : 0,
-			'noc_from_fire_dept' => !empty($poststack['noc_from_fire_dept']) ? 1 : 0,
-			'general_observation' => !empty($poststack['general_observation']) ? 1 : 0,
-			'labour_room_availability' => !empty($poststack['labour_room_availability']) ? 1 : 0,
+
+
+
+			
+			// 'mpcb_certificate_valid_date' => $poststack['mpcb_certificate_valid_date'],
+			// 'no_of_beds' => !empty($poststack['no_of_beds']) ? $poststack['no_of_beds'] : 0,
+			// 'no_of_toilets' => !empty($poststack['no_of_toilets']) ? $poststack['no_of_toilets'] : 0,
+			// 'nursing_certificate' => !empty($poststack['nursing_certificate']) ? 1 : 0,
+			// 'noc_from_society' => !empty($poststack['noc_from_society']) ? 1 : 0,
+			// 'noc_from_town_planning_mbmc' => !empty($poststack['noc_from_town_planning_mbmc']) ? 1 : 0,
+			// 'noc_from_fire_dept' => !empty($poststack['noc_from_fire_dept']) ? 1 : 0,
+			// 'general_observation' => !empty($poststack['general_observation']) ? 1 : 0,
+			// 'labour_room_availability' => !empty($poststack['labour_room_availability']) ? 1 : 0,
+
+
+
 			'status' => 1,
-			'sub_dept_id' => $poststack['sub_dept_id'],
+			'sub_dept_id' => 3,
 			'created_by' => $this->authorised_user['user_id'],
 		);
 		if ($this->lab_applications_table->create_inspection_form($inspection_form_array)) {

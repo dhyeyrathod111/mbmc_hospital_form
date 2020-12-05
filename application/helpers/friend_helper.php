@@ -225,47 +225,57 @@ function clinic_payment_calculation($number_of_beds,$appliaction_type)
 }
 function image_formate_in_array($application_images , $application)
 {
-	foreach ($application_images as  $oneImage) :
-		if ($oneImage->image_id == $application->ownership_agreement) {
-			$final_iamge_array['ownership_agreement'] = $oneImage;
-		} else if ($oneImage->image_id == $application->tax_receipt) {
-			$final_iamge_array['tax_receipt'] = $oneImage;
-		} else if ($oneImage->image_id == $application->doc_certificate) {
-			$final_iamge_array['doc_certificate'] = $oneImage;
-		} else if ($oneImage->image_id == $application->reg_certificate) {
-			$final_iamge_array['reg_certificate'] = $oneImage;
-		} else if ($oneImage->image_id == $application->staff_certificate) {
-			$final_iamge_array['staff_certificate'] = $oneImage;
-		} else if ($oneImage->image_id == $application->nursing_staff_deg_certificate) {
-			$final_iamge_array['nursing_staff_deg_certificate'] = $oneImage;
-		} else if ($oneImage->image_id == $application->nursing_staff_reg_certificate) {
-			$final_iamge_array['nursing_staff_reg_certificate'] = $oneImage;
-		} else if ($oneImage->image_id == $application->bio_des_certificate) {
-			$final_iamge_array['bio_des_certificate'] = $oneImage;
-		} else if ($oneImage->image_id == $application->society_noc) {
-			$final_iamge_array['society_noc'] = $oneImage;
-		} else if ($oneImage->image_id == $application->fire_noc) {
-			$final_iamge_array['fire_noc'] = $oneImage;
-		}
-	endforeach;
-	return json_decode(json_encode($final_iamge_array));
+
+	if (!empty($application_images)) {
+		foreach ($application_images as  $oneImage) :
+			if ($oneImage->image_id == $application->ownership_agreement) {
+				$final_iamge_array['ownership_agreement'] = $oneImage;
+			} else if ($oneImage->image_id == $application->tax_receipt) {
+				$final_iamge_array['tax_receipt'] = $oneImage;
+			} else if ($oneImage->image_id == $application->doc_certificate) {
+				$final_iamge_array['doc_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->reg_certificate) {
+				$final_iamge_array['reg_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->staff_certificate) {
+				$final_iamge_array['staff_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->nursing_staff_deg_certificate) {
+				$final_iamge_array['nursing_staff_deg_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->nursing_staff_reg_certificate) {
+				$final_iamge_array['nursing_staff_reg_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->bio_des_certificate) {
+				$final_iamge_array['bio_des_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->society_noc) {
+				$final_iamge_array['society_noc'] = $oneImage;
+			} else if ($oneImage->image_id == $application->fire_noc) {
+				$final_iamge_array['fire_noc'] = $oneImage;
+			}
+		endforeach;
+		return json_decode(json_encode($final_iamge_array));
+	} else {
+		return FALSE;
+	}
 }
 function image_formate_in_array_clinic($application_images , $application)
 {
-	foreach ($application_images as  $oneImage) :
-		if ($oneImage->image_id == $application->ownership_agreement) {
-			$final_iamge_array['ownership_agreement'] = $oneImage;
-		} else if ($oneImage->image_id == $application->tax_receipt) {
-			$final_iamge_array['tax_receipt'] = $oneImage;
-		} else if ($oneImage->image_id == $application->doc_certificate) {
-			$final_iamge_array['doc_certificate'] = $oneImage;
-		} else if ($oneImage->image_id == $application->aadhaar_card) {
-			$final_iamge_array['aadhaar_card'] = $oneImage;
-		} else if ($oneImage->image_id == $application->bio_medical_certificate) {
-			$final_iamge_array['bio_medical_certificate'] = $oneImage;
-		} 
-	endforeach;
-	return json_decode(json_encode($final_iamge_array));
+
+	if (!empty($application_images)) {
+		foreach ($application_images as  $oneImage) :
+			if ($oneImage->image_id == $application->ownership_agreement) {
+				$final_iamge_array['ownership_agreement'] = $oneImage;
+			} else if ($oneImage->image_id == $application->tax_receipt) {
+				$final_iamge_array['tax_receipt'] = $oneImage;
+			} else if ($oneImage->image_id == $application->doc_certificate) {
+				$final_iamge_array['doc_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->aadhaar_card) {
+				$final_iamge_array['aadhaar_card'] = $oneImage;
+			} else if ($oneImage->image_id == $application->bio_medical_certificate) {
+				$final_iamge_array['bio_medical_certificate'] = $oneImage;
+			} 
+		endforeach;
+		return json_decode(json_encode($final_iamge_array));
+	} else {
+		return FALSE;
+	}
 }
 function image_formate_in_array_lab($application_images , $application)
 {

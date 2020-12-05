@@ -768,7 +768,7 @@
                             <div class="row center">
                                 <div class="col-12">
                                     <input type="hidden" value="<?= $application_type ?>" name="application_type">
-                                    <a href="<?= base_url()?>pwd" class="btn btn-lg btn-info white">Cancel</a>
+                                    <a href="<?= base_url('hospital/create') ?>" class="btn btn-lg btn-info white">Cancel</a>
                                     <button type="submit" class="btn btn-lg btn-primary right">Submit</button>
                                 </div>
                             </div>
