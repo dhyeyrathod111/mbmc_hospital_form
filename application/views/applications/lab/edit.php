@@ -201,6 +201,39 @@
                                         </div>
                                     </div>
 
+                                    <?php if ($application->application_type == 2) : ?>
+
+                                        <div class="card-header mt-5">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h3 class="card-title">
+                                                        <label for="email_id" class="text-info">For Renewal of Registration:</label>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="alien_name">nummber of expiry of the certificate</label>
+                                                        <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
+                                                        <input placeholder="MH/THN/MBMC/YYYY" value="<?= $application->no_of_expiry_certificate ?>" type="text" class="form-control" name="no_of_expiry_certificate">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="alien_name">date of expiry of the certificate</label>
+                                                        <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
+                                                        <input type="text" readonly class="form-control" value="<?= $application->date_of_expiry_certificate ?>" id="date_of_expiry_certificate" name="date_of_expiry_certificate">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <?php endif ; ?>
+
                                 </div>
                             </div>
                         </div>
@@ -357,6 +390,39 @@
                                     <?php endif ; ?>
                                 </div>
                             </div>
+
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="society_noc">User image<span class="red">*</span></label>
+                                        <div class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="user_image" id="user_image" class="custom-file-input">
+                                                <label class="custom-file-label" for="user_image">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6" style="">
+                                    <?php if (!empty($appimages->user_image)) : ?>
+                                        <h3 class="card-title link-margin">
+                                            <a target="_blank" href="<?= base_url('uploads/clinic/'.$appimages->user_image->image_enc_name) ?>">
+                                                <label id="user_image_name" class="text-info"><?= $appimages->user_image->image_name ?></label>
+                                            </a>
+                                            <input type="hidden" name="user_image_name" id="user_image_name_id">
+                                        </h3>
+                                    <?php else : ?>
+                                        <h3 class="card-title link-margin">
+                                            <label id="user_image_name" class="text-info"> Please select a document </label>
+                                            <input type="hidden" name="user_image_name" id="user_image_name_id">
+                                        </h3>
+                                    <?php endif ; ?>
+                                </div>
+                            </div>
+
+
+
                             <div class="row">
                                 <div class="col-12">
                                     <h3 class="card-title">

@@ -132,7 +132,9 @@ class LabController extends Common {
                         </a>'.$inspection_form_btn.' '.$payment_btn;
             $documents = '';
 
-            $data[] = array($i,$application_no, $applicant_name, $applicant_email_id, $applicant_mobile_no,$lab_name,$remarks,$status,$inspection_form,$action);
+            $date = date('Y-m-d',strtotime($lab['created_at']));
+
+            $data[] = array($i,$application_no, $applicant_name, $applicant_email_id, $applicant_mobile_no,$lab_name,$remarks,$status,$inspection_form,$date,$action);
         }
         
         $output = array(
@@ -259,6 +261,12 @@ class LabController extends Common {
 			'application_type' => $this->security->xss_clean($this->input->post('application_type')),
 			'user_id' => $this->authorised_user['user_id'],
 		);
+
+		if ($inertStack['application_type'] == 2) {
+			$inertStack['no_of_expiry_certificate'] = $this->security->xss_clean($this->input->post('no_of_expiry_certificate'));
+			$inertStack['date_of_expiry_certificate'] = $this->security->xss_clean($this->input->post('date_of_expiry_certificate'));
+		}
+
 		$image_upload_error = '';$document_data_stack = [];
 		foreach ($_FILES as $key => $oneImage) {
 			if (!empty($_FILES[$key]['name']) && $_FILES[$key]['error'] == 0) {
@@ -431,7 +439,7 @@ class LabController extends Common {
 		if (!empty($application)) {
 			$this->data['application'] = $application;
 			$this->data['inspection'] = $this->lab_applications_table->getInspectionDataByAppID($app_id);
-			$this->data['payment'] = lab_payment_calculation($this->data['inspection']->no_of_beds,$application->application_type);
+			$this->data['payment'] = lab_payment_calculation($application);
 			$this->response['status'] = TRUE;
 			$this->response['html_str'] = $this->load->view('applications/lab/modal/payment_reqeust_popup',$this->data,TRUE);
 		} else {
@@ -477,7 +485,7 @@ class LabController extends Common {
 		$application = $this->lab_applications_table->getApplicationByAppID($app_id);
 		if (!empty($application)) {
 			$this->data['application'] = $application;
-			$this->data['payment_stack'] = lab_payment_calculation($application->no_of_beds,$application->application_type);
+			$this->data['payment_stack'] = lab_payment_calculation($application);
 			$this->load->view('applications/lab/user_payment_page',$this->data);
 		} else {
 			return redirect('');
@@ -567,6 +575,7 @@ class LabController extends Common {
     		$tempArray[] = $oneApp->applicant_mobile_no;
     		$tempArray[] = $oneApp->lab_name;
     		$tempArray[] = $oneApp->application_status;
+    		$tempArray[] = date('Y-m-d',strtotime($oneApp->created_at));
     		$tempArray[] = '<a href="'.base_url('lab/edit/'.base64_encode($oneApp->id)).'" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
     						<a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
     		array_push($finalDatatableStack,$tempArray);

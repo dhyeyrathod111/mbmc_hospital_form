@@ -99,8 +99,9 @@
 
 		public function getHospitalsDataForDatatable($count=FALSE,$postdata)
 		{
-			$previous_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND sub_dept_id = 1 AND status = 1 AND role_id < ".$this->authorised_user['role_id']." ORDER BY access_id DESC LIMIT 1")->result_array();
-	    	$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND sub_dept_id = 1 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
+			$previous_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND status = 1 AND role_id < ".$this->authorised_user['role_id']." ORDER BY access_id DESC LIMIT 1")->result_array();
+	    	$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
+
 	    	$condition = '';$approval_status = $postdata['approval_status'];
 
 	    	switch ($approval_status) {
@@ -135,14 +136,54 @@
 	    	if ($rolehealthOfficerStack->role_id < $this->authorised_user['role_id']) {
 	    		$condition .= " AND hospital_data.payment_status = 2";
 	    	}
+
+
+	    	if ($postdata['fromDate'] !='' || $postdata['toDate'] !='') {
+	    		$condition .= " AND DATE(hospital_data.created_at)  >= '".DATE($postdata['fromDate'])."' AND DATE(hospital_data.created_at) <= '".DATE($postdata['toDate'])."'";
+	    	}
+
+	    	if (!empty($postdata['search']) && $postdata['search']['value'] != '') {
+
+	    		if (substr($postdata['search']['value'], 0, 10) == 'MBMC-00000') : $postdata['search']['value'] = ltrim($postdata['search']['value'],"MBMC-00000"); endif;
+
+	    		$condition .= " AND (hospital_data.app_id LIKE '%".$postdata['search']['value']."%' OR hospital_data.applicant_name LIKE '%".$postdata['search']['value']."%' OR hospital_data.applicant_email_id LIKE '%".$postdata['search']['value']."%' OR hospital_data.applicant_mobile_no LIKE '%".$postdata['search']['value']."%' OR hospital_data.hospital_name LIKE '%".$postdata['search']['value']."%')";
+	    	}
+
+	    	if ($postdata['application_type'] != 0) {
+	    		$condition .= " AND hospital_data.application_type = ".$postdata['application_type'];
+	    	} 
+
+	    	if (!empty($postdata['order'])) {
+	    		$colum_name['0'] = 'id';
+	            $colum_name['1'] = 'app_id';
+	            $colum_name['2'] = 'hospital_data.applicant_name';
+	            $colum_name['3'] = 'hospital_data.applicant_email_id';
+	            $colum_name['4'] = 'hospital_data.applicant_mobile_no';
+	            $colum_name['5'] = 'hospital_data.hospital_name';
+	            $colum_name['9'] = 'hospital_data.created_at';
+	            $key = $postdata['order'][0]['column'];
+	            $condition .= " ORDER BY ".$colum_name[$key]." ".$postdata['order'][0]['dir'];
+	    	} else {
+	    		$condition .= " ORDER BY app_id DESC";
+	    	}
 	    	
-			$sql_string = "SELECT hospital_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS hospital_inspection_done FROM hospital_applications ha) AS hospital_data WHERE 1 = 1".$condition;
+			$sql_string = "SELECT hospital_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5 ORDER BY pay_id DESC LIMIT 1) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS hospital_inspection_done FROM hospital_applications ha) AS hospital_data WHERE 1 = 1".$condition;
 			if ($count == TRUE) {
 	    		return $this->db->query($sql_string)->num_rows();
 	    	} else {
 	    		$sql_string .= " LIMIT ".$postdata['length']." OFFSET ".$postdata['start'];
 	    		return $this->db->query($sql_string)->result_array();
 	    	}
+		}
+
+		public function getFinalApprovelDate($app_id,$dept_id)
+		{
+			$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
+			$this->db->select('*');
+			$this->db->from('application_remarks');
+			$this->db->where('app_id',$app_id)->where('dept_id',$dept_id)->where('role_id',$final_role_id[0]['role_id']);
+			$this->db->order_by("id", "desc");
+			return $this->db->get()->row();
 		}
 
 		

@@ -110,6 +110,8 @@
                             echo "<h3> FORM B (See rules 4 & 6) </h3>";
                         } else if ($app_name == 'clinic') {
                             echo "<h3> MIRA BHAINDER MUNCIPAL CORPORATION HEALTH DEPARTMENT</h3>";
+                        } else if ($app_name == 'lab') {
+                          echo "<h3> MIRA BHAINDER MUNCIPAL CORPORATION HEALTH DEPARTMENT</h3>";
                         }
 
                         else {
@@ -122,6 +124,8 @@
                             echo "<h3> FORM B (See rules 4 & 6) </h3>";
                         } else if($app_name == 'clinic'){
                             echo "<h3> MIRA BHAINDER MUNCIPAL CORPORATION HEALTH DEPARTMENT</h3>";
+                        } else if ($app_name == 'lab') {
+                          echo "<h3> MIRA BHAINDER MUNCIPAL CORPORATION HEALTH DEPARTMENT</h3>";
                         }  
                         else {
                             echo '<h3 style="margin: -3% 0% 0% -1%;">Edit Details</h3>';

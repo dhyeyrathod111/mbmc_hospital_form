@@ -135,8 +135,37 @@
 	    	if ($rolehealthOfficerStack->role_id < $this->authorised_user['role_id']) {
 	    		$condition .= " AND clinic_data.payment_status = 2";
 	    	}
+
+	    	if ($postdata['fromDate'] !='' || $postdata['toDate'] !='') {
+	    		$condition .= " AND DATE(clinic_data.created_at)  >= '".DATE($postdata['fromDate'])."' AND DATE(clinic_data.created_at) <= '".DATE($postdata['toDate'])."'";
+	    	}
+
+	    	if (!empty($postdata['application_type']) && $postdata['application_type'] != 0) {
+	    		$condition .= " AND clinic_data.application_type = ".$postdata['application_type'];
+	    	} 
+
+	    	if (!empty($postdata['search']) && $postdata['search']['value'] != '') {
+
+	    		if (substr($postdata['search']['value'], 0, 10) == 'MBMC-00000') : $postdata['search']['value'] = ltrim($postdata['search']['value'],"MBMC-00000"); endif;
+
+	    		$condition .= " AND (clinic_data.app_id LIKE '%".$postdata['search']['value']."%' OR clinic_data.applicant_name LIKE '%".$postdata['search']['value']."%' OR clinic_data.applicant_email_id LIKE '%".$postdata['search']['value']."%' OR clinic_data.applicant_mobile_no LIKE '%".$postdata['search']['value']."%' OR clinic_data.clinic_name LIKE '%".$postdata['search']['value']."%')";
+	    	}
+
+	    	if (!empty($postdata['order'])) {
+	    		$colum_name['0'] = 'clinic_data.id';
+	            $colum_name['1'] = 'app_id';
+	            $colum_name['2'] = 'clinic_data.applicant_name';
+	            $colum_name['3'] = 'clinic_data.applicant_email_id';
+	            $colum_name['4'] = 'clinic_data.applicant_mobile_no';
+	            $colum_name['5'] = 'clinic_data.clinic_name';
+	            $colum_name['9'] = 'clinic_data.created_at';
+	            $key = $postdata['order'][0]['column'];
+	            $condition .= " ORDER BY ".$colum_name[$key]." ".$postdata['order'][0]['dir'];
+	    	} else {
+	    		$condition .= " ORDER BY clinic_data.app_id DESC";
+	    	}
 	    	
-			$sql_string = "SELECT clinic_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS clinic_inspection_done FROM clinic_applications ha) AS clinic_data WHERE 1 = 1".$condition;
+			$sql_string = "SELECT clinic_data.* FROM (SELECT ha.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = 5 AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id , (SELECT py.status FROM payment py WHERE ha.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 5 ORDER BY pay_id DESC LIMIT 1) AS payment_status , (SELECT COUNT(*) FROM hospital_inspection_form hif WHERE hif.app_id = ha.app_id) AS clinic_inspection_done FROM clinic_applications ha) AS clinic_data WHERE 1 = 1".$condition;
 			if ($count == TRUE) {
 	    		return $this->db->query($sql_string)->num_rows();
 	    	} else {
@@ -375,7 +404,8 @@
 				$app->tax_receipt,
 				$app->doc_certificate,
 				$app->bio_medical_certificate,
-				$app->aadhaar_card
+				$app->aadhaar_card,
+				$app->user_image
 			]);
 			return $this->db->get()->result();
 		}
@@ -385,6 +415,15 @@
 			$this->db->from('clinic_staff');
 			$this->db->where('app_id',$app_id);
 			return $this->db->get()->result();
+		}
+		public function getFinalApprovelDate($app_id,$dept_id)
+		{
+			$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND status = 1 ORDER BY access_id DESC LIMIT 1")->result_array();
+			$this->db->select('ar.*,(SELECT user_name FROM users_table ut WHERE ut.user_id = ar.user_id LIMIT 1) AS senior_doctor_name');
+			$this->db->from('application_remarks ar');
+			$this->db->where('app_id',$app_id)->where('dept_id',$dept_id)->where('role_id',$final_role_id[0]['role_id']);
+			$this->db->order_by("id", "desc");
+			return $this->db->get()->row();
 		}
 
 

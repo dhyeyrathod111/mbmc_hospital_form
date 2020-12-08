@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2020 at 08:18 PM
+-- Generation Time: Dec 08, 2020 at 08:34 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -391,7 +391,28 @@ INSERT INTO `applications_details` (`application_id`, `dept_id`, `sub_dept_id`, 
 (101, 5, 2, 1, 0, '2020-12-05 11:13:47', '2020-12-05 11:13:47'),
 (102, 5, 0, 1, 0, '2020-12-05 13:22:49', '2020-12-05 13:22:49'),
 (103, 5, 2, 1, 0, '2020-12-05 17:55:44', '2020-12-05 17:55:44'),
-(104, 5, 3, 1, 0, '2020-12-05 17:56:55', '2020-12-05 17:56:55');
+(104, 5, 3, 1, 0, '2020-12-05 17:56:55', '2020-12-05 17:56:55'),
+(105, 5, 0, 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(106, 5, 0, 1, 0, '2020-12-07 15:21:54', '2020-12-07 15:21:54'),
+(107, 5, 2, 1, 0, '2020-12-07 17:22:55', '2020-12-07 17:22:55'),
+(108, 5, 0, 1, 0, '2020-12-07 17:41:42', '2020-12-07 17:41:42'),
+(109, 5, 0, 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(110, 5, 0, 1, 0, '2020-12-07 18:49:45', '2020-12-07 18:49:45'),
+(111, 5, 0, 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(112, 5, 2, 1, 0, '2020-12-07 20:39:23', '2020-12-07 20:39:23'),
+(113, 5, 2, 1, 0, '2020-12-07 21:17:24', '2020-12-07 21:17:24'),
+(114, 5, 2, 1, 0, '2020-12-08 09:55:09', '2020-12-08 09:55:09'),
+(115, 5, 3, 1, 0, '2020-12-08 09:57:46', '2020-12-08 09:57:46'),
+(116, 5, 2, 1, 0, '2020-12-08 12:41:55', '2020-12-08 12:41:55'),
+(117, 5, 2, 1, 0, '2020-12-08 12:49:08', '2020-12-08 12:49:08'),
+(118, 5, 2, 1, 0, '2020-12-08 13:23:03', '2020-12-08 13:23:03'),
+(119, 5, 2, 1, 0, '2020-12-08 14:45:52', '2020-12-08 14:45:52'),
+(120, 5, 3, 1, 0, '2020-12-08 15:46:48', '2020-12-08 15:46:48'),
+(121, 5, 3, 1, 0, '2020-12-08 16:41:46', '2020-12-08 16:41:46'),
+(122, 5, 3, 1, 0, '2020-12-08 16:59:09', '2020-12-08 16:59:09'),
+(123, 5, 0, 1, 0, '2020-12-08 17:51:16', '2020-12-08 17:51:16'),
+(124, 5, 0, 1, 0, '2020-12-08 18:13:15', '2020-12-08 18:13:15'),
+(125, 5, 0, 1, 0, '2020-12-08 18:33:55', '2020-12-08 18:33:55');
 
 -- --------------------------------------------------------
 
@@ -511,7 +532,81 @@ INSERT INTO `application_remarks` (`id`, `app_id`, `dept_id`, `sub_dept_id`, `us
 (93, 100, 5, 1, 25, 22, 'approved by health officer', 0, 81, 1, 0, '2020-12-05 11:09:47', '2020-12-05 11:09:47'),
 (94, 101, 5, 1, 24, 3, 'Approved by the Clerk and submitted to Ward B ', 0, 16, 1, 0, '2020-12-05 11:17:28', '2020-12-05 11:17:28'),
 (95, 104, 5, 1, 24, 3, 'Sonam sharma application has been approved', 0, 16, 1, 0, '2020-12-05 18:00:31', '2020-12-05 18:00:31'),
-(96, 104, 5, 1, 25, 22, 'asdasdasd', 0, 81, 1, 0, '2020-12-05 18:02:27', '2020-12-05 18:02:27');
+(96, 104, 5, 1, 25, 22, 'asdasdasd', 0, 81, 1, 0, '2020-12-05 18:02:27', '2020-12-05 18:02:27'),
+(97, 105, 5, 1, 24, 3, 'This application is verified by the clerk test', 0, 16, 1, 0, '2020-12-07 14:56:01', '2020-12-07 14:56:01'),
+(99, 106, 5, 1, 24, 3, 'check ward', 0, 16, 1, 0, '2020-12-07 15:22:59', '2020-12-07 15:22:59'),
+(100, 105, 5, 1, 25, 22, 'Approved by the Health Officer test ', 0, 81, 1, 0, '2020-12-07 15:47:41', '2020-12-07 15:47:41'),
+(104, 105, 5, 1, 26, 23, 'Approved by the Junior Doctor Test ', 0, 83, 1, 0, '2020-12-07 16:19:39', '2020-12-07 16:19:39'),
+(105, 105, 5, 1, 27, 24, 'Approved ', 0, 85, 1, 0, '2020-12-07 16:20:23', '2020-12-07 16:20:23'),
+(107, 107, 5, 1, 24, 3, 'Approved by the Clerk test for clinic ', 0, 16, 1, 0, '2020-12-07 17:24:50', '2020-12-07 17:24:50'),
+(108, 107, 5, 1, 25, 22, 'Approved by the Health Officer Clinic Test ', 0, 81, 1, 0, '2020-12-07 17:25:55', '2020-12-07 17:25:55'),
+(109, 108, 5, 1, 24, 3, 'Hospital Approved by the clerk test ', 0, 16, 1, 0, '2020-12-07 17:42:42', '2020-12-07 17:42:42'),
+(110, 108, 5, 1, 25, 22, 'Approved by the Health Officer Test ', 0, 81, 1, 0, '2020-12-07 17:43:50', '2020-12-07 17:43:50'),
+(111, 84, 5, 1, 24, 3, 'sadasdas asdasdsad', 0, 16, 1, 0, '2020-12-07 17:45:09', '2020-12-07 17:45:09'),
+(112, 84, 5, 1, 25, 22, 'sadasdasd', 0, 81, 1, 0, '2020-12-07 17:46:26', '2020-12-07 17:46:26'),
+(113, 108, 5, 1, 26, 23, 'Approved by the Junior Officer test ', 0, 83, 1, 0, '2020-12-07 17:47:24', '2020-12-07 17:47:24'),
+(114, 108, 5, 1, 27, 24, 'Approved by the Senior test ', 0, 85, 1, 0, '2020-12-07 17:48:11', '2020-12-07 17:48:11'),
+(115, 109, 5, 1, 24, 3, 'asdasdas asdasdsad', 0, 16, 1, 0, '2020-12-07 17:58:21', '2020-12-07 17:58:21'),
+(116, 109, 5, 1, 25, 22, 'asdasdad', 0, 81, 1, 0, '2020-12-07 17:59:14', '2020-12-07 17:59:14'),
+(117, 109, 5, 1, 26, 23, 'asdasdasd', 0, 83, 1, 0, '2020-12-07 18:01:03', '2020-12-07 18:01:03'),
+(118, 109, 5, 1, 27, 24, 'asdas dasdasdasd', 0, 85, 1, 0, '2020-12-07 18:01:44', '2020-12-07 18:01:44'),
+(119, 109, 5, 1, 27, 24, 'sadasdasd', 0, 85, 1, 0, '2020-12-07 18:02:02', '2020-12-07 18:02:02'),
+(120, 110, 5, 1, 24, 3, 'asdas asdasdas asdsad', 0, 16, 1, 0, '2020-12-07 18:50:19', '2020-12-07 18:50:19'),
+(121, 110, 5, 1, 25, 22, 'asdsa asdasd', 0, 81, 1, 0, '2020-12-07 18:51:08', '2020-12-07 18:51:08'),
+(122, 111, 5, 1, 24, 3, 'asdsa sadsad asdsad', 0, 16, 1, 0, '2020-12-07 19:31:43', '2020-12-07 19:31:43'),
+(123, 111, 5, 1, 25, 22, 'Approved by ho', 0, 81, 1, 0, '2020-12-07 19:32:32', '2020-12-07 19:32:32'),
+(124, 111, 5, 1, 26, 23, 'asdas asdsad', 0, 83, 1, 0, '2020-12-07 20:01:20', '2020-12-07 20:01:20'),
+(125, 111, 5, 1, 27, 24, 'asdasdad', 0, 85, 1, 0, '2020-12-07 20:08:41', '2020-12-07 20:08:41'),
+(126, 111, 5, 1, 27, 24, 'adasdaada', 0, 85, 1, 0, '2020-12-07 20:09:55', '2020-12-07 20:09:55'),
+(127, 112, 5, 1, 24, 3, 'Hello world', 0, 16, 1, 0, '2020-12-07 20:40:17', '2020-12-07 20:40:17'),
+(128, 112, 5, 1, 25, 22, 'Approved', 0, 81, 1, 0, '2020-12-07 20:41:10', '2020-12-07 20:41:10'),
+(129, 112, 5, 1, 26, 23, 'sada sdasdasd', 0, 83, 1, 0, '2020-12-07 20:44:51', '2020-12-07 20:44:51'),
+(130, 112, 5, 1, 26, 23, 'asdasdasdasdasdasdasdasd', 0, 83, 1, 0, '2020-12-07 20:57:17', '2020-12-07 20:57:17'),
+(131, 112, 5, 1, 26, 23, 'asdasdsa', 0, 83, 1, 0, '2020-12-07 20:57:27', '2020-12-07 20:57:27'),
+(132, 112, 5, 1, 27, 24, 'final approvel', 0, 85, 1, 0, '2020-12-07 20:57:59', '2020-12-07 20:57:59'),
+(133, 113, 5, 1, 24, 3, 'sadsad sadasd sadsad', 0, 16, 1, 0, '2020-12-07 21:18:32', '2020-12-07 21:18:32'),
+(134, 113, 5, 1, 25, 22, 'sdas adasdas', 0, 81, 1, 0, '2020-12-07 21:20:56', '2020-12-07 21:20:56'),
+(135, 113, 5, 1, 26, 23, 'asdasda adadasd', 0, 83, 1, 0, '2020-12-07 21:35:16', '2020-12-07 21:35:16'),
+(136, 113, 5, 1, 27, 24, 'adasdasdasd', 0, 85, 1, 0, '2020-12-07 21:35:46', '2020-12-07 21:35:46'),
+(137, 115, 5, 1, 24, 3, 'Approved', 0, 16, 1, 0, '2020-12-08 09:58:18', '2020-12-08 09:58:18'),
+(138, 115, 5, 1, 25, 22, 'adadasdasd', 0, 81, 1, 0, '2020-12-08 09:58:58', '2020-12-08 09:58:58'),
+(139, 115, 5, 1, 26, 23, 'hgjgjgjgjgjhg', 0, 83, 1, 0, '2020-12-08 10:01:07', '2020-12-08 10:01:07'),
+(140, 115, 5, 1, 27, 24, 'fhfh fhgfhg', 0, 85, 1, 0, '2020-12-08 10:01:30', '2020-12-08 10:01:30'),
+(141, 113, 5, 1, 27, 24, 'adadasdasd', 0, 85, 1, 0, '2020-12-08 11:00:40', '2020-12-08 11:00:40'),
+(142, 116, 5, 1, 24, 3, 'Approved by the clerk ', 0, 16, 1, 0, '2020-12-08 12:44:01', '2020-12-08 12:44:01'),
+(143, 116, 5, 1, 25, 22, 'Approved ', 0, 81, 1, 0, '2020-12-08 12:45:03', '2020-12-08 12:45:03'),
+(144, 114, 5, 1, 24, 3, 'adas asdasd', 0, 16, 1, 0, '2020-12-08 13:05:42', '2020-12-08 13:05:42'),
+(145, 117, 5, 1, 24, 3, 'Approved test', 0, 16, 1, 0, '2020-12-08 13:10:30', '2020-12-08 13:10:30'),
+(146, 117, 5, 1, 25, 22, 'Approvd test ', 0, 81, 1, 0, '2020-12-08 13:12:28', '2020-12-08 13:12:28'),
+(147, 117, 5, 1, 26, 23, 'Approved by the Junior Doctor ', 0, 83, 1, 0, '2020-12-08 13:17:18', '2020-12-08 13:17:18'),
+(148, 117, 5, 1, 27, 24, 'Approved by senior doctor ', 0, 85, 1, 0, '2020-12-08 13:18:05', '2020-12-08 13:18:05'),
+(149, 118, 5, 1, 24, 3, 'Approved test ', 0, 16, 1, 0, '2020-12-08 13:25:35', '2020-12-08 13:25:35'),
+(150, 118, 5, 1, 25, 22, 'Approved test for renewal', 0, 81, 1, 0, '2020-12-08 13:27:50', '2020-12-08 13:27:50'),
+(151, 114, 5, 1, 25, 22, 'asdadasdasd', 0, 81, 1, 0, '2020-12-08 13:51:19', '2020-12-08 13:51:19'),
+(152, 119, 5, 1, 24, 3, 'Approved by the clerk ', 0, 16, 1, 0, '2020-12-08 14:47:14', '2020-12-08 14:47:14'),
+(153, 119, 5, 1, 25, 22, 'Approved by the medical officer ', 0, 81, 1, 0, '2020-12-08 14:48:09', '2020-12-08 14:48:09'),
+(154, 119, 5, 1, 26, 23, 'Approved test ', 0, 83, 1, 0, '2020-12-08 15:15:54', '2020-12-08 15:15:54'),
+(155, 119, 5, 1, 27, 24, 'Approved ', 0, 85, 1, 0, '2020-12-08 15:16:35', '2020-12-08 15:16:35'),
+(156, 120, 5, 1, 24, 3, 'Approved for Lab ', 0, 16, 1, 0, '2020-12-08 15:51:16', '2020-12-08 15:51:16'),
+(157, 120, 5, 1, 25, 22, 'DGHSFGHKJFHSLJK', 0, 81, 1, 0, '2020-12-08 15:52:12', '2020-12-08 15:52:12'),
+(158, 121, 5, 1, 24, 3, 'bcbhfdbfdb', 0, 16, 1, 0, '2020-12-08 16:42:12', '2020-12-08 16:42:12'),
+(159, 121, 5, 1, 25, 22, 'xvdgdsgsdb', 0, 81, 1, 0, '2020-12-08 16:42:48', '2020-12-08 16:42:48'),
+(160, 122, 5, 1, 24, 3, 'GFJHGCKJS,SD', 0, 16, 1, 0, '2020-12-08 16:59:45', '2020-12-08 16:59:45'),
+(161, 122, 5, 1, 25, 22, 'zvcxcvx', 0, 81, 1, 0, '2020-12-08 17:00:29', '2020-12-08 17:00:29'),
+(162, 97, 5, 1, 24, 3, 'Accepted CL', 0, 16, 1, 0, '2020-12-08 17:14:47', '2020-12-08 17:14:47'),
+(163, 123, 5, 1, 24, 3, 'WARD B ', 0, 16, 1, 0, '2020-12-08 17:54:40', '2020-12-08 17:54:40'),
+(164, 123, 5, 1, 25, 22, 'SDSHDJHD', 0, 81, 1, 0, '2020-12-08 17:57:32', '2020-12-08 17:57:32'),
+(165, 124, 5, 1, 24, 3, 'fdhgdfhrh', 0, 16, 1, 0, '2020-12-08 18:13:42', '2020-12-08 18:13:42'),
+(166, 124, 5, 1, 25, 22, 'hgjmgfjkfkj', 0, 81, 1, 0, '2020-12-08 18:15:24', '2020-12-08 18:15:24'),
+(167, 124, 5, 1, 26, 23, 'dgdfhd', 0, 83, 1, 0, '2020-12-08 18:23:32', '2020-12-08 18:23:32'),
+(168, 124, 5, 1, 27, 24, 'xdfbgvdf', 0, 85, 1, 0, '2020-12-08 18:24:11', '2020-12-08 18:24:11'),
+(169, 124, 5, 1, 27, 24, 'xdfbgvdf', 0, 85, 1, 0, '2020-12-08 18:24:31', '2020-12-08 18:24:31'),
+(170, 115, 5, 1, 27, 24, 'asdasdasd asdsadsad', 0, 85, 1, 0, '2020-12-08 18:30:30', '2020-12-08 18:30:30'),
+(171, 125, 5, 1, 24, 3, 'Approved ', 0, 16, 1, 0, '2020-12-08 18:36:56', '2020-12-08 18:36:56'),
+(172, 125, 5, 1, 25, 22, 'sdfggfh', 0, 81, 1, 0, '2020-12-08 18:37:57', '2020-12-08 18:37:57'),
+(173, 125, 5, 1, 26, 23, 'ukhjk', 0, 83, 1, 0, '2020-12-08 18:39:48', '2020-12-08 18:39:48'),
+(174, 125, 5, 1, 27, 24, 'jukyikyi', 0, 85, 1, 0, '2020-12-08 18:40:04', '2020-12-08 18:40:04'),
+(175, 125, 5, 1, 27, 24, 'jukyikyi', 0, 85, 1, 0, '2020-12-08 18:40:19', '2020-12-08 18:40:19');
 
 -- --------------------------------------------------------
 
@@ -1287,7 +1382,9 @@ INSERT INTO `app_status_level` (`status_id`, `dept_id`, `role_id`, `status_title
 (93, 15, 26, 'Approved ', 1, 0, 1, 0, 0, '2020-12-04 17:33:09', '2020-12-04 17:33:09'),
 (94, 15, 26, 'Approved ', 0, 0, 1, 0, 0, '2020-12-04 17:34:30', '2020-12-04 17:34:30'),
 (95, 15, 26, 'Approved by $*%##', 1, 0, 1, 0, 0, '2020-12-04 18:07:33', '2020-12-04 18:07:33'),
-(96, 15, 26, '                                                                    ', 1, 0, 1, 0, 0, '2020-12-04 18:10:28', '2020-12-04 18:10:28');
+(96, 15, 26, '                                                                    ', 1, 0, 1, 0, 0, '2020-12-04 18:10:28', '2020-12-04 18:10:28'),
+(97, 12, 3, 'Approved by the Clerk', 1, 0, 1, 0, 0, '2020-12-08 10:37:39', '2020-12-08 10:37:39'),
+(98, 0, 0, 'Rejected by the Clerk', 1, 0, 1, 0, 0, '2020-12-08 10:37:51', '2020-12-08 10:37:51');
 
 -- --------------------------------------------------------
 
@@ -1743,7 +1840,178 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `token`, `login_time`, `ip_address
 (426, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-05 18:06:27'),
 (427, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-05 19:20:11'),
 (428, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-05 19:20:49'),
-(429, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-05 19:48:40');
+(429, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-05 19:48:40'),
+(430, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-05 20:36:54'),
+(431, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-05 20:42:04'),
+(432, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 12:32:16'),
+(433, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 12:32:33'),
+(434, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 13:01:31'),
+(435, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 13:03:56'),
+(436, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 14:53:41'),
+(437, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 14:53:49'),
+(438, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 14:55:09'),
+(439, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 14:56:34'),
+(440, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 14:57:05'),
+(441, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 14:57:31'),
+(442, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:00:17'),
+(443, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:01:52'),
+(444, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:02:19'),
+(445, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:02:49'),
+(446, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:08:01'),
+(447, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:10:08'),
+(448, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:18:37'),
+(449, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:21:36'),
+(450, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:22:32'),
+(451, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:23:11'),
+(452, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:39:33'),
+(453, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 15:40:45'),
+(454, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 15:42:44'),
+(455, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 15:44:49'),
+(456, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 15:44:52'),
+(457, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 15:47:20'),
+(458, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 15:49:52'),
+(459, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 15:51:29'),
+(460, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 16:07:37'),
+(461, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 16:08:14'),
+(462, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 16:09:55'),
+(463, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 16:10:13'),
+(464, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 16:10:43'),
+(465, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 16:11:07'),
+(466, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 16:19:12'),
+(467, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 16:20:07'),
+(468, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 16:44:48'),
+(469, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 16:47:22'),
+(470, 37, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjM3Iiwicm9sZV9pZCI6IjI2Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6ImFiY0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6ImFiYyIsInVzZXJfbW9iaWxlIjoiMTIzNDU2Nzg5OCIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkTzNrN2hiYm9MbW', '2020-12-04 17:31:22', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 16:48:15'),
+(471, 37, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjM3Iiwicm9sZV9pZCI6IjI2Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6ImFiY0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6ImFiYyIsInVzZXJfbW9iaWxlIjoiMTIzNDU2Nzg5OCIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkTzNrN2hiYm9MbW', '2020-12-04 17:31:22', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 16:49:20'),
+(472, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:15:49'),
+(473, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:17:51'),
+(474, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:24:18'),
+(475, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:25:15'),
+(476, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:26:57'),
+(477, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:27:21'),
+(478, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:40:54'),
+(479, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:42:53'),
+(480, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:43:05'),
+(481, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:44:14'),
+(482, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:45:24'),
+(483, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:46:17'),
+(484, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:46:41'),
+(485, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:46:59'),
+(486, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:47:33'),
+(487, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-07 17:47:53'),
+(488, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:48:58'),
+(489, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:49:28'),
+(490, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:52:07'),
+(491, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:52:27'),
+(492, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:52:41'),
+(493, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:55:35'),
+(494, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:58:07'),
+(495, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:58:41'),
+(496, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 17:59:25'),
+(497, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 18:00:52'),
+(498, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 18:01:17'),
+(499, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 18:48:22'),
+(500, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 18:49:57'),
+(501, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 18:50:30'),
+(502, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 18:51:32'),
+(503, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 19:21:01'),
+(504, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 19:31:30'),
+(505, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 19:31:59'),
+(506, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 19:33:17'),
+(507, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:01:06'),
+(508, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:03:46'),
+(509, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:30:25'),
+(510, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:30:26'),
+(511, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:40:01'),
+(512, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:40:38'),
+(513, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:41:32'),
+(514, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:44:40'),
+(515, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:47:13'),
+(516, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 20:57:39'),
+(517, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 21:13:28'),
+(518, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 21:18:02'),
+(519, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 21:18:53'),
+(520, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 21:21:43'),
+(521, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 21:35:03'),
+(522, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-07 21:35:36'),
+(523, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 09:52:09'),
+(524, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 09:55:47'),
+(525, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 09:56:22'),
+(526, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 09:58:03'),
+(527, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 09:58:33'),
+(528, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 09:59:11'),
+(529, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 09:59:25'),
+(530, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 10:00:55'),
+(531, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 10:01:19'),
+(532, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 10:04:26'),
+(533, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-08 10:29:03'),
+(534, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-08 10:34:23'),
+(535, 38, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjM4Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiY2xlcmttbmRhcEB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6IkhhcnJ5IiwidXNlcl9tb2JpbGUiOiI1NjU2NTY1NjU2IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcmQiOiIkMmEkMDgkZH', '2020-12-08 10:42:29', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-08 10:43:41'),
+(536, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 10:51:13');
+INSERT INTO `auth_sessions` (`id`, `user_id`, `token`, `login_time`, `ip_address`, `browser`, `browser_version`, `os`, `created_at`) VALUES
+(537, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 12:37:02'),
+(538, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 12:43:42'),
+(539, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 12:44:24'),
+(540, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 12:46:40'),
+(541, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 12:49:50'),
+(542, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 12:53:52'),
+(543, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 12:59:02'),
+(544, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:01:17'),
+(545, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:02:22'),
+(546, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:03:38'),
+(547, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:05:56'),
+(548, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:06:18'),
+(549, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:07:59'),
+(550, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:10:08'),
+(551, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:10:53'),
+(552, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:12:52'),
+(553, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:13:14'),
+(554, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:16:28'),
+(555, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:17:41'),
+(556, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:25:17'),
+(557, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:25:56'),
+(558, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 13:28:13'),
+(559, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:32:07'),
+(560, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:32:29'),
+(561, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:50:45'),
+(562, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 13:51:48'),
+(563, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 14:47:37'),
+(564, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 14:48:34'),
+(565, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 15:08:55'),
+(566, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 15:15:38'),
+(567, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 15:16:20'),
+(568, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 15:47:55'),
+(569, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 15:51:33'),
+(570, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 16:29:37'),
+(571, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 16:36:20'),
+(572, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 16:36:57'),
+(573, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 16:42:29'),
+(574, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 16:43:43'),
+(575, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 17:00:18'),
+(576, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 17:04:37'),
+(577, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 17:07:36'),
+(578, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 17:15:33'),
+(579, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 17:24:08'),
+(580, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 17:36:19'),
+(581, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:10:01'),
+(582, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:14:02'),
+(583, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:14:41'),
+(584, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:15:13'),
+(585, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:15:35'),
+(586, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.135', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-08 18:17:43'),
+(587, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:23:19'),
+(588, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:23:54'),
+(589, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 18:29:57'),
+(590, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:31:13'),
+(591, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:35:39'),
+(592, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:37:15'),
+(593, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:38:04'),
+(594, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:39:15'),
+(595, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:39:36'),
+(596, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:39:53'),
+(597, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:46:03'),
+(598, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 19:10:19'),
+(599, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 20:23:45');
 
 -- --------------------------------------------------------
 
@@ -1768,6 +2036,7 @@ CREATE TABLE `clinic_applications` (
   `bio_medical_certificate` int(11) NOT NULL DEFAULT '0',
   `doc_certificate` int(11) NOT NULL,
   `aadhaar_card` int(11) NOT NULL DEFAULT '0',
+  `user_image` int(11) NOT NULL DEFAULT '0',
   `bio_medical_valid_date` date DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `is_deleted` tinyint(1) NOT NULL,
@@ -1776,15 +2045,25 @@ CREATE TABLE `clinic_applications` (
   `user_id` int(11) NOT NULL,
   `application_type` int(11) NOT NULL COMMENT '1 = new application , 2 = renewal application',
   `health_officer` int(11) NOT NULL DEFAULT '0',
-  `cold_chain_facilities` text NOT NULL
+  `cold_chain_facilities` text NOT NULL,
+  `no_of_expiry_certificate` varchar(255) DEFAULT NULL,
+  `date_of_expiry_certificate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clinic_applications`
 --
 
-INSERT INTO `clinic_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_qualification`, `clinic_name`, `clinic_address`, `clinic_telephone_no`, `ownership_agreement`, `tax_receipt`, `bio_medical_certificate`, `doc_certificate`, `aadhaar_card`, `bio_medical_valid_date`, `status`, `is_deleted`, `created_at`, `updated_at`, `user_id`, `application_type`, `health_officer`, `cold_chain_facilities`) VALUES
-(1, 103, 'Roshni Patel', 'roshnipatel@yopmail.com', '7896541235', '7896541235', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness', 'Eiusmod amet cumque', 'Roshni Patel', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness', '7896541235', 345, 358, 348, 357, 349, '2020-12-10', 0, 0, '2020-12-05 17:55:44', '0000-00-00 00:00:00', 23, 1, 0, 'Accusantium molestia');
+INSERT INTO `clinic_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_qualification`, `clinic_name`, `clinic_address`, `clinic_telephone_no`, `ownership_agreement`, `tax_receipt`, `bio_medical_certificate`, `doc_certificate`, `aadhaar_card`, `user_image`, `bio_medical_valid_date`, `status`, `is_deleted`, `created_at`, `updated_at`, `user_id`, `application_type`, `health_officer`, `cold_chain_facilities`, `no_of_expiry_certificate`, `date_of_expiry_certificate`) VALUES
+(1, 103, 'Roshni Patel', 'roshnipatel@yopmail.com', '7896541235', '7896541235', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness', 'Eiusmod amet cumque', 'Roshni Patel', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness', '7896541235', 345, 358, 348, 357, 349, 0, '2020-12-10', 0, 0, '2020-12-05 17:55:44', '0000-00-00 00:00:00', 23, 1, 0, 'Accusantium molestia', NULL, NULL),
+(2, 107, 'Tom ', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'New Address ', 'MBBS', 'New Mumbai ', 'New Address ', '02226231322', 371, 372, 374, 373, 375, 0, '0000-00-00', 81, 0, '2020-12-07 17:22:55', '2020-12-07 17:25:56', 22, 1, 3, '', NULL, NULL),
+(3, 112, 'Hayfa Ware', 'cadaboz@yopmail.com', 'Veniam recu', 'Quam qui elit iusto', 'Quam voluptatem Eni', 'Ipsum in amet sed ', 'Kelly Harrison', 'Lorem qui quae unde ', '+1 (879) 457-6253', 396, 397, 399, 398, 400, 0, '2020-12-23', 85, 0, '2020-12-07 20:39:23', '2020-12-07 20:57:59', 23, 2, 3, 'Aliqua Ut dolore se', NULL, NULL),
+(4, 113, 'testamount', 'testamount@yopmail.com', 'Sapiente et', 'Mollit culpa nisi en', 'Facere quisquam cum ', 'Iusto natus rerum do', 'testamount', 'Excepteur sunt harum', '+1 (857) 949-1468', 401, 402, 404, 403, 405, 459, '2020-12-29', 85, 0, '2020-12-07 21:17:24', '2020-12-08 11:00:40', 23, 2, 3, 'Et eligendi ullamco ', '123456', '2020-12-23'),
+(5, 114, 'Hell bond hacker', 'hellbondhacker@yopmail.com', '+1 (121) 86', '+1 (121) 866-7891', 'Consequat Earum non', 'CEH', 'Hellbondhacker', 'Illum reprehenderit', '+1 (121) 866-7891', 406, 407, 409, 408, 410, 458, '2020-12-16', 81, 0, '2020-12-08 09:55:09', '2020-12-08 13:51:19', 23, 1, 3, 'Tenetur sed repellen', NULL, NULL),
+(6, 116, 'Tom', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'Unit-906 9th Floor, DLH Park, SV Rd, Rani Sati Nagar, Sunder Nagar, Malad West, Mumbai, Maharashtra 400064 India.\r\njuhu', 'mbbs', 'Test Dispensary ', 'Unit-906 9th Floor, DLH Park, SV Rd, Rani Sati Nagar, Sunder Nagar, Malad West, Mumbai, Maharashtra 400064 India.\r\n\r\n', '1234567890', 416, 417, 419, 418, 420, 0, '0000-00-00', 81, 0, '2020-12-08 12:41:55', '2020-12-08 12:45:03', 22, 1, 3, '', NULL, NULL),
+(7, 117, 'Harry', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'Unit-906 9th Floor, DLH Park, SV Rd, Rani Sati Nagar, Sunder Nagar, Malad West, Mumbai, Maharashtra 400064 India.\r\njuhu\r\n', 'MBBs', 'Harry', 'Unit-906 9th Floor, DLH Park, SV Rd, Rani Sati Nagar, Sunder Nagar, Malad West, Mumbai, Maharashtra 400064 India.\r\n\r\n', '12345678', 421, 422, 424, 423, 425, 0, '0000-00-00', 85, 0, '2020-12-08 12:49:08', '2020-12-08 13:18:05', 22, 1, 3, '', NULL, NULL),
+(8, 118, 'Harry ', 'suman.katimani@aaravsoftware.com', '1234567890', '', 'bgdfhdghdfgudifuh;sdfojbh', 'MBBS', 'Dr. Harry ', 'dhfjgfkhgklhjljhklgj', '1234567890', 426, 427, 429, 428, 430, 0, '0000-00-00', 81, 0, '2020-12-08 13:23:03', '2020-12-08 13:27:50', 22, 2, 3, '', 'MH/THN/MBMC/19', '2020-12-08'),
+(9, 119, 'Nick', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'Unit-906 9th Floor, DLH Park, SV Rd, Rani Sati Nagar, Sunder Nagar, Malad West, Mumbai, Maharashtra 400064 India.\r\n\r\njuhu ', 'MBBS', 'Harry ', 'Unit-906 9th Floor, DLH Park, SV Rd, Rani Sati Nagar, Sunder Nagar, Malad West, Mumbai, Maharashtra 400064 India.\r\n\r\n', '123456789', 431, 432, 434, 433, 435, 0, '0000-00-00', 85, 0, '2020-12-08 14:45:52', '2020-12-08 15:16:35', 22, 2, 3, '', 'MH/THN/2020/19', '2020-12-08');
 
 -- --------------------------------------------------------
 
@@ -1807,19 +2086,30 @@ CREATE TABLE `clinic_staff` (
 --
 
 INSERT INTO `clinic_staff` (`id`, `app_id`, `sr_number_clinic_Staff`, `name_clinic_Staff`, `designation_clinic_Staff`, `qualification_clinic_Staff`, `created_at`) VALUES
-(23, 2, 345, 'Ashton Mcgowan', 3, '2', '2020-12-04 14:54:19'),
-(24, 2, 345, 'Ashton Mcgowan', 3, '1', '2020-12-04 14:54:19'),
-(25, 3, 84, 'Tanner Fry', 5, '3', '2020-12-04 14:57:33'),
-(26, 3, 474, 'Calvin Kidd', 3, '2', '2020-12-04 14:57:33'),
-(27, 3, 705, 'Tamara Lindsey', 5, '3', '2020-12-04 14:57:33'),
-(28, 3, 856, 'Darryl Tillman', 5, '4', '2020-12-04 14:57:33'),
-(29, 3, 734, 'George Manning', 5, '1', '2020-12-04 14:57:33'),
-(35, 4, 69, 'Omar Phelps', 6, '3', '2020-12-05 05:43:48'),
 (46, 1, 281, 'Odessa Fox', 3, '3', '2020-12-05 14:30:49'),
 (47, 1, 470, 'Nerea Lewis', 4, '4', '2020-12-05 14:30:49'),
 (48, 1, 505, 'Lani Munoz', 5, '3', '2020-12-05 14:30:49'),
 (49, 1, 577, 'Alexandra Edwards', 5, '2', '2020-12-05 14:30:49'),
-(50, 1, 941, 'Ursa Riley', 2, '2', '2020-12-05 14:30:49');
+(50, 1, 941, 'Ursa Riley', 2, '2', '2020-12-05 14:30:49'),
+(51, 2, 1, 'Bob', 6, '3', '2020-12-07 11:52:56'),
+(57, 3, 611, 'Minerva Weiss', 2, '4', '2020-12-07 15:09:31'),
+(58, 3, 443, 'Ava Francis', 1, '1', '2020-12-07 15:09:31'),
+(59, 3, 612, 'Howard Wiley', 1, '2', '2020-12-07 15:09:31'),
+(60, 3, 450, 'Ina Dawson', 5, '3', '2020-12-07 15:09:31'),
+(61, 3, 136, 'Bevis Whitaker', 3, '1', '2020-12-07 15:09:31'),
+(83, 6, 1, 'Tom', 1, '1', '2020-12-08 07:11:55'),
+(84, 7, 1, 'Harry', 1, '1', '2020-12-08 07:19:08'),
+(85, 8, 1, 'Harry', 1, '1', '2020-12-08 07:53:03'),
+(86, 9, 1, 'Nick', 1, '1', '2020-12-08 09:15:52'),
+(122, 5, 249, 'Kyle Haley', 4, '1', '2020-12-08 12:27:39'),
+(123, 5, 45, 'Kristen Morris', 5, '1', '2020-12-08 12:27:39'),
+(124, 5, 791, 'Ayanna Malone', 4, '3', '2020-12-08 12:27:39'),
+(125, 5, 901, 'Keely Bates', 4, '1', '2020-12-08 12:27:39'),
+(126, 5, 877, 'Penelope Nash', 5, '2', '2020-12-08 12:27:39'),
+(127, 4, 289, 'Hop Vargas', 6, '1', '2020-12-08 12:39:48'),
+(128, 4, 24, 'Tanner Cross', 2, '3', '2020-12-08 12:39:48'),
+(129, 4, 427, 'Karleigh Gray', 4, '1', '2020-12-08 12:39:48'),
+(130, 4, 15, 'Tatum Drake', 3, '2', '2020-12-08 12:39:48');
 
 -- --------------------------------------------------------
 
@@ -2018,14 +2308,14 @@ INSERT INTO `department_table` (`dept_id`, `dept_title`, `department_mail_id`, `
 (2, 'Storage', '', 'Storage department', 2, 1, '2020-03-21 00:00:00', '2020-03-30 12:27:28'),
 (3, 'Garden', 'garden@yopmail.com', 'Tree', 1, 0, '2020-03-23 14:02:44', '2020-11-27 16:37:16'),
 (4, 'Tree Cutting', '', 'Tree', 2, 1, '2020-03-23 14:03:41', '2020-06-01 09:09:22'),
-(5, 'Medical', 'Medical@yopmail.com', 'medical Health ', 1, 0, '2020-03-30 12:27:12', '2020-12-04 17:55:09'),
+(5, 'Medical', 'Medical@yopmail.com', 'medical Health ', 1, 0, '2020-03-30 12:27:12', '2020-12-07 17:18:56'),
 (6, 'Hall', '', 'hall', 1, 0, '2020-04-04 11:19:06', '2020-04-04 11:22:48'),
 (7, 'trade', '', 'Trade Fact lic', 1, 0, '2020-04-15 14:02:44', '2020-04-15 14:02:44'),
 (8, 'godown', '', 'Godown Lic', 1, 0, '2020-04-15 14:02:44', '2020-04-15 14:02:44'),
 (9, 'film', '', 'Film Lic', 1, 0, '2020-04-15 14:02:44', '2020-04-15 14:02:44'),
 (10, 'templic', '', 'Temporary Lic', 1, 0, '2020-04-15 14:02:44', '2020-04-15 14:02:44'),
 (11, 'advertisement', '', 'advertisement', 1, 0, '2020-05-08 00:00:00', '2020-08-28 07:44:59'),
-(12, 'Mandap', '', 'Mandap', 1, 0, '2020-07-17 00:00:00', '2020-07-17 00:00:00'),
+(12, 'Mandap', 'mandap@yopmail.com', 'Mandap', 1, 0, '2020-07-17 00:00:00', '2020-12-08 10:41:48'),
 (13, 'Marriage', '', 'Marriage', 1, 0, '2020-07-17 00:00:00', '2020-07-17 00:00:00'),
 (14, 'Head', '', 'Head Department', 1, 0, '2020-09-10 09:14:50', '2020-09-10 09:14:50'),
 (15, 'Test_Medical', 'test@abc.com', 'medical health department', 1, 0, '2020-12-04 17:29:13', '2020-12-05 18:35:47');
@@ -2371,10 +2661,6 @@ INSERT INTO `hospital_alien` (`id`, `app_id`, `name`, `age`, `qualification`, `n
 (3, 1, 'Alisa Strong', 69, 'Enim qui adipisci ne', 'Culpa earum aut moll'),
 (4, 1, 'Xaviera Pate', 65, 'Qui quia esse recus', 'Sunt neque recusanda'),
 (5, 1, 'Luke Chavez', 28, 'Distinctio Nemo aut', 'Minima repudiandae o'),
-(22, 3, 'Reed Sanchez', 8, 'Et accusantium liber', 'Necessitatibus disti'),
-(23, 3, 'Jane Strickland', 41, 'Et nulla laudantium', 'Vero in do reiciendi'),
-(24, 3, 'Kyra Sampson', 3, 'Qui exercitation lor', 'Dolor adipisci volup'),
-(25, 3, 'Levi Carr', 70, 'Eos enim magnam ver', 'Molestiae sint omnis'),
 (58, 4, 'Alice Vaughn', 84, 'Modi minim culpa qu', 'Rerum reprehenderit'),
 (59, 4, 'Louis Clay', 89, 'Doloremque sint et ', 'Ratione autem impedi'),
 (60, 4, 'Breanna Olson', 71, 'Officiis non earum d', 'Iste sit et non ips'),
@@ -2391,7 +2677,27 @@ INSERT INTO `hospital_alien` (`id`, `app_id`, `name`, `age`, `qualification`, `n
 (86, 2, 'Hoyt Sherman', 32, 'In deleniti reiciend', 'Doloribus magnam dol'),
 (87, 2, 'Ivor Short', 40, 'Modi cillum rerum se', 'Autem voluptatem sed'),
 (88, 2, 'Kimberley Gregory', 93, 'Amet mollitia odit ', 'Aut praesentium ut o'),
-(89, 2, 'Kareem Meyer', 3, 'Et inventore non con', 'Quos rerum quis illu');
+(89, 2, 'Kareem Meyer', 3, 'Et inventore non con', 'Quos rerum quis illu'),
+(90, 10, 'Isaiah Montgomery', 27, 'Officiis voluptatem', 'Tenetur incididunt f'),
+(91, 3, 'Reed Sanchez', 8, 'Et accusantium liber', 'Necessitatibus disti'),
+(92, 3, 'Jane Strickland', 41, 'Et nulla laudantium', 'Vero in do reiciendi'),
+(93, 3, 'Kyra Sampson', 3, 'Qui exercitation lor', 'Dolor adipisci volup'),
+(94, 3, 'Levi Carr', 70, 'Eos enim magnam ver', 'Molestiae sint omnis'),
+(96, 12, 'Ella Wolfe', 78, 'Nisi labore architec', 'Minim est et archite'),
+(102, 13, 'Jelani Hicks', 86, 'Sapiente velit exce', 'Quas dolore quam ips'),
+(103, 13, 'Rama Chapman', 67, 'Animi esse numquam ', 'Tempora mollit velit'),
+(104, 13, 'Armando Diaz', 74, 'Amet quos adipisci ', 'Quos ratione adipisc'),
+(105, 13, 'Curran Lambert', 18, 'Dolor magni ex quis ', 'Nihil aliqua Aliqui'),
+(106, 13, 'Melinda Boyle', 66, 'Sit accusamus tempo', 'Alias est adipisicin'),
+(107, 14, '', 0, '', ''),
+(112, 15, 'Iola Vinson', 89, 'Molestias veniam su', 'Dolor neque ab est '),
+(113, 15, 'Jessamine Knowles', 15, 'Deleniti ut quo est', 'Sequi harum corporis'),
+(114, 15, 'Melodie Miranda', 73, 'Accusamus minim amet', 'Soluta quo in accusa'),
+(115, 15, 'Basia Newman', 28, 'Eum consectetur sin', 'Velit eiusmod tempo'),
+(117, 11, 'Sonia Bowman', 43, 'Cillum id blanditiis', 'Consectetur in dolo'),
+(120, 16, '', 0, '', ''),
+(121, 17, '', 0, '', ''),
+(122, 18, '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -2441,22 +2747,32 @@ CREATE TABLE `hospital_applications` (
   `proportion_of_qualified` varchar(255) DEFAULT NULL,
   `promise` int(11) NOT NULL DEFAULT '0',
   `no_of_expiry_certificate` varchar(255) DEFAULT NULL,
-  `date_of_expiry_certificate` varchar(255) DEFAULT NULL
+  `date_of_expiry_certificate` varchar(255) DEFAULT NULL,
+  `unregisterd_medical` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hospital_applications`
 --
 
-INSERT INTO `hospital_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_nationality`, `technical_qualification`, `hospital_name`, `hospital_address`, `others`, `maternity_beds`, `patient_beds`, `ownership_agreement`, `tax_receipt`, `doc_certificate`, `reg_certificate`, `staff_certificate`, `arrangement_for_checkup`, `nursing_staff_deg_certificate`, `nursing_staff_reg_certificate`, `bio_des_certificate`, `society_noc`, `fire_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `situation_registration`, `user_id`, `application_type`, `health_officer`, `detail_arrange_sanitary_employee`, `detail_arrange_sanitary_patients`, `storage_arrangements`, `other_business_address`, `accomodation`, `proportion_of_qualified`, `promise`, `no_of_expiry_certificate`, `date_of_expiry_certificate`) VALUES
-(1, 82, 'Anjolie James', 'hamiq@yopmail.com', '89', '54', 'Labore consequuntur ', 'Ex consequa', 'Provident ex deleni', 'Gage Cross', 'Sit non neque vitae ', 'Optio placeat illo', '145', '321', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:28:08', '2020-12-02 18:37:58', 'Est dolore deserunt', 23, 1, 0, 'Perferendis perferen', 'Non cumque itaque ut', 'Quia saepe quibusdam', 'Consectetur sit si', 'Deserunt ullam qui i', NULL, 0, NULL, NULL),
-(2, 83, 'Maxine Rice', 'gizu@yopmail.com', '3216547895', '3216547895', 'Veritatis hic dolor ', 'Aliquid ill', 'Culpa esse autem te', 'Aut et molestiae qua', 'Aut et molestiae qua', 'Duis cillum consequa', '791', '411', 355, 356, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:37:58', '2020-12-02 18:37:58', 'Dolor id nisi culpa ', 23, 1, 0, 'Voluptates consequun', 'In et quis beatae ni', 'Totam exercitationem', 'Ducimus reiciendis ', 'Deleniti at eius ess', '', 0, NULL, NULL),
-(3, 84, 'Jeenal patel test', 'jeenalpatel@yopmail.com', '7896541235', '7896541235', 'Ullamco iure porro v', 'Atque sit a', 'Cupiditate nisi cons', 'Provident aliquip e', 'Provident aliquip e', 'Aut ipsam aliquid at', '341', '277', 0, 0, 0, 0, 0, 'asdasdas', 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:42:38', '2020-12-02 18:37:58', 'Quam iusto officia d', 23, 1, 0, 'Nostrum unde enim an', 'Sed odio sit sed vol', 'Quae impedit vitae ', 'Possimus rem conseq', 'Dolores cumque quod ', '0', 1, NULL, NULL),
-(4, 85, 'Ankita patel', 'ankitapatel@yopmail.com', '7896541234', '7896541234', 'Eiusmod culpa conseq', 'Minus ex in', 'Dolore exercitatione', 'Accusantium ad sed q', 'Accusantium ad sed q', 'Aut occaecat perspic', '996', '360', 257, 258, 259, 260, 261, 'Nesciunt alias anim', 0, 0, 0, 0, 262, 0, 0, '2020-12-03 11:32:54', '2020-12-02 18:37:58', 'Qui ullamco qui quae', 23, 1, 0, 'Quae explicabo Cons', 'Ratione optio labor', 'Minus aliquam nihil ', 'Eu ipsum voluptatem', 'Dolores sapiente deb', '0', 1, NULL, NULL),
-(5, 86, 'rashmi khan', 'rashmikhan@yopmail.com', '7896543215', '7896543215', 'Ex aliquam eveniet ', 'Numquam inv', 'Sit sint magna lab', 'Labore incididunt vo', 'Labore incididunt vo', 'Pariatur Ut omnis e', '293', '601', 263, 264, 265, 266, 267, 'Corporis libero lore', 268, 269, 270, 273, 272, 0, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49', 'Consequatur similiq', 23, 1, 0, 'Molestiae est commod', 'Quisquam elit aut l', 'Provident maiores d', 'Ea non qui dolore el', 'Dolores est voluptat', '0', 1, NULL, NULL),
-(6, 89, 'Nick', 'smn101296@gmail.com', '1234567890', '0987654321', 'Juhu', 'Indian', 'qualification ', 'ABC Nursing Home ', 'Mumbai', 'NA', '5', '5', 0, 0, 0, 0, 0, 'On the ground floor ', 0, 0, 0, 0, 0, 0, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00', 'Home branch mumbai ', 22, 2, 0, '3', '5', 'in the kitchen ', '', 'NA', '', 0, '', ''),
-(7, 97, 'Kim Hanson', 'suman.kattimani@aaravsoftware.com', '83', '96', 'Qui suscipit reicien', 'Et ut in do', 'Ut autem ut est ad q', 'Aurelia Hill', 'Tenetur enim dolorem', 'Dolorem doloremque e', '337', '50', 304, 305, 306, 307, 308, 'Laborum est reprehe', 309, 310, 311, 312, 313, 0, 0, '2020-12-04 17:15:59', '0000-00-00 00:00:00', 'Pariatur Aute elit', 22, 1, 0, 'Sequi odio minim min', 'Cupiditate consequun', 'Qui fuga Ipsa reru', 'Veniam consectetur ', 'Facilis quia asperio', 'Eveniet maxime volu', 1, NULL, NULL),
-(8, 100, 'Gil Randall', 'suman.kattimani@aaravsoftware.com', '71', '8', 'Fugiat voluptas impe', 'Vitae inven', 'Voluptatem Ipsam mi', 'Minim error minim al', 'Minim error minim al', 'Suscipit excepturi d', '740', '396', 330, 331, 332, 333, 334, 'Qui eum aliquip faci', 335, 336, 337, 338, 339, 81, 0, '2020-12-05 10:43:10', '2020-12-05 11:09:47', 'Aliquip qui qui quia', 22, 1, 3, 'Ex ea illo id aspern', 'Nesciunt quia quaer', 'Ab perferendis aut a', 'Delectus eiusmod si', 'Ut voluptas id ex vo', 'Quia magna sunt id ', 1, NULL, NULL);
+INSERT INTO `hospital_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_nationality`, `technical_qualification`, `hospital_name`, `hospital_address`, `others`, `maternity_beds`, `patient_beds`, `ownership_agreement`, `tax_receipt`, `doc_certificate`, `reg_certificate`, `staff_certificate`, `arrangement_for_checkup`, `nursing_staff_deg_certificate`, `nursing_staff_reg_certificate`, `bio_des_certificate`, `society_noc`, `fire_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `situation_registration`, `user_id`, `application_type`, `health_officer`, `detail_arrange_sanitary_employee`, `detail_arrange_sanitary_patients`, `storage_arrangements`, `other_business_address`, `accomodation`, `proportion_of_qualified`, `promise`, `no_of_expiry_certificate`, `date_of_expiry_certificate`, `unregisterd_medical`) VALUES
+(1, 82, 'Anjolie James', 'hamiq@yopmail.com', '89', '54', 'Labore consequuntur ', 'Ex consequa', 'Provident ex deleni', 'Gage Cross', 'Sit non neque vitae ', 'Optio placeat illo', '145', '321', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:28:08', '2020-12-02 18:37:58', 'Est dolore deserunt', 23, 1, 0, 'Perferendis perferen', 'Non cumque itaque ut', 'Quia saepe quibusdam', 'Consectetur sit si', 'Deserunt ullam qui i', NULL, 0, NULL, NULL, NULL),
+(2, 83, 'Maxine Rice', 'gizu@yopmail.com', '3216547895', '3216547895', 'Veritatis hic dolor ', 'Aliquid ill', 'Culpa esse autem te', 'Aut et molestiae qua', 'Aut et molestiae qua', 'Duis cillum consequa', '791', '411', 355, 356, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:37:58', '2020-12-02 18:37:58', 'Dolor id nisi culpa ', 23, 1, 0, 'Voluptates consequun', 'In et quis beatae ni', 'Totam exercitationem', 'Ducimus reiciendis ', 'Deleniti at eius ess', '', 0, NULL, NULL, NULL),
+(3, 84, 'Jeenal patel test', 'jeenalpatel@yopmail.com', '7896541235', '7896541235', 'Ullamco iure porro v', 'Atque sit a', 'Cupiditate nisi cons', 'Provident aliquip e', 'Provident aliquip e', 'Aut ipsam aliquid at', '341', '277', 369, 370, 0, 0, 0, 'asdasdas', 0, 0, 0, 0, 0, 81, 0, '2020-12-02 18:42:38', '2020-12-07 17:46:26', 'Quam iusto officia d', 23, 1, 3, 'Nostrum unde enim an', 'Sed odio sit sed vol', 'Quae impedit vitae ', 'Possimus rem conseq', 'Dolores cumque quod ', '0', 1, NULL, NULL, 'No'),
+(4, 85, 'Ankita patel', 'ankitapatel@yopmail.com', '7896541234', '7896541234', 'Eiusmod culpa conseq', 'Minus ex in', 'Dolore exercitatione', 'Accusantium ad sed q', 'Accusantium ad sed q', 'Aut occaecat perspic', '996', '360', 257, 258, 259, 260, 261, 'Nesciunt alias anim', 0, 0, 0, 0, 262, 0, 0, '2020-12-03 11:32:54', '2020-12-02 18:37:58', 'Qui ullamco qui quae', 23, 1, 0, 'Quae explicabo Cons', 'Ratione optio labor', 'Minus aliquam nihil ', 'Eu ipsum voluptatem', 'Dolores sapiente deb', '0', 1, NULL, NULL, NULL),
+(5, 86, 'rashmi khan', 'rashmikhan@yopmail.com', '7896543215', '7896543215', 'Ex aliquam eveniet ', 'Numquam inv', 'Sit sint magna lab', 'Labore incididunt vo', 'Labore incididunt vo', 'Pariatur Ut omnis e', '293', '601', 263, 264, 265, 266, 267, 'Corporis libero lore', 268, 269, 270, 273, 272, 0, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49', 'Consequatur similiq', 23, 1, 0, 'Molestiae est commod', 'Quisquam elit aut l', 'Provident maiores d', 'Ea non qui dolore el', 'Dolores est voluptat', '0', 1, NULL, NULL, NULL),
+(6, 89, 'Nick', 'smn101296@gmail.com', '1234567890', '0987654321', 'Juhu', 'Indian', 'qualification ', 'ABC Nursing Home ', 'Mumbai', 'NA', '5', '5', 0, 0, 0, 0, 0, 'On the ground floor ', 0, 0, 0, 0, 0, 0, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00', 'Home branch mumbai ', 22, 2, 0, '3', '5', 'in the kitchen ', '', 'NA', '', 0, '', '', NULL),
+(7, 97, 'Kim Hanson', 'suman.kattimani@aaravsoftware.com', '83', '96', 'Qui suscipit reicien', 'Et ut in do', 'Ut autem ut est ad q', 'Aurelia Hill', 'Tenetur enim dolorem', 'Dolorem doloremque e', '337', '50', 304, 305, 306, 307, 308, 'Laborum est reprehe', 309, 310, 311, 312, 313, 16, 0, '2020-12-04 17:15:59', '2020-12-08 17:14:47', 'Pariatur Aute elit', 22, 1, 3, 'Sequi odio minim min', 'Cupiditate consequun', 'Qui fuga Ipsa reru', 'Veniam consectetur ', 'Facilis quia asperio', 'Eveniet maxime volu', 1, NULL, NULL, NULL),
+(8, 100, 'Gil Randall', 'suman.kattimani@aaravsoftware.com', '71', '8', 'Fugiat voluptas impe', 'Vitae inven', 'Voluptatem Ipsam mi', 'Minim error minim al', 'Minim error minim al', 'Suscipit excepturi d', '740', '396', 330, 331, 332, 333, 334, 'Qui eum aliquip faci', 335, 336, 337, 338, 339, 81, 0, '2020-12-05 10:43:10', '2020-12-05 11:09:47', 'Aliquip qui qui quia', 22, 1, 3, 'Ex ea illo id aspern', 'Nesciunt quia quaer', 'Ab perferendis aut a', 'Delectus eiusmod si', 'Ut voluptas id ex vo', 'Quia magna sunt id ', 1, NULL, NULL, NULL),
+(10, 105, 'Odysseus Ball', 'suman.kattimani@aaravsoftware.com', '97', '72', 'Esse voluptate vita', 'Magni aliqu', 'Asperiores et cillum', 'Sophia Hoover', 'Reiciendis non culpa', 'Molestiae culpa del', '988', '708', 359, 360, 361, 362, 363, 'Vero omnis cumque ex', 364, 365, 366, 367, 368, 85, 0, '2020-12-07 14:51:17', '2020-12-07 16:20:23', 'Est quia magni amet', 22, 1, 3, 'Molestiae in quae ei', 'Adipisci voluptatem ', 'Minus debitis itaque', 'Delectus totam dolo', 'Ut odio laudantium ', 'Incididunt iure et r', 1, NULL, NULL, 'Yes'),
+(11, 106, 'Abdul Maldonado', 'suman.kattimani@aaravsoftware.com', '31', '55', 'Voluptates voluptas ', 'Qui cumque ', 'Explicabo In placea', 'Quibusdam possimus ', 'Quibusdam possimus ', 'Voluptates aut sed s', '372', '784', 0, 0, 0, 0, 0, 'Atque voluptate moll', 0, 0, 0, 0, 0, 16, 0, '2020-12-07 15:21:54', '2020-12-07 15:23:00', 'Voluptatem Molestia', 23, 1, 3, 'Fugit sequi consect', 'Ullamco quis laudant', 'Quaerat perferendis ', 'Natus ipsum distinct', 'Minus amet ut repel', 'Aut fugiat quo sit e', 1, NULL, NULL, 'No'),
+(12, 108, 'Brittany Cobb', 'suman.kattimani@aaravsoftware.com', '38', '65', 'Reprehenderit ut am', 'Dolorem sun', 'Modi quo pariatur I', 'Kirsten Shelton', 'Eum consectetur qua', 'Qui nesciunt simili', '38', '102', 0, 0, 0, 0, 0, 'Incidunt placeat e', 0, 0, 0, 0, 0, 85, 0, '2020-12-07 17:41:42', '2020-12-07 17:48:11', 'Eos et tempore bla', 22, 1, 3, 'Qui ex sint non quis', 'Esse sunt qui id eu', 'Obcaecati omnis poss', '', 'Ut consequat Eiusmo', 'Earum expedita asper', 0, NULL, NULL, 'Yes'),
+(13, 109, 'Hello world', 'helloworld@yopmail.com', '7896541235', '7896541235', 'Doloremque molestiae', 'Temporibus ', 'Consectetur molesti', 'Nisi exercitation ex', 'Nisi exercitation ex', 'Voluptatem molestiae', '989', '888', 376, 377, 378, 379, 380, 'Aut alias commodi nu', 381, 382, 383, 384, 385, 85, 0, '2020-12-07 17:56:52', '2020-12-07 18:02:02', 'Nam aliqua Autem al', 23, 1, 3, 'Labore sunt adipisic', 'Maxime quaerat minus', 'Asperiores unde inci', 'Consequatur deserun', 'Aut laudantium natu', 'Reprehenderit proid', 1, NULL, NULL, 'Yes'),
+(14, 110, 'Kylan Adkins', 'lynyvo@yopmail.com', '7896541235', '7896541235', 'Aspernatur tempore ', 'Natus elit ', 'Suscipit dolorum vel', 'Libby Marsh', 'Ipsa quibusdam Nam ', 'Fugiat dolor veniam', '827', '734', 0, 0, 0, 0, 0, 'Sequi maiores eiusmo', 0, 0, 0, 0, 0, 81, 0, '2020-12-07 18:49:45', '2020-12-07 18:51:08', 'Architecto suscipit ', 23, 2, 3, 'Iure esse fugiat f', 'Animi iure nemo et ', 'Quas enim sed incidi', 'Exercitation sunt i', 'Dolore earum vel des', 'Magni est quia beat', 1, NULL, NULL, 'No'),
+(15, 111, 'Data testing', 'testingtesting@yopmail.com', '7896541235', '7896541235', 'Autem vel totam quia', 'Ea non non ', 'Nihil ea omnis eos v', 'Suscipit debitis dui', 'Suscipit debitis dui', 'In aut placeat nisi', '588', '453', 386, 387, 388, 389, 390, 'Iusto sit amet occ', 391, 392, 393, 394, 395, 85, 0, '2020-12-07 19:25:29', '2020-12-07 20:09:55', 'Culpa laboris offic', 23, 2, 3, 'Sit corporis est om', 'Animi et culpa aut ', 'Quis molestias fuga', 'Alias non iste tempo', 'Ad voluptatem cupidi', 'Nobis nesciunt vel ', 1, '123456', '2020-6-13', 'Yes'),
+(16, 123, 'Alice', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'aLICE CARE', 'Andheri west', 'NA', '3', '7', 0, 0, 0, 0, 0, 'IN THE OPD AT 1ST FLOOR ', 0, 0, 0, 0, 0, 81, 0, '2020-12-08 17:51:16', '2020-12-08 17:57:32', 'andheri west', 24, 2, 3, '1', '3', 'NA', '', 'na', '', 1, 'MH/THN/MBMC/2017/30 ', '2020-11-08', 'No'),
+(17, 124, 'Harry ', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'Harry care ', 'andheri west ', 'fhfjfj', 'dfhfh', 'fghfdg', 0, 0, 0, 0, 0, 'bdfgnfgnf', 0, 0, 0, 0, 0, 85, 0, '2020-12-08 18:13:15', '2020-12-08 18:24:31', 'na', 22, 1, 3, 'fh', 'hf', 'ghfh', '', 'gfhfdhgdf', '', 0, NULL, NULL, 'No'),
+(18, 125, 'Dhyey', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'Dhyey care', 'andheri west ', 'na', '0', '10', 0, 0, 0, 0, 0, 'na', 0, 0, 0, 0, 0, 85, 0, '2020-12-08 18:33:55', '2020-12-08 18:40:19', 'hgulkjlk', 22, 1, 3, '2', '2', '', '', 'fds', 'fg', 0, NULL, NULL, 'No');
 
 -- --------------------------------------------------------
 
@@ -2481,10 +2797,6 @@ INSERT INTO `hospital_fee_charges` (`id`, `app_id`, `sr_no`, `service`, `charges
 (2, 1, 663, 'Sunt quis accusamus', 3),
 (3, 1, 399, 'Ab dicta illum volu', 69),
 (4, 1, 169, 'Aliqua Aliquam dolo', 87),
-(21, 3, 927, 'Quia libero sit dol', 13),
-(22, 3, 404, 'Doloremque quae et f', 73),
-(23, 3, 317, 'Laudantium dolorum ', 2),
-(24, 3, 911, 'Impedit doloribus d', 8),
 (57, 4, 812, 'In voluptatem Aut a', 51),
 (58, 4, 179, 'Assumenda non labore', 72),
 (59, 4, 71, 'Cumque dolor sunt a', 12),
@@ -2500,7 +2812,23 @@ INSERT INTO `hospital_fee_charges` (`id`, `app_id`, `sr_no`, `service`, `charges
 (82, 2, 184, 'Nisi quae consectetu', 12),
 (83, 2, 89, 'Laboris repudiandae ', 51),
 (84, 2, 47, 'Eiusmod velit a fug', 58),
-(85, 2, 196, 'Et voluptatibus nequ', 53);
+(85, 2, 196, 'Et voluptatibus nequ', 53),
+(86, 10, 578, 'Ea ad repudiandae au', 38),
+(87, 3, 927, 'Quia libero sit dol', 13),
+(88, 3, 404, 'Doloremque quae et f', 73),
+(89, 3, 317, 'Laudantium dolorum ', 2),
+(90, 3, 911, 'Impedit doloribus d', 8),
+(92, 12, 823, 'Ex nisi ut laudantiu', 65),
+(97, 13, 317, 'Aut quidem est ea m', 55),
+(98, 13, 389, 'Voluptatem neque imp', 69),
+(99, 13, 544, 'Veniam sunt distinc', 5),
+(100, 13, 357, 'Culpa est ipsa temp', 39),
+(101, 14, 893, 'Laboris praesentium ', 79),
+(103, 15, 161, 'Consequat Quisquam ', 45),
+(105, 11, 318, 'Laborum eaque et eli', 17),
+(108, 16, 1, 'OPD Charges ', 100),
+(109, 17, 34, 'redgd', 3535353),
+(110, 18, 1, 'dfgds', 100);
 
 -- --------------------------------------------------------
 
@@ -2525,10 +2853,6 @@ INSERT INTO `hospital_florespace_for_bedrooms` (`id`, `app_id`, `floor_number`, 
 (2, 1, '852', 54, 523),
 (3, 1, '507', 98, 871),
 (4, 1, '101', 71, 117),
-(21, 3, '632', 81, 218),
-(22, 3, '289', 93, 790),
-(23, 3, '838', 47, 913),
-(24, 3, '89', 4, 43),
 (65, 4, '558', 22, 739),
 (66, 4, '315', 96, 220),
 (67, 4, '299', 63, 484),
@@ -2547,7 +2871,27 @@ INSERT INTO `hospital_florespace_for_bedrooms` (`id`, `app_id`, `floor_number`, 
 (95, 2, '863', 19, 492),
 (96, 2, '55', 47, 721),
 (97, 2, '505', 61, 883),
-(98, 2, '683', 76, 985);
+(98, 2, '683', 76, 985),
+(99, 10, '424', 3, 5),
+(100, 3, '632', 81, 218),
+(101, 3, '289', 93, 790),
+(102, 3, '838', 47, 913),
+(103, 3, '89', 4, 43),
+(105, 12, '510', 89, 30),
+(110, 13, '360', 81, 95),
+(111, 13, '303', 37, 885),
+(112, 13, '116', 59, 305),
+(113, 13, '537', 19, 44),
+(114, 14, '354', 92, 373),
+(120, 15, '954', 36, 124),
+(121, 15, '949', 92, 368),
+(122, 15, '45', 41, 848),
+(123, 15, '267', 58, 650),
+(124, 15, '337', 28, 368),
+(126, 11, '139', 19, 382),
+(129, 16, '1', 3, 10),
+(130, 17, '2', 2, 10),
+(131, 18, '1', 2, 10);
 
 -- --------------------------------------------------------
 
@@ -2573,10 +2917,6 @@ INSERT INTO `hospital_florespace_for_kitchen` (`id`, `app_id`, `room_name`, `flo
 (2, 1, 'Ronan Woodward', 'Rina Bennett', '75', 1),
 (3, 1, 'Zahir Gonzales', 'Clare Carson', '59', 2),
 (4, 1, 'Leah Hurst', 'Cathleen Good', '97', 1),
-(21, 3, 'Regina Valentine', 'Regina Valentine', '30', 1),
-(22, 3, 'Todd Mcclain', 'Todd Mcclain', '59', 1),
-(23, 3, 'Clare Cote', 'Clare Cote', '85', 1),
-(24, 3, 'Bertha Phelps', 'Bertha Phelps', '14', 1),
 (65, 4, 'Ori Kent', 'Ori Kent', '85', 2),
 (66, 4, 'Forrest Combs', 'Forrest Combs', '63', 1),
 (67, 4, 'Nayda Workman', 'Nayda Workman', '22', 1),
@@ -2595,7 +2935,28 @@ INSERT INTO `hospital_florespace_for_kitchen` (`id`, `app_id`, `room_name`, `flo
 (95, 2, 'Carl Mckinney', 'Carl Mckinney', '53', 2),
 (96, 2, 'Cyrus Schneider', 'Cyrus Schneider', '38', 2),
 (97, 2, 'Yoshi Lloyd', 'Yoshi Lloyd', '18', 1),
-(98, 2, 'Beatrice Parsons', 'Beatrice Parsons', '75', 2);
+(98, 2, 'Beatrice Parsons', 'Beatrice Parsons', '75', 2),
+(99, 10, 'Shelby Booker', 'Kadeem Mueller', '17', 1),
+(100, 3, 'Regina Valentine', 'Regina Valentine', '30', 1),
+(101, 3, 'Todd Mcclain', 'Todd Mcclain', '59', 1),
+(102, 3, 'Clare Cote', 'Clare Cote', '85', 1),
+(103, 3, 'Bertha Phelps', 'Bertha Phelps', '14', 1),
+(105, 12, 'Suki Miranda', 'Gemma Terry', '49', 1),
+(110, 13, 'Vladimir Maxwell', 'Vladimir Maxwell', '54', 2),
+(111, 13, 'Raja Burke', 'Raja Burke', '1', 2),
+(112, 13, 'Barry Noble', 'Barry Noble', '7', 2),
+(113, 13, 'Malachi Walsh', 'Malachi Walsh', '35', 2),
+(114, 14, 'Rhona Powell', 'Slade Edwards', '30', 1),
+(121, 15, 'Jerry Church', 'Jerry Church', '96', 2),
+(122, 15, 'Edward Bowman', 'Edward Bowman', '23', 1),
+(123, 15, 'Christopher Medina', 'Christopher Medina', '77', 1),
+(124, 15, 'Uriah Martinez', 'Uriah Martinez', '68', 2),
+(125, 15, 'Rajah Munoz', 'Rajah Munoz', '36', 1),
+(126, 15, 'Maryam Roy', 'Maryam Roy', '10', 2),
+(128, 11, 'Yoko Rosales', 'Yoko Rosales', '31', 2),
+(131, 16, 'KITCHEN', 'KITCHEN', '100', 2),
+(132, 17, 'cvnvcn', 'vcnvn', '534643', 1),
+(133, 18, 'a', '1', '100', 2);
 
 -- --------------------------------------------------------
 
@@ -2633,7 +2994,29 @@ CREATE TABLE `hospital_inspection_form` (
 --
 
 INSERT INTO `hospital_inspection_form` (`id`, `app_id`, `sub_dept_id`, `doc_degree_certificate`, `doc_reg_mmc`, `bio_medical_valid_date`, `mpcb_certificate_valid_date`, `agreement_copy`, `tax_recipes`, `nursing_certificate`, `noc_from_society`, `noc_from_town_planning_mbmc`, `no_of_beds`, `no_of_toilets`, `noc_from_fire_dept`, `general_observation`, `labour_room_availability`, `created_at`, `updated_at`, `created_by`, `approved_by`, `status`) VALUES
-(9, 104, 3, 1, 1, '2020-12-10', '0000-00-00', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-05 12:32:02', NULL, 25, 0, 1);
+(9, 104, 3, 1, 1, '2020-12-10', '0000-00-00', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-05 12:32:02', NULL, 25, 0, 1),
+(10, 105, 1, 1, 1, '2020-12-07', '2020-12-07', 1, 1, 1, 1, 1, 5, 3, 1, 0, 0, '2020-12-07 10:08:51', NULL, 25, 0, 1),
+(11, 106, 1, 1, 0, '2020-12-15', '2020-12-29', 0, 1, 0, 0, 1, 12, 13, 0, 0, 1, '2020-12-07 10:12:28', NULL, 25, 0, 1),
+(13, 107, 2, 1, 0, '2020-12-07', '0000-00-00', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-07 11:55:32', NULL, 25, 0, 1),
+(14, 108, 1, 1, 1, '2020-12-07', '2020-12-07', 1, 1, 1, 0, 0, 5, 3, 0, 0, 0, '2020-12-07 12:13:29', NULL, 25, 0, 1),
+(16, 84, 1, 0, 0, '2020-12-08', '2020-12-25', 1, 0, 1, 0, 0, 12, 2, 1, 0, 0, '2020-12-07 12:18:30', NULL, 25, 0, 1),
+(17, 109, 1, 1, 0, '2020-12-14', '2020-12-31', 0, 1, 0, 0, 1, 100, 5, 0, 0, 1, '2020-12-07 12:29:01', NULL, 25, 0, 1),
+(18, 110, 1, 1, 1, '2020-12-09', '2020-12-23', 0, 0, 1, 0, 0, 123, 5, 1, 0, 0, '2020-12-07 13:21:00', NULL, 25, 0, 1),
+(19, 111, 1, 1, 0, '2020-12-08', '2020-12-23', 0, 1, 0, 0, 1, 45, 8, 0, 0, 1, '2020-12-07 14:02:53', NULL, 25, 0, 1),
+(20, 112, 2, 1, 1, '2020-12-16', '0000-00-00', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-07 15:10:53', NULL, 25, 0, 1),
+(22, 115, 3, 1, 1, '2020-12-17', '0000-00-00', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 04:28:46', NULL, 25, 0, 1),
+(23, 116, 2, 1, 0, '2020-12-08', '0000-00-00', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 07:14:46', NULL, 25, 0, 1),
+(26, 117, 2, 1, 0, '2020-12-09', '0000-00-00', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 07:41:17', NULL, 25, 0, 1),
+(27, 118, 2, 1, 0, '2020-12-08', '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 07:57:06', NULL, 25, 0, 1),
+(28, 114, 2, 0, 1, '2020-12-17', '0000-00-00', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 08:20:58', NULL, 25, 0, 1),
+(29, 119, 2, 1, 0, '2020-12-08', '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 09:17:51', NULL, 25, 0, 1),
+(30, 120, 3, 0, 0, '2020-12-08', '0000-00-00', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 10:24:08', NULL, 25, 0, 1),
+(31, 121, 3, 1, 0, '2020-12-08', '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 11:12:41', NULL, 25, 0, 1),
+(32, 122, 3, 1, 0, '2020-12-08', '0000-00-00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 11:30:44', NULL, 25, 0, 1),
+(33, 113, 2, 1, 1, '2020-12-23', '0000-00-00', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, '2020-12-08 11:54:23', NULL, 25, 0, 1),
+(34, 123, 1, 1, 0, '2020-12-08', '2020-12-08', 0, 0, 1, 0, 1, 10, 4, 1, 0, 0, '2020-12-08 12:27:19', NULL, 25, 0, 1),
+(35, 124, 1, 1, 0, '2020-12-07', '2020-12-06', 0, 0, 0, 0, 0, 10, 3, 0, 0, 0, '2020-12-08 12:44:31', NULL, 25, 0, 1),
+(36, 125, 1, 1, 0, '2020-04-01', '2020-04-01', 1, 0, 0, 1, 0, 10, 4, 0, 0, 0, '2020-12-08 13:07:38', NULL, 25, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2658,10 +3041,6 @@ INSERT INTO `hospital_midwife` (`id`, `app_id`, `name`, `age`, `qualification`) 
 (2, 1, 'Yvonne Savage', 11, 'Libero amet ut duci'),
 (3, 1, 'Roanna Oconnor', 96, 'Amet ut sint magnam'),
 (4, 1, 'Bo Blevins', 30, 'Qui temporibus nihil'),
-(21, 3, 'Hop Vance', 1, 'Non et sit tempora '),
-(22, 3, 'Zephr Harper', 85, 'Ut quod reprehenderi'),
-(23, 3, 'Sawyer Melendez', 67, 'Neque aperiam alias '),
-(24, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu'),
 (65, 4, 'Jana Eaton', 44, 'Quam Nam facilis rem'),
 (66, 4, 'India Potter', 77, 'Enim sed ullamco et '),
 (67, 4, 'Kadeem Benson', 51, 'Ea vero qui expedita'),
@@ -2679,7 +3058,27 @@ INSERT INTO `hospital_midwife` (`id`, `app_id`, `name`, `age`, `qualification`) 
 (94, 2, 'Cassandra Williams', 43, 'Aliquam eligendi pro'),
 (95, 2, 'Cecilia Welch', 42, 'Maxime eveniet ut c'),
 (96, 2, 'Marvin Miranda', 32, 'Asperiores eligendi '),
-(97, 2, 'Quincy Little', 48, 'Est est deleniti to');
+(97, 2, 'Quincy Little', 48, 'Est est deleniti to'),
+(98, 10, '', 0, ''),
+(99, 3, 'Hop Vance', 1, 'Non et sit tempora '),
+(100, 3, 'Zephr Harper', 85, 'Ut quod reprehenderi'),
+(101, 3, 'Sawyer Melendez', 67, 'Neque aperiam alias '),
+(102, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu'),
+(104, 12, 'Kitra Clarke', 95, 'Qui ea aut ab magnam'),
+(109, 13, 'Ori Foley', 83, 'Sapiente et sapiente'),
+(110, 13, 'Tallulah Fisher', 39, 'Adipisicing et facil'),
+(111, 13, 'Amena Fields', 62, 'Nulla incididunt par'),
+(112, 13, 'Portia Chandler', 74, 'Officia occaecat asp'),
+(113, 14, 'Guy Castro', 53, 'Eius libero recusand'),
+(119, 15, 'Marny Puckett', 10, 'Neque consequatur d'),
+(120, 15, 'Ifeoma Cooley', 91, 'In voluptatem Facil'),
+(121, 15, 'Owen Manning', 92, 'Omnis est magni vero'),
+(122, 15, 'Quamar Knox', 13, 'Odio aut aute ut com'),
+(123, 15, 'Asher Henry', 44, 'Autem enim soluta vo'),
+(125, 11, 'Yoko Rollins', 29, 'Nemo sit eos porro'),
+(128, 16, '', 0, ''),
+(129, 17, '', 0, ''),
+(130, 18, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -2710,10 +3109,6 @@ INSERT INTO `hospital_staff_details` (`id`, `app_id`, `staff_name`, `age`, `desi
 (2, 1, 'Nathan Barlow', '33', 2, NULL, 1, 1, 0, '2020-12-02 18:28:08', '0000-00-00 00:00:00'),
 (3, 1, 'Berk Hall', '74', 6, NULL, 3, 1, 0, '2020-12-02 18:28:08', '0000-00-00 00:00:00'),
 (4, 1, 'Galvin Kim', '25', 4, NULL, 4, 1, 0, '2020-12-02 18:28:08', '0000-00-00 00:00:00'),
-(21, 3, 'Abra Montgomery', '95', 1, NULL, 3, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
-(22, 3, 'Carlos Garcia', '20', 6, NULL, 1, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
-(23, 3, 'Hasad Rivera', '78', 2, NULL, 4, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
-(24, 3, 'Leslie Lawson', '27', 6, NULL, 3, 1, 0, '2020-12-02 20:58:41', '0000-00-00 00:00:00'),
 (65, 4, 'Alexander Quinn', '45', 1, NULL, 4, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
 (66, 4, 'Clio Sanford', '58', 2, NULL, 4, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
 (67, 4, 'Ulric Suarez', '74', 6, NULL, 2, 1, 0, '2020-12-03 15:14:37', '0000-00-00 00:00:00'),
@@ -2733,7 +3128,27 @@ INSERT INTO `hospital_staff_details` (`id`, `app_id`, `staff_name`, `age`, `desi
 (96, 2, 'Marvin Chen', '46', 1, NULL, 3, 1, 0, '2020-12-05 19:59:31', '0000-00-00 00:00:00'),
 (97, 2, 'Rosalyn Holloway', '74', 2, NULL, 3, 1, 0, '2020-12-05 19:59:31', '0000-00-00 00:00:00'),
 (98, 2, 'Aaron Carpenter', '73', 2, NULL, 2, 1, 0, '2020-12-05 19:59:31', '0000-00-00 00:00:00'),
-(99, 2, 'Fay Foley', '98', 1, NULL, 1, 1, 0, '2020-12-05 19:59:31', '0000-00-00 00:00:00');
+(99, 2, 'Fay Foley', '98', 1, NULL, 1, 1, 0, '2020-12-05 19:59:31', '0000-00-00 00:00:00'),
+(100, 10, 'Justina Hancock', '9', 4, NULL, 2, 1, 0, '2020-12-07 14:51:18', '0000-00-00 00:00:00'),
+(101, 3, 'Abra Montgomery', '95', 1, NULL, 3, 1, 0, '2020-12-07 15:19:12', '0000-00-00 00:00:00'),
+(102, 3, 'Carlos Garcia', '20', 6, NULL, 1, 1, 0, '2020-12-07 15:19:12', '0000-00-00 00:00:00'),
+(103, 3, 'Hasad Rivera', '78', 2, NULL, 4, 1, 0, '2020-12-07 15:19:12', '0000-00-00 00:00:00'),
+(104, 3, 'Leslie Lawson', '27', 6, NULL, 3, 1, 0, '2020-12-07 15:19:12', '0000-00-00 00:00:00'),
+(106, 12, 'Kylynn Hebert', '99', 1, NULL, 2, 1, 0, '2020-12-07 17:41:42', '0000-00-00 00:00:00'),
+(111, 13, 'Micah Witt', '16', 1, NULL, 4, 1, 0, '2020-12-07 17:57:25', '0000-00-00 00:00:00'),
+(112, 13, 'Paula Oliver', '85', 3, NULL, 3, 1, 0, '2020-12-07 17:57:25', '0000-00-00 00:00:00'),
+(113, 13, 'Garrison Holmes', '41', 2, NULL, 1, 1, 0, '2020-12-07 17:57:25', '0000-00-00 00:00:00'),
+(114, 13, 'Kimberley Hooper', '31', 1, NULL, 4, 1, 0, '2020-12-07 17:57:25', '0000-00-00 00:00:00'),
+(115, 14, 'Mark Ramos', '56', 6, NULL, 3, 1, 0, '2020-12-07 18:49:45', '0000-00-00 00:00:00'),
+(121, 15, 'Oprah Holden', '61', 5, NULL, 1, 1, 0, '2020-12-07 19:37:12', '0000-00-00 00:00:00'),
+(122, 15, 'Rafael Flynn', '87', 4, NULL, 3, 1, 0, '2020-12-07 19:37:12', '0000-00-00 00:00:00'),
+(123, 15, 'Rhea Prince', '76', 3, NULL, 4, 1, 0, '2020-12-07 19:37:12', '0000-00-00 00:00:00'),
+(124, 15, 'Ruby Randolph', '78', 2, NULL, 3, 1, 0, '2020-12-07 19:37:12', '0000-00-00 00:00:00'),
+(125, 15, 'Anjolie Wright', '5', 1, NULL, 4, 1, 0, '2020-12-07 19:37:12', '0000-00-00 00:00:00'),
+(127, 11, 'Linus Alvarez', '25', 5, NULL, 3, 1, 0, '2020-12-08 17:16:27', '0000-00-00 00:00:00'),
+(130, 16, 'Bob', '23', 1, NULL, 1, 1, 0, '2020-12-08 17:54:10', '0000-00-00 00:00:00'),
+(131, 17, 'hghfg', '44', 1, NULL, 1, 1, 0, '2020-12-08 18:13:15', '0000-00-00 00:00:00'),
+(132, 18, 'dfd', '34', 1, NULL, 1, 1, 0, '2020-12-08 18:33:55', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -2758,10 +3173,6 @@ INSERT INTO `hospital_supervision` (`id`, `app_id`, `name`, `age`, `qualificatio
 (2, 1, 'Ariel Guerra', 46, 'Id nulla rerum aliqu'),
 (3, 1, 'Jessamine Stark', 26, 'Sit veniam non vel'),
 (4, 1, 'Gay Buckner', 21, 'Quo minus architecto'),
-(21, 3, 'Hop Vance', 1, 'Non et sit tempora '),
-(22, 3, 'Zephr Harper', 85, 'Ut quod reprehenderi'),
-(23, 3, 'Sawyer Melendez', 67, 'Neque aperiam alias '),
-(24, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu'),
 (65, 4, 'Jana Eaton', 44, 'Quam Nam facilis rem'),
 (66, 4, 'India Potter', 77, 'Enim sed ullamco et '),
 (67, 4, 'Kadeem Benson', 51, 'Ea vero qui expedita'),
@@ -2779,7 +3190,27 @@ INSERT INTO `hospital_supervision` (`id`, `app_id`, `name`, `age`, `qualificatio
 (94, 2, 'Cassandra Williams', 43, 'Aliquam eligendi pro'),
 (95, 2, 'Cecilia Welch', 42, 'Maxime eveniet ut c'),
 (96, 2, 'Marvin Miranda', 32, 'Asperiores eligendi '),
-(97, 2, 'Quincy Little', 48, 'Est est deleniti to');
+(97, 2, 'Quincy Little', 48, 'Est est deleniti to'),
+(98, 10, 'Blythe Ingram', 79, 'Dolor quibusdam ut d'),
+(99, 3, 'Hop Vance', 1, 'Non et sit tempora '),
+(100, 3, 'Zephr Harper', 85, 'Ut quod reprehenderi'),
+(101, 3, 'Sawyer Melendez', 67, 'Neque aperiam alias '),
+(102, 3, 'Dana Mcmahon', 24, 'Do dolores Nam cumqu'),
+(104, 12, 'Quinlan Richmond', 90, 'Minima est delectus'),
+(109, 13, 'Ori Foley', 83, 'Sapiente et sapiente'),
+(110, 13, 'Tallulah Fisher', 39, 'Adipisicing et facil'),
+(111, 13, 'Amena Fields', 62, 'Nulla incididunt par'),
+(112, 13, 'Portia Chandler', 74, 'Officia occaecat asp'),
+(113, 14, 'Clark Faulkner', 51, 'Obcaecati aut aspern'),
+(119, 15, 'Marny Puckett', 10, 'Neque consequatur d'),
+(120, 15, 'Ifeoma Cooley', 91, 'In voluptatem Facil'),
+(121, 15, 'Owen Manning', 92, 'Omnis est magni vero'),
+(122, 15, 'Quamar Knox', 13, 'Odio aut aute ut com'),
+(123, 15, 'Asher Henry', 44, 'Autem enim soluta vo'),
+(125, 11, 'Yoko Rollins', 29, 'Nemo sit eos porro'),
+(128, 16, '', 0, ''),
+(129, 17, '', 0, ''),
+(130, 18, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -2805,10 +3236,6 @@ INSERT INTO `hospital_surgeon_information` (`id`, `app_id`, `name`, `age`, `qual
 (2, 1, 'Philip Bray', 35, 'Vero enim explicabo', 'Veniam a numquam su'),
 (3, 1, 'Hope Richard', 93, 'Eum incididunt volup', 'Veniam eveniet ad '),
 (4, 1, 'Glenna Delacruz', 61, 'Tempora magna quia d', 'Velit deserunt ut re'),
-(21, 3, 'Akeem Phelps', 58, 'Eum dolore voluptate', 'In ad quo officia qu'),
-(22, 3, 'Merrill Stokes', 63, 'Pariatur Saepe qui ', 'Dolorum quaerat quo '),
-(23, 3, 'Dalton Jensen', 18, 'Qui nulla voluptas i', 'Minim eius atque sus'),
-(24, 3, 'Hayes Simpson', 83, 'Consequatur similiqu', 'Voluptatem iure qua'),
 (65, 4, 'Berk Farmer', 10, 'Est veniam aliquip ', 'Maiores aliquam ipsa'),
 (66, 4, 'Kadeem Duran', 79, 'Dolor id blanditiis', 'Quisquam vero illo d'),
 (67, 4, 'Gavin Horn', 81, 'Aut non dolor eius o', 'Quaerat rerum fugiat'),
@@ -2822,7 +3249,27 @@ INSERT INTO `hospital_surgeon_information` (`id`, `app_id`, `name`, `age`, `qual
 (82, 2, 'Mannix Woodard', 99, 'Rerum eos et ex quo', 'Ullamco consequatur'),
 (83, 2, 'Kaden Harrison', 5, 'Molestias beatae eiu', 'Excepteur omnis tene'),
 (84, 2, 'Risa Colon', 92, 'Fuga Assumenda quas', 'Dolor exercitation s'),
-(85, 2, 'Cassidy Macias', 24, 'Rerum laborum provid', 'Eum minim fugiat lab');
+(85, 2, 'Cassidy Macias', 24, 'Rerum laborum provid', 'Eum minim fugiat lab'),
+(86, 10, 'Stewart Oneill', 58, 'Totam beatae aute en', 'Commodo veritatis si'),
+(87, 3, 'Akeem Phelps', 58, 'Eum dolore voluptate', 'In ad quo officia qu'),
+(88, 3, 'Merrill Stokes', 63, 'Pariatur Saepe qui ', 'Dolorum quaerat quo '),
+(89, 3, 'Dalton Jensen', 18, 'Qui nulla voluptas i', 'Minim eius atque sus'),
+(90, 3, 'Hayes Simpson', 83, 'Consequatur similiqu', 'Voluptatem iure qua'),
+(92, 12, 'Mary Roberson', 44, 'Esse aut voluptate ', 'Autem voluptatibus e'),
+(97, 13, 'Ginger May', 13, 'Mollitia similique o', 'Consequat Impedit '),
+(98, 13, 'Nelle Byrd', 94, 'Ratione laboris rati', 'Porro possimus quis'),
+(99, 13, 'Abigail Carter', 46, 'Labore quod cupidata', 'Sapiente dolore expe'),
+(100, 13, 'Kasper Acosta', 17, 'In nemo harum earum ', 'Nulla incididunt atq'),
+(101, 14, 'Josephine Thomas', 86, 'Officia dolore excep', 'Consectetur ab quos '),
+(107, 15, 'Imelda Roth', 50, 'Molestias dolorem al', 'Vel velit aliquam pe'),
+(108, 15, 'Anika Solis', 12, 'Nostrum nesciunt el', 'Omnis fugit nostrud'),
+(109, 15, 'Jaquelyn Blackwell', 82, 'Quia deserunt ipsam ', 'Ex quo rerum nulla e'),
+(110, 15, 'Violet Lloyd', 77, 'Laborum Ea consequa', 'Saepe delectus pers'),
+(111, 15, 'Kameko Moses', 69, 'Tempora perspiciatis', 'In mollitia rerum su'),
+(113, 11, 'Jana Barlow', 48, 'Possimus non cumque', 'Beatae voluptatibus '),
+(116, 16, 'bob', 23, 'mbbs', 'no'),
+(117, 17, 'ghdfg', 45, 'fdhfg', 'fgds'),
+(118, 18, '1f', 23, 'dfg', 'no');
 
 -- --------------------------------------------------------
 
@@ -3227,7 +3674,110 @@ INSERT INTO `image_details` (`image_id`, `image_name`, `image_enc_name`, `image_
 (355, 'demo18.jpg', 'b0b7d7c62902740e5ee61048145b8381.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/b0b7d7c62902740e5ee61048145b8381.jpg', '135.23', 1, 0, '2020-12-05 19:57:59', '2020-12-05 19:57:59'),
 (356, 'demo16.jpg', '43ca85e403c5b985f13aa8aa46663d9b.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/43ca85e403c5b985f13aa8aa46663d9b.jpg', '134.72', 1, 0, '2020-12-05 19:59:31', '2020-12-05 19:59:31'),
 (357, 'demo8.jpg', 'd3a7c56e969f705dbb5649a7fc7ad430.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/d3a7c56e969f705dbb5649a7fc7ad430.jpg', '160.96', 1, 0, '2020-12-05 20:00:00', '2020-12-05 20:00:00'),
-(358, 'Sanjay_Zamindar_Mumbai_City_7.04_yrs (1).pdf', '80a416f088de79ed1526084af914bf51.pdf', 'http://192.168.1.59/mbmc/uploads/clinic/80a416f088de79ed1526084af914bf51.pdf', '59.11', 1, 0, '2020-12-05 20:00:49', '2020-12-05 20:00:49');
+(358, 'Sanjay_Zamindar_Mumbai_City_7.04_yrs (1).pdf', '80a416f088de79ed1526084af914bf51.pdf', 'http://192.168.1.59/mbmc/uploads/clinic/80a416f088de79ed1526084af914bf51.pdf', '59.11', 1, 0, '2020-12-05 20:00:49', '2020-12-05 20:00:49'),
+(359, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', 'a167b203f6926273564422169199a297.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/a167b203f6926273564422169199a297.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(360, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', '36905025b91caf1a85f857f4fb4090ee.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/36905025b91caf1a85f857f4fb4090ee.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(361, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', '7c424dab432180a57739a8090eb735e8.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/7c424dab432180a57739a8090eb735e8.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(362, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', '97a795d94ab77570bd303e6022214bb2.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/97a795d94ab77570bd303e6022214bb2.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(363, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', '99dc644a14a8c038f5a52c2292f1d682.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/99dc644a14a8c038f5a52c2292f1d682.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(364, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', '64547d7ea5a465afd2cec31d16544cbe.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/64547d7ea5a465afd2cec31d16544cbe.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(365, 'd48dc3cc6014b5186ea723639a45b8b8.pdf', 'a2b2b15a0f81bd048b392dc82a4b73bd.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/a2b2b15a0f81bd048b392dc82a4b73bd.pdf', '305.44', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(366, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', 'b8ad2f7406f808e358f709b45ddf3f99.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/b8ad2f7406f808e358f709b45ddf3f99.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(367, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', 'a2055d0a51ce29293d976c19d516c947.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/a2055d0a51ce29293d976c19d516c947.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(368, '8ada65fd17e7bcd7dbb9a4f0a58af92f.pdf', 'b62216a778858107d5f0bc6d299536e1.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/b62216a778858107d5f0bc6d299536e1.pdf', '2.96', 1, 0, '2020-12-07 14:51:17', '2020-12-07 14:51:17'),
+(369, 'Anurag_Mishra_Mumbai_5.04_yrs.pdf', 'f6c7262f83576d81f82fa1ccf6b8577f.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/f6c7262f83576d81f82fa1ccf6b8577f.pdf', '116.17', 1, 0, '2020-12-07 15:19:11', '2020-12-07 15:19:11'),
+(370, 'Chandra_Prakash__Navi_Mumbai_3.07_yrs (1).pdf', '9e8f0bab6e258be19e58e32cfd8353c6.pdf', 'http://192.168.1.59/mbmc/uploads/hospital/9e8f0bab6e258be19e58e32cfd8353c6.pdf', '640', 1, 0, '2020-12-07 15:19:11', '2020-12-07 15:19:11'),
+(371, 'sample.pdf', 'df7c5b81d08807714e391c5e3f925a3c.pdf', 'http://192.168.1.59/mbmc/uploads/clinic/df7c5b81d08807714e391c5e3f925a3c.pdf', '2.96', 1, 0, '2020-12-07 17:22:55', '2020-12-07 17:22:55'),
+(372, 'sample.pdf', 'defc5d83a44b3b1347a9b08efb4cd8c1.pdf', 'http://192.168.1.59/mbmc/uploads/clinic/defc5d83a44b3b1347a9b08efb4cd8c1.pdf', '2.96', 1, 0, '2020-12-07 17:22:55', '2020-12-07 17:22:55'),
+(373, 'sample.pdf', '76b05b56fa3054a66af5b604bdcb6a63.pdf', 'http://192.168.1.59/mbmc/uploads/clinic/76b05b56fa3054a66af5b604bdcb6a63.pdf', '2.96', 1, 0, '2020-12-07 17:22:55', '2020-12-07 17:22:55'),
+(374, 'sample.pdf', '3bbdb40ea89016caeda91c536971184d.pdf', 'http://192.168.1.59/mbmc/uploads/clinic/3bbdb40ea89016caeda91c536971184d.pdf', '2.96', 1, 0, '2020-12-07 17:22:55', '2020-12-07 17:22:55'),
+(375, 'sample.pdf', 'fdd32da7b2da778d61f9376be7ac52fc.pdf', 'http://192.168.1.59/mbmc/uploads/clinic/fdd32da7b2da778d61f9376be7ac52fc.pdf', '2.96', 1, 0, '2020-12-07 17:22:55', '2020-12-07 17:22:55'),
+(376, '300_9.jpg', '3d0d8c16931a13614d1298f1add58ec9.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/3d0d8c16931a13614d1298f1add58ec9.jpg', '66.84', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(377, '300_9.jpg', '57ef880d6333b1ba3430641150a03f63.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/57ef880d6333b1ba3430641150a03f63.jpg', '66.84', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(378, '300_13.jpg', 'fc60124372108dc3e339625cf2a59f83.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/fc60124372108dc3e339625cf2a59f83.jpg', '108.11', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(379, '300_4.jpg', 'f2f8bab0e33a44acf494e31c124075c5.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/f2f8bab0e33a44acf494e31c124075c5.jpg', '63.73', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(380, '300_5.jpg', 'b0a47c94c1a5478993b1891c1d955693.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/b0a47c94c1a5478993b1891c1d955693.jpg', '96.19', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(381, '300_6.jpg', '30e49f5ad523a35704c1932aef428c78.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/30e49f5ad523a35704c1932aef428c78.jpg', '86.33', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(382, '300_15.jpg', 'f8bf95c7670e46912316a19f72afa118.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/f8bf95c7670e46912316a19f72afa118.jpg', '84.15', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(383, '300_15.jpg', '93b45d8a69dc3141114482d46dd778f2.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/93b45d8a69dc3141114482d46dd778f2.jpg', '84.15', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(384, '300_21.jpg', '3ee0a26cea35189c60c384fd49edf858.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/3ee0a26cea35189c60c384fd49edf858.jpg', '83.2', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(385, '300_21.jpg', '3789172f139561024f9f238eee3e35f2.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/3789172f139561024f9f238eee3e35f2.jpg', '83.2', 1, 0, '2020-12-07 17:56:52', '2020-12-07 17:56:52'),
+(386, '300_11.jpg', 'd1da6dbf309508aa6e600d94936ab060.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/d1da6dbf309508aa6e600d94936ab060.jpg', '80.46', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(387, '300_13.jpg', '7adc44d5602aadc7495600ff4ef63a93.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/7adc44d5602aadc7495600ff4ef63a93.jpg', '108.11', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(388, '300_21.jpg', '252f8fee4b447fcf514015e323848b6f.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/252f8fee4b447fcf514015e323848b6f.jpg', '83.2', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(389, '300_22.jpg', '1ef0aeb08c0c20adceb8eade5f8b2ce3.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/1ef0aeb08c0c20adceb8eade5f8b2ce3.jpg', '92.53', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(390, '300_21.jpg', '6367548ba8c4b45b50d678622694f656.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/6367548ba8c4b45b50d678622694f656.jpg', '83.2', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(391, '300_19.jpg', 'e6bb3bd6b400330c9f40ad7466710b2c.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/e6bb3bd6b400330c9f40ad7466710b2c.jpg', '54.61', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(392, '300_18.jpg', 'faa3a60416f05431a38a1e345c1eccb5.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/faa3a60416f05431a38a1e345c1eccb5.jpg', '55.05', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(393, '300_18.jpg', '3a748f5c4a80826e2c2169822bfd887c.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/3a748f5c4a80826e2c2169822bfd887c.jpg', '55.05', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(394, '300_12.jpg', '9d09d1cb29147823696ef356a7e33e87.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/9d09d1cb29147823696ef356a7e33e87.jpg', '80.58', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(395, '300_12.jpg', 'dc98a33dec76f65ccbb8efa4ce2d22bc.jpg', 'http://192.168.1.59/mbmc/uploads/hospital/dc98a33dec76f65ccbb8efa4ce2d22bc.jpg', '80.58', 1, 0, '2020-12-07 19:25:29', '2020-12-07 19:25:29'),
+(396, '100_14.jpg', '9a39fa9526a9f4ba9a7197a2137297d5.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/9a39fa9526a9f4ba9a7197a2137297d5.jpg', '16.85', 1, 0, '2020-12-07 20:39:23', '2020-12-07 20:39:23'),
+(397, '300_14.jpg', 'b41f55c50cbd167f014ac441f5e53136.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/b41f55c50cbd167f014ac441f5e53136.jpg', '87.93', 1, 0, '2020-12-07 20:39:23', '2020-12-07 20:39:23'),
+(398, '300_11.jpg', '6d4aba1afaf4feba0fcb8483d3566560.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/6d4aba1afaf4feba0fcb8483d3566560.jpg', '80.46', 1, 0, '2020-12-07 20:39:23', '2020-12-07 20:39:23'),
+(399, '300_12.jpg', '826a5ad0979492deb03ddfe5178dacef.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/826a5ad0979492deb03ddfe5178dacef.jpg', '80.58', 1, 0, '2020-12-07 20:39:23', '2020-12-07 20:39:23'),
+(400, '300_15.jpg', '41c07115ec8b7e0d669c142d74ad43fb.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/41c07115ec8b7e0d669c142d74ad43fb.jpg', '84.15', 1, 0, '2020-12-07 20:39:23', '2020-12-07 20:39:23'),
+(401, '300_1.jpg', 'd5dabd6ab864d3c1977a4951d57188b7.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/d5dabd6ab864d3c1977a4951d57188b7.jpg', '83.47', 1, 0, '2020-12-07 21:17:24', '2020-12-07 21:17:24'),
+(402, '300_12.jpg', '5db906eb49b12ac9c6eb2a6318b856b0.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/5db906eb49b12ac9c6eb2a6318b856b0.jpg', '80.58', 1, 0, '2020-12-07 21:17:24', '2020-12-07 21:17:24'),
+(403, '300_3.jpg', 'aded4d602dd4e983642761989d9d6bf3.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/aded4d602dd4e983642761989d9d6bf3.jpg', '80.05', 1, 0, '2020-12-07 21:17:24', '2020-12-07 21:17:24'),
+(404, '300_5.jpg', '89507384726b5ac4306260eb54bc186d.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/89507384726b5ac4306260eb54bc186d.jpg', '96.19', 1, 0, '2020-12-07 21:17:24', '2020-12-07 21:17:24'),
+(405, '100_13.jpg', '3a97bee9cb15d037c9c52202c47aa022.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/3a97bee9cb15d037c9c52202c47aa022.jpg', '17.49', 1, 0, '2020-12-07 21:17:24', '2020-12-07 21:17:24'),
+(406, '300_11.jpg', '74f0719351b065f95359c95712044ae6.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/74f0719351b065f95359c95712044ae6.jpg', '80.46', 1, 0, '2020-12-08 09:55:09', '2020-12-08 09:55:09'),
+(407, '300_13.jpg', 'dad4f534a127dc138ca07b21db5bd9d0.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/dad4f534a127dc138ca07b21db5bd9d0.jpg', '108.11', 1, 0, '2020-12-08 09:55:09', '2020-12-08 09:55:09'),
+(408, '300_22.jpg', '8978b55278a98dc66a52e805cd195ead.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/8978b55278a98dc66a52e805cd195ead.jpg', '92.53', 1, 0, '2020-12-08 09:55:09', '2020-12-08 09:55:09'),
+(409, '300_10.jpg', 'f25930f0e935335ab3ea7c705ddc4a60.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/f25930f0e935335ab3ea7c705ddc4a60.jpg', '75.07', 1, 0, '2020-12-08 09:55:09', '2020-12-08 09:55:09'),
+(410, '300_14.jpg', 'e72db4e302bedc2f3db713b44783571a.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/e72db4e302bedc2f3db713b44783571a.jpg', '87.93', 1, 0, '2020-12-08 09:55:09', '2020-12-08 09:55:09'),
+(411, '100_14.jpg', '67c30e89d3d373b54b5233a49d801480.jpg', 'http://192.168.1.59/mbmc/uploads/lab/67c30e89d3d373b54b5233a49d801480.jpg', '16.85', 1, 0, '2020-12-08 09:57:46', '2020-12-08 09:57:46'),
+(412, '300_13.jpg', 'c24706be9e2e3fba7d490dae6a49bb7e.jpg', 'http://192.168.1.59/mbmc/uploads/lab/c24706be9e2e3fba7d490dae6a49bb7e.jpg', '108.11', 1, 0, '2020-12-08 09:57:46', '2020-12-08 09:57:46'),
+(413, '300_21.jpg', '0965e0ce9afa94c9265f0e2d866bb55c.jpg', 'http://192.168.1.59/mbmc/uploads/lab/0965e0ce9afa94c9265f0e2d866bb55c.jpg', '83.2', 1, 0, '2020-12-08 09:57:46', '2020-12-08 09:57:46'),
+(414, '300_19.jpg', 'f23cddef2245246f8260dbe697dae5bd.jpg', 'http://192.168.1.59/mbmc/uploads/lab/f23cddef2245246f8260dbe697dae5bd.jpg', '54.61', 1, 0, '2020-12-08 09:57:46', '2020-12-08 09:57:46'),
+(415, '300_24.jpg', '40beac3c5801cf95bc30b6bb1fb2708e.jpg', 'http://192.168.1.59/mbmc/uploads/lab/40beac3c5801cf95bc30b6bb1fb2708e.jpg', '51.89', 1, 0, '2020-12-08 09:57:46', '2020-12-08 09:57:46'),
+(416, 'Parvana Blank copy.docx', 'dc1bada175feb1b6ed38cccd0d65725f.docx', 'http://192.168.1.59/mbmc/uploads/clinic/dc1bada175feb1b6ed38cccd0d65725f.docx', '483.72', 1, 0, '2020-12-08 12:41:55', '2020-12-08 12:41:55'),
+(417, 'Parvana Blank copy.docx', '847b92cb345705e16534ff0bd1e8d4ed.docx', 'http://192.168.1.59/mbmc/uploads/clinic/847b92cb345705e16534ff0bd1e8d4ed.docx', '483.72', 1, 0, '2020-12-08 12:41:55', '2020-12-08 12:41:55'),
+(418, 'Parvana Blank copy.docx', 'c4c8ed4e0ba2db0640d91f5433677a4c.docx', 'http://192.168.1.59/mbmc/uploads/clinic/c4c8ed4e0ba2db0640d91f5433677a4c.docx', '483.72', 1, 0, '2020-12-08 12:41:55', '2020-12-08 12:41:55'),
+(419, 'Parvana Blank copy.docx', '5af16ae0b1d34995f151f0d58eb7c420.docx', 'http://192.168.1.59/mbmc/uploads/clinic/5af16ae0b1d34995f151f0d58eb7c420.docx', '483.72', 1, 0, '2020-12-08 12:41:55', '2020-12-08 12:41:55'),
+(420, 'Parvana Blank copy.docx', '52f7b8c81017e1a65cda32318f904be9.docx', 'http://192.168.1.59/mbmc/uploads/clinic/52f7b8c81017e1a65cda32318f904be9.docx', '483.72', 1, 0, '2020-12-08 12:41:55', '2020-12-08 12:41:55'),
+(421, 'Parvana Blank copy.docx', '6d7cd9d3510239f11d87b69f3611c5b8.docx', 'http://192.168.1.59/mbmc/uploads/clinic/6d7cd9d3510239f11d87b69f3611c5b8.docx', '483.72', 1, 0, '2020-12-08 12:49:08', '2020-12-08 12:49:08'),
+(422, 'Parvana Blank copy.docx', '3a2a923be138079df40b2ef8e1db3b89.docx', 'http://192.168.1.59/mbmc/uploads/clinic/3a2a923be138079df40b2ef8e1db3b89.docx', '483.72', 1, 0, '2020-12-08 12:49:08', '2020-12-08 12:49:08'),
+(423, 'Parvana Blank copy.docx', 'b962bdc17787b7c32a41ab62cdb52f89.docx', 'http://192.168.1.59/mbmc/uploads/clinic/b962bdc17787b7c32a41ab62cdb52f89.docx', '483.72', 1, 0, '2020-12-08 12:49:08', '2020-12-08 12:49:08'),
+(424, 'Parvana Blank copy.docx', 'e57c14ead905d375ce0ddaa421d708ab.docx', 'http://192.168.1.59/mbmc/uploads/clinic/e57c14ead905d375ce0ddaa421d708ab.docx', '483.72', 1, 0, '2020-12-08 12:49:08', '2020-12-08 12:49:08'),
+(425, 'Parvana Blank copy.docx', 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'http://192.168.1.59/mbmc/uploads/clinic/ac5fe23863fb6256c30cce06a1ef91fb.docx', '483.72', 1, 0, '2020-12-08 12:49:08', '2020-12-08 12:49:08'),
+(426, 'Parvana Blank copy.docx', 'b4160309d7a68f72d38c3f59b9b0c936.docx', 'http://192.168.1.59/mbmc/uploads/clinic/b4160309d7a68f72d38c3f59b9b0c936.docx', '483.72', 1, 0, '2020-12-08 13:23:03', '2020-12-08 13:23:03'),
+(427, 'Parvana Blank copy.docx', '16b4b42c12b914c0e49dc5b39a7c5ddf.docx', 'http://192.168.1.59/mbmc/uploads/clinic/16b4b42c12b914c0e49dc5b39a7c5ddf.docx', '483.72', 1, 0, '2020-12-08 13:23:03', '2020-12-08 13:23:03'),
+(428, 'Parvana Blank copy.docx', '4391027e8828b43a569b04e5552f9505.docx', 'http://192.168.1.59/mbmc/uploads/clinic/4391027e8828b43a569b04e5552f9505.docx', '483.72', 1, 0, '2020-12-08 13:23:03', '2020-12-08 13:23:03'),
+(429, 'Parvana Blank copy.docx', '2263acc93df4c7c27ac0eace74c096b6.docx', 'http://192.168.1.59/mbmc/uploads/clinic/2263acc93df4c7c27ac0eace74c096b6.docx', '483.72', 1, 0, '2020-12-08 13:23:03', '2020-12-08 13:23:03'),
+(430, 'Parvana Blank copy.docx', '8023f0027103103deb58321e40cac02e.docx', 'http://192.168.1.59/mbmc/uploads/clinic/8023f0027103103deb58321e40cac02e.docx', '483.72', 1, 0, '2020-12-08 13:23:03', '2020-12-08 13:23:03'),
+(431, 'Parvana Blank copy.docx', 'ef468341597b51b8914ea41fee4f2ef2.docx', 'http://192.168.1.59/mbmc/uploads/clinic/ef468341597b51b8914ea41fee4f2ef2.docx', '483.72', 1, 0, '2020-12-08 14:45:52', '2020-12-08 14:45:52'),
+(432, 'Parvana Blank copy.docx', '8a80022f3781f9271554de99d72d6628.docx', 'http://192.168.1.59/mbmc/uploads/clinic/8a80022f3781f9271554de99d72d6628.docx', '483.72', 1, 0, '2020-12-08 14:45:52', '2020-12-08 14:45:52'),
+(433, 'Parvana Blank copy.docx', 'ee482759584ce3f0fb880c18092d0e1f.docx', 'http://192.168.1.59/mbmc/uploads/clinic/ee482759584ce3f0fb880c18092d0e1f.docx', '483.72', 1, 0, '2020-12-08 14:45:52', '2020-12-08 14:45:52'),
+(434, 'Parvana Blank copy.docx', '252e8da85ca3cfae458924d63b60520e.docx', 'http://192.168.1.59/mbmc/uploads/clinic/252e8da85ca3cfae458924d63b60520e.docx', '483.72', 1, 0, '2020-12-08 14:45:52', '2020-12-08 14:45:52'),
+(435, 'Parvana Blank copy.docx', '2b51c998b8c46bba0f9124890e1ab963.docx', 'http://192.168.1.59/mbmc/uploads/clinic/2b51c998b8c46bba0f9124890e1ab963.docx', '483.72', 1, 0, '2020-12-08 14:45:52', '2020-12-08 14:45:52'),
+(436, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'd3125c65a9e9931ed3f0da0c90e4d391.docx', 'http://192.168.1.59/mbmc/uploads/lab/d3125c65a9e9931ed3f0da0c90e4d391.docx', '483.72', 1, 0, '2020-12-08 15:46:48', '2020-12-08 15:46:48'),
+(437, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', '0eaf5f87e2c313d8ab5b23879397b820.docx', 'http://192.168.1.59/mbmc/uploads/lab/0eaf5f87e2c313d8ab5b23879397b820.docx', '483.72', 1, 0, '2020-12-08 15:46:48', '2020-12-08 15:46:48'),
+(438, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', '6f65716a316cdfe9bcc269acb7642aae.docx', 'http://192.168.1.59/mbmc/uploads/lab/6f65716a316cdfe9bcc269acb7642aae.docx', '483.72', 1, 0, '2020-12-08 15:46:48', '2020-12-08 15:46:48'),
+(439, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'a38957c9f24565e264915ee0c0284382.docx', 'http://192.168.1.59/mbmc/uploads/lab/a38957c9f24565e264915ee0c0284382.docx', '483.72', 1, 0, '2020-12-08 15:46:48', '2020-12-08 15:46:48'),
+(440, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'acc9e7dba32a731730ef5bcd06712b30.docx', 'http://192.168.1.59/mbmc/uploads/lab/acc9e7dba32a731730ef5bcd06712b30.docx', '483.72', 1, 0, '2020-12-08 15:46:48', '2020-12-08 15:46:48'),
+(441, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', '039245a8b205194d3c1a3f331bcf6fe1.docx', 'http://192.168.1.59/mbmc/uploads/lab/039245a8b205194d3c1a3f331bcf6fe1.docx', '483.72', 1, 0, '2020-12-08 16:41:46', '2020-12-08 16:41:46'),
+(442, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'fe61e99a98b8c66ab8665a138f118d18.docx', 'http://192.168.1.59/mbmc/uploads/lab/fe61e99a98b8c66ab8665a138f118d18.docx', '483.72', 1, 0, '2020-12-08 16:41:46', '2020-12-08 16:41:46'),
+(443, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', '6662dfcabedf9a30d3ed123a2070b80e.docx', 'http://192.168.1.59/mbmc/uploads/lab/6662dfcabedf9a30d3ed123a2070b80e.docx', '483.72', 1, 0, '2020-12-08 16:41:46', '2020-12-08 16:41:46'),
+(444, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'dcb653c986f45d2516b0aee37bd63166.docx', 'http://192.168.1.59/mbmc/uploads/lab/dcb653c986f45d2516b0aee37bd63166.docx', '483.72', 1, 0, '2020-12-08 16:41:46', '2020-12-08 16:41:46'),
+(445, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'c3e7932755975d397ba0b75b95383372.docx', 'http://192.168.1.59/mbmc/uploads/lab/c3e7932755975d397ba0b75b95383372.docx', '483.72', 1, 0, '2020-12-08 16:41:46', '2020-12-08 16:41:46'),
+(446, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'c822268790fdf2532fbaa8257be25f25.docx', 'http://192.168.1.59/mbmc/uploads/lab/c822268790fdf2532fbaa8257be25f25.docx', '483.72', 1, 0, '2020-12-08 16:59:09', '2020-12-08 16:59:09'),
+(447, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', 'a8954cf544eb17fa3bd29b0ee6765a5e.docx', 'http://192.168.1.59/mbmc/uploads/lab/a8954cf544eb17fa3bd29b0ee6765a5e.docx', '483.72', 1, 0, '2020-12-08 16:59:09', '2020-12-08 16:59:09'),
+(448, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', '80754eedd3c6822648e39241f352cdb0.docx', 'http://192.168.1.59/mbmc/uploads/lab/80754eedd3c6822648e39241f352cdb0.docx', '483.72', 1, 0, '2020-12-08 16:59:09', '2020-12-08 16:59:09'),
+(449, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', '7a3934690984f927858040fb61c54a5e.docx', 'http://192.168.1.59/mbmc/uploads/lab/7a3934690984f927858040fb61c54a5e.docx', '483.72', 1, 0, '2020-12-08 16:59:09', '2020-12-08 16:59:09'),
+(450, 'ac5fe23863fb6256c30cce06a1ef91fb.docx', '1ca4e2fb0bd2fea513642596cd5e9277.docx', 'http://192.168.1.59/mbmc/uploads/lab/1ca4e2fb0bd2fea513642596cd5e9277.docx', '483.72', 1, 0, '2020-12-08 16:59:09', '2020-12-08 16:59:09'),
+(451, '300_12.jpg', '398bc886bc895ea1eb4c9fd0cd3478cd.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/398bc886bc895ea1eb4c9fd0cd3478cd.jpg', '80.58', 1, 0, '2020-12-08 17:41:54', '2020-12-08 17:41:54'),
+(452, '100_14.jpg', 'a9ef44cd90450a5cf80c2394d536906e.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/a9ef44cd90450a5cf80c2394d536906e.jpg', '16.85', 1, 0, '2020-12-08 17:45:11', '2020-12-08 17:45:11'),
+(453, '300_1.jpg', 'e937a81530385cfe371af1f08d8f9d71.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/e937a81530385cfe371af1f08d8f9d71.jpg', '83.47', 1, 0, '2020-12-08 17:45:40', '2020-12-08 17:45:40'),
+(454, '300_2.jpg', '1e6a60b83d1163e6bc0282c5d43698ce.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/1e6a60b83d1163e6bc0282c5d43698ce.jpg', '82.67', 1, 0, '2020-12-08 17:46:52', '2020-12-08 17:46:52'),
+(455, '100_14.jpg', '31a76e72e7071d9e3d1f5c99298eb10b.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/31a76e72e7071d9e3d1f5c99298eb10b.jpg', '16.85', 1, 0, '2020-12-08 17:52:02', '2020-12-08 17:52:02'),
+(456, '300_4.jpg', 'ebcc9337ddb8f9ef2a660c2f7d2f36db.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/ebcc9337ddb8f9ef2a660c2f7d2f36db.jpg', '63.73', 1, 0, '2020-12-08 17:53:34', '2020-12-08 17:53:34'),
+(457, '300_3.jpg', 'e02e75576b9e125ee53d00b48929023c.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/e02e75576b9e125ee53d00b48929023c.jpg', '80.05', 1, 0, '2020-12-08 17:53:44', '2020-12-08 17:53:44'),
+(458, '300_16.jpg', '80837c152087be42af92a0d93b8ebfc3.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/80837c152087be42af92a0d93b8ebfc3.jpg', '68', 1, 0, '2020-12-08 17:57:39', '2020-12-08 17:57:39'),
+(459, '300_12.jpg', 'c3cd12a9667dfba4cda94917ac250b1f.jpg', 'http://192.168.1.59/mbmc/uploads/clinic/c3cd12a9667dfba4cda94917ac250b1f.jpg', '80.58', 1, 0, '2020-12-08 18:09:48', '2020-12-08 18:09:48'),
+(460, '300_12.jpg', 'dba7f2624fdd0ed0b0f15489094f81ed.jpg', 'http://192.168.1.59/mbmc/uploads/lab/dba7f2624fdd0ed0b0f15489094f81ed.jpg', '80.58', 1, 0, '2020-12-08 18:45:23', '2020-12-08 18:45:23'),
+(461, '300_16.jpg', '5c4210ae47cd55ba9ed4590bbeb0ed08.jpg', 'http://192.168.1.59/mbmc/uploads/lab/5c4210ae47cd55ba9ed4590bbeb0ed08.jpg', '68', 1, 0, '2020-12-08 18:45:28', '2020-12-08 18:45:28');
 
 -- --------------------------------------------------------
 
@@ -3285,6 +3835,7 @@ CREATE TABLE `lab_applications` (
   `bio_medical_certificate` int(11) NOT NULL DEFAULT '0',
   `doc_certificate` int(11) NOT NULL,
   `aadhaar_card` int(11) NOT NULL DEFAULT '0',
+  `user_image` int(11) NOT NULL DEFAULT '0',
   `bio_medical_valid_date` date DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `is_deleted` tinyint(1) NOT NULL,
@@ -3293,15 +3844,21 @@ CREATE TABLE `lab_applications` (
   `user_id` int(11) NOT NULL,
   `application_type` int(11) NOT NULL COMMENT '1 = new application , 2 = renewal application',
   `health_officer` int(11) NOT NULL DEFAULT '0',
-  `cold_chain_facilities` text NOT NULL
+  `cold_chain_facilities` text NOT NULL,
+  `no_of_expiry_certificate` varchar(255) DEFAULT NULL,
+  `date_of_expiry_certificate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lab_applications`
 --
 
-INSERT INTO `lab_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_qualification`, `lab_name`, `lab_address`, `lab_telephone_no`, `ownership_agreement`, `tax_receipt`, `bio_medical_certificate`, `doc_certificate`, `aadhaar_card`, `bio_medical_valid_date`, `status`, `is_deleted`, `created_at`, `updated_at`, `user_id`, `application_type`, `health_officer`, `cold_chain_facilities`) VALUES
-(1, 104, 'Sonam sharma', 'sonamsharma@yopmail.com', 'Magna labor', 'In corrupti laborum', 'or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example', 'Id qui eius rerum s', 'Sonam sharma', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, ', '+1 (934) 338-5266', 350, 351, 353, 352, 354, '2020-12-15', 81, 0, '2020-12-05 17:56:55', '2020-12-05 18:02:27', 23, 1, 3, 'or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example');
+INSERT INTO `lab_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_qualification`, `lab_name`, `lab_address`, `lab_telephone_no`, `ownership_agreement`, `tax_receipt`, `bio_medical_certificate`, `doc_certificate`, `aadhaar_card`, `user_image`, `bio_medical_valid_date`, `status`, `is_deleted`, `created_at`, `updated_at`, `user_id`, `application_type`, `health_officer`, `cold_chain_facilities`, `no_of_expiry_certificate`, `date_of_expiry_certificate`) VALUES
+(1, 104, 'Sonam sharma', 'sonamsharma@yopmail.com', 'Magna labor', 'In corrupti laborum', 'or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example', 'Id qui eius rerum s', 'Sonam sharma', 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, ', '+1 (934) 338-5266', 350, 351, 353, 352, 354, 0, '2020-12-15', 81, 0, '2020-12-05 17:56:55', '2020-12-05 18:02:27', 23, 1, 3, 'or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example', NULL, NULL),
+(2, 115, 'Hell bond hacker', 'hellbondhacker@yopmail.com', '+1 (954) 30', '+1 (954) 306-1223', 'Laborum A incidunt', 'CEH', 'Hell bond hacker', 'Veritatis fugit eli', '+1 (954) 306-1223', 411, 412, 414, 413, 415, 461, '2020-12-03', 85, 0, '2020-12-08 09:57:46', '2020-12-08 18:30:30', 23, 2, 3, 'Incidunt amet non ', '123', '2020-12-23'),
+(3, 120, 'mANESH k', 'suman.kattimani@aaravsoftware', '1234567890', '', 'You need not to develop your website in any regional language like Marathi. there are some ready made plug-ins & tools available for Multi-Language website. e.g. if you develop your website in WordPress then it suggest various plug-ins to set your website in multi-language.Juhu ', 'Mbbs ', 'Dr.Manesh ', 'You need not to develop your website in any regional language like Marathi. there are some ready made plug-ins & tools available for Multi-Language website. e.g. if you develop your website in WordPress then it suggest various plug-ins to set your website in multi-language.', '12345678', 436, 437, 439, 438, 440, 0, '0000-00-00', 81, 0, '2020-12-08 15:46:48', '2020-12-08 15:52:12', 22, 1, 3, '', NULL, NULL),
+(4, 121, 'hgdhgd', 'suman.kattimani@aaravsoftware', 'dfhdfhdfh', 'dfhdfhd', 'sgsdhsdfdfhg', 'hdhf', 'sfgdfgd', 'dgdhgdhdfhdhdhdfh', 'dfghdfd', 441, 442, 444, 443, 445, 0, '0000-00-00', 81, 0, '2020-12-08 16:41:46', '2020-12-08 16:42:48', 22, 1, 3, '', NULL, NULL),
+(5, 122, 'Dr. Tom', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'sddfhdhdfhdfhdfhdrhdfghdfhjdfbhdfhrhfghrf ', 'mbbs', 'Dr. Tom ', 'jhsjlksjvsaj', '1234567890', 446, 447, 449, 448, 450, 0, '0000-00-00', 81, 0, '2020-12-08 16:59:09', '2020-12-08 17:00:29', 22, 2, 3, '', 'MH/THM/MBMC/12', '2020-12-08');
 
 -- --------------------------------------------------------
 
@@ -3324,11 +3881,17 @@ CREATE TABLE `lab_staff` (
 --
 
 INSERT INTO `lab_staff` (`id`, `app_id`, `sr_number_lab_Staff`, `name_lab_Staff`, `designation_lab_Staff`, `qualification_lab_Staff`, `created_at`) VALUES
-(42, 1, 83, 'Brynne England', 4, '2', '2020-12-05 12:29:35'),
-(43, 1, 356, 'Whilemina Clemons', 2, '2', '2020-12-05 12:29:35'),
-(44, 1, 657, 'Fuller Washington', 6, '1', '2020-12-05 12:29:35'),
-(45, 1, 354, 'Wing Kirby', 3, '3', '2020-12-05 12:29:35'),
-(46, 1, 124, 'Cora Bullock', 6, '4', '2020-12-05 12:29:35');
+(57, 1, 83, 'Brynne England', 4, '2', '2020-12-08 05:06:39'),
+(58, 1, 356, 'Whilemina Clemons', 2, '2', '2020-12-08 05:06:39'),
+(59, 1, 657, 'Fuller Washington', 6, '1', '2020-12-08 05:06:39'),
+(60, 3, 1, 'Manesh', 1, '1', '2020-12-08 10:16:49'),
+(61, 4, 1, 'grg', 1, '1', '2020-12-08 11:11:46'),
+(62, 5, 1, 'kjfgdf`', 1, '1', '2020-12-08 11:29:09'),
+(68, 2, 551, 'Mikayla Moss', 4, '2', '2020-12-08 13:15:28'),
+(69, 2, 551, 'Mikayla Moss', 3, '1', '2020-12-08 13:15:28'),
+(70, 2, 551, 'Mikayla Moss', 4, '3', '2020-12-08 13:15:28'),
+(71, 2, 551, 'Mikayla Moss', 3, '3', '2020-12-08 13:15:28'),
+(72, 2, 551, 'Mikayla Moss', 5, '1', '2020-12-08 13:15:28');
 
 -- --------------------------------------------------------
 
@@ -3521,7 +4084,26 @@ INSERT INTO `payment` (`pay_id`, `app_id`, `dept_id`, `remark_id`, `payment_sele
 (22, 47, 5, 0, 2, '5100', '32fde7dda6721956748e333ab527488e.jpg', 0, 0, 2, '2020-11-25 13:36:54', '2020-11-25 13:37:19', '2020-11-25 19:06:54'),
 (23, 51, 5, 0, 2, '5100', 'b7948feea0c5e4b3e159b157943dfa0d.jpg', 0, 0, 2, '2020-11-26 07:05:58', '2020-11-26 07:21:19', '2020-11-26 12:35:58'),
 (25, 53, 5, 0, 2, '2100', 'e6b0a92ef3312daedf812b97663dc7cd.jpg', 0, 0, 2, '2020-11-26 12:01:20', '2020-11-26 12:01:56', '2020-11-26 17:31:20'),
-(26, 99, 5, 0, 2, '2100', '366ef39655ce3c97f2c9d0c629bfe411.jpg', 0, 0, 2, '2020-12-04 15:30:03', '2020-12-04 15:30:28', '2020-12-04 21:00:03');
+(26, 99, 5, 0, 2, '2100', '366ef39655ce3c97f2c9d0c629bfe411.jpg', 0, 0, 2, '2020-12-04 15:30:03', '2020-12-04 15:30:28', '2020-12-04 21:00:03'),
+(27, 84, 5, 0, 2, '2200', 'f843902b7e1790cf4f823bf74822f4b2.jpg', 0, 0, 2, '2020-12-07 10:39:16', '2020-12-07 10:39:41', '2020-12-07 16:09:16'),
+(28, 105, 5, 0, 2, '2200', 'cd693477c0940869570ca185e2175658.pdf', 0, 0, 2, '2020-12-07 10:43:36', '2020-12-07 10:48:33', '2020-12-07 16:13:36'),
+(29, 108, 5, 0, 2, '2200', '96ae6e3e47d0ef416e8a2ca5681c337a.pdf', 0, 0, 2, '2020-12-07 12:15:43', '2020-12-07 12:16:35', '2020-12-07 17:45:43'),
+(30, 109, 5, 0, 2, '10200', 'da54558c6ac264bf9bf4aa33aa1b1e25.jpg', 0, 0, 2, '2020-12-07 12:30:10', '2020-12-07 12:30:36', '2020-12-07 18:00:10'),
+(31, 111, 5, 0, 2, '8200', 'a25c99e6766926ae184928dc20607fb1.jpg', 0, 0, 2, '2020-12-07 14:29:09', '2020-12-07 14:29:52', '2020-12-07 19:59:09'),
+(32, 112, 5, 0, 2, '1600', 'e9ab4f9fcb36c4da665a4cbf4eb782c4.jpg', 0, 0, 2, '2020-12-07 15:13:58', '2020-12-07 15:14:26', '2020-12-07 20:43:58'),
+(33, 113, 5, 0, 2, '850', '0ecd3312720a24db789105dda08e5c89.jpg', 0, 0, 2, '2020-12-07 16:03:32', '2020-12-07 16:04:36', '2020-12-07 21:33:32'),
+(34, 115, 5, 0, 2, '1600', '042e995ae05f635586948e5c4bc324ba.jpg', 0, 0, 2, '2020-12-08 04:30:14', '2020-12-08 04:30:41', '2020-12-08 10:00:14'),
+(35, 117, 5, 0, 2, '1200', 'ee97f625f374d3d771f174c1b888dac6.docx', 0, 0, 2, '2020-12-08 07:44:58', '2020-12-08 07:46:01', '2020-12-08 13:14:58'),
+(36, 118, 5, 0, 0, '850', NULL, 0, 0, 1, '2020-12-08 08:14:45', NULL, '2020-12-08 13:44:45'),
+(37, 114, 5, 0, 2, '1200', '9b9e01d3dc3465957b83a2c470e4ae5c.jpg', 0, 0, 2, '2020-12-08 08:23:44', '2020-12-08 08:25:45', '2020-12-08 13:53:44'),
+(38, 119, 5, 0, 2, '850', 'f09c2e61667c33d7b8980878e4af40d5.docx', 0, 0, 2, '2020-12-08 09:20:02', '2020-12-08 09:44:55', '2020-12-08 14:50:02'),
+(39, 119, 5, 0, 2, '850', 'f09c2e61667c33d7b8980878e4af40d5.docx', 0, 0, 2, '2020-12-08 09:24:30', '2020-12-08 09:44:55', '2020-12-08 14:54:30'),
+(40, 120, 5, 0, 0, '1200', NULL, 0, 0, 1, '2020-12-08 11:09:11', NULL, '2020-12-08 16:39:11'),
+(42, 121, 5, 0, 0, '1200', NULL, 0, 0, 1, '2020-12-08 11:20:00', NULL, '2020-12-08 16:50:00'),
+(43, 122, 5, 0, 2, '850', '5d554fe7d9ff07d3a029136b88e1982d.docx', 0, 0, 2, '2020-12-08 11:35:41', '2020-12-08 11:37:52', '2020-12-08 17:05:41'),
+(44, 123, 5, 0, 0, '2450', NULL, 0, 0, 1, '2020-12-08 12:30:23', NULL, '2020-12-08 18:00:23'),
+(45, 124, 5, 0, 2, '3200', '87d273e8260fbef27cbe94215fda6a6b.docx', 0, 0, 2, '2020-12-08 12:50:28', '2020-12-08 12:52:34', '2020-12-08 18:20:28'),
+(46, 125, 5, 0, 2, '3200', 'cc660ae463d1da12254ad39bdc70520d.docx', 0, 0, 2, '2020-12-08 13:08:36', '2020-12-08 13:09:27', '2020-12-08 18:38:36');
 
 -- --------------------------------------------------------
 
@@ -3641,8 +4223,10 @@ INSERT INTO `permission_access` (`access_id`, `dept_id`, `role_id`, `payable_sta
 (72, 5, 22, 2, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
 (73, 5, 23, 2, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
 (74, 5, 24, 1, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
-(75, 5, 26, 2, 1, '2020-12-04 12:25:09', '2020-12-04 12:25:09', 0),
-(76, 15, 26, 2, 1, '2020-12-05 13:05:47', '2020-12-05 13:05:47', 0);
+(76, 15, 26, 2, 1, '2020-12-05 13:05:47', '2020-12-05 13:05:47', 0),
+(77, 12, 3, 2, 2, '2020-12-08 05:11:30', '2020-12-08 05:11:30', 0),
+(78, 12, 3, 2, 1, '2020-12-08 05:11:48', '2020-12-08 05:11:48', 0),
+(79, 12, 10, 2, 1, '2020-12-08 05:11:48', '2020-12-08 05:11:48', 0);
 
 -- --------------------------------------------------------
 
@@ -4368,7 +4952,9 @@ INSERT INTO `users_table` (`user_id`, `role_id`, `ward_id`, `email_id`, `user_na
 (34, 6, 0, 'dyptcomm@yopmail.com', 'dypt commissioner', '7812456598', 3, '$2a$08$vMeLzn1feO/E9ojCBsAkOu.kz4D6nCG5jaIG.9PBHH3q607cLbHEm', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:40:45', '2020-11-27 17:40:45', 0),
 (35, 25, 0, 'addcommi@yopmail.com', 'additional commissioner', '9832453614', 3, '$2a$08$zjaHe.VzkIGhWNWk7F5sVeMs9BCxMoBWdWh5BjFv6vkQHoicwlAnC', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:42:01', '2020-11-27 17:42:01', 0),
 (36, 4, 0, 'commissioner@yopmail.com', 'commissioner', '9832784565', 3, '$2a$08$6YFIGWYIJKojQqNCoMZuw.eeKyMCt37gxx3EaD/.nyZmZ5hJHno/2', 0, 0, 1, NULL, 1, 0, '2020-11-27 17:42:37', '2020-11-27 17:42:37', 0),
-(37, 26, 0, 'abc@yopmail.com', 'abc', '1234567898', 5, '$2a$08$O3k7hbboLmiEmpyMaDWuhOw92W1GIK41W8IBwp2vhCKI/K/uftDP2', 0, 0, 1, NULL, 1, 0, '2020-12-04 17:31:22', '2020-12-04 17:56:29', 0);
+(37, 26, 0, 'abc@yopmail.com', 'abc', '1234567898', 5, '$2a$08$O3k7hbboLmiEmpyMaDWuhOw92W1GIK41W8IBwp2vhCKI/K/uftDP2', 0, 0, 1, NULL, 2, 0, '2020-12-04 17:31:22', '2020-12-07 16:48:59', 0),
+(38, 3, 0, 'clerkmndap@yopmail.com', 'Harry', '5656565656', 12, '$2a$08$dtR5nyIJW7P6SC7yu71TyewziPTGm7J061S6xrNDAsmAipa9Viw7C', 0, 0, 1, NULL, 2, 0, '2020-12-08 10:42:29', '2020-12-08 10:46:25', 0),
+(39, 10, 0, 'mandapward@yopmail.com', 'ward ', '6789678909', 12, '$2a$08$PvKCzAnG8iocj56yuwqxnO/B.05JHcDUG/3Qta/m9MMNdgNzc7hDK', 0, 0, 1, NULL, 2, 0, '2020-12-08 10:43:15', '2020-12-08 10:46:29', 0);
 
 -- --------------------------------------------------------
 
@@ -4514,7 +5100,7 @@ CREATE TABLE `ward` (
 INSERT INTO `ward` (`ward_id`, `dept_id`, `role_id`, `ward_title`, `status`, `created_at`, `updated_at`, `is_deleted`, `sub_dept_id`) VALUES
 (1, 1, 8, 'ward one', 1, '2020-10-10 12:41:05', NULL, 0, 0),
 (2, 1, 8, 'word two', 1, '2020-10-10 12:41:22', NULL, 0, 0),
-(3, 5, 22, 'ward B', 1, '2020-11-22 23:04:03', '2020-12-04 11:21:54', 0, 1),
+(3, 5, 22, 'ward B', 1, '2020-11-22 23:04:03', '2020-12-07 09:29:58', 0, 0),
 (4, 5, 22, 'ward A', 1, '2020-12-04 16:50:18', NULL, 0, 0),
 (5, 5, 22, 'Ward C', 1, '2020-12-04 17:20:10', NULL, 0, 0),
 (6, 5, 22, 'WARD 1995', 1, '2020-12-05 16:55:37', NULL, 0, 0);
@@ -4976,12 +5562,12 @@ ALTER TABLE `adv_type`
 -- AUTO_INCREMENT for table `applications_details`
 --
 ALTER TABLE `applications_details`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT for table `application_remarks`
 --
 ALTER TABLE `application_remarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 --
 -- AUTO_INCREMENT for table `app_premssion`
 --
@@ -4991,22 +5577,22 @@ ALTER TABLE `app_premssion`
 -- AUTO_INCREMENT for table `app_status_level`
 --
 ALTER TABLE `app_status_level`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 --
 -- AUTO_INCREMENT for table `auth_sessions`
 --
 ALTER TABLE `auth_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=430;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=600;
 --
 -- AUTO_INCREMENT for table `clinic_applications`
 --
 ALTER TABLE `clinic_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `clinic_staff`
 --
 ALTER TABLE `clinic_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 --
 -- AUTO_INCREMENT for table `closed_application_table`
 --
@@ -5091,52 +5677,52 @@ ALTER TABLE `hall_type`
 -- AUTO_INCREMENT for table `hospital_alien`
 --
 ALTER TABLE `hospital_alien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 --
 -- AUTO_INCREMENT for table `hospital_applications`
 --
 ALTER TABLE `hospital_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `hospital_fee_charges`
 --
 ALTER TABLE `hospital_fee_charges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 --
 -- AUTO_INCREMENT for table `hospital_florespace_for_bedrooms`
 --
 ALTER TABLE `hospital_florespace_for_bedrooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 --
 -- AUTO_INCREMENT for table `hospital_florespace_for_kitchen`
 --
 ALTER TABLE `hospital_florespace_for_kitchen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 --
 -- AUTO_INCREMENT for table `hospital_inspection_form`
 --
 ALTER TABLE `hospital_inspection_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `hospital_midwife`
 --
 ALTER TABLE `hospital_midwife`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 --
 -- AUTO_INCREMENT for table `hospital_staff_details`
 --
 ALTER TABLE `hospital_staff_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 --
 -- AUTO_INCREMENT for table `hospital_supervision`
 --
 ALTER TABLE `hospital_supervision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 --
 -- AUTO_INCREMENT for table `hospital_surgeon_information`
 --
 ALTER TABLE `hospital_surgeon_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 --
 -- AUTO_INCREMENT for table `illuminate`
 --
@@ -5146,7 +5732,7 @@ ALTER TABLE `illuminate`
 -- AUTO_INCREMENT for table `image_details`
 --
 ALTER TABLE `image_details`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=359;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=462;
 --
 -- AUTO_INCREMENT for table `joint_visit_extentions`
 --
@@ -5156,12 +5742,12 @@ ALTER TABLE `joint_visit_extentions`
 -- AUTO_INCREMENT for table `lab_applications`
 --
 ALTER TABLE `lab_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `lab_staff`
 --
 ALTER TABLE `lab_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `latter_generation`
 --
@@ -5191,12 +5777,12 @@ ALTER TABLE `mandap_applications`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `permission_access`
 --
 ALTER TABLE `permission_access`
-  MODIFY `access_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `access_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT for table `permission_type_pwd`
 --
@@ -5296,7 +5882,7 @@ ALTER TABLE `unit_master`
 -- AUTO_INCREMENT for table `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `user_dept_table`
 --

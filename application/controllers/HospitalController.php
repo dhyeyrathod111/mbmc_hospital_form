@@ -60,6 +60,7 @@ class HospitalController extends Common {
         $user_id = $session_userdata[0]['user_id'];
         $role_id = $session_userdata[0]['role_id'];
         $hospitalList = $this->hospital_applications_table->getHospitalsDataForDatatable(FALSE,$_POST);
+
         $hospitalCount = $this->hospital_applications_table->getHospitalsDataForDatatable(TRUE,$_POST);
         $i = $_POST['start'];
 
@@ -97,6 +98,7 @@ class HospitalController extends Common {
             $status = $hospital['status'];
 
             $dept_id = $this->applications_details_table->getDeptId($hospital['app_id'])['dept_id'];
+            
             if ($roleStackHealthOfficer->role_id == $this->authorised_user['role_id']) {
             	$inspection_form_btn = '<a href="javascript:void(0)" app_id="'.$hospital['app_id'].'" aria-label="Inspection form" data-microtip-position="top" role="tooltip" class="btn btn-danger inspection_form_btn"><i app_id="'.$hospital['app_id'].'" class="fa fa-indent inspection_form_btn" aria-hidden="true"></i></a>';
             } else {
@@ -141,7 +143,10 @@ class HospitalController extends Common {
                         </a>'.$inspection_form_btn.' '.$payment_btn;
             $documents = '';
 
-            $data[] = array($i,$application_no, $applicant_name, $applicant_email_id, $applicant_mobile_no,$hospital_name,$remarks,$status,$inspection_form,$action);
+
+            $date = date('Y-m-d',strtotime($hospital['created_at']));
+
+            $data[] = array($i,$application_no, $applicant_name, $applicant_email_id, $applicant_mobile_no,$hospital_name,$remarks,$status,$inspection_form,$date,$action);
         }
         
         $output = array(
@@ -277,6 +282,7 @@ class HospitalController extends Common {
 			'application_type' => $this->security->xss_clean($this->input->post('application_type')),
 			'promise' => $this->security->xss_clean($this->input->post('promise')),
 			'user_id' => $this->authorised_user['user_id'],
+			'unregisterd_medical' => $this->security->xss_clean($this->input->post('unregisterd_medical'))
 		);
 
 		if ($inertStack['application_type'] == 2) {
@@ -434,15 +440,12 @@ class HospitalController extends Common {
 	{
 		$statusData = $this->App_status_level_table->getAllStatusByDeptRole($this->input->post('dept_id'),$this->input->post('role_id'));
 		if (!empty($statusData)) {
-
 			$roleStack = $this->hospital_applications_table->getRoleByName('Clerk');
-
 			if ($this->authorised_user['role_id'] == $roleStack->role_id) {
 				$this->data['health_officers'] = $this->hospital_applications_table->getAllHelthOfficers();
 			} else {
 				$this->data['health_officers'] = '';
 			}
-
 			$this->data['approvel_status'] = $statusData;
 			$this->data['postdata'] = $this->input->post();
 			$this->response['status'] = TRUE;
@@ -528,8 +531,9 @@ class HospitalController extends Common {
 		$application = $this->hospital_applications_table->getApplicationByAppID($app_id);
 		if (!empty($application)) {
 			$this->data['application'] = $application;
+			$this->data['finalApprovelDate'] = $this->hospital_applications_table->getFinalApprovelDate($application->app_id,$this->authorised_user['dept_id']);
 			$this->data['inspection'] = $this->hospital_applications_table->getInspectionDataByAppID($app_id);
-			$this->data['payment'] = hospital_payment_calculation($this->data['inspection']->no_of_beds,$application->application_type);
+			$this->data['payment'] = hospital_payment_calculation($this->data['inspection']->no_of_beds,$application);
 			$this->response['status'] = TRUE;
 			$this->response['html_str'] = $this->load->view('applications/hospital/modal/payment_reqeust_popup',$this->data,TRUE);
 		} else {
@@ -575,7 +579,7 @@ class HospitalController extends Common {
 		$application = $this->hospital_applications_table->getApplicationByAppID($app_id);
 		if (!empty($application)) {
 			$this->data['application'] = $application;
-			$this->data['payment_stack'] = hospital_payment_calculation($application->no_of_beds,$application->application_type);
+			$this->data['payment_stack'] = hospital_payment_calculation($application->no_of_beds,$application);
 			$this->load->view('applications/hospital/user_payment_page',$this->data);
 		} else {
 			return redirect('');
@@ -665,6 +669,7 @@ class HospitalController extends Common {
     		$tempArray[] = $oneApp->applicant_mobile_no;
     		$tempArray[] = $oneApp->hospital_name;
     		$tempArray[] = $oneApp->application_status;
+    		$tempArray[] = date('Y-m-d',strtotime($oneApp->created_at));
     		$tempArray[] = '<a href="'.base_url('hospital/edit/'.base64_encode($oneApp->id)).'" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a><a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
     		array_push($finalDatatableStack,$tempArray);
     	endforeach ;

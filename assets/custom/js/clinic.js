@@ -284,9 +284,11 @@ $(document).ready(function(){
 
 
     // Dhyey code start
-    $('#staff_designation,#approval_status,#staff_qualification,#designation_clinic_Staff,#qualification_clinic_Staff').selectpicker('destroy');
+    $('#staff_designation,#approval_status,#staff_qualification,#designation_clinic_Staff,#qualification_clinic_Staff,#application_type').selectpicker('destroy');
 
     $("#application_date_clinic").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
+    $("#date_of_expiry_certificate").datepicker({ dateFormat: 'yy-mm-dd'});
+
     $("#Certificate_expirydate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
     $("#bio_medical_valid_date").datepicker({ dateFormat: 'yy-mm-dd'});
     $("#clinic-form :input").each((index , item)=>item.setAttribute('autocomplete','off'));
@@ -515,6 +517,9 @@ $(document).ready(function(){
         $('#app_id').val(app_id);
         $('#status').selectpicker('refresh');
         $('#status').html('');
+
+        
+
         $.ajax({
             type: 'POST',
             url: base_url +'clinic/get_application_status',
@@ -607,12 +612,14 @@ $(document).ready(function(){
       },
       submitHandler: function(form,e) {
         e.preventDefault();
+        $('#submit_remark_btn').text('Processing...').prop('disabled',true);
         $.ajax({
             type: 'POST',
             url: base_url +'clinic/addremarks',
             dataType: "Json",
             data:$('#remarks-form').serialize(),
             success: function(res) {
+              $('#submit_remark_btn').text('Submit Remark').prop('disabled',false);
                 if(res.status =='1') {
                   swal("Good Job!",res.messg,"success")
                   .then((value) => {
@@ -657,6 +664,13 @@ $(document).ready(function(){
     var file = $('#aadhaar_card')[0].files[0].name;
     $('#aadhaar_card_name').text(file);
     $('#aadhaar_card_id').val(file);
+  }); 
+
+  $('#user_image').change(function() {
+    var file = $('#user_image')[0].files[0].name;
+    $('#user_image_name').text(file);
+    $('#user_image_id').val(file);
   });
+
 
 });

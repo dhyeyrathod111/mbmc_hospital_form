@@ -32,6 +32,7 @@
                                     <th>Applicant Mobile No</th>
                                     <th>clinic Name</th>
                                     <th>Status</th>
+                                    <th>Date</th>
                                     <th>Action </th>
                                 </tr>
                             </thead>

@@ -287,7 +287,11 @@ $(document).ready(function(){
     $('#staff_designation,#approval_status,#staff_qualification,#designation_lab_Staff,#qualification_lab_Staff').selectpicker('destroy');
 
     $("#application_date_lab").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
+    
     $("#Certificate_expirydate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
+    
+    $("#date_of_expiry_certificate").datepicker({ dateFormat: 'yy-mm-dd'});
+
     $("#bio_medical_valid_date").datepicker({ dateFormat: 'yy-mm-dd'});
     $("#lab-form :input").each((index , item)=>item.setAttribute('autocomplete','off'));
     // Dhyey code end 
@@ -657,6 +661,12 @@ $(document).ready(function(){
     var file = $('#aadhaar_card')[0].files[0].name;
     $('#aadhaar_card_name').text(file);
     $('#aadhaar_card_id').val(file);
+  });
+
+  $('#user_image').change(function() {
+    var file = $('#user_image')[0].files[0].name;
+    $('#user_image_name').text(file);
+    $('#user_image_id').val(file);
   });
 
 });

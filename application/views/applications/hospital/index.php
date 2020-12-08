@@ -17,11 +17,11 @@
                                 <div class = "row">
                                     <div class = "col-3">
                                         <label for = "from_date">From Date</label>
-                                        <input type="text" name="fromDate" id = "fromDate" class = "form-control datepicker" placeholder="Please Select Date">
+                                        <input type="text" name="fromDate" autocomplete="off" id = "fromDate" class = "form-control datepicker" placeholder="Please Select Date">
                                     </div>
                                     <div class = "col-3">
                                         <label for = "to_date">To Date</label>
-                                        <input type="text" name="toDate" id = "toDate" class = "form-control datepicker" placeholder="Please Select Date">
+                                        <input type="text" name="toDate" id = "toDate" autocomplete="off" class = "form-control datepicker" placeholder="Please Select Date">
                                     </div>
                                     <div class="col-3">
                                         <label for = "from_date">File status</label>
@@ -29,6 +29,14 @@
                                             <option value="0">New</option>
                                             <option value="1">Approved</option>
                                             <option value="2">Rejected</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-3">
+                                        <label for = "from_date">Application type</label>
+                                        <select class="form-control" name="application_type" id="application_type">
+                                            <option value="0">All</option>
+                                            <option value="1">Registration applications</option>
+                                            <option value="2">renewal applications</option>
                                         </select>
                                     </div>
 
@@ -78,6 +86,7 @@
                                     <th>Remarks</th>
                                     <th>Status</th>
                                     <th>inspection</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -92,6 +101,7 @@
                                     <th>Remarks</th>
                                     <th>Status</th>
                                     <th>inspection</th>
+                                    <th>Date</th>
                                     <th>Action </th>
                                 </tr>
                             </tfoot>
@@ -232,13 +242,14 @@
             d.fromDate = $(document).find("#fromDate").val(),
             d.toDate = $(document).find("#toDate").val(),
             d.approval = $(document).find("#approval").val(),
-            d.approval_status = $(document).find("#approval_status").val()
-          }
+            d.approval_status = $(document).find("#approval_status").val(), 
+            d.application_type = $(document).find("#application_type").val()
+          },
     
         },
         //Set column definition initialisation properties
         "columnDefs": [{ 
-            "targets": [0],
+            "targets": [0,6,7,8,10],
             "orderable": false,
             
         }]
@@ -271,6 +282,9 @@
       });
     
       $(document).on('change', "#approval", function(){
+        hospital_table.draw();
+      });
+      $(document).on('change', "#application_type", function(){
         hospital_table.draw();
       });
     

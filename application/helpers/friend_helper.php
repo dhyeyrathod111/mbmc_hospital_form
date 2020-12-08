@@ -136,93 +136,86 @@ function lab_document_config()
     $config['encrypt_name']         = TRUE;
     return $config;
 }
-function hospital_payment_calculation($number_of_beds,$appliaction_type)
-{
 
+function getDiffrentBetweenTwoDatesInMonth($applications_expiry_date , $currrent_date)
+{
+	$date1 = $applications_expiry_date;
+	$date2 = $currrent_date;
+	$ts1 = strtotime($date1);
+	$ts2 = strtotime($date2);
+	$year1 = date('Y', $ts1);
+	$year2 = date('Y', $ts2);
+	$month1 = date('m', $ts1);
+	$month2 = date('m', $ts2);
+	return (($year2 - $year1) * 12) + ($month2 - $month1);
+}
+function hospital_payment_calculation($number_of_beds,$application)
+{
 	// 1 = new application , 2 = renual application.
+
+	if ($application->application_type == 2) $peneltyOnTotalMonth = getDiffrentBetweenTwoDatesInMonth($application->date_of_expiry_certificate,date('Y-m-d'));
 
 	$payment_array = array();
 	if ($number_of_beds <= 5) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 1000 : 500;
-		$payment_array['form_chargis'] = 100;
+		$payment_array['amount'] = ($application->application_type == 1) ? 1000*2 : 500*3 + $peneltyOnTotalMonth*100 ;
+		$payment_array['form_chargis'] = ($application->application_type == 1) ? 200 : 100 ;
 		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+
 	} elseif ($number_of_beds >= 6 && $number_of_beds <= 10) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 1500 : 750;
-		$payment_array['form_chargis'] = 100;
+		$payment_array['amount'] = ($application->application_type == 1) ? 1500*2 : 750*3 + $peneltyOnTotalMonth*100;
+		$payment_array['form_chargis'] = ($application->application_type == 1) ? 200 : 100 ;
 		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+
 	} elseif ($number_of_beds >= 11 && $number_of_beds <= 15) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 2000 : 1000 ;
-		$payment_array['form_chargis'] = 100;
+		$payment_array['amount'] = ($application->application_type == 1) ? 2000*2 : 1000*3 + $peneltyOnTotalMonth*100;
+		$payment_array['form_chargis'] = ($application->application_type == 1) ? 200 : 100 ;
 		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+
 	} else if ($number_of_beds >= 16) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 5000 : 2500;
-		$payment_array['form_chargis'] = 100;
+		$payment_array['amount'] = ($application->application_type == 1) ? 5000*2 : 2500*3 + $peneltyOnTotalMonth*100;
+		$payment_array['form_chargis'] = ($application->application_type == 1) ? 200 : 100 ;
 		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+
 	} else {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 0 : 1;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+		$payment_array['amount'] = ($application->application_type == 1) ? 0*3 : 1*3 + $peneltyOnTotalMonth*100;
+		$payment_array['form_chargis'] = ($application->application_type == 1) ? 200 : 100 ;
+		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'] + $beds_renewal_charges;
 	}
 	return json_decode(json_encode($payment_array));
 }
-function lab_payment_calculation($number_of_beds,$appliaction_type)
+function clinic_payment_calculation($appliaction)
 {
-
 	// 1 = new application , 2 = renual application.
-
-	$payment_array = array();
-	if ($number_of_beds <= 5) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 1000 : 500;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
-	} elseif ($number_of_beds >= 6 && $number_of_beds <= 10) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 1500 : 750;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
-	} elseif ($number_of_beds >= 11 && $number_of_beds <= 15) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 2000 : 1000 ;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
-	} else if ($number_of_beds >= 16) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 5000 : 2500;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+	if ($appliaction->application_type == 1) {
+		$payment_array['form_chargis'] = 200;
+		$payment_array['registration_chargis'] = 500;
+		$payment_array['renual_charges'] = 250*2;
+		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['registration_chargis'] + $payment_array['renual_charges'];
 	} else {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 0 : 1;
+		$peneltyOnTotalMonth = getDiffrentBetweenTwoDatesInMonth($appliaction->date_of_expiry_certificate,date('Y-m-d'));
 		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+		$payment_array['registration_chargis'] = 250*3 + $peneltyOnTotalMonth*100;
+		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['registration_chargis'];
 	}
 	return json_decode(json_encode($payment_array));
 }
-function clinic_payment_calculation($number_of_beds,$appliaction_type)
+function lab_payment_calculation($appliaction)
 {
-
 	// 1 = new application , 2 = renual application.
-
-	$payment_array = array();
-	if ($number_of_beds <= 5) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 1000 : 500;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
-	} elseif ($number_of_beds >= 6 && $number_of_beds <= 10) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 1500 : 750;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
-	} elseif ($number_of_beds >= 11 && $number_of_beds <= 15) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 2000 : 1000 ;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
-	} else if ($number_of_beds >= 16) {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 5000 : 2500;
-		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+	if ($appliaction->application_type == 1) {
+		$payment_array['form_chargis'] = 200;
+		$payment_array['registration_chargis'] = 500;
+		$payment_array['renual_charges'] = 250*2;
+		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['registration_chargis'] + $payment_array['renual_charges'];
 	} else {
-		$payment_array['amount'] = ($appliaction_type == 1) ? 0 : 1;
+		$peneltyOnTotalMonth = getDiffrentBetweenTwoDatesInMonth($appliaction->date_of_expiry_certificate,date('Y-m-d'));
 		$payment_array['form_chargis'] = 100;
-		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['amount'];
+		$payment_array['registration_chargis'] = 250*3 + $peneltyOnTotalMonth*100;
+		$payment_array['total_amount'] = $payment_array['form_chargis'] + $payment_array['registration_chargis'];
 	}
 	return json_decode(json_encode($payment_array));
 }
+
 function image_formate_in_array($application_images , $application)
 {
 
@@ -257,7 +250,6 @@ function image_formate_in_array($application_images , $application)
 }
 function image_formate_in_array_clinic($application_images , $application)
 {
-
 	if (!empty($application_images)) {
 		foreach ($application_images as  $oneImage) :
 			if ($oneImage->image_id == $application->ownership_agreement) {
@@ -270,6 +262,8 @@ function image_formate_in_array_clinic($application_images , $application)
 				$final_iamge_array['aadhaar_card'] = $oneImage;
 			} else if ($oneImage->image_id == $application->bio_medical_certificate) {
 				$final_iamge_array['bio_medical_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->user_image) {
+				$final_iamge_array['user_image'] = $oneImage;
 			} 
 		endforeach;
 		return json_decode(json_encode($final_iamge_array));
@@ -291,6 +285,8 @@ function image_formate_in_array_lab($application_images , $application)
 				$final_iamge_array['aadhaar_card'] = $oneImage;
 			} else if ($oneImage->image_id == $application->bio_medical_certificate) {
 				$final_iamge_array['bio_medical_certificate'] = $oneImage;
+			} else if ($oneImage->image_id == $application->user_image) {
+				$final_iamge_array['user_image'] = $oneImage;
 			} 
 		endforeach;
 		return json_decode(json_encode($final_iamge_array));

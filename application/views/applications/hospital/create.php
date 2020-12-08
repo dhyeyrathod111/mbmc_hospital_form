@@ -396,22 +396,24 @@
                                     </table>
                                 </div>
 
-                                <!--<div class='col-12'>
-                                        <div calss="form-group">
+                                <div class='col-12'>
+                                    <div calss="form-group">
                                         <label>15.b. Unregisterd medical staff</label>
                                         <i class="fas fa-info-circle" title="Whether any unregistered medical practitioner or unqualified midwife is employed for nursing any patient in the nursing home." ></i>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="is_unqmidwife"  value="Yes">
-                                            <label class="form-check-label">
-                                                Yes
-                                            </label>
-                                        </div>
-                                        <div class="form-check>
-                                            <input class="form-check-input" type="radio" name="is_unqmidwife" value="No">
-                                            <label class="form-check">
-                                                No
-                                                </label>
-                                        </div>-->
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="unregisterd_medical"  value="Yes">
+                                        <label class="form-check-label">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="unregisterd_medical"  value="No">
+                                        <label class="form-check-label">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
 
                                  <div class="col-12">
                                     <div class="form-group">

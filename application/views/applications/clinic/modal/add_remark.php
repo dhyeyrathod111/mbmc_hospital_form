@@ -28,5 +28,5 @@
     <input type="hidden" value="<?= 1 ?>" id="sub_dept_id" name="sub_dept_id">
     <input type="hidden" value="<?= $postdata['app_id'] ?>" id="app_id" name="app_id">
     <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" style="float: right;" class="btn btn-primary">Save changes</button>
+    <button type="submit" style="float: right;" id="submit_remark_btn" class="btn btn-primary">Submit Remark</button>
 </div>

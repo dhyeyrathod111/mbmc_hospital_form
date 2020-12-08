@@ -386,9 +386,9 @@ $(document).ready(function(){
 
 
     // Dhyey code start
-    $('#staff_designation,#fs_for_kitchen_user_type,#approval_status,#staff_qualification').selectpicker('destroy');
+    $('#staff_designation,#fs_for_kitchen_user_type,#approval_status,#staff_qualification,#application_type').selectpicker('destroy');
     $("#application_date_hospital").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
-    $("#date_of_expiry_certificate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
+    $("#date_of_expiry_certificate").datepicker({ dateFormat: 'yy-mm-dd'});
     $("#Certificate_expirydate").datepicker({ minDate: 0 , dateFormat: 'yy-mm-dd'});
     $("#hospital-form :input").each((index , item)=>item.setAttribute('autocomplete','off'));
     // Dhyey code end 
@@ -619,12 +619,14 @@ $(document).ready(function(){
         $('#app_id').val(app_id);
         $('#status').selectpicker('refresh');
         $('#status').html('');
+        $('#remark_submit').text('Processing....').prop("disabled",true);
         $.ajax({
             type: 'POST',
             url: base_url +'hospital/get_application_status',
             dataType: "Json",
             data:{'dept_id':dept_id,'status':status,'user_id':user_id,'role_id':role_id,'app_id':app_id,'hospital_id':hospital_id},
             success: response => {
+                $('#remark_submit').text('Save changes').prop("disabled",false);
                 if (response.status) {
                     $('#remarks-form').html(response.html_string);
                     $('#add_remark_model').modal('show');

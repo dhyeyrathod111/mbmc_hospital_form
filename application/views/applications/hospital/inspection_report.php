@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "mr">
 <head>
-    <title>Test</title>
+    <title> Inspection report </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -67,7 +67,7 @@
         </div>
         <hr style = "border: 1px solid #000;">
         <div class="col-12"> 
-            <p>To,<br />Medical Officer Of Helth<br />Mira bhayandar Muncipal corporation</p>
+            <p>To,<br />Medical Officer Of health<br />Mira bhayandar Muncipal corporation</p>
         </div>
         <div class="col-12 text-center"> 
             <b>Subject : Registration</b>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "mr">
 <head>
-    <title>Test</title>
+    <title>medical certificate</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -67,34 +67,69 @@
         </div>
         <hr style = "border: 1px solid #000;">
         <div class="col-12 text-center"> 
-            <h3>FORM C ORIGINAL</h3>
+            <h3 style="font-size: larger;">FORM 'C' - ORIGINAL</h3>
         </div>
+        <br />
         <div class="col-12"> 
-            <p>Certificate of Registrationunder section 5 of Maharashtra (Bombay) Nursing Home Registration Act 1949</p>
+            <p>Certificate of Registrationunder section 5 of Maharashtra (Bombay) Nursing Home Registration Act 1949.</p>
         </div>
         <div class="col-12 text-center"> 
-            <h3>SEE RULE – 5</h3>
+            <h3 style="font-size: larger;">SEE RULE – 5</h3>
         </div>
-        <div class="col-12"> 
-            <p>This is to certify that Dr <?= $application->applicant_name ?>. has been registered under the Bombay Nursing Home Registration Act 1949 in respect of. Situated at And has been authorized to carry out the said nursing home.</p>
+        <br />
+        <div class="col-12 text-justify"> 
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is to certify that Dr <span style="text-decoration: underline;"><?= $application->applicant_name ?></span>. has been registered under the Bombay Nursing Home Registration Act 1949 in respect of <span style="text-decoration: underline;"><?= $application->hospital_name ?></span> Situated at <span style="text-decoration: underline;"><?= $application->hospital_address ?></span> And has been authorized to carry out the said nursing home.</p>
         </div>
         <br />
         <div class="col-12">
-            <h5>Registration No MBMC-00000<?= $application->app_id ?></h5>
-            <h5>Date of Registration <?= $application->created_at ?></h5>
-            <h5>Place <?= $application->applicant_address ?></h5>
-            <h5>No. of Beds <?= $inspection->no_of_beds ?></h5>
+            <div class="row">
+              <div class="col-3">
+                <p>Registration No</p>
+              </div>
+              <div class="col-9">
+                <p>MH/THN/MBMC/YYYY- Certificate Number</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <p>Date of Registration</p>
+              </div>
+              <div class="col-9">
+                <p><?= date("d-m-Y", strtotime($finalApprovelDate->created_at)) ?></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <p>Place</p>
+              </div>
+              <div class="col-9">
+                <p><?= $application->applicant_address ?></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <p>No. of Beds</p>
+              </div>
+              <div class="col-9">
+                <p><?= $inspection->no_of_beds ?></p>
+              </div>
+            </div>
         </div>
         <br />
         <div class="col-12"> 
-            <p>This certificate of Registration shall be valid upto.</p>
+            <p>This certificate of Registration shall be valid upto. <?= date("d-m-Y", strtotime('+ 3 year', strtotime($finalApprovelDate->created_at))) ?></p>
             <p>However this registration shall stand cancelled, if any of the conditions which are considered while granting the registration</p>
             <p>are found to be breachbed</p>
         </div>
         <br />
-        <div class="col-12 text-right"> 
-            <h5>Medical Officer of Health</h5>
-            <h5>Mira Bhayander Municipal Corporation</h5>
+        <div class="row">
+          <div class="col-6"> 
+            <h5>Date : </h5>
+          </div>
+          <div class="col-6 text-right"> 
+              <h5>Medical Officer of Health</h5>
+              <h5>Mira Bhayander Municipal Corporation</h5>
+          </div>
         </div>
         
     </div>

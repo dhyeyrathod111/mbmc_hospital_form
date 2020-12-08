@@ -390,6 +390,26 @@
                                 </div>
 
 
+                                <div class='col-12'>
+                                    <div calss="form-group">
+                                        <label>15.b. Unregisterd medical staff</label>
+                                        <i class="fas fa-info-circle" title="Whether any unregistered medical practitioner or unqualified midwife is employed for nursing any patient in the nursing home." ></i>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" <?= ($application->unregisterd_medical == 'Yes') ? 'checked' : ''; ?> name="unregisterd_medical"  value="Yes">
+                                        <label class="form-check-label">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" <?= ($application->unregisterd_medical == 'Yes') ? '' : 'checked'; ?> type="radio" name="unregisterd_medical"  value="No">
+                                        <label class="form-check-label">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Whether any person of Alien nationality</label>
@@ -512,14 +532,14 @@
                                         <div class="form-group">
                                             <label for="alien_name">nummber of expiry of the certificate</label>
                                             <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
-                                            <input placeholder="MH/THN/MBMC/YYYY" type="text" class="form-control" name="no_of_expiry_certificate">
+                                            <input placeholder="MH/THN/MBMC/YYYY" value="<?= $application->no_of_expiry_certificate ?>" type="text" class="form-control" name="no_of_expiry_certificate">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="alien_name">date of expiry of the certificate</label>
                                             <i class="fas fa-info-circle" title="Details of arrangements made for storage and service of food."></i>
-                                            <input type="text" readonly class="form-control" id="date_of_expiry_certificate" name="date_of_expiry_certificate">
+                                            <input type="text" readonly class="form-control" value="<?= $application->date_of_expiry_certificate ?>" id="date_of_expiry_certificate" name="date_of_expiry_certificate">
                                         </div>
                                     </div>
                                 </div>
@@ -834,9 +854,10 @@
 
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12 text-center text-danger">
-                                    <p><b>Note:</b> The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(I.e home having maternity and non-maternity wards). In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
-                                    <p></p>
+                                <div class="col-12 text-left text-danger">
+                                    <p><b>Note:</b><br>
+                                     *The queries made in item 14 should be answered only when the nursing home is a maternity or mixed home(i.e home having maternity and non-maternity wards).<br> In case of a mixed home, the queries should be answered with reference to the non-maternity ward.</p>
+                                    <p>*The queries made in item 15 should be answered only when the nursing home is a maternity or mixed home(i.e home having maternity and non-maternity wards).<br> In case of a mixed home, the queries should be answered with reference to the maternity ward.</p>
                                 </div>
                             </div>
                         </div>

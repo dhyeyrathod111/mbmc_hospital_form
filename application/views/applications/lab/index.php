@@ -31,6 +31,14 @@
                                             <option value="2">Rejected</option>
                                         </select>
                                     </div>
+                                    <div class="col-3">
+                                        <label for = "from_date">Application type</label>
+                                        <select class="form-control" name="application_type" id="application_type">
+                                            <option value="0">All</option>
+                                            <option value="1">Registration applications</option>
+                                            <option value="2">renewal applications</option>
+                                        </select>
+                                    </div>
 
                                 </div>
                             </div>
@@ -78,6 +86,7 @@
                                     <th>Remarks</th>
                                     <th>Status</th>
                                     <th>inspection</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -92,6 +101,7 @@
                                     <th>Remarks</th>
                                     <th>Status</th>
                                     <th>inspection</th>
+                                    <th>Date</th>
                                     <th>Action </th>
                                 </tr>
                             </tfoot>
@@ -232,13 +242,14 @@
             d.fromDate = $(document).find("#fromDate").val(),
             d.toDate = $(document).find("#toDate").val(),
             d.approval = $(document).find("#approval").val(),
-            d.approval_status = $(document).find("#approval_status").val()
+            d.approval_status = $(document).find("#approval_status").val(),
+            d.application_type = $(document).find("#application_type").val()
           }
     
         },
         //Set column definition initialisation properties
         "columnDefs": [{ 
-            "targets": [0],
+            "targets": [0,6,7,8,10],
             "orderable": false,
             
         }]
@@ -271,6 +282,10 @@
       });
     
       $(document).on('change', "#approval", function(){
+        lab_table.draw();
+      });
+
+      $(document).on('change', "#application_type", function(){
         lab_table.draw();
       });
     
