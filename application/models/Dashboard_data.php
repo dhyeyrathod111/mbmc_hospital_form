@@ -218,9 +218,212 @@
 				}
 			}else{
 				//if medical
-				$tableArrayMedical = array("hospital_applications", "clinic_applications", "lab_applications");
+
+				$prevrole = $this->db->query("SELECT * FROM `permission_access` WHERE access_id < (SELECT access_id from permission_access WHERE dept_id = '".$dept_id."' AND role_id = '".$role_id."' AND status = '1') AND dept_id = '".$dept_id."' AND status = '1' ORDER BY access_id DESC LIMIT 1")->result_array();
+
+				$previousroleid = (!empty($prevrole[0])) ? $prevrole[0]['role_id'] : 0 ;
+
+
+				$dailyRequest = $this->getDailyRequestCountOFMedical();
+				$data['dailyRequest'] = $dailyRequest->total_dailyrequest;
+
+				$approvalPending = $this->getApprovelPendingForMedical($previousroleid,$dept_id,$role_id);
+				$data['approvalPending'] = $approvalPending->total_pendingrequest;
+
+				$totalamountcollected = $this->totlaAmountCollectedforMedical($dept_id);
+				$data['totalamountcollected'] = $totalamountcollected->TotalCollectedAmount;
+
+				$totalamountpending = $this->totlaAmountPendingforMedical($dept_id);
+				$data['totalamountpending'] = $totalamountpending->TotalPendingAmount;
+
+				$tRequestArray = array();
+				for($i = 6; $i >= 0; $i--){
+					$year = date("Y") - $i;
+					$tRequestArray['labels'][] = $year;
+					$tRequestArray['data'][] = $this->getYearlyReqeustforMedical($year)->total_yearlyreqeust;
+				}
+				$data['yearlyRequest'] = $tRequestArray;
+
+				$approvedReqeustFortheyear = $this->approvedReqeustForTheYear($dept_id,$role_id);
+				$data['approvedForYear'] = $approvedReqeustFortheyear->total_approve_req_foryear;
+
+
+				$unapprovedReqeustFortheyear = $this->unapprovedReqeustForTheYear($previousroleid,$dept_id,$role_id);
+				$data['unapprovedForYear'] = $unapprovedReqeustFortheyear->total_unapprove_req_foryear;
+
+
+
+
+				$barGraphArray = array();
+				$lineGraphArray = array();
+				for($i = 1; $i <= 12; $i++){
+					if(strlen((string)$i) == 1){
+						$i = '0'.$i;
+					}
+
+					//total request
+					$gettotalrequestObj['hospital_gettotalrequestObj'] = $this->db->query("CALL gettotalreqmonth('".$i."', 'hospital_applications')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+					$gettotalrequestObj['clinic_gettotalrequestObj'] = $this->db->query("CALL gettotalreqmonth('".$i."', 'clinic_applications')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+					$gettotalrequestObj['lab_gettotalrequestObj'] = $this->db->query("CALL gettotalreqmonth('".$i."', 'lab_applications')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+					$gettotalrequestObj['total_gettotalrequestObj'] = $gettotalrequestObj['hospital_gettotalrequestObj'] + $gettotalrequestObj['clinic_gettotalrequestObj'] + $gettotalrequestObj['lab_gettotalrequestObj'];
+
+
+					//End total request
+
+					//total approved by particular role
+
+					$gettotalapprovedObj['hospital_gettotalapprovedObj'] = $this->db->query("CALL totalapprovedByroleinmonth('".$i."','hospital_applications', '".$role_id."', '".$dept_id."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalapprovedObj['clinic_gettotalapprovedObj'] = $this->db->query("CALL totalapprovedByroleinmonth('".$i."','clinic_applications', '".$role_id."', '".$dept_id."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalapprovedObj['lab_gettotalapprovedObj'] = $this->db->query("CALL totalapprovedByroleinmonth('".$i."','lab_applications', '".$role_id."', '".$dept_id."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalapprovedObj['total_gettotalapprovedObj'] = $gettotalapprovedObj['hospital_gettotalapprovedObj'] + $gettotalapprovedObj['clinic_gettotalapprovedObj'] + $gettotalapprovedObj['lab_gettotalapprovedObj'];
+
+
+
+					$previousroleid = (!empty($prevrole)) ? $prevrole[0]['role_id'] : '0';
+
+
+					$gettotalunapprovedObj['hospital_gettotalunapprovedObj'] = $this->db->query("CALL totalunapprovedByroleinmonth('".$i."','hospital_applications', '".$role_id."', '".$dept_id."', '".$previousroleid."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalunapprovedObj['clinic_gettotalunapprovedObj'] = $this->db->query("CALL totalunapprovedByroleinmonth('".$i."','clinic_applications', '".$role_id."', '".$dept_id."', '".$previousroleid."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalunapprovedObj['lab_gettotalunapprovedObj'] = $this->db->query("CALL totalunapprovedByroleinmonth('".$i."','lab_applications', '".$role_id."', '".$dept_id."', '".$previousroleid."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalunapprovedObj['total_gettotalunapprovedObj'] = $gettotalunapprovedObj['hospital_gettotalunapprovedObj'] + $gettotalunapprovedObj['clinic_gettotalunapprovedObj'] + $gettotalunapprovedObj['lab_gettotalunapprovedObj'];
+
+
+					$lineGraphArray['approvedArray'][] = $gettotalapprovedObj['total_gettotalapprovedObj'];
+					$lineGraphArray['unapprovedArray'][] = $gettotalunapprovedObj['total_gettotalunapprovedObj'];
+					$lineGraphArray['totalRequest'][] = $gettotalrequestObj['total_gettotalrequestObj'];	
+					$barGraphArray['unapproved'][] = $gettotalunapprovedObj['total_gettotalunapprovedObj'];
+					$barGraphArray['approved'][] = $gettotalapprovedObj['total_gettotalapprovedObj'];
+				}
+
+				$data['ApprovedUnApproved'] = $barGraphArray;
+				$data['lineGraphArray'] = $lineGraphArray;
+
+
+
+				return $data;
 			}
 			}
+		}
+		public function getDailyRequestCountOFMedical()
+		{
+			$dailyrequest['hospital_dailyrequest'] = $this->db->query("CALL dailyrequest('".'hospital_applications'."', '".date('Y-m-d')."')")->row()->totalRequest;
+			mysqli_next_result($this->db->conn_id);
+			$dailyrequest['clinic_dailyrequest'] = $this->db->query("CALL dailyrequest('".'clinic_applications'."', '".date('Y-m-d')."')")->row()->totalRequest;
+			mysqli_next_result($this->db->conn_id);
+			$dailyrequest['lab_dailyrequest'] = $this->db->query("CALL dailyrequest('".'lab_applications'."', '".date('Y-m-d')."')")->row()->totalRequest;
+			mysqli_next_result($this->db->conn_id);
+
+			// echo "<pre>";print_r($dailyrequest);exit();
+
+
+			$dailyrequest['total_dailyrequest'] = $dailyrequest['hospital_dailyrequest'] + $dailyrequest['clinic_dailyrequest'] + $dailyrequest['lab_dailyrequest'];
+			return json_decode(json_encode($dailyrequest));
+		}
+		public function getApprovelPendingForMedical($prevrole = 0 , $dept_id , $role_id)
+		{
+			$roleStacJuniorDoctor = $this->hospital_applications_table->getRoleByName('junior doctor');
+
+			// echo "<pre>";print_r($roleStacJuniorDoctor);exit();
+
+			$pendingrequest['hospital_pendingrequest'] = $this->db->query("CALL pendingapprovals(".$prevrole.", ".$dept_id.", ".$role_id.", '".date('Y-m-d')."', '".'hospital_applications'."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+			$hospital_readyforPaymentapps = $this->db->query('SELECT COUNT(*) AS readyforPayment FROM `hospital_applications` WHERE app_id NOT IN (SELECT app_id FROM payment) AND status IN (81,82)')->row()->readyforPayment;
+
+
+			$pendingrequest['clinic_pendingrequest'] = $this->db->query("CALL pendingapprovals(".$prevrole.", ".$dept_id.", ".$role_id.", '".date('Y-m-d')."', '".'clinic_applications'."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+			$clinic_readyforPaymentapps = $this->db->query('SELECT COUNT(*) AS readyforPayment FROM `clinic_applications` WHERE app_id NOT IN (SELECT app_id FROM payment) AND status IN (81,82)')->row()->readyforPayment;
+
+
+			$pendingrequest['lab_pendingrequest'] = $this->db->query("CALL pendingapprovals(".$prevrole.", ".$dept_id.", ".$role_id.", '".date('Y-m-d')."', '".'lab_applications'."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+			$lab_readyforPaymentapps = $this->db->query('SELECT COUNT(*) AS readyforPayment FROM `lab_applications` WHERE app_id NOT IN (SELECT app_id FROM payment) AND status IN (81,82)')->row()->readyforPayment;
+
+
+			if ($this->authorised_user['role_id'] == $roleStacJuniorDoctor->role_id) {
+				$total_pendingrequest = $pendingrequest['hospital_pendingrequest'] + $pendingrequest['clinic_pendingrequest'] + $pendingrequest['lab_pendingrequest'];
+
+				$totalreadyforpaymentApps = $hospital_readyforPaymentapps + $clinic_readyforPaymentapps + $lab_readyforPaymentapps;
+
+				$this->db->select('COUNT(*) + '.$totalreadyforpaymentApps.' pendingPaymentReqeust')->from('payment');
+				$this->db->where(['dept_id'=>$dept_id,'status'=>1,'is_deleted'=>0]);
+
+				$unpaidApplication = $this->db->get()->row()->pendingPaymentReqeust;
+
+				$pendingrequest['total_pendingrequest'] = $total_pendingrequest - $unpaidApplication;
+
+			} else {
+				$pendingrequest['total_pendingrequest'] = $pendingrequest['hospital_pendingrequest'] + $pendingrequest['clinic_pendingrequest'] + $pendingrequest['lab_pendingrequest'];
+			}
+
+			return json_decode(json_encode($pendingrequest));
+		}
+		public function totlaAmountCollectedforMedical($dept_id)
+		{
+			$this->db->select('SUM(amount) AS TotalCollectedAmount');
+			$this->db->from('payment');
+			$this->db->where(['dept_id'=>$dept_id,'status'=>2,'is_deleted'=>0]);
+			// $this->db->where_in('status',['2','4']);
+			$this->db->where('DATE(created_at)',date('Y-m-d'));
+			return $this->db->get()->row();
+		}
+		public function totlaAmountPendingforMedical($dept_id)
+		{
+			$this->db->select('SUM(amount) AS TotalPendingAmount');
+			$this->db->from('payment');
+			$this->db->where(['dept_id'=>$dept_id,'status'=>1,'is_deleted'=>0]);
+
+			return $this->db->get()->row();
+		}
+		public function getYearlyReqeustforMedical($year)
+		{
+
+			$roleStacJuniorDoctor = $this->hospital_applications_table->getRoleByName('junior doctor');
+
+			$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = 5 AND status = 1 ORDER BY access_id DESC LIMIT 1")->row()->role_id;
+
+
+			$hospital_yearlyreqeust_sql = "SELECT COUNT(*) AS reqeusts_this_year FROM (SELECT ha.id ,ha.app_id , ha.applicant_name , (SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ha.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id FROM hospital_applications ha WHERE is_deleted = '0' AND YEAR(ha.created_at) = ".$year.") AS hospital_data WHERE last_approved_role_id = ".$final_role_id;
+
+			$yearlyreqeust['hospital_yearlyreqeust'] = $this->db->query($hospital_yearlyreqeust_sql)->row()->reqeusts_this_year;
+
+			$clinic_yearlyreqeust_sql = "SELECT COUNT(*) AS reqeusts_this_year FROM (SELECT ca.id ,ca.app_id , ca.applicant_name , (SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ca.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id FROM clinic_applications ca WHERE is_deleted = '0' AND YEAR(ca.created_at) = $year) AS clinic_data WHERE last_approved_role_id = ".$final_role_id;
+
+			$yearlyreqeust['clinic_yearlyreqeust'] = $this->db->query($clinic_yearlyreqeust_sql)->row()->reqeusts_this_year;
+
+			$lab_yearlyreqeust_sql = "SELECT COUNT(*) AS reqeusts_this_year FROM (SELECT la.id ,la.app_id , la.applicant_name ,  (SELECT role_id FROM application_remarks WHERE application_remarks.app_id = la.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id FROM lab_applications la WHERE is_deleted = '0' AND YEAR(la.created_at) = $year) AS lab_data WHERE last_approved_role_id = ".$final_role_id;
+
+
+			$yearlyreqeust['lab_yearlyreqeust'] = $this->db->query($lab_yearlyreqeust_sql)->row()->reqeusts_this_year;
+			$yearlyreqeust['total_yearlyreqeust'] = $yearlyreqeust['hospital_yearlyreqeust'] + $yearlyreqeust['clinic_yearlyreqeust'] + $yearlyreqeust['lab_yearlyreqeust'];
+			return json_decode(json_encode($yearlyreqeust));
+		}
+		public function approvedReqeustForTheYear($dept_id,$role_id)
+		{
+			$approvereqforyear['hospital_approve_req_foryear'] = $this->db->query("CALL approvedYearlyData('hospital_applications', '".date('Y')."', '".$dept_id."', '".$role_id."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+			$approvereqforyear['clinic_approve_req_foryear'] = $this->db->query("CALL approvedYearlyData('clinic_applications', '".date('Y')."', '".$dept_id."', '".$role_id."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+			$approvereqforyear['lab_approve_req_foryear'] = $this->db->query("CALL approvedYearlyData('lab_applications', '".date('Y')."', '".$dept_id."', '".$role_id."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+			$approvereqforyear['total_approve_req_foryear'] = $approvereqforyear['hospital_approve_req_foryear'] + $approvereqforyear['clinic_approve_req_foryear'] + $approvereqforyear['lab_approve_req_foryear'];
+
+			return json_decode(json_encode($approvereqforyear));
+		}
+		public function unapprovedReqeustForTheYear($prevrole = 0 , $dept_id , $role_id)
+		{
+			$unapprovereqforyear['hospital_unapprove_req_foryear'] = $this->db->query("CALL unapprovedYearlyData(".$prevrole.",'hospital_applications', '".$dept_id."', '".$role_id."', '".date('Y')."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+			$unapprovereqforyear['clinic_unapprove_req_foryear'] = $this->db->query("CALL unapprovedYearlyData(".$prevrole.",'clinic_applications', '".$dept_id."', '".$role_id."', '".date('Y')."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+			$unapprovereqforyear['lab_unapprove_req_foryear'] = $this->db->query("CALL unapprovedYearlyData(".$prevrole.",'lab_applications', '".$dept_id."', '".$role_id."', '".date('Y')."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+			$unapprovereqforyear['total_unapprove_req_foryear'] = $unapprovereqforyear['hospital_unapprove_req_foryear'] + $unapprovereqforyear['clinic_unapprove_req_foryear'] + $unapprovereqforyear['lab_unapprove_req_foryear'];
+
+			return json_decode(json_encode($unapprovereqforyear));
 		}
 	} 
 ?>

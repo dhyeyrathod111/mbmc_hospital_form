@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller
 		} else {
 			$this->authorised_user = array();
 		}
-// 		echo "<pre>";print_r($this->authorised_user);exit();
+		// echo "<pre>";print_r($this->authorised_user);exit();
 		$this->load->helper('string');$this->load->helper('emailtrigger');
 		$this->email_trigger = new Emailtrigger ;
 	}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 08, 2020 at 08:34 PM
+-- Generation Time: Dec 09, 2020 at 08:53 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -44,7 +44,7 @@ BEGIN
     
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `dailyrequest` (IN `tab_name` VARCHAR(30), IN `today_date` VARCHAR(30))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `dailyrequest` (IN `tab_name` VARCHAR(50), IN `today_date` VARCHAR(30))  BEGIN
  
  SET @site_code = CONCAT("SELECT COUNT(*) totalRequest FROM ", tab_name, " WHERE date(created_at) = ", CONCAT("'", today_date, "'"));
  
@@ -96,8 +96,18 @@ BEGIN
         END IF;
     	
     ELSE
+
+        IF(@dept_id = '5') THEN
+
+            SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @table_name," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0'");
+
+        ELSE 
+
+            SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @table_name," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0'");
+
+        END IF;
     
-    SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @table_name," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0'");
+    
     	
     END IF;
     
@@ -124,7 +134,7 @@ BEGIN
     SET @role_id = roleid;
     SET @dept_id = deptid;
     
-    SET @site_code_ = concat("SELECT COUNT(*) total_count FROM pwd_applications WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM `application_remarks` WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'")," GROUP BY app_id) AND role_id >= ", concat("'", @role_id,"'"),") AND is_deleted = '0' AND MONTH(created_at) = ", concat("'", @month_number,"'"));
+    SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ",concat(@name_table)," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM `application_remarks` WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'")," GROUP BY app_id) AND role_id >= ", concat("'", @role_id,"'"),") AND is_deleted = '0' AND MONTH(created_at) = ", concat("'", @month_number,"'"));
     
     PREPARE statement_ FROM @site_code_;
  	EXECUTE statement_;
@@ -143,7 +153,7 @@ BEGIN
  
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `totalunapprovedByroleinmonth` (IN `month_number` INT, IN `name_table` INT, IN `roleid` INT, IN `deptid` INT, IN `prevrole` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `totalunapprovedByroleinmonth` (IN `month_number` INT, IN `name_table` VARCHAR(255), IN `roleid` INT, IN `deptid` INT, IN `prevrole` INT)  NO SQL
 BEGIN
 	SET @month_number = month_number;
     SET @name_table = name_table;
@@ -153,7 +163,7 @@ BEGIN
     
     IF (@prevrole = '0') THEN
     
-    SET @site_code_ = concat("SELECT count(*) total_count FROM pwd_applications WHERE app_id NOT IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM application_remarks WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'"), " GROUP BY app_id)" , ") AND MONTH(created_at) = ", concat("'", @month_number,"'"), " AND is_deleted = '0'");
+    SET @site_code_ = concat("SELECT count(*) total_count FROM ",concat(@name_table)," WHERE app_id NOT IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM application_remarks WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'"), " GROUP BY app_id)" , ") AND MONTH(created_at) = ", concat("'", @month_number,"'"), " AND is_deleted = '0'");
     
     ELSE
     
@@ -412,7 +422,10 @@ INSERT INTO `applications_details` (`application_id`, `dept_id`, `sub_dept_id`, 
 (122, 5, 3, 1, 0, '2020-12-08 16:59:09', '2020-12-08 16:59:09'),
 (123, 5, 0, 1, 0, '2020-12-08 17:51:16', '2020-12-08 17:51:16'),
 (124, 5, 0, 1, 0, '2020-12-08 18:13:15', '2020-12-08 18:13:15'),
-(125, 5, 0, 1, 0, '2020-12-08 18:33:55', '2020-12-08 18:33:55');
+(125, 5, 0, 1, 0, '2020-12-08 18:33:55', '2020-12-08 18:33:55'),
+(126, 5, 0, 1, 0, '2020-12-09 15:06:58', '2020-12-09 15:06:58'),
+(127, 5, 0, 1, 0, '2020-12-09 15:07:32', '2020-12-09 15:07:32'),
+(128, 5, 0, 1, 0, '2020-12-09 16:26:10', '2020-12-09 16:26:10');
 
 -- --------------------------------------------------------
 
@@ -2011,7 +2024,23 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `token`, `login_time`, `ip_address
 (596, 27, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI3Iiwicm9sZV9pZCI6IjI0Iiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6InNlbmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6InNlbmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiOTg2NTMyNDUxMiIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:31:04', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:39:53'),
 (597, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.102', 'Chrome', '86.0.4240.198', 'Windows 8.1', '2020-12-08 18:46:03'),
 (598, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 19:10:19'),
-(599, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 20:23:45');
+(599, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-08 20:23:45'),
+(600, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 10:09:57'),
+(601, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 14:47:57'),
+(602, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 16:01:49'),
+(603, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 16:19:37'),
+(604, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 16:26:29'),
+(605, 25, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI1Iiwicm9sZV9pZCI6IjIyIiwid2FyZF9pZCI6IjMiLCJlbWFpbF9pZCI6Im1ibWNob0B5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im1ibWNobyIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MzIxNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOiIkMmEkMDgkazlPQz', '2020-11-22 17:29:55', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 16:42:33'),
+(606, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 16:43:30'),
+(607, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 17:57:49'),
+(608, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 17:59:56'),
+(609, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 18:13:53'),
+(610, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 18:15:08'),
+(611, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 18:20:16'),
+(612, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 18:56:05'),
+(613, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.187', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-09 18:57:37'),
+(614, 24, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiaG9zcGl0YWxjbGVhcmtAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJob3NwaXRhbGNsZWFyayIsInVzZXJfbW9iaWxlIjoiNzg5NjU0MTIzNSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcm', '2020-11-22 17:28:45', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 19:22:23'),
+(615, 26, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjI2Iiwicm9sZV9pZCI6IjIzIiwid2FyZF9pZCI6IjAiLCJlbWFpbF9pZCI6Imp1bmlvcmRvY3RvckB5b3BtYWlsLmNvbSIsInVzZXJfbmFtZSI6Imp1bmlvcmRvY3RvciIsInVzZXJfbW9iaWxlIjoiNzg0NTEyMzI2NSIsImRlcHRfaWQiOiI1IiwicGFzc3dvcmQiOi', '2020-11-22 17:30:33', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-09 19:49:24');
 
 -- --------------------------------------------------------
 
@@ -2697,7 +2726,10 @@ INSERT INTO `hospital_alien` (`id`, `app_id`, `name`, `age`, `qualification`, `n
 (117, 11, 'Sonia Bowman', 43, 'Cillum id blanditiis', 'Consectetur in dolo'),
 (120, 16, '', 0, '', ''),
 (121, 17, '', 0, '', ''),
-(122, 18, '', 0, '', '');
+(122, 18, '', 0, '', ''),
+(123, 19, 'Amena Torres', 13, 'Omnis voluptas fugia', 'Consequatur et est'),
+(124, 20, 'Mira Lowe', 96, 'Perspiciatis invent', 'Vel eiusmod dignissi'),
+(125, 21, '', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -2748,31 +2780,35 @@ CREATE TABLE `hospital_applications` (
   `promise` int(11) NOT NULL DEFAULT '0',
   `no_of_expiry_certificate` varchar(255) DEFAULT NULL,
   `date_of_expiry_certificate` varchar(255) DEFAULT NULL,
-  `unregisterd_medical` varchar(11) DEFAULT NULL
+  `unregisterd_medical` varchar(11) DEFAULT NULL,
+  `file_closure_status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hospital_applications`
 --
 
-INSERT INTO `hospital_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_nationality`, `technical_qualification`, `hospital_name`, `hospital_address`, `others`, `maternity_beds`, `patient_beds`, `ownership_agreement`, `tax_receipt`, `doc_certificate`, `reg_certificate`, `staff_certificate`, `arrangement_for_checkup`, `nursing_staff_deg_certificate`, `nursing_staff_reg_certificate`, `bio_des_certificate`, `society_noc`, `fire_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `situation_registration`, `user_id`, `application_type`, `health_officer`, `detail_arrange_sanitary_employee`, `detail_arrange_sanitary_patients`, `storage_arrangements`, `other_business_address`, `accomodation`, `proportion_of_qualified`, `promise`, `no_of_expiry_certificate`, `date_of_expiry_certificate`, `unregisterd_medical`) VALUES
-(1, 82, 'Anjolie James', 'hamiq@yopmail.com', '89', '54', 'Labore consequuntur ', 'Ex consequa', 'Provident ex deleni', 'Gage Cross', 'Sit non neque vitae ', 'Optio placeat illo', '145', '321', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:28:08', '2020-12-02 18:37:58', 'Est dolore deserunt', 23, 1, 0, 'Perferendis perferen', 'Non cumque itaque ut', 'Quia saepe quibusdam', 'Consectetur sit si', 'Deserunt ullam qui i', NULL, 0, NULL, NULL, NULL),
-(2, 83, 'Maxine Rice', 'gizu@yopmail.com', '3216547895', '3216547895', 'Veritatis hic dolor ', 'Aliquid ill', 'Culpa esse autem te', 'Aut et molestiae qua', 'Aut et molestiae qua', 'Duis cillum consequa', '791', '411', 355, 356, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:37:58', '2020-12-02 18:37:58', 'Dolor id nisi culpa ', 23, 1, 0, 'Voluptates consequun', 'In et quis beatae ni', 'Totam exercitationem', 'Ducimus reiciendis ', 'Deleniti at eius ess', '', 0, NULL, NULL, NULL),
-(3, 84, 'Jeenal patel test', 'jeenalpatel@yopmail.com', '7896541235', '7896541235', 'Ullamco iure porro v', 'Atque sit a', 'Cupiditate nisi cons', 'Provident aliquip e', 'Provident aliquip e', 'Aut ipsam aliquid at', '341', '277', 369, 370, 0, 0, 0, 'asdasdas', 0, 0, 0, 0, 0, 81, 0, '2020-12-02 18:42:38', '2020-12-07 17:46:26', 'Quam iusto officia d', 23, 1, 3, 'Nostrum unde enim an', 'Sed odio sit sed vol', 'Quae impedit vitae ', 'Possimus rem conseq', 'Dolores cumque quod ', '0', 1, NULL, NULL, 'No'),
-(4, 85, 'Ankita patel', 'ankitapatel@yopmail.com', '7896541234', '7896541234', 'Eiusmod culpa conseq', 'Minus ex in', 'Dolore exercitatione', 'Accusantium ad sed q', 'Accusantium ad sed q', 'Aut occaecat perspic', '996', '360', 257, 258, 259, 260, 261, 'Nesciunt alias anim', 0, 0, 0, 0, 262, 0, 0, '2020-12-03 11:32:54', '2020-12-02 18:37:58', 'Qui ullamco qui quae', 23, 1, 0, 'Quae explicabo Cons', 'Ratione optio labor', 'Minus aliquam nihil ', 'Eu ipsum voluptatem', 'Dolores sapiente deb', '0', 1, NULL, NULL, NULL),
-(5, 86, 'rashmi khan', 'rashmikhan@yopmail.com', '7896543215', '7896543215', 'Ex aliquam eveniet ', 'Numquam inv', 'Sit sint magna lab', 'Labore incididunt vo', 'Labore incididunt vo', 'Pariatur Ut omnis e', '293', '601', 263, 264, 265, 266, 267, 'Corporis libero lore', 268, 269, 270, 273, 272, 0, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49', 'Consequatur similiq', 23, 1, 0, 'Molestiae est commod', 'Quisquam elit aut l', 'Provident maiores d', 'Ea non qui dolore el', 'Dolores est voluptat', '0', 1, NULL, NULL, NULL),
-(6, 89, 'Nick', 'smn101296@gmail.com', '1234567890', '0987654321', 'Juhu', 'Indian', 'qualification ', 'ABC Nursing Home ', 'Mumbai', 'NA', '5', '5', 0, 0, 0, 0, 0, 'On the ground floor ', 0, 0, 0, 0, 0, 0, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00', 'Home branch mumbai ', 22, 2, 0, '3', '5', 'in the kitchen ', '', 'NA', '', 0, '', '', NULL),
-(7, 97, 'Kim Hanson', 'suman.kattimani@aaravsoftware.com', '83', '96', 'Qui suscipit reicien', 'Et ut in do', 'Ut autem ut est ad q', 'Aurelia Hill', 'Tenetur enim dolorem', 'Dolorem doloremque e', '337', '50', 304, 305, 306, 307, 308, 'Laborum est reprehe', 309, 310, 311, 312, 313, 16, 0, '2020-12-04 17:15:59', '2020-12-08 17:14:47', 'Pariatur Aute elit', 22, 1, 3, 'Sequi odio minim min', 'Cupiditate consequun', 'Qui fuga Ipsa reru', 'Veniam consectetur ', 'Facilis quia asperio', 'Eveniet maxime volu', 1, NULL, NULL, NULL),
-(8, 100, 'Gil Randall', 'suman.kattimani@aaravsoftware.com', '71', '8', 'Fugiat voluptas impe', 'Vitae inven', 'Voluptatem Ipsam mi', 'Minim error minim al', 'Minim error minim al', 'Suscipit excepturi d', '740', '396', 330, 331, 332, 333, 334, 'Qui eum aliquip faci', 335, 336, 337, 338, 339, 81, 0, '2020-12-05 10:43:10', '2020-12-05 11:09:47', 'Aliquip qui qui quia', 22, 1, 3, 'Ex ea illo id aspern', 'Nesciunt quia quaer', 'Ab perferendis aut a', 'Delectus eiusmod si', 'Ut voluptas id ex vo', 'Quia magna sunt id ', 1, NULL, NULL, NULL),
-(10, 105, 'Odysseus Ball', 'suman.kattimani@aaravsoftware.com', '97', '72', 'Esse voluptate vita', 'Magni aliqu', 'Asperiores et cillum', 'Sophia Hoover', 'Reiciendis non culpa', 'Molestiae culpa del', '988', '708', 359, 360, 361, 362, 363, 'Vero omnis cumque ex', 364, 365, 366, 367, 368, 85, 0, '2020-12-07 14:51:17', '2020-12-07 16:20:23', 'Est quia magni amet', 22, 1, 3, 'Molestiae in quae ei', 'Adipisci voluptatem ', 'Minus debitis itaque', 'Delectus totam dolo', 'Ut odio laudantium ', 'Incididunt iure et r', 1, NULL, NULL, 'Yes'),
-(11, 106, 'Abdul Maldonado', 'suman.kattimani@aaravsoftware.com', '31', '55', 'Voluptates voluptas ', 'Qui cumque ', 'Explicabo In placea', 'Quibusdam possimus ', 'Quibusdam possimus ', 'Voluptates aut sed s', '372', '784', 0, 0, 0, 0, 0, 'Atque voluptate moll', 0, 0, 0, 0, 0, 16, 0, '2020-12-07 15:21:54', '2020-12-07 15:23:00', 'Voluptatem Molestia', 23, 1, 3, 'Fugit sequi consect', 'Ullamco quis laudant', 'Quaerat perferendis ', 'Natus ipsum distinct', 'Minus amet ut repel', 'Aut fugiat quo sit e', 1, NULL, NULL, 'No'),
-(12, 108, 'Brittany Cobb', 'suman.kattimani@aaravsoftware.com', '38', '65', 'Reprehenderit ut am', 'Dolorem sun', 'Modi quo pariatur I', 'Kirsten Shelton', 'Eum consectetur qua', 'Qui nesciunt simili', '38', '102', 0, 0, 0, 0, 0, 'Incidunt placeat e', 0, 0, 0, 0, 0, 85, 0, '2020-12-07 17:41:42', '2020-12-07 17:48:11', 'Eos et tempore bla', 22, 1, 3, 'Qui ex sint non quis', 'Esse sunt qui id eu', 'Obcaecati omnis poss', '', 'Ut consequat Eiusmo', 'Earum expedita asper', 0, NULL, NULL, 'Yes'),
-(13, 109, 'Hello world', 'helloworld@yopmail.com', '7896541235', '7896541235', 'Doloremque molestiae', 'Temporibus ', 'Consectetur molesti', 'Nisi exercitation ex', 'Nisi exercitation ex', 'Voluptatem molestiae', '989', '888', 376, 377, 378, 379, 380, 'Aut alias commodi nu', 381, 382, 383, 384, 385, 85, 0, '2020-12-07 17:56:52', '2020-12-07 18:02:02', 'Nam aliqua Autem al', 23, 1, 3, 'Labore sunt adipisic', 'Maxime quaerat minus', 'Asperiores unde inci', 'Consequatur deserun', 'Aut laudantium natu', 'Reprehenderit proid', 1, NULL, NULL, 'Yes'),
-(14, 110, 'Kylan Adkins', 'lynyvo@yopmail.com', '7896541235', '7896541235', 'Aspernatur tempore ', 'Natus elit ', 'Suscipit dolorum vel', 'Libby Marsh', 'Ipsa quibusdam Nam ', 'Fugiat dolor veniam', '827', '734', 0, 0, 0, 0, 0, 'Sequi maiores eiusmo', 0, 0, 0, 0, 0, 81, 0, '2020-12-07 18:49:45', '2020-12-07 18:51:08', 'Architecto suscipit ', 23, 2, 3, 'Iure esse fugiat f', 'Animi iure nemo et ', 'Quas enim sed incidi', 'Exercitation sunt i', 'Dolore earum vel des', 'Magni est quia beat', 1, NULL, NULL, 'No'),
-(15, 111, 'Data testing', 'testingtesting@yopmail.com', '7896541235', '7896541235', 'Autem vel totam quia', 'Ea non non ', 'Nihil ea omnis eos v', 'Suscipit debitis dui', 'Suscipit debitis dui', 'In aut placeat nisi', '588', '453', 386, 387, 388, 389, 390, 'Iusto sit amet occ', 391, 392, 393, 394, 395, 85, 0, '2020-12-07 19:25:29', '2020-12-07 20:09:55', 'Culpa laboris offic', 23, 2, 3, 'Sit corporis est om', 'Animi et culpa aut ', 'Quis molestias fuga', 'Alias non iste tempo', 'Ad voluptatem cupidi', 'Nobis nesciunt vel ', 1, '123456', '2020-6-13', 'Yes'),
-(16, 123, 'Alice', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'aLICE CARE', 'Andheri west', 'NA', '3', '7', 0, 0, 0, 0, 0, 'IN THE OPD AT 1ST FLOOR ', 0, 0, 0, 0, 0, 81, 0, '2020-12-08 17:51:16', '2020-12-08 17:57:32', 'andheri west', 24, 2, 3, '1', '3', 'NA', '', 'na', '', 1, 'MH/THN/MBMC/2017/30 ', '2020-11-08', 'No'),
-(17, 124, 'Harry ', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'Harry care ', 'andheri west ', 'fhfjfj', 'dfhfh', 'fghfdg', 0, 0, 0, 0, 0, 'bdfgnfgnf', 0, 0, 0, 0, 0, 85, 0, '2020-12-08 18:13:15', '2020-12-08 18:24:31', 'na', 22, 1, 3, 'fh', 'hf', 'ghfh', '', 'gfhfdhgdf', '', 0, NULL, NULL, 'No'),
-(18, 125, 'Dhyey', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'Dhyey care', 'andheri west ', 'na', '0', '10', 0, 0, 0, 0, 0, 'na', 0, 0, 0, 0, 0, 85, 0, '2020-12-08 18:33:55', '2020-12-08 18:40:19', 'hgulkjlk', 22, 1, 3, '2', '2', '', '', 'fds', 'fg', 0, NULL, NULL, 'No');
+INSERT INTO `hospital_applications` (`id`, `app_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `applicant_nationality`, `technical_qualification`, `hospital_name`, `hospital_address`, `others`, `maternity_beds`, `patient_beds`, `ownership_agreement`, `tax_receipt`, `doc_certificate`, `reg_certificate`, `staff_certificate`, `arrangement_for_checkup`, `nursing_staff_deg_certificate`, `nursing_staff_reg_certificate`, `bio_des_certificate`, `society_noc`, `fire_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `situation_registration`, `user_id`, `application_type`, `health_officer`, `detail_arrange_sanitary_employee`, `detail_arrange_sanitary_patients`, `storage_arrangements`, `other_business_address`, `accomodation`, `proportion_of_qualified`, `promise`, `no_of_expiry_certificate`, `date_of_expiry_certificate`, `unregisterd_medical`, `file_closure_status`) VALUES
+(1, 82, 'Anjolie James', 'hamiq@yopmail.com', '89', '54', 'Labore consequuntur ', 'Ex consequa', 'Provident ex deleni', 'Gage Cross', 'Sit non neque vitae ', 'Optio placeat illo', '145', '321', 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:28:08', '2020-12-02 18:37:58', 'Est dolore deserunt', 23, 1, 0, 'Perferendis perferen', 'Non cumque itaque ut', 'Quia saepe quibusdam', 'Consectetur sit si', 'Deserunt ullam qui i', NULL, 0, NULL, NULL, NULL, 0),
+(2, 83, 'Maxine Rice', 'gizu@yopmail.com', '3216547895', '3216547895', 'Veritatis hic dolor ', 'Aliquid ill', 'Culpa esse autem te', 'Aut et molestiae qua', 'Aut et molestiae qua', 'Duis cillum consequa', '791', '411', 355, 356, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, '2020-12-02 18:37:58', '2020-12-02 18:37:58', 'Dolor id nisi culpa ', 23, 1, 0, 'Voluptates consequun', 'In et quis beatae ni', 'Totam exercitationem', 'Ducimus reiciendis ', 'Deleniti at eius ess', '', 0, NULL, NULL, NULL, 0),
+(3, 84, 'Jeenal patel test', 'jeenalpatel@yopmail.com', '7896541235', '7896541235', 'Ullamco iure porro v', 'Atque sit a', 'Cupiditate nisi cons', 'Provident aliquip e', 'Provident aliquip e', 'Aut ipsam aliquid at', '341', '277', 369, 370, 0, 0, 0, 'asdasdas', 0, 0, 0, 0, 0, 81, 0, '2020-12-02 18:42:38', '2020-12-07 17:46:26', 'Quam iusto officia d', 23, 1, 3, 'Nostrum unde enim an', 'Sed odio sit sed vol', 'Quae impedit vitae ', 'Possimus rem conseq', 'Dolores cumque quod ', '0', 1, NULL, NULL, 'No', 0),
+(4, 85, 'Ankita patel', 'ankitapatel@yopmail.com', '7896541234', '7896541234', 'Eiusmod culpa conseq', 'Minus ex in', 'Dolore exercitatione', 'Accusantium ad sed q', 'Accusantium ad sed q', 'Aut occaecat perspic', '996', '360', 257, 258, 259, 260, 261, 'Nesciunt alias anim', 0, 0, 0, 0, 262, 0, 0, '2020-12-03 11:32:54', '2020-12-02 18:37:58', 'Qui ullamco qui quae', 23, 1, 0, 'Quae explicabo Cons', 'Ratione optio labor', 'Minus aliquam nihil ', 'Eu ipsum voluptatem', 'Dolores sapiente deb', '0', 1, NULL, NULL, NULL, 0),
+(5, 86, 'rashmi khan', 'rashmikhan@yopmail.com', '7896543215', '7896543215', 'Ex aliquam eveniet ', 'Numquam inv', 'Sit sint magna lab', 'Labore incididunt vo', 'Labore incididunt vo', 'Pariatur Ut omnis e', '293', '601', 263, 264, 265, 266, 267, 'Corporis libero lore', 268, 269, 270, 273, 272, 0, 0, '2020-12-03 15:42:49', '2020-12-03 15:42:49', 'Consequatur similiq', 23, 1, 0, 'Molestiae est commod', 'Quisquam elit aut l', 'Provident maiores d', 'Ea non qui dolore el', 'Dolores est voluptat', '0', 1, NULL, NULL, NULL, 0),
+(6, 89, 'Nick', 'smn101296@gmail.com', '1234567890', '0987654321', 'Juhu', 'Indian', 'qualification ', 'ABC Nursing Home ', 'Mumbai', 'NA', '5', '5', 0, 0, 0, 0, 0, 'On the ground floor ', 0, 0, 0, 0, 0, 0, 0, '2020-12-04 15:48:33', '0000-00-00 00:00:00', 'Home branch mumbai ', 22, 2, 0, '3', '5', 'in the kitchen ', '', 'NA', '', 0, '', '', NULL, 0),
+(7, 97, 'Kim Hanson', 'suman.kattimani@aaravsoftware.com', '83', '96', 'Qui suscipit reicien', 'Et ut in do', 'Ut autem ut est ad q', 'Aurelia Hill', 'Tenetur enim dolorem', 'Dolorem doloremque e', '337', '50', 304, 305, 306, 307, 308, 'Laborum est reprehe', 309, 310, 311, 312, 313, 16, 0, '2020-12-04 17:15:59', '2020-12-08 17:14:47', 'Pariatur Aute elit', 22, 1, 3, 'Sequi odio minim min', 'Cupiditate consequun', 'Qui fuga Ipsa reru', 'Veniam consectetur ', 'Facilis quia asperio', 'Eveniet maxime volu', 1, NULL, NULL, NULL, 0),
+(8, 100, 'Gil Randall', 'suman.kattimani@aaravsoftware.com', '71', '8', 'Fugiat voluptas impe', 'Vitae inven', 'Voluptatem Ipsam mi', 'Minim error minim al', 'Minim error minim al', 'Suscipit excepturi d', '740', '396', 330, 331, 332, 333, 334, 'Qui eum aliquip faci', 335, 336, 337, 338, 339, 81, 0, '2020-12-05 10:43:10', '2020-12-05 11:09:47', 'Aliquip qui qui quia', 22, 1, 3, 'Ex ea illo id aspern', 'Nesciunt quia quaer', 'Ab perferendis aut a', 'Delectus eiusmod si', 'Ut voluptas id ex vo', 'Quia magna sunt id ', 1, NULL, NULL, NULL, 0),
+(10, 105, 'Odysseus Ball', 'suman.kattimani@aaravsoftware.com', '97', '72', 'Esse voluptate vita', 'Magni aliqu', 'Asperiores et cillum', 'Sophia Hoover', 'Reiciendis non culpa', 'Molestiae culpa del', '988', '708', 359, 360, 361, 362, 363, 'Vero omnis cumque ex', 364, 365, 366, 367, 368, 85, 0, '2020-12-07 14:51:17', '2020-12-07 16:20:23', 'Est quia magni amet', 22, 1, 3, 'Molestiae in quae ei', 'Adipisci voluptatem ', 'Minus debitis itaque', 'Delectus totam dolo', 'Ut odio laudantium ', 'Incididunt iure et r', 1, NULL, NULL, 'Yes', 0),
+(11, 106, 'Abdul Maldonado', 'suman.kattimani@aaravsoftware.com', '31', '55', 'Voluptates voluptas ', 'Qui cumque ', 'Explicabo In placea', 'Quibusdam possimus ', 'Quibusdam possimus ', 'Voluptates aut sed s', '372', '784', 0, 0, 0, 0, 0, 'Atque voluptate moll', 0, 0, 0, 0, 0, 16, 0, '2020-12-07 15:21:54', '2020-12-07 15:23:00', 'Voluptatem Molestia', 23, 1, 3, 'Fugit sequi consect', 'Ullamco quis laudant', 'Quaerat perferendis ', 'Natus ipsum distinct', 'Minus amet ut repel', 'Aut fugiat quo sit e', 1, NULL, NULL, 'No', 0),
+(12, 108, 'Brittany Cobb', 'suman.kattimani@aaravsoftware.com', '38', '65', 'Reprehenderit ut am', 'Dolorem sun', 'Modi quo pariatur I', 'Kirsten Shelton', 'Eum consectetur qua', 'Qui nesciunt simili', '38', '102', 0, 0, 0, 0, 0, 'Incidunt placeat e', 0, 0, 0, 0, 0, 85, 0, '2020-12-07 17:41:42', '2020-12-07 17:48:11', 'Eos et tempore bla', 22, 1, 3, 'Qui ex sint non quis', 'Esse sunt qui id eu', 'Obcaecati omnis poss', '', 'Ut consequat Eiusmo', 'Earum expedita asper', 0, NULL, NULL, 'Yes', 0),
+(13, 109, 'Hello world', 'helloworld@yopmail.com', '7896541235', '7896541235', 'Doloremque molestiae', 'Temporibus ', 'Consectetur molesti', 'Nisi exercitation ex', 'Nisi exercitation ex', 'Voluptatem molestiae', '989', '888', 376, 377, 378, 379, 380, 'Aut alias commodi nu', 381, 382, 383, 384, 385, 85, 0, '2020-12-07 17:56:52', '2020-12-07 18:02:02', 'Nam aliqua Autem al', 23, 1, 3, 'Labore sunt adipisic', 'Maxime quaerat minus', 'Asperiores unde inci', 'Consequatur deserun', 'Aut laudantium natu', 'Reprehenderit proid', 1, NULL, NULL, 'Yes', 0),
+(14, 110, 'Kylan Adkins', 'lynyvo@yopmail.com', '7896541235', '7896541235', 'Aspernatur tempore ', 'Natus elit ', 'Suscipit dolorum vel', 'Libby Marsh', 'Ipsa quibusdam Nam ', 'Fugiat dolor veniam', '827', '734', 0, 0, 0, 0, 0, 'Sequi maiores eiusmo', 0, 0, 0, 0, 0, 81, 0, '2020-12-07 18:49:45', '2020-12-07 18:51:08', 'Architecto suscipit ', 23, 2, 3, 'Iure esse fugiat f', 'Animi iure nemo et ', 'Quas enim sed incidi', 'Exercitation sunt i', 'Dolore earum vel des', 'Magni est quia beat', 1, NULL, NULL, 'No', 0),
+(15, 111, 'Data testing', 'testingtesting@yopmail.com', '7896541235', '7896541235', 'Autem vel totam quia', 'Ea non non ', 'Nihil ea omnis eos v', 'Suscipit debitis dui', 'Suscipit debitis dui', 'In aut placeat nisi', '588', '453', 386, 387, 388, 389, 390, 'Iusto sit amet occ', 391, 392, 393, 394, 395, 85, 0, '2020-12-07 19:25:29', '2020-12-07 20:09:55', 'Culpa laboris offic', 23, 2, 3, 'Sit corporis est om', 'Animi et culpa aut ', 'Quis molestias fuga', 'Alias non iste tempo', 'Ad voluptatem cupidi', 'Nobis nesciunt vel ', 1, '123456', '2020-6-13', 'Yes', 0),
+(16, 123, 'Alice', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'aLICE CARE', 'Andheri west', 'NA', '3', '7', 0, 0, 0, 0, 0, 'IN THE OPD AT 1ST FLOOR ', 0, 0, 0, 0, 0, 81, 0, '2020-12-08 17:51:16', '2020-12-08 17:57:32', 'andheri west', 24, 2, 3, '1', '3', 'NA', '', 'na', '', 1, 'MH/THN/MBMC/2017/30 ', '2020-11-08', 'No', 0),
+(17, 124, 'Harry ', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'Harry care ', 'andheri west ', 'fhfjfj', 'dfhfh', 'fghfdg', 0, 0, 0, 0, 0, 'bdfgnfgnf', 0, 0, 0, 0, 0, 85, 0, '2020-12-08 18:13:15', '2020-12-08 18:24:31', 'na', 22, 1, 3, 'fh', 'hf', 'ghfh', '', 'gfhfdhgdf', '', 0, NULL, NULL, 'No', 0),
+(18, 125, 'Dhyey', 'suman.kattimani@aaravsoftware.com', '1234567890', '', 'juhu', 'indian', 'mbbs', 'Dhyey care', 'andheri west ', 'na', '0', '10', 0, 0, 0, 0, 0, 'na', 0, 0, 0, 0, 0, 85, 0, '2020-12-08 18:33:55', '2020-12-08 18:40:19', 'hgulkjlk', 22, 1, 3, '2', '2', '', '', 'fds', 'fg', 0, NULL, NULL, 'No', 0),
+(19, 126, 'Raphael Fulton', 'kixufa@yopmail.com', '98', '43', 'Quam consectetur off', 'Ut ut sit o', 'Molestiae voluptatum', 'Kalia Newton', 'Non quos maxime repe', 'Voluptas minima a po', '250', '675', 0, 0, 0, 0, 0, 'Modi temporibus dele', 0, 0, 0, 0, 0, 0, 0, '2020-12-09 15:06:58', '0000-00-00 00:00:00', 'Cillum velit sunt eu', 22, 1, 0, 'Veritatis et repudia', 'Eum est ut fugiat ', 'Omnis voluptatem est', '', 'Magna aut iste dolor', 'Dolor eos recusandae', 0, NULL, NULL, 'Yes', 0),
+(20, 127, 'Stephen Salinas', 'razuve@yopmail.com', '36', '43', 'Ratione non mollit i', 'Culpa id ni', 'Deserunt esse rerum ', 'Christopher Powers', 'Qui assumenda irure ', 'Ad amet consequatur', '808', '658', 0, 0, 0, 0, 0, 'Ad deserunt sint imp', 0, 0, 0, 0, 0, 0, 0, '2020-12-09 15:07:32', '0000-00-00 00:00:00', 'Irure ea eu eos exer', 22, 1, 0, 'Facere qui minima la', 'Ut consequatur rem ', 'Aliquam nostrum in q', 'Rem ad ullam in even', 'Ut quasi dolore corr', 'Corrupti quos quae ', 1, NULL, NULL, 'Yes', 0),
+(21, 128, 'Kibo Drake', 'qyqoky@yopmail.com', '98', '75', 'Ea est dolorem minim', 'In consequa', 'Voluptate aliquip es', 'Logan Rush', 'Ut beatae dolorem cu', 'Amet voluptate id c', '229', '512', 0, 0, 0, 0, 0, 'Alias omnis commodi ', 0, 0, 0, 0, 0, 0, 0, '2020-12-09 16:26:10', '0000-00-00 00:00:00', 'Ipsam sapiente incid', 22, 1, 0, 'Dolores id minim ali', 'Debitis irure et off', 'Provide adequate storage for raw materials. Provide adequate space for food being prepared. Provide adequate space food awaiting service. Provide adequate storage for equipment, utensils, crockery and cutlery. Be efficient and effective in terms of movement of staff, equipment, materials and waste management system in place Food, Oil & Grease (F.O.G) Provide an area for checking in stock. Janitorial store for kitchen, with janitorial sink in place and chemical store.', 'Incidunt rerum veli', 'Dignissimos in porro', 'Ea officia id dolore', 1, NULL, NULL, 'Yes', 0);
 
 -- --------------------------------------------------------
 
@@ -2828,7 +2864,10 @@ INSERT INTO `hospital_fee_charges` (`id`, `app_id`, `sr_no`, `service`, `charges
 (105, 11, 318, 'Laborum eaque et eli', 17),
 (108, 16, 1, 'OPD Charges ', 100),
 (109, 17, 34, 'redgd', 3535353),
-(110, 18, 1, 'dfgds', 100);
+(110, 18, 1, 'dfgds', 100),
+(111, 19, 187, 'Ducimus voluptatem ', 33),
+(112, 20, 819, 'Non sed tempora ex s', 70),
+(113, 21, 861, 'Ut quam nulla impedi', 42);
 
 -- --------------------------------------------------------
 
@@ -2891,7 +2930,10 @@ INSERT INTO `hospital_florespace_for_bedrooms` (`id`, `app_id`, `floor_number`, 
 (126, 11, '139', 19, 382),
 (129, 16, '1', 3, 10),
 (130, 17, '2', 2, 10),
-(131, 18, '1', 2, 10);
+(131, 18, '1', 2, 10),
+(132, 19, '97', 97, 733),
+(133, 20, '761', 100, 584),
+(134, 21, '563', 75, 687);
 
 -- --------------------------------------------------------
 
@@ -2956,7 +2998,10 @@ INSERT INTO `hospital_florespace_for_kitchen` (`id`, `app_id`, `room_name`, `flo
 (128, 11, 'Yoko Rosales', 'Yoko Rosales', '31', 2),
 (131, 16, 'KITCHEN', 'KITCHEN', '100', 2),
 (132, 17, 'cvnvcn', 'vcnvn', '534643', 1),
-(133, 18, 'a', '1', '100', 2);
+(133, 18, 'a', '1', '100', 2),
+(134, 19, 'Giselle Gregory', '', '', 2),
+(135, 20, 'Vaughan Morrow', '', '', 2),
+(136, 21, 'Maite Shannon', 'Maggie Bruce', '11', 2);
 
 -- --------------------------------------------------------
 
@@ -3078,7 +3123,10 @@ INSERT INTO `hospital_midwife` (`id`, `app_id`, `name`, `age`, `qualification`) 
 (125, 11, 'Yoko Rollins', 29, 'Nemo sit eos porro'),
 (128, 16, '', 0, ''),
 (129, 17, '', 0, ''),
-(130, 18, '', 0, '');
+(130, 18, '', 0, ''),
+(131, 19, 'Lillith Stafford', 50, 'Eos ea labore volup'),
+(132, 20, 'Melyssa Olson', 82, 'Culpa cupidatat hic'),
+(133, 21, 'Hyacinth Castillo', 61, 'Et in consequatur ad');
 
 -- --------------------------------------------------------
 
@@ -3148,7 +3196,10 @@ INSERT INTO `hospital_staff_details` (`id`, `app_id`, `staff_name`, `age`, `desi
 (127, 11, 'Linus Alvarez', '25', 5, NULL, 3, 1, 0, '2020-12-08 17:16:27', '0000-00-00 00:00:00'),
 (130, 16, 'Bob', '23', 1, NULL, 1, 1, 0, '2020-12-08 17:54:10', '0000-00-00 00:00:00'),
 (131, 17, 'hghfg', '44', 1, NULL, 1, 1, 0, '2020-12-08 18:13:15', '0000-00-00 00:00:00'),
-(132, 18, 'dfd', '34', 1, NULL, 1, 1, 0, '2020-12-08 18:33:55', '0000-00-00 00:00:00');
+(132, 18, 'dfd', '34', 1, NULL, 1, 1, 0, '2020-12-08 18:33:55', '0000-00-00 00:00:00'),
+(133, 19, 'Derek Kane', '85', 4, NULL, 3, 1, 0, '2020-12-09 15:06:58', '0000-00-00 00:00:00'),
+(134, 20, 'Kenyon Serrano', '36', 2, NULL, 3, 1, 0, '2020-12-09 15:07:32', '0000-00-00 00:00:00'),
+(135, 21, 'Leah Vinson', '41', 4, NULL, 4, 1, 0, '2020-12-09 16:26:10', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -3210,7 +3261,10 @@ INSERT INTO `hospital_supervision` (`id`, `app_id`, `name`, `age`, `qualificatio
 (125, 11, 'Yoko Rollins', 29, 'Nemo sit eos porro'),
 (128, 16, '', 0, ''),
 (129, 17, '', 0, ''),
-(130, 18, '', 0, '');
+(130, 18, '', 0, ''),
+(131, 19, 'Megan Mcintyre', 25, 'Impedit molestiae d'),
+(132, 20, 'Omar Robertson', 86, 'Nihil alias laborios'),
+(133, 21, 'Amal Dejesus', 50, 'In corrupti eos do');
 
 -- --------------------------------------------------------
 
@@ -3269,7 +3323,10 @@ INSERT INTO `hospital_surgeon_information` (`id`, `app_id`, `name`, `age`, `qual
 (113, 11, 'Jana Barlow', 48, 'Possimus non cumque', 'Beatae voluptatibus '),
 (116, 16, 'bob', 23, 'mbbs', 'no'),
 (117, 17, 'ghdfg', 45, 'fdhfg', 'fgds'),
-(118, 18, '1f', 23, 'dfg', 'no');
+(118, 18, '1f', 23, 'dfg', 'no'),
+(119, 19, 'Flynn Payne', 70, 'Rerum maiores qui ul', 'Vel non ex libero ob'),
+(120, 20, 'Davis Mcclain', 77, 'Est quae et quia nih', 'Autem accusantium be'),
+(121, 21, 'Benedict Bray', 73, 'Reiciendis cum omnis', 'Sint tenetur magna ');
 
 -- --------------------------------------------------------
 
@@ -5562,7 +5619,7 @@ ALTER TABLE `adv_type`
 -- AUTO_INCREMENT for table `applications_details`
 --
 ALTER TABLE `applications_details`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT for table `application_remarks`
 --
@@ -5582,7 +5639,7 @@ ALTER TABLE `app_status_level`
 -- AUTO_INCREMENT for table `auth_sessions`
 --
 ALTER TABLE `auth_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=600;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=616;
 --
 -- AUTO_INCREMENT for table `clinic_applications`
 --
@@ -5677,27 +5734,27 @@ ALTER TABLE `hall_type`
 -- AUTO_INCREMENT for table `hospital_alien`
 --
 ALTER TABLE `hospital_alien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT for table `hospital_applications`
 --
 ALTER TABLE `hospital_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `hospital_fee_charges`
 --
 ALTER TABLE `hospital_fee_charges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 --
 -- AUTO_INCREMENT for table `hospital_florespace_for_bedrooms`
 --
 ALTER TABLE `hospital_florespace_for_bedrooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 --
 -- AUTO_INCREMENT for table `hospital_florespace_for_kitchen`
 --
 ALTER TABLE `hospital_florespace_for_kitchen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 --
 -- AUTO_INCREMENT for table `hospital_inspection_form`
 --
@@ -5707,22 +5764,22 @@ ALTER TABLE `hospital_inspection_form`
 -- AUTO_INCREMENT for table `hospital_midwife`
 --
 ALTER TABLE `hospital_midwife`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 --
 -- AUTO_INCREMENT for table `hospital_staff_details`
 --
 ALTER TABLE `hospital_staff_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 --
 -- AUTO_INCREMENT for table `hospital_supervision`
 --
 ALTER TABLE `hospital_supervision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 --
 -- AUTO_INCREMENT for table `hospital_surgeon_information`
 --
 ALTER TABLE `hospital_surgeon_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 --
 -- AUTO_INCREMENT for table `illuminate`
 --
