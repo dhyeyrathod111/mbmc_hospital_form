@@ -28,7 +28,7 @@ class WardModel extends MY_Model
 	{
 		$this->db->select('ward.*,department_table.dept_title AS dept_title,roles_table.role_title AS role_title');
 		$this->db->join('department_table', 'ward.dept_id = department_table.dept_id');
-		$this->db->join('roles_table', 'ward.role_id = roles_table.role_id');
+		$this->db->join('roles_table', 'ward.role_id = roles_table.role_id','left');
 		$this->db->from('ward')->where('ward.is_deleted',0);
 		if($search_value != FALSE) $this->db->like('ward.ward_title',$search_value,'after');
 		if($order != NULL){

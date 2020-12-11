@@ -153,6 +153,10 @@ $route['lab/payment_approvel_process'] = 'LabController/payment_approvel_process
 $route['letters/lab_medical_certificate'] = 'LetterController/medical_certificate_for_lab';
 $route['lab/user_apps_list'] = 'LabController/user_apps_list';
 $route['lab/datatable_userapplist'] = 'LabController/datatable_userapplist';
+
+
+$route['mandap/get_application_status'] = 'MandapController/get_application_status';
+
  
 require_once( BASEPATH .'database/DB'. EXT );
 

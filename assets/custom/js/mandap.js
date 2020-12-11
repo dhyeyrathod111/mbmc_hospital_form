@@ -152,27 +152,19 @@
       $('#status').html('');
       $.ajax({
         type: 'POST',
-        url: base_url +'status/getStatusByDeptRole',
-        dataType: "Json",
-        data:{'dept_id':dept_id,'status':status,'user_id':user_id,'role_id':role_id},
-        success: function(res) {
-            // console.log(res);
-            var status = res.status
-            var result = res.result;
-            var option ='<option value="">---Select Status---</option>';
-            if(res.status =='1') {
-
-              $.each(result , function(index, val) { 
-                option +="<option value='"+val.status_id+"'>"+val.status_title+"</option>";
-                // console.log(val.status_id)
-              });
-              
-            } else if(res.status =='2'){
-              option ="";
-            } 
-            $('#status').html(option);
-            $('#status').selectpicker('refresh');
+        url: base_url +'mandap/get_application_status',
+        data:{'dept_id':dept_id,'status':status,'user_id':user_id,'role_id':role_id,app_id:app_id},
+        success : response => {
+            if (response.status == true) {
+                $('#remarks-form').html(response.html_string);$('#add_remark_model').modal('show');
+            } else {
+                swal("Opps...!!",response.message,"error");
+            }
         },
+        error: response => {
+            console.log(response.responseText);
+            swal("Opps...!!",'Sorry, we have to face some technical issues please try again later.',"error").then(() => location.reload());
+        }
     });
     }
   });
@@ -245,27 +237,26 @@
       },
       submitHandler: function(form,e) {
         e.preventDefault();
-        console.log('Form submitted');
+        $('#remark_submit').text('Processing....').prop("disabled",true);
         $.ajax({
-          type: 'POST',
-          url: base_url +'mandap/addremarks',
-          dataType: "Json",
-          data:$('#remarks-form').serialize(),
-          success: function(res) {
-            console.log(res.status);
-            $('#modal-status').modal('toggle');
-            if(res.status =='1') {
-              swal("Good Job!",res.messg,"success")
-              .then((value) => {
-                window.location = base_url + 'mandap';
-              });
-            } else if(res.status =='2'){
-              swal("Warning!",res.messg,"warning");
-            } 
-          },
-        });
-        // return false;
-      }
+            type: 'POST',
+            url: base_url +'mandap/addremarks',
+            data:$('#remarks-form').serialize(),
+                success: response => {
+                    $('#remark_submit').text('Save changes').prop("disabled",false);
+                    if (response.status == '1') {
+                        notify_success(response.messg);
+                        setTimeout(function(){ $('#add_remark_model').modal('hide'); location.reload() }, 3000);
+                    } else {
+                        notify_error(response.messg);
+                    }
+                },
+                error : response => {
+                    notify_error(response.messg);
+                    console.log(response.responseText);
+                }
+            });
+        }
     });
 });
 

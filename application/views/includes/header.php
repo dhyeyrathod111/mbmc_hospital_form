@@ -39,7 +39,7 @@
       <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
       <link rel = "stylesheet" href = "https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
       <!-- new style -->
-      <link rel = "stylesheet" href="style.css">
+      <!-- <link rel = "stylesheet" href="style.css"> -->
       <!-- <link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/bootstrap-year-calendar.css"> -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet"/>
       <script type="text/javascript">  base_url = "<?php echo base_url(); ?>"; </script>

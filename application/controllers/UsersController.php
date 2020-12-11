@@ -26,20 +26,15 @@ class UsersController extends Common {
         $data['department'] = $this->get_all_dept();
     	$user_id = base64_decode($this->uri->segment(3));
     	$data['user'] = $this->users_table->getUserdetailsById($user_id);
-
         $data['roles'] = $this->wardmodel->getRolesByDeptID($data['user']['dept_id']);
-
-        // echo "<pre>";print_r($data['roles']);exit();
-
+        $mandapDeptID = $this->department_table->getDepartmentbyName('Mandap');
         $condition_payload = array(
             'dept_id' => $data['user']['dept_id'],
             'role_id' => $data['user']['role_id'],
             'is_deleted' => 0
         );
+        if (!empty($mandapDeptID) && $mandapDeptID == $condition_payload['dept_id'])  unset($condition_payload['role_id']);
         $data['user_ward'] = $this->users_table->getWordForUsers($condition_payload);
-
-        
-
         $this->load->view('users/edit',$data);
     }
 
@@ -318,11 +313,17 @@ class UsersController extends Common {
         $this->form_validation->set_rules('role_id', 'Role id', 'required|integer|trim');
         $this->form_validation->set_rules('dept_id', 'Department id', 'required|integer|trim');
         if ($this->form_validation->run()) {
+
+            $mandapDeptID = $this->department_table->getDepartmentbyName('Mandap');
+
             $condition_payload = array(
                 'dept_id' => $this->security->xss_clean($this->input->post('dept_id')),
                 'role_id' => $this->security->xss_clean($this->input->post('role_id')),
                 'is_deleted' => 0
             );
+
+            if (!empty($mandapDeptID) && $mandapDeptID == $condition_payload['dept_id'])  unset($condition_payload['role_id']);
+            
             $word_data_stack = $this->users_table->getWordForUsers($condition_payload);
             if (count($word_data_stack) > 0) {
                 $this->response['status'] = TRUE;

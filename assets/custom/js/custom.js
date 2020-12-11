@@ -1,7 +1,7 @@
 
 
 const ward_visibility = (role_id , dept_id) => {
-    if (role_id == 8 || role_id == 22) {
+    if (role_id == 8 || role_id == 22 || dept_id == 12) {
       $("#word_select").prop('disabled', false);$('.word_container').show();
     } else {
       $("#word_select").prop('disabled', true);

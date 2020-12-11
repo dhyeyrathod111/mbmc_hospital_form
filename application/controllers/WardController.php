@@ -39,7 +39,7 @@ class wardController extends Common
 	{
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
 			$this->form_validation->set_rules('department_id', 'Department', 'required|integer|trim');
-			$this->form_validation->set_rules('role_id', 'Role', 'required|integer|trim');
+			$this->form_validation->set_rules('role_id', 'Role', 'integer|trim');
 			$this->form_validation->set_rules('status', 'Status', 'required|integer|trim');
 			$this->form_validation->set_rules('ward_title', 'ward title', 'required|alpha_numeric_spaces|trim');
 			if ($this->form_validation->run()) {
@@ -84,7 +84,7 @@ class wardController extends Common
 			$temp_array[] = $key + 1;
 			$temp_array[] = $oneWard->ward_id;
 			$temp_array[] = $oneWard->dept_title;
-			$temp_array[] = $oneWard->role_title;
+			$temp_array[] = !empty($oneWard->role_title) ? $oneWard->role_title : 'All authority';
 			$temp_array[] = $oneWard->ward_title;
 			$temp_array[] = ($oneWard->status == 1) ? "Active" : "Deactivate" ;
 			$temp_array[] = $oneWard->created_at;
@@ -115,7 +115,7 @@ class wardController extends Common
 	{
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
 			$this->form_validation->set_rules('department_id', 'Department', 'required|integer|trim');
-			$this->form_validation->set_rules('role_id', 'Role', 'required|integer|trim');
+			$this->form_validation->set_rules('role_id', 'Role', 'integer|trim');
 			$this->form_validation->set_rules('status', 'Status', 'required|integer|trim');
 			$this->form_validation->set_rules('ward_title', 'ward title', 'required|alpha_numeric_spaces|trim');
 			if ($this->form_validation->run()) {

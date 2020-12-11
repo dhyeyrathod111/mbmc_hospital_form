@@ -8,10 +8,22 @@ class MandapController extends Common {
  	* @author Vikas Pandey
  	*/
 
+    protected $response ;
+
+    protected $data ;
+
+    protected $dept_id ;
+
+    public function __construct()
+    {
+        parent::__construct();$this->data = array();$this->response = array();
+        $this->dept_id = $this->get_dept_id_by_name('Mandap');
+    }
+
 	public function index() {
         $dept_id = $this->get_dept_id_by_name('Mandap');
         // echo'<pre>';print_r($dept_id);exit;
-        $data['appStatus'] = $this->App_status_level_table->getAllStatusByDept($dept_id);
+        $data['appStatus'] = $this->App_status_level_table->getAllStatusByDept();
         // echo'<pre>';print_r($data);exit;
 		$this->load->view("applications/mandap/index",$data);
 	}
@@ -19,8 +31,9 @@ class MandapController extends Common {
 
     public function create() {
 
-        $data['app_id'] = $this->get_last_app_id();
-        $this->load->view('applications/mandap/create',$data);
+        $this->data['app_id'] = $this->get_last_app_id();
+        $this->data['wards'] = $this->mandap_applications_table->getWardFromDeptID($this->dept_id);
+        $this->load->view('applications/mandap/create',$this->data);
     }
 
    public function edit() {
@@ -159,7 +172,7 @@ class MandapController extends Common {
                     unset($_POST['application_no']);
 
                     $extra = array(
-                        'status' => '1',
+                        'status' => 0,
                         'is_deleted' => '0',
                         'created_at' => date('Y-m-d H:i:s'),
                         'updated_at' => date('Y-m-d H:i:s'),
@@ -231,11 +244,15 @@ class MandapController extends Common {
         $role_id = $session_userdata[0]['role_id'];
 
         // Fetch member's records
-        $mandapList = $this->mandap_applications_table->getRows($_POST);
-        // echo'<pre>';print_r($mandapList);exit;
+        $mandapList = $this->mandap_applications_table->getMandapDataForAuthorityDataTable(FALSE,$this->input->post(),$this->dept_id);
+
+        // echo "<pre>";print_r($mandapList);exit();
+
+        $mandapListCount = $this->mandap_applications_table->getMandapDataForAuthorityDataTable(TRUE,$this->input->post(),$this->dept_id);
+
         $i = $_POST['start'];
 
-        foreach($mandapList as $mandap){
+        foreach($mandapList as $mandap){    
             $i++;
             $id = $mandap['id'];
 
@@ -261,42 +278,39 @@ class MandapController extends Common {
             $dept_id = $this->applications_details_table->getDeptId($mandap['app_id'])['dept_id'];
 
             $status_details = $this->App_status_level_table->getAllStatusById($status);
-            // echo'<pre>';print_r($status_details);exit;
+
+
             if($status_details != null) {
                 $status_type = $status_details[0]['status_type'];
                 $status_title = $status_details[0]['status_title'];
-                
-                // if($status_type == '1') {
-                //  $class = "btn-danger white";
-                // } elseif($status == '2') {
-                //  $class = "btn-success white";
-                // } 
-
-                $status ='<a type="button" data-toggle="modal"  data-mandap="'.$mandap['id'].'" data-app="'.$mandap['app_id'].'" data-user="'.$user_id.'" data-role="'.$role_id.'" data-dept="'.$dept_id.'" data-status="'.$status.'" data-target="#modal-status" class="status_button btn btn-sm  btn-danger white">'.$status_title.'</a>';
+                $status ='<a type="button" data-mandap="'.$mandap['id'].'" data-app="'.$mandap['app_id'].'" data-user="'.$user_id.'" data-role="'.$role_id.'" data-dept="'.$dept_id.'" data-status="'.$status.'" class="status_button btn btn-sm  btn-danger white">'.$status_title.'</a>';
             } else {
-                $status ='NA';
+                $status ='<a type="button"  data-mandap="'.$mandap['id'].'" data-app="'.$mandap['app_id'].'" data-user="'.$user_id.'" data-role="'.$role_id.'" data-dept="'.$dept_id.'" data-status="'.$status.'" class="status_button btn btn-sm  btn-danger white">Awaiting</a>';
             }
             
             $remarks = '<a type="button" data-toggle="modal" data-mandap="'.$mandap['id'].'" data-app="'.$mandap['app_id'].'"  data-target="#modal-remarks" class="remarks_button btn btn-sm btn-primary white">Remarks</a>';
 
-            $action = '
-                    <a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$mandap['id_proof_id'].','.$mandap['request_letter_id'].','.$mandap['police_noc_id'].'" data-target="#modal-doc" class="anchor nav-link-icon doc_button">
+            if ($mandap['final_authority_approvel'] > 0) {
+                $payment_reqeust_btn = '<a type="button" aria-label="Payment Request" data-microtip-position="top" role="tooltip" app_id="'.$mandap['app_id'].'" class="btn btn-warning payment_request_btn"><i class="fas fa-money-bill-wave payment_request_btn" app_id="'.$mandap['app_id'].'"></i></a>';
+            } else {
+                $payment_reqeust_btn = '';
+            }
+
+            $documents = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$mandap['id_proof_id'].','.$mandap['request_letter_id'].','.$mandap['police_noc_id'].'" data-target="#modal-doc" class="anchor nav-link-icon doc_button">
                         <i class=" nav-icon fas fa-file"></i>
-                    </a>
-                    <a aria-label="Edit" data-microtip-position="top" role="tooltip" href="'.base_url().'mandap/edit/'.base64_encode($id).'" class="anchor nav-link-icon">
-                        <i class=" nav-icon fas fa-edit"></i>
                     </a>';
 
-            // $documents = $id_proof_button .''.$address_proof_button;
-            // $documents = '<a type="button" data-toggle="modal" data-image = "'.$mandap['id_proof_id'].','.$mandap['request_letter_id'].','.$mandap['police_noc_id'].'" data-target="#modal-doc" class="doc_button btn btn-block btn-info white">Docs</a>';
 
-            $data[] = array($i,$application_no, $applicant_name,$applicant_mobile_no,$booking_address,$booking_date,$remarks,$status,$action);
+            $action = '<a aria-label="Edit" data-microtip-position="top" role="tooltip" href="'.base_url().'mandap/edit/'.base64_encode($id).'" class="anchor nav-link-icon"><i class=" nav-icon fas fa-edit"></i></a>';
+
+
+            $data[] = array($i,$application_no, $applicant_name,$applicant_mobile_no,$booking_address,$booking_date,$remarks,$status,$documents,$action);
         }
         
         $output = array(
             "draw" => $_POST['draw'],
-            "recordsTotal" => $this->mandap_applications_table->countAll(),
-            "recordsFiltered" => $this->mandap_applications_table->countFiltered($_POST),
+            "recordsTotal" => $mandapListCount,
+            "recordsFiltered" => $mandapListCount,
             "data" => $data,
         );
         
@@ -352,9 +366,23 @@ class MandapController extends Common {
             } else {
                 $data['status'] = '2';
                 $data['messg'] = 'Oops! Something went wrong.';
-
             }
         }
-        echo json_encode($data);
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($data));
+    }
+    public function get_application_status()
+    {
+        $statusData = $this->App_status_level_table->getAllStatusByDeptRole($this->input->post('dept_id'),$this->input->post('role_id'));
+        if (!empty($statusData)) {
+            $this->data['approvel_status'] = $statusData;
+            $this->data['postdata'] = $this->input->post();
+            $this->response['status'] = TRUE;
+            $this->response['html_string'] = $this->load->view('applications/mandap/modal/add_remark',$this->data,TRUE);
+        } else {
+            $this->response['status'] = FALSE;
+            $this->response['message'] = "Role status has not been created.";
+        }
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
+        
     }
 }

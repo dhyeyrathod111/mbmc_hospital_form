@@ -34,7 +34,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label for="exampleInputEmail1">Status:</label>
-                                    <select name="status" class="form-control">
+                                    <select name="status" id="status_select_ward" class="form-control">
                                         <option value="">---Select status---</option>
                                         <option <?= ($ward->status == 1) ? "selected" : '' ?> value="1">Active</option>
                                         <option <?= ($ward->status == 2) ? "selected" : '' ?> value="2">Not Active</option>

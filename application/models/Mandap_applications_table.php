@@ -187,7 +187,58 @@
 	            $order = $this->order;
 	            $this->db->order_by(key($order), $order[key($order)]);
 	        }
-	    }	
+	    }
+
+	    public function getWardFromDeptID($deptid)
+	    {
+	    	return $this->db->get_where('ward',['dept_id'=>$deptid,'is_deleted'=>0])->result();
+	    }
+
+	    public function getMandapDataForAuthorityDataTable($count=FALSE,$postdata,$dept_id)
+	    {
+	    	$previous_role_stack = $this->db->query("SELECT role_id FROM permission_access where dept_id = ".$dept_id." AND status = 1 AND role_id < ".$this->authorised_user['role_id']." ORDER BY access_id DESC LIMIT 1")->row();
+
+	    	$final_role_stack = $this->db->query("SELECT * FROM permission_access where dept_id = ".$dept_id." AND status = 1 ORDER BY access_id DESC LIMIT 1")->row();
+
+	    	$condition = '';$approval_status = $postdata['approval_status'];
+
+	    	switch ($approval_status) {
+	    		case '0':
+	    			$condition .= ' AND mandap_data.acessable_role_id <= '.$this->authorised_user['role_id'];
+			    	if (!empty($previous_role_stack)) {
+			    		$condition .= " AND  mandap_data.last_approved_role_id = ".$previous_role_stack->role_id; 
+			    	} else {
+			    		$condition .= " AND mandap_data.last_approved_role_id IS NULL";
+			    	}
+	    			break;
+	    		case '1':
+	    			if (!empty($final_role_stack) && $final_role_stack->role_id == $this->authorised_user['role_id']) {
+	    				$condition .= ' AND mandap_data.acessable_role_id IS NULL';
+	    			} else {
+	    				$condition .= ' AND (mandap_data.acessable_role_id > '.$this->authorised_user['role_id']." OR mandap_data.acessable_role_id IS NULL) ";
+	    			}
+	    			break;
+	    		case '2':
+	    			$condition .= ' AND mandap_data.is_deleted = 1 AND mandap_data.last_approved_role_id = '.$this->authorised_user['role_id'];
+	    			break;
+	    		default:
+	    			break;
+	    	}
+
+	    	$condition .= " AND mandap_data.fk_ward_id = ".$this->authorised_user['ward_id'];
+
+	    	$sql_string = "SELECT mandap_data.* FROM (SELECT ma.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ma.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = $dept_id AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id ,(SELECT COUNT(*) FROM application_remarks ar WHERE ar.app_id = ma.app_id AND ar.dept_id = $dept_id AND ar.role_id = $final_role_stack->role_id AND is_deleted = 0 ) AS final_authority_approvel FROM mandap_applications ma) AS mandap_data WHERE 1 = 1".$condition;
+			if ($count == TRUE) {
+	    		return $this->db->query($sql_string)->num_rows();
+	    	} else {
+	    		$sql_string .= " LIMIT ".$postdata['length']." OFFSET ".$postdata['start'];
+	    		return $this->db->query($sql_string)->result_array();
+	    	}
+	    }
+	    public function getApplicationByAppID($appID)
+	    {
+	    	return $this->db->get_where($this->table,['app_id'=>$appID])->row();
+	    }
 	}
 
 ?>

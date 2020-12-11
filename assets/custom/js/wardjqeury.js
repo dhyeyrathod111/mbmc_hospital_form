@@ -1,5 +1,6 @@
 $( document ).ready(() => {
     ward_datatable();
+    $('#department_select_ward,#role_select_ward,#status_select_ward').selectpicker('destroy');
 });
 
 $("#update_ward_process").validate({
@@ -9,7 +10,7 @@ $("#update_ward_process").validate({
             number: true,
         },
         role_id:{
-            required:true,
+            // required:true,
             number: true,
         },
         status:{
@@ -90,7 +91,7 @@ $(document).on("change","#department_select_ward",Event => {
         	} else {
         		notify_error('Role is not present in this department. Please create role for this deparment.')
         	}
-        	$("#role_select_ward").html(html_str).selectpicker('refresh');
+        	$("#role_select_ward").html(html_str);
         },
         error: response => {
         	notify_error();console.log(response);
@@ -107,7 +108,7 @@ $("#create_ward_process").validate({
         	number: true,
         },
         role_id:{
-        	required:true,
+        	// required:true,
         	number: true,
         },
         status:{
