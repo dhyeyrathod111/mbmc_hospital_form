@@ -35,6 +35,15 @@ function hospital_payment_document_config()
     return $config;
 }
 
+function mandap_payment_document_config()
+{
+	$config['upload_path']          = './uploads/mandap/payment_docs/';
+    $config['allowed_types']        = '*';
+    $config['max_size']        		= '5000';
+    $config['encrypt_name']         = TRUE;
+    return $config;
+}
+
 function clinic_document_config()
 {
 	$config['upload_path']          = './uploads/clinic/';

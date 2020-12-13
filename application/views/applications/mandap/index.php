@@ -185,7 +185,41 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="payment_request_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Payment Reqeust form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="payment_request_form" action="<?= base_url('mandap/payment_request_process') ?>">
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal fade" id="payment_approvel_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width: 70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">payment approvel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="payment_approvel_form" action="<?= base_url('mandap/payment_approvel_process') ?>">
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <?php $this->load->view('includes/footer');?>

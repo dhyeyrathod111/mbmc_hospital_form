@@ -227,7 +227,7 @@
 
 	    	$condition .= " AND mandap_data.fk_ward_id = ".$this->authorised_user['ward_id'];
 
-	    	$sql_string = "SELECT mandap_data.* FROM (SELECT ma.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ma.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = $dept_id AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id ,(SELECT COUNT(*) FROM application_remarks ar WHERE ar.app_id = ma.app_id AND ar.dept_id = $dept_id AND ar.role_id = $final_role_stack->role_id AND is_deleted = 0 ) AS final_authority_approvel FROM mandap_applications ma) AS mandap_data WHERE 1 = 1".$condition;
+	    	$sql_string = "SELECT mandap_data.* FROM (SELECT ma.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ma.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = $dept_id AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id ,(SELECT COUNT(*) FROM application_remarks ar WHERE ar.app_id = ma.app_id AND ar.dept_id = $dept_id AND ar.role_id = $final_role_stack->role_id AND is_deleted = 0 ) AS final_authority_approvel,(SELECT py.status FROM payment py WHERE ma.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 12 ORDER BY pay_id DESC LIMIT 1) AS check_payment_status FROM mandap_applications ma) AS mandap_data WHERE 1 = 1".$condition;
 			if ($count == TRUE) {
 	    		return $this->db->query($sql_string)->num_rows();
 	    	} else {
@@ -239,6 +239,30 @@
 	    {
 	    	return $this->db->get_where($this->table,['app_id'=>$appID])->row();
 	    }
+	    public function create_payment_reqeust($insertStack)
+		{
+			$this->db->set('is_deleted',1)->where(['dept_id'=>$insertStack['dept_id'],'app_id'=>$insertStack['app_id']])->update('payment');
+			return $this->db->insert('payment',$insertStack);
+		}
+		public function update_payment_by_appID($update_stack,$app_id)
+		{
+			$this->db->where(['app_id'=>$app_id,'is_deleted'=>0]);
+			return $this->db->update('payment', $update_stack);
+		}
+		public function getRoleByName($role_name)
+		{
+			$this->db->select('*');
+			$this->db->from('roles_table');
+			$this->db->where('role_title',$role_name);
+			return $this->db->get()->row();
+		}
+		public function getActivePaymentByAppID($app_id)
+		{
+			$this->db->select('*');
+			$this->db->from('payment');
+			$this->db->where('app_id',$app_id);
+			return $this->db->get()->row();
+		}
 	}
 
 ?>

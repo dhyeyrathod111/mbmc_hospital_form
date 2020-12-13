@@ -15,7 +15,7 @@
         <h5><b>Amount:</b> &nbsp <?= $payment->amount ?></h5>
     </div>
     <div class="col-6">
-        <h5><b>Document:</b> &nbsp <a target="_blank" href="<?= base_url('uploads/hospital/payment_docs') ?>/<?= $payment->document_path ?>"><?= $payment->document_path ?></a></h5>
+        <h5><b>Document:</b> &nbsp <a target="_blank" href="<?= base_url('uploads/mandap/payment_docs') ?>/<?= $payment->document_path ?>"><?= $payment->document_path ?></a></h5>
     </div>
 </div>
 <hr />

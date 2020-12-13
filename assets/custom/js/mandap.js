@@ -1,3 +1,114 @@
+  
+
+
+    $(document).on("click",".payment_request_btn",event => { event.preventDefault();
+        let app_id = event.target.getAttribute('app_id');
+        $.ajax({
+            type: "POST",
+            url: base_url + 'mandap/payment_reqeust_popup',
+            data:{app_id:app_id},
+            success: response => {
+                if (response.status == true) {
+                    $('#payment_request_form').html(response.html_str);
+                    $('#payment_request_modal').modal('show');
+                } else {
+                    swal("Opps...!!",response.message,"error").then(() => location.reload());
+                }
+            },
+            error: response => {
+                console.log(response.responseText);
+                toster_alert_error("Sorry, we have to face some technical issues please try again later.");
+            }
+        });
+    });
+
+    $( "#payment_request_form" ).validate({
+        rules: {
+            description:{
+                required:true,
+            },
+        },
+        errorPlacement: function ( error, element ) {
+            console.log(element);
+            error.addClass( "ui red pointing label transition" );
+            error.insertAfter(element.after());
+        },
+        submitHandler: form => {
+            var form_data = JSON.stringify($(form).serializeArray());
+            $('#submit_btn_text').text('Processing....').prop("disabled",true);
+            $.ajax({
+                type: "POST",
+                url: $(form).attr('action'),
+                data: JSON.parse(form_data),
+                success: response => {
+                    $('#submit_btn_text').text('Send Payment Reqeust').prop("disabled",false);
+                    if (response.status == true) {
+                        notify_success(response.message);
+                    } else {
+                        notify_error(response.message);
+                    }
+                    setTimeout(function(){ location.reload() }, 3000);
+                },
+                error: response=>{
+                    notify_error('Sorry, we have to face some technical issues please try again later.');
+                    console.log(response);
+                }
+            });
+        }
+    });
+
+    $(document).on("click",".payment_approvel_btn",event => { 
+        event.preventDefault();
+        let app_id = event.target.getAttribute('app_id');
+        $.ajax({
+            type: "POST",
+            url: base_url + 'mandap/payment_approvel_modal',
+            data:{app_id:app_id},
+            success: response => {
+                if (response.status == true) {
+                    $('#payment_approvel_form').html(response.html_str);
+                    $('#payment_approvel_modal').modal('show');
+                } else {
+                    swal("Opps...!!",response.message,"error").then(() => location.reload());
+                }
+            },
+            error: response => {
+                console.log(response.responseText);
+                toster_alert_error("Sorry, we have to face some technical issues please try again later.");
+            }
+        });
+    });
+
+    $( "#payment_approvel_form" ).validate({
+        submitHandler: form => {
+            var form_data = JSON.stringify($(form).serializeArray());
+            $('#submit_btn_text').text('Processing....').prop("disabled",true);
+            $.ajax({
+                type: "POST",
+                url: $(form).attr('action'),
+                data: JSON.parse(form_data),
+                success: response => {
+                    $('#submit_btn_text').text('Approved').prop("disabled",false);
+                    if (response.status == true) {
+                        notify_success(response.message);
+                    } else {
+                        notify_error(response.message);
+                    }
+                    setTimeout(function(){ location.reload() }, 3000);
+                },
+                error: response=>{
+                    notify_error('Sorry, we have to face some technical issues please try again later.');
+                    console.log(response);
+                }
+            });
+        }
+    });
+
+
+
+    
+
+
   $(document).ready(function(){
       
       var is_user = createMandap.getAttribute("is_user");

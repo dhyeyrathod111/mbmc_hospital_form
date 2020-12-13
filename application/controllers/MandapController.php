@@ -252,6 +252,8 @@ class MandapController extends Common {
 
         $i = $_POST['start'];
 
+        $roleStacClerk = $this->mandap_applications_table->getRoleByName('Clerk');
+
         foreach($mandapList as $mandap){    
             $i++;
             $id = $mandap['id'];
@@ -290,19 +292,19 @@ class MandapController extends Common {
             
             $remarks = '<a type="button" data-toggle="modal" data-mandap="'.$mandap['id'].'" data-app="'.$mandap['app_id'].'"  data-target="#modal-remarks" class="remarks_button btn btn-sm btn-primary white">Remarks</a>';
 
-            if ($mandap['final_authority_approvel'] > 0) {
-                $payment_reqeust_btn = '<a type="button" aria-label="Payment Request" data-microtip-position="top" role="tooltip" app_id="'.$mandap['app_id'].'" class="btn btn-warning payment_request_btn"><i class="fas fa-money-bill-wave payment_request_btn" app_id="'.$mandap['app_id'].'"></i></a>';
+            if ($mandap['final_authority_approvel'] > 0 && $roleStacClerk->role_id == $this->authorised_user['role_id'] && $mandap['check_payment_status'] == '') {
+                $payment_btn = '<a type="button" aria-label="Payment Request" data-microtip-position="top" role="tooltip" app_id="'.$mandap['app_id'].'" class="btn btn-warning payment_request_btn btn-sm ml-1"><i class="fas fa-money-bill-wave payment_request_btn" app_id="'.$mandap['app_id'].'"></i></a>';
+            } else if ($roleStacClerk->role_id == $this->authorised_user['role_id'] && $mandap['check_payment_status'] == 4) {
+                $payment_btn = '<a type="button" aria-label="Payment Approval" data-microtip-position="top" role="tooltip" app_id="'.$mandap['app_id'].'" class="btn btn-warning btn-sm ml-1 payment_approvel_btn"><i class="fas fa-check payment_approvel_btn" app_id="'.$mandap['app_id'].'"></i></a>';
             } else {
-                $payment_reqeust_btn = '';
+                $payment_btn = '';
             }
 
             $documents = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$mandap['id_proof_id'].','.$mandap['request_letter_id'].','.$mandap['police_noc_id'].'" data-target="#modal-doc" class="anchor nav-link-icon doc_button">
                         <i class=" nav-icon fas fa-file"></i>
                     </a>';
 
-
-            $action = '<a aria-label="Edit" data-microtip-position="top" role="tooltip" href="'.base_url().'mandap/edit/'.base64_encode($id).'" class="anchor nav-link-icon"><i class=" nav-icon fas fa-edit"></i></a>';
-
+            $action = '<a aria-label="Edit" data-microtip-position="top" role="tooltip" type="button" href="'.base_url('mandap/edit/'.base64_encode($id)).'" class="btn btn-success btn-sm"><i class=" nav-icon fas fa-edit"></i></a>'.$payment_btn;
 
             $data[] = array($i,$application_no, $applicant_name,$applicant_mobile_no,$booking_address,$booking_date,$remarks,$status,$documents,$action);
         }
@@ -383,6 +385,130 @@ class MandapController extends Common {
             $this->response['message'] = "Role status has not been created.";
         }
         return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
-        
+    }
+    public function payment_reqeust_popup()
+    {
+        $app_id = $this->input->post('app_id');
+        $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
+        if (!empty($application)) {
+            $this->data['application'] = $application;
+            $this->data['payment'] = 10000;
+            $this->response['status'] = TRUE;
+            $this->response['html_str'] = $this->load->view('applications/mandap/modal/payment_reqeust_popup',$this->data,TRUE);
+        } else {
+            $this->response['status'] = FALSE;
+            $this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+        }
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
+    }
+    public function payment_request_process()
+    {
+        $app_id = $this->input->post('app_id');
+        $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
+        if (!empty($application)) {
+            $this->data['application'] = $application;
+            $this->data['postdata'] = $this->input->post();
+            $html_str = $this->load->view('applications/mandap/email_templates/payment_reqeust',$this->data,TRUE);
+            $email_stack = array(
+                'to' => $application->applicant_email_id,'body' => $html_str,'subject' => "Application MBMC-00000".$application->app_id." payment Reqeusted.",
+            );
+            $this->email_trigger->codeigniter_mail($email_stack);
+
+            $paymentStack = array(
+                'app_id' => $application->app_id,
+                'dept_id' => $this->authorised_user['dept_id'],
+                'amount' => $this->input->post('amount'),
+                'status' => 1,
+            );
+            if ($this->mandap_applications_table->create_payment_reqeust($paymentStack)) {
+                $this->response['status'] = TRUE;
+                $this->response['message'] = "Payment reqeust has been created successfully.";
+            } else {
+                $this->response['status'] = FALSE;
+                $this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+            }
+        } else {
+            $this->response['status'] = FALSE;
+            $this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+        }
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
+    }
+    public function user_payment_form()
+    {
+        $app_id = base64_decode($this->input->get('app_id'));
+        $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
+        if (!empty($application)) {
+            $this->data['application'] = $application;
+            $this->data['payment'] = 10000;
+            $this->load->view('applications/mandap/user_payment_page',$this->data);
+        } else {
+            return redirect('');
+        }
+    }
+    public function user_payment_process()
+    {
+        $this->form_validation->set_rules('payment_method','Payment method','required|integer');
+        $this->form_validation->set_rules('payment_amount','Payment amount','required');
+        $document_response = json_decode($this->file_upload($_FILES['payment_document'],FALSE,mandap_payment_document_config()));
+        if ($this->form_validation->run() && $document_response->status == TRUE) {
+            $updatePaymnetStack = array(
+                'payment_selected' => $this->security->xss_clean($this->input->post('payment_method')),
+                'amount' => $this->security->xss_clean($this->input->post('payment_amount')),
+                'document_path' => $document_response->file_data->file_name,
+                'status' => 4,
+            );
+            if ($this->mandap_applications_table->update_payment_by_appID($updatePaymnetStack,$this->input->post('app_id'))) {
+                $this->response['status'] = TRUE; 
+                $this->response['message'] = 'Thank you for using the services of MBMC !';
+                $this->response['redirect_url'] = base_url('login');
+            } else {
+                $this->response['status'] = FALSE;
+                $this->response['message'] = 'Sorry, we have to face some technical issues please try again later.';
+            }
+        } else {
+            $this->response['status'] = FALSE;$message = '';
+            if (validation_errors() != '') {
+                $message .= strip_tags(validation_errors());
+            } else if ($document_response->status == FALSE) {
+                $message .= strip_tags($document_response->error);
+            } else {
+                $message .= 'Sorry, we have to face some technical issues please try again later.';
+            }
+            $this->response['message'] = $message;
+        }
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
+    }
+    public function payment_approvel_modal()
+    {
+        $app_id = $this->input->post('app_id'); 
+        $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
+        if (!empty($application)) {
+            $this->data['application'] = $application;
+            $this->data['payment'] = $this->mandap_applications_table->getActivePaymentByAppID($app_id);
+            $this->response['status'] = TRUE;
+            $this->response['html_str'] = $this->load->view('applications/mandap/modal/payment_approvel_popup',$this->data,TRUE);
+        } else {
+            $this->response['status'] = FALSE;
+            $this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+        }
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
+    }
+    public function payment_approvel_process()
+    {
+        $app_id = $this->input->post('app_id');
+        $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
+        if (!empty($application)) {
+            if ($this->mandap_applications_table->update_payment_by_appID(['status'=>2],$app_id)) {
+                $this->response['status'] = TRUE; 
+                $this->response['message'] = 'Payment has been approved.';
+            } else {
+                $this->response['status'] = FALSE;
+                $this->response['message'] = 'Sorry, we have to face some technical issues please try again later.';
+            }
+        } else {
+            $this->response['status'] = FALSE;
+            $this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+        }
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
     }
 }

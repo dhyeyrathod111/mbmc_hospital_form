@@ -157,6 +157,16 @@ $route['lab/datatable_userapplist'] = 'LabController/datatable_userapplist';
 
 $route['mandap/get_application_status'] = 'MandapController/get_application_status';
 
+$route['mandap/payment_reqeust_popup'] = 'MandapController/payment_reqeust_popup';
+$route['mandap/payment_request_process'] = 'MandapController/payment_request_process';
+$route['payment/mandap'] = 'MandapController/user_payment_form';
+$route['payment/user_payment_process'] = 'MandapController/user_payment_process';
+$route['mandap/payment_approvel_modal'] = 'MandapController/payment_approvel_modal';
+$route['mandap/payment_approvel_process'] = 'MandapController/payment_approvel_process';
+$route['letter/medical_certificate'] = 'LetterController/medical_certificate';
+$route['mandap/user_apps_list'] = 'MandapController/user_apps_list';
+$route['mandap/datatable_userapplist'] = 'MandapController/datatable_userapplist';
+
  
 require_once( BASEPATH .'database/DB'. EXT );
 
