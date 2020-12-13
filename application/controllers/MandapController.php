@@ -52,11 +52,8 @@ class MandapController extends Common {
 
         $request_letter_image = $result['request_letter_id'];
         $get_attachments = $this->image_details_table->getImageDetailsById($request_letter_image);
-        $request_letter_image_name = array('request_letter_name' => $get_attachments['image_name'], 'request_letter' => $get_attachments['image_path']);
-
-        // $data['sku'] = $this->get_all_road_type(); 
+        $request_letter_image_name = array('request_letter_name' => $get_attachments['image_name'], 'request_letter' => $get_attachments['image_path']); 
         $data['users'] = array_merge($result,$id_proof_image_name,$request_letter_image_name,$request_letter_image_name,$police_noc_name);
-        // echo'<pre>';print_r($data);exit;
         $this->load->view('applications/mandap/edit',$data);
     }
 
@@ -499,8 +496,16 @@ class MandapController extends Common {
         $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
         if (!empty($application)) {
             if ($this->mandap_applications_table->update_payment_by_appID(['status'=>2],$app_id)) {
+                $this->data['application'] = $application;
+                $this->data['certificate_url'] = base_url('letter/madap_license?app_id='.base64_encode($this->data['application']->app_id));
+                $email_stack = array(
+                    'to' => $application->applicant_email_id,
+                    'body' => $this->load->view('applications/mandap/email_templates/madap_license_email',$this->data,TRUE),
+                    'subject' => "Application MBMC-00000".$application->app_id." license.",
+                );
+                $this->email_trigger->codeigniter_mail($email_stack);
                 $this->response['status'] = TRUE; 
-                $this->response['message'] = 'Payment has been approved.';
+                $this->response['message'] = 'Payment has been approved and licence has been send successfully.';
             } else {
                 $this->response['status'] = FALSE;
                 $this->response['message'] = 'Sorry, we have to face some technical issues please try again later.';

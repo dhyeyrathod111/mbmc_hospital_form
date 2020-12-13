@@ -117,7 +117,7 @@ $route['payment/hospital'] = 'HospitalController/user_payment_form';
 $route['payment/user_payment_process'] = 'HospitalController/user_payment_process';
 $route['hospital/payment_approvel_modal'] = 'HospitalController/payment_approvel_modal';
 $route['hospital/payment_approvel_process'] = 'HospitalController/payment_approvel_process';
-$route['letter/medical_certificate'] = 'LetterController/medical_certificate';
+$route['letter/madap_license'] = 'LetterController/madap_license';
 $route['hospital/user_apps_list'] = 'HospitalController/user_apps_list';
 $route['hospital/datatable_userapplist'] = 'HospitalController/datatable_userapplist';
 
@@ -156,7 +156,6 @@ $route['lab/datatable_userapplist'] = 'LabController/datatable_userapplist';
 
 
 $route['mandap/get_application_status'] = 'MandapController/get_application_status';
-
 $route['mandap/payment_reqeust_popup'] = 'MandapController/payment_reqeust_popup';
 $route['mandap/payment_request_process'] = 'MandapController/payment_request_process';
 $route['payment/mandap'] = 'MandapController/user_payment_form';

@@ -115,16 +115,11 @@
 			$app_id = base64_decode($this->input->get('app_id'));
 			$application = $this->clinic_applications_table->getApplicationByAppID($app_id);
 			if (!empty($application)) {
-
-
 				$application_images = $this->clinic_applications_table->getImageByApplication($application);
 				$this->data['application'] = $application;
 				$this->data['finalApprovelDate'] = $this->clinic_applications_table->getFinalApprovelDate($application->app_id,5);
 				$this->data['appimages'] = image_formate_in_array_clinic($application_images,$application);	
 				$this->data['inspection'] = $this->clinic_applications_table->getInspectionDataByAppID($application->app_id);
-
-
-
 				if($application->application_type == 1) :
 				    $this->load->view('letters/clinic_certificate',$this->data);
 				else : 
@@ -141,16 +136,10 @@
 			$application = $this->lab_applications_table->getApplicationByAppID($app_id);
 			if (!empty($application)) {
 				$this->data['application'] = $application;
-
 				$application_images = $this->lab_applications_table->getImageByApplication($application);
 				$this->data['finalApprovelDate'] = $this->lab_applications_table->getFinalApprovelDate($application->app_id,5);
 				$this->data['appimages'] = image_formate_in_array_clinic($application_images,$application);
 				$this->data['inspection'] = $this->clinic_applications_table->getInspectionDataByAppID($application->app_id);
-
-
-				// echo "<pre>";print_r($this->data);exit();
-
-
 				if($application->application_type == 1) :
 				    $this->load->view('letters/lab_certificate',$this->data);
 				else : 
@@ -160,6 +149,11 @@
 				$this->response['status'] = FALSE;
 				$this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
 			}
+		}
+		public function madap_license()
+		{
+			$app_id = base64_decode($this->input->get('app_id'));
+			$application = $this->mandap_applications_table->getApplicationByAppID($app_id);
 		}
 		
 	}
