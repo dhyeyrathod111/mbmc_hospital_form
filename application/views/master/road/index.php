@@ -17,7 +17,7 @@
                     <!-- <a type="button" onclick="changeStatus('1','1')" class="btn btn-block btn-danger">ADD</a> -->
                 </div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>road/create" class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>road/create" class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
               <table id="road_table" class="table table-bordered table-hover">

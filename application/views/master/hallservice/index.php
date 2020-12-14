@@ -20,7 +20,7 @@
                   <!-- <a type="button" onclick="changeStatus('1','1')" class="btn btn-block btn-danger">ADD</a> -->
                 </div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>hall-service/create" class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>hall-service/create" class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
               
@@ -40,19 +40,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Sr No</th>
-                  <th>Service Id</th>
-                  <th>Service Title</th>
-                  <th>Sku Title</th>
-                  <th>Unit Title</th>
-                  <th>Service Unit cost</th>
-                  <th>Penalty Charges</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
+                 
               </table>
             </div>
             <!-- /.card-body -->

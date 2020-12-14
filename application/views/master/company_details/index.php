@@ -24,7 +24,7 @@
                 <div class="col-10">
                 </div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>company_details/create" class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>company_details/create" class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
               <table id="comapany_details_table" class="table table-bordered table-hover">

@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // $config['base_url'] = 'http://mbmc.aaravsoftware.in/';
-$config['base_url'] = 'http://localhost/dhyey_rathod/mbmc_hospital_form/';
+$config['base_url'] = 'http://192.168.1.59/mbmc/';
 
 
 

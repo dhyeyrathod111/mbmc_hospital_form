@@ -76,10 +76,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'mbmc_medical',
+	'hostname' => '192.168.1.59',
+	'username' => 'myuser',
+	'password' => '@dmin123',
+	'database' => 'mbmc',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

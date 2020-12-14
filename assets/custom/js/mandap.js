@@ -1,5 +1,39 @@
   
+    const load_user_apps_datatable = props => {
+        var dataTable = $('#mandap_userapps_table').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "autoWidth" : false,
+            "order": [],
+            "columnDefs": [
+                {
+                    "targets": [],
+                    "orderable": false,
+                },
+            ],
+            "ajax": {
+                url: base_url + 'mandap/datatable_userapplist',
+                type: "POST",
+                data: {
+                    fromDate: $('#fromDate').val(),
+                    toDate: $('#toDate').val(),
+                }
+            },
+            "bDestroy": true
+        });
+    }
+    $(document).on('change', '#fromDate,#toDate', ()=>load_user_apps_datatable());
 
+      
+    
+    $(document).on("change","#no_of_days",event => { event.preventDefault();
+        let mandap_type_select = event.target.value;
+        if (mandap_type_select > 1) {
+            $('.multydate_event_container').show();
+        } else {
+            $('.multydate_event_container').hide();
+        }
+    });
 
     $(document).on("click",".payment_request_btn",event => { event.preventDefault();
         let app_id = event.target.getAttribute('app_id');
@@ -16,8 +50,7 @@
                 }
             },
             error: response => {
-                console.log(response.responseText);
-                toster_alert_error("Sorry, we have to face some technical issues please try again later.");
+                console.log(response.responseText);swal("Opps...!!","Sorry, we have to face some technical issues please try again later.","error");
             }
         });
     });
@@ -111,28 +144,24 @@
 
   $(document).ready(function(){
       
-      var is_user = createMandap.getAttribute("is_user");
+    var is_user = createMandap.getAttribute("is_user");
 
     $('#id_proof').change(function() {
-      var file = $('#id_proof')[0].files[0].name;
-      // alert(file);
-      $('#id_proof_name').text(file);
-      $('#id_proof_name_id').val(file);  
-
+        var file = $('#id_proof')[0].files[0].name;
+        $('#id_proof_name').text(file);
+        $('#id_proof_name_id').val(file);
     });
 
     $('#police_noc').change(function() {
-      var file = $('#police_noc')[0].files[0].name;
-      // alert(file);
-      $('#police_noc_name').text(file);
-      $('#police_noc_name_id').val(file);  
-
+        var file = $('#police_noc')[0].files[0].name;
+        $('#police_noc_name').text(file);
+        $('#police_noc_name_id').val(file);
     });
 
-    $('#request_letter').change(function() {
-      var file = $('#request_letter')[0].files[0].name;
-      $('#request_letter_name').text(file);
-      $('#request_letter_name_id').val(file);
+    $('#traffic_police_noc').change(function() {
+        var file = $('#traffic_police_noc')[0].files[0].name;
+        $('#traffic_police_noc_name').text(file);
+        $('#traffic_police_noc_id').val(file);
     });
 
   var currentdate = new Date();
@@ -145,35 +174,35 @@
 
   $( "#mandap-form" ).validate({
     rules: {
-      application_no: {
-        required: true,
-      },
-      applicant_name: {
-        required: true,
-      },
-      applicant_email_id: {
-        required: true,
-        email: true
-      },
-      applicant_mobile_no: {
-        required: true,
-        maxlength: 10,
-      },
-      applicant_address:{
-        required: true,
-      },
-      booking_date: {
-        required: true,
-      },
-      booking_address: {
-        required: true,
-      },
-      reason: {
-        required: true,
-      },
-      mandap_size: {
-        required: true,
-      }
+      // application_no: {
+      //   required: true,
+      // },
+      // applicant_name: {
+      //   required: true,
+      // },
+      // applicant_email_id: {
+      //   required: true,
+      //   email: true
+      // },
+      // applicant_mobile_no: {
+      //   required: true,
+      //   maxlength: 10,
+      // },
+      // applicant_address:{
+      //   required: true,
+      // },
+      // booking_date: {
+      //   required: true,
+      // },
+      // booking_address: {
+      //   required: true,
+      // },
+      // reason: {
+      //   required: true,
+      // },
+      // mandap_size: {
+      //   required: true,
+      // }
     },
     messages: {
       applicant_name: "Please provide user name.",
@@ -196,7 +225,6 @@
     },
 
     invalidHandler: function(event, validator) {
-      // 'this' refers to the form
       var errors = validator.numberOfInvalids();
       console.log(errors);
       if(errors) {
@@ -211,34 +239,25 @@
     },
 
     submitHandler: function(form,e) {
-      e.preventDefault();
-      console.log('Form submitted');
-      var form_data = new FormData(document.getElementById("mandap-form"));
-      $.ajax({
-          type: 'POST',
-          url: base_url +'mandap/save',
-          dataType: "Json",
-          data: form_data,
-          processData:false,
-          contentType:false,
-          cache:false,
-          async:false,
-          success: function(res) {
-            console.log(res.status);
-            if(res.status =='1') {
-              swal("Good Job!",res.messg,"success")
-              .then((value) => {
-                  if(is_user == '1'){
-                      location.reload();
-                  }else{
-                    window.location = base_url + 'mandap';      
-                  }
-                
-              });
-            } else if(res.status =='2'){
-              swal("Warning!",res.messg,"warning");
-            } 
-          },
+        e.preventDefault();
+        var form_data = new FormData(document.getElementById("mandap-form"));
+        $('#mandap_app_submit_btn').text('Processing....').prop("disabled",true);
+        $.ajax({
+            type: 'POST',url: base_url +'mandap/save',
+            dataType: "Json",data: form_data,processData:false,contentType:false,cache:false,async:false,
+            success : response => {
+                $('#mandap_app_submit_btn').text('Submit').prop("disabled",false);
+                if (response.status == true) {
+                    swal("Good Job!",response.message,"success").then(() => location.reload());
+                } else {
+                    swal("Opps...!!",response.message,"error").then(() => location.reload());
+                }
+            },
+            error : response => {
+                console.log(response.responseText);
+                toster_alert_error("Sorry, we have to face some technical issues please try again later.");
+                $('#mandap_app_submit_btn').text('Submit').prop("disabled",false);
+            }
       });
       return false;
     }

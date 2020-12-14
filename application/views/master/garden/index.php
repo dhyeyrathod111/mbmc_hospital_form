@@ -56,7 +56,7 @@
               <div class="row">
                 <div class="col-10"></div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>garden/crTreeType" class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>garden/crTreeType" class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
 
@@ -71,14 +71,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
-                  <tr class = "text-center">
-                    <th>Sr.No</th>
-                    <th>Tree Name</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </tfoot>
+                
               </table>
 
             </div>

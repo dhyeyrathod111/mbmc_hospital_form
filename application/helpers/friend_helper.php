@@ -35,15 +35,6 @@ function hospital_payment_document_config()
     return $config;
 }
 
-function mandap_payment_document_config()
-{
-	$config['upload_path']          = './uploads/mandap/payment_docs/';
-    $config['allowed_types']        = '*';
-    $config['max_size']        		= '5000';
-    $config['encrypt_name']         = TRUE;
-    return $config;
-}
-
 function clinic_document_config()
 {
 	$config['upload_path']          = './uploads/clinic/';
@@ -297,6 +288,41 @@ function image_formate_in_array_lab($application_images , $application)
 			} else if ($oneImage->image_id == $application->user_image) {
 				$final_iamge_array['user_image'] = $oneImage;
 			} 
+		endforeach;
+		return json_decode(json_encode($final_iamge_array));
+	} else {
+		return FALSE;
+	}
+}
+
+
+function mandap_payment_document_config()
+{
+	$config['upload_path']          = './uploads/mandap/payment_docs/';
+    $config['allowed_types']        = '*';
+    $config['max_size']        		= '5000';
+    $config['encrypt_name']         = TRUE;
+    return $config;
+}
+function mandap_document_config()
+{
+	$config['upload_path']          = './uploads/mandap/';
+    $config['allowed_types']        = '*';
+    $config['max_size']        		= '5000';
+    $config['encrypt_name']         = TRUE;
+    return $config;
+}
+function image_formate_in_array_mandap($application_images , $application)
+{
+	if (count($application_images) > 0) {
+		foreach ($application_images as  $oneImage) :
+			if ($oneImage->image_id == $application->id_proof) {
+				$final_iamge_array['id_proof'] = $oneImage;
+			} else if ($oneImage->image_id == $application->traffic_police_noc) {
+				$final_iamge_array['traffic_police_noc'] = $oneImage;
+			} else if ($oneImage->image_id == $application->police_noc) {
+				$final_iamge_array['police_noc'] = $oneImage;
+			}  
 		endforeach;
 		return json_decode(json_encode($final_iamge_array));
 	} else {

@@ -61,7 +61,7 @@
                 <div class="col-10">
                 </div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>advertisement/crAdvType" class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>advertisement/crAdvType" class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
               <table id="adv_type_table" class="table table-bordered table-hover">
@@ -75,14 +75,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
-                <tr class = "text-center">
-                  <th>Sr.No</th>
-                  <th>Adv Name</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
+                 
               </table>
             </div>
             <!-- /.card-body -->

@@ -30,208 +30,109 @@ class MandapController extends Common {
     
 
     public function create() {
-
         $this->data['app_id'] = $this->get_last_app_id();
         $this->data['wards'] = $this->mandap_applications_table->getWardFromDeptID($this->dept_id);
+        $this->data['allmandaptype'] = $this->mandap_applications_table->getAllMandapType();
         $this->load->view('applications/mandap/create',$this->data);
     }
 
-   public function edit() {
-
+    public function edit()
+    {
         $mandap_id = base64_decode($this->uri->segment(3));
-        $result = $this->mandap_applications_table->getAllApplicationsDetailsById($mandap_id);
-        // echo'<pre>';print_r($result);exit;
-        $id_proof_image = $result['id_proof_id'];
-        $get_attachments = $this->image_details_table->getImageDetailsById($id_proof_image);
-        $id_proof_image_name = array('id_proof_name' => $get_attachments['image_name'], 'id_proof' => $get_attachments['image_path']);
+        $application = $this->mandap_applications_table->getApplicationByID($mandap_id);
+        if (!empty($application)) :
+            $this->data['wards'] = $this->mandap_applications_table->getWardFromDeptID($this->dept_id);
+            $this->data['allmandaptype'] = $this->mandap_applications_table->getAllMandapType();
 
-        $police_noc_image = $result['police_noc_id'];
-        $get_attachments = $this->image_details_table->getImageDetailsById($police_noc_image);
-        $police_noc_name = array('police_noc_name' => $get_attachments['image_name'],'police_noc' => $get_attachments['image_path']);
-
-
-        $request_letter_image = $result['request_letter_id'];
-        $get_attachments = $this->image_details_table->getImageDetailsById($request_letter_image);
-        $request_letter_image_name = array('request_letter_name' => $get_attachments['image_name'], 'request_letter' => $get_attachments['image_path']); 
-        $data['users'] = array_merge($result,$id_proof_image_name,$request_letter_image_name,$request_letter_image_name,$police_noc_name);
-        $this->load->view('applications/mandap/edit',$data);
+            $application_images = $this->mandap_applications_table->getImageByApplication($application);
+            $this->data['application'] = $application;
+            $this->data['appimages'] = image_formate_in_array_mandap($application_images,$application);
+            $this->load->view('applications/mandap/edit',$this->data);
+        else :
+            return redirect('mandap/user_apps_list');
+        endif ;     
     }
-
-
-    public function save() {
-        extract($_POST);
-        // echo'<pre>';print_r($_POST);exit;
-
-        $applicant_name_check = $this->form_validation
-                ->set_rules('applicant_name','applicant name','required')->run();
-
-        $applicant_address_check = $this->form_validation
-                ->set_rules('applicant_address','applicant address','required')->run();
-
-        $applicant_email_id_check = $this->form_validation
-                ->set_rules('applicant_email_id','applicant email id','required|valid_email')->run();
-
-        $applicant_mobile_no_check = $this->form_validation
-                ->set_rules('applicant_mobile_no','applicant mobile no','required|regex_match[/^[0-9]{10}$/]')->run();
-
-        $booking_date_check = $this->form_validation
-                ->set_rules('booking_date','booking date','required')->run();
-
-        $booking_reason_check = $this->form_validation
-                ->set_rules('reason','booking reason','required')->run();
-
-        $booking_address_check = $this->form_validation
-                ->set_rules('booking_address','booking address','required')->run();
-
-        // echo'ss<pre>';print_r($_FILES);exit;
-
-        if (!empty($_FILES)) {
-
-            $id_proof_check = $this->form_validation->set_rules('id_proof_name', 'Document', 'required');
-
-            $request_letter_check = $this->form_validation->set_rules('request_letter_name', 'Document', 'required');
-
-            $police_noc_check = $this->form_validation->set_rules('police_noc_name', 'Document', 'required');
-                                
-        } else {
-
-            $data['status'] = '2';
-            $data['messg'] = 'Please choose the documents.';
-        }
-
-        if(!$applicant_name_check || !$applicant_email_id_check || !$applicant_mobile_no_check 
-            || !$booking_date_check || !$id_proof_check || !$police_noc_check || !$request_letter_check) {
-
-            $data['status'] = '2';
-            $data['messg'] = validation_errors();
-        } else {
-
-            $config['upload_path']   = './uploads/mandap';
-            $config['allowed_types'] = 'pdf|jpg|png|docx';
-            $config['max_size']      = '0';
-            $config['encrypt_name'] = TRUE;
-
-            $this->upload->initialize($config);
-
-            $upload_array = array();
-            foreach ($_FILES as $key => $files) {
-                if(!$this->upload->do_upload($key)) {
-                    $data['status'] = '2';
-                    $data['messg'] = $this->upload->display_errors();
-                    // echo'<pre>';print_r($data);exit;
-                    
-                } else {
-                    $uploaded_data = $this->upload->data();
-                    // echo'<pre>';print_r($uploaded_data);//exit;
-                    $image_data = array(
-                        'image_name' => $uploaded_data['orig_name'],
-                        'image_enc_name' => $uploaded_data['file_name'],
-                        'image_path' => base_url().'uploads/mandap/'.$uploaded_data['file_name'],
-                        'image_size' => $uploaded_data['file_size'],
-                        'status' => '1',
-                        'is_deleted' => '0',
-                        'created_at' => date('Y-m-s H:i:s'),
-                        'updated_at' => date('Y-m-s H:i:s'),
-                    ); 
-
-                    $result = $this->upload_files($image_data);
-                    // echo'ss<pre>';print_r($result);exit;
-
-                    if($result != null) {
-                        $upload_array[$key.'_id'] = $result;
-                    } else {
-                        $upload_array[] = array($key => $result);
-                    }
-                }
-            }
-            // echo'<pre>';print_r($upload_array);exit;
-            $dept_id = $this->department_table->getDepartmentByName('Mandap');
-            // echo'<pre>';print_r($dept_id);exit;
-            if(!empty($dept_id)) {
-                unset($_POST['request_letter_name']);
-                unset($_POST['id_proof_name']);
-                unset($_POST['police_noc_name']);
-
-                if($id =='') {
-                    // add form
-                    $applications_details = array(
-                        'dept_id' => $dept_id,
-                        'status' => '1',
-                        'is_deleted' => '0',
-                        'created_at' => date('Y-m-s H:i:s'),
-                        'updated_at' => date('Y-m-s H:i:s'),
-                    );
-
-                    $inserted_app_id = $this->applications_details_table->insert($applications_details);
-
-                    $app_id_array = array('app_id' => $inserted_app_id); 
-                    // unset($_POST['dept_id']);
-                    unset($_POST['application_no']);
-
-                    $extra = array(
-                        'status' => 0,
-                        'is_deleted' => '0',
-                        'created_at' => date('Y-m-d H:i:s'),
-                        'updated_at' => date('Y-m-d H:i:s'),
-                    );
-
-                    $insert_data = array_merge($_POST,$app_id_array,$upload_array,$extra);
-                    // echo'<pre>';print_r($insert_data);exit;
-                    $result = $this->mandap_applications_table->insert($insert_data);
-
-                    if($result != null) {
-                        $data['status'] = '1';
-                        $data['messg'] = 'Application added successfully.';
-                    } else {
-                        $data['status'] = '2';
-                        $data['messg'] = 'Oops! Something went wrong.';
-                    }
-                } else {
-                    // echo'<pre>';print_r('hi');exit;
-                    // update form
-                    $applications_details = array(
-                        'updated_at' => date('Y-m-d H:i:s'),
-                    );
-
-                    $updated_app_result = $this->applications_details_table->update($applications_details,$app_id);
-
-                    if($updated_app_result) {
-                        $extra = array(
+    public function save()
+    {
+        try {
+            $app_id = $this->get_last_app_id();
+            $inertStack = array(
+                'app_id' => ++$app_id,
+                'applicant_name' => $this->security->xss_clean($this->input->post('applicant_name')),
+                'applicant_email_id' => $this->security->xss_clean($this->input->post('applicant_email_id')),
+                'applicant_mobile_no' => $this->security->xss_clean($this->input->post('applicant_mobile_no')),
+                'applicant_alternate_no' => $this->security->xss_clean($this->input->post('applicant_alternate_no')),
+                'applicant_address' => $this->security->xss_clean($this->input->post('applicant_address')),
+                'fk_ward_id' => $this->security->xss_clean($this->input->post('fk_ward_id')),
+                'booking_address' => $this->security->xss_clean($this->input->post('booking_address')),
+                'reason' => $this->security->xss_clean($this->input->post('reason')),
+                'type' => $this->security->xss_clean($this->input->post('mandap_type')),
+                'mandap_size' => $this->security->xss_clean($this->input->post('mandap_size')),
+                'no_of_days' => $this->security->xss_clean($this->input->post('no_of_days')),
+                'booking_date' => $this->security->xss_clean($this->input->post('booking_date')),
+                'to_date' => $this->security->xss_clean($this->input->post('to_date')),
+                'user_id' => $this->authorised_user['user_id'],
+            );
+            $image_upload_error = '';$document_data_stack = [];
+            foreach ($_FILES as $key => $oneImage) {
+                if (!empty($_FILES[$key]['name']) && $_FILES[$key]['error'] == 0) {
+                    $this->upload->initialize(mandap_document_config());
+                    $_FILES['fileInput']['name'] = $oneImage['name'];
+                    $_FILES['fileInput']['type'] = $oneImage['type'];
+                    $_FILES['fileInput']['tmp_name'] = $oneImage['tmp_name'];
+                    $_FILES['fileInput']['error'] = $oneImage['error'];
+                    $_FILES['fileInput']['size'] = $oneImage['size'];
+                    if ($this->upload->do_upload('fileInput')) {
+                        $one_document_document = array(
+                            'image_name' => $oneImage['name'],
+                            'image_enc_name' => $this->upload->data('file_name'),
+                            'image_path' => base_url('uploads/mandap/').$this->upload->data('file_name'),
+                            'image_size' => $this->upload->data('file_size'),
+                            'status' => 1,
+                            'is_deleted' => 0,
+                            'created_at' => date('Y-m-d H:i:s'),
                             'updated_at' => date('Y-m-d H:i:s'),
+                            'file_field' => $key,
                         );
-                        $update_data = array_merge($_POST,$upload_array,$extra);
-                        
-                        $update_data['applicant_address'] = trim($update_data['applicant_address']);
-                        unset($update_data['application_no']);
-                        // unset($update_data['id_proof_name']);
-                        // unset($update_data['address_proof_name']);
-                        // echo'<pre>';print_r($update_data);exit;
-                        // echo'<pre>';print_r($update_data);exit;
-                        $result = $this->mandap_applications_table->update($update_data,$app_id);
-
-                        if($result) {
-                            $data['status'] = '1';
-                            $data['messg'] = 'Application updated successfully.';
-                        } else {
-                            $data['status'] = '2';
-                            $data['messg'] = 'Oops! Something went wrong.';
-                        }
-
-                    } else {
-                        $data['status'] = '2';
-                        $data['messg'] = 'Oops! Something went wrong.';
+                        array_push($document_data_stack,$one_document_document);
+                    } else { 
+                        $image_upload_error .= $this->upload->display_errors(); 
                     }
-                }
-
-                
-            } else {
-                $data['status'] = '2';
-                $data['messg'] = 'Oops! Something went wrong.';
+                } 
             }
+            if ($image_upload_error != "") {
+                $this->response['status'] = FALSE;
+                $this->response['message'] = $image_upload_error;
+                return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));exit;
+            }
+            if (!empty($this->input->post('id')) && $this->input->post('id') != '') {
+                $mandap_id = $this->input->post('id');unset($inertStack['app_id']);unset($inertStack['user_id']);
+                $this->mandap_applications_table->mandap_revolution($inertStack,$mandap_id);
+            } else {
+                $mandap_id = $this->mandap_applications_table->mandap_revolution($inertStack);
+                $applications_details = array(
+                    'application_id' => $inertStack['app_id'],
+                    'dept_id' => $this->department_table->getDepartmentByName('Mandap'),
+                    'status' => 1,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                );
+                $app_status_remark = $this->mandap_applications_table->insert_application_details($applications_details);
+            }
+            $this->mandap_applications_table->storeMandapDocument($document_data_stack,$mandap_id);
+            $this->response['status'] = TRUE;
+            if (!empty($this->input->post('id')) && $this->input->post('id') != '') {
+                $this->response['message'] = "Mandap has been updated successfully...!!!";
+            } else {
+                $this->response['message'] = "Mandap has been created successfully...!!!";
+            }
+        } catch (Exception $e) {
+            $this->response['status'] = FALSE;
+            $this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
         }
-
-        echo json_encode($data);
+        return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
     }
+
 
 	public function get_list()    {
 
@@ -242,8 +143,6 @@ class MandapController extends Common {
 
         // Fetch member's records
         $mandapList = $this->mandap_applications_table->getMandapDataForAuthorityDataTable(FALSE,$this->input->post(),$this->dept_id);
-
-        // echo "<pre>";print_r($mandapList);exit();
 
         $mandapListCount = $this->mandap_applications_table->getMandapDataForAuthorityDataTable(TRUE,$this->input->post(),$this->dept_id);
 
@@ -297,11 +196,13 @@ class MandapController extends Common {
                 $payment_btn = '';
             }
 
-            $documents = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$mandap['id_proof_id'].','.$mandap['request_letter_id'].','.$mandap['police_noc_id'].'" data-target="#modal-doc" class="anchor nav-link-icon doc_button">
+            $documents = '<a aria-label="View documents" data-microtip-position="top" role="tooltip" type="button" data-toggle="modal" data-image = "'.$mandap['id_proof'].','.$mandap['traffic_police_noc'].','.$mandap['police_noc'].'" data-target="#modal-doc" class="anchor nav-link-icon doc_button">
                         <i class=" nav-icon fas fa-file"></i>
                     </a>';
 
+
             $action = '<a aria-label="Edit" data-microtip-position="top" role="tooltip" type="button" href="'.base_url('mandap/edit/'.base64_encode($id)).'" class="btn btn-success btn-sm"><i class=" nav-icon fas fa-edit"></i></a>'.$payment_btn;
+
 
             $data[] = array($i,$application_no, $applicant_name,$applicant_mobile_no,$booking_address,$booking_date,$remarks,$status,$documents,$action);
         }
@@ -382,6 +283,7 @@ class MandapController extends Common {
             $this->response['message'] = "Role status has not been created.";
         }
         return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
+        
     }
     public function payment_reqeust_popup()
     {
@@ -503,7 +405,7 @@ class MandapController extends Common {
                     'body' => $this->load->view('applications/mandap/email_templates/madap_license_email',$this->data,TRUE),
                     'subject' => "Application MBMC-00000".$application->app_id." license.",
                 );
-                $this->email_trigger->codeigniter_mail($email_stack);
+                if ($this->email_trigger->codeigniter_mail($email_stack) != TRUE) $this->email_trigger->sendMail($email_stack);
                 $this->response['status'] = TRUE; 
                 $this->response['message'] = 'Payment has been approved and licence has been send successfully.';
             } else {
@@ -515,5 +417,34 @@ class MandapController extends Common {
             $this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
         }
         return $this->output->set_status_header(200)->set_content_type('application/json')->set_output(json_encode($this->response));
+    }
+    public function user_apps_list()
+    {
+        $this->load->view('applications/mandap/user_apps_list');
+    }
+    public function datatable_userapplist()
+    {
+        $applications = $this->mandap_applications_table->getApplicationForUsers(FALSE,$this->input->post());
+        $applications_count = $this->mandap_applications_table->getApplicationForUsers(TRUE,$this->input->post());
+        $finalDatatableStack = [];
+        foreach ($applications as $key => $oneApp) :
+            $tempArray = array();
+            $tempArray[] = $key + 1;
+            $tempArray[] = 'MBMC-00000'.$oneApp->app_id;
+            $tempArray[] = $oneApp->applicant_name;
+            $tempArray[] = $oneApp->applicant_email_id;
+            $tempArray[] = $oneApp->applicant_mobile_no;
+            $tempArray[] = $oneApp->application_status;
+            $tempArray[] = date('Y-m-d',strtotime($oneApp->created_at));
+            $tempArray[] = '<a href="'.base_url('mandap/edit/'.base64_encode($oneApp->id)).'" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>';
+            array_push($finalDatatableStack,$tempArray);
+        endforeach ;
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $applications_count,
+            "recordsFiltered" => $applications_count,
+            "data" => $finalDatatableStack,
+        );
+        echo json_encode($output);
     }
 }

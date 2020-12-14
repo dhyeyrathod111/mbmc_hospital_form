@@ -145,7 +145,6 @@
             "bDestroy": true
         });
     }
-
     $(document).on('change', '#fromDate,#toDate', ()=>load_user_apps_datatable());
 
 

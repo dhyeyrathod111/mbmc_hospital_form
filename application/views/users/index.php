@@ -32,7 +32,7 @@
                 <div class="col-10">
                 </div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>users/add"  class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>users/add"  class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
 
@@ -119,21 +119,9 @@
                   <th>Action</th>
                 </tr>
                 </thead>
-                <tbody>
+                 <tbody>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Sr No</th>
-                  <th>User Id</th>
-                  <th>User Name</th>
-                  <th>User Email</th>
-                  <th>User Mobile</th>
-                  <th>Role</th>
-                  <th>Department</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
+                
               </table>
             </div>
             <!-- /.card-body -->

@@ -17,7 +17,7 @@
                     <!-- <a type="button" onclick="changeStatus('1','1')" class="btn btn-block btn-danger">ADD</a> -->
                 </div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>qualification/create" class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>qualification/create" class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
               <table id="qual_table" class="table table-bordered table-hover">
@@ -32,15 +32,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Sr No</th>
-                  <th>Qualification Id</th>
-                  <th>Qualification Title</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
+                 
               </table>
             </div>
             <!-- /.card-body -->

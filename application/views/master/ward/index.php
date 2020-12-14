@@ -28,18 +28,7 @@
                             </thead>
                             <tbody>
                             </tbody>
-                            <tfoot>
-                                <tr class = "text-center">
-                                    <th>Sr.No</th>
-                                    <th>Ward id</th>
-                                    <th>Department</th>
-                                    <th>Role</th>
-                                    <th>Title</th>
-                                    <th>Status</th>
-                                    <th>Created Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
+                             
                         </table>
                     </div>
                 </div>

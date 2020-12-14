@@ -17,7 +17,7 @@
                    
                 </div>
                 <div class="col-2">
-                    <a href="<?=base_url()?>status/create" class="add-btn btn btn-block btn-info">ADD</a>
+                    <a href="<?=base_url()?>status/create" class="add-btn btn btn-block btn-info mb-2">ADD</a>
                 </div>
               </div>
 
@@ -35,17 +35,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Sr No</th>
-                  <th>Status Id</th>
-                  <th>Status Title</th>
-                  <th>Department</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
+                 
               </table>
             </div>
             <!-- /.card-body -->

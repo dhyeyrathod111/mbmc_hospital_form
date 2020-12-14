@@ -228,6 +228,7 @@
 	    	$condition .= " AND mandap_data.fk_ward_id = ".$this->authorised_user['ward_id'];
 
 	    	$sql_string = "SELECT mandap_data.* FROM (SELECT ma.*,(SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ma.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id,(SELECT role_id FROM permission_access pa WHERE pa.dept_id = $dept_id AND pa.status = 1 AND pa.role_id > IF(last_approved_role_id IS NULL, '0', last_approved_role_id) ORDER BY access_id ASC LIMIT 1) AS acessable_role_id ,(SELECT COUNT(*) FROM application_remarks ar WHERE ar.app_id = ma.app_id AND ar.dept_id = $dept_id AND ar.role_id = $final_role_stack->role_id AND is_deleted = 0 ) AS final_authority_approvel,(SELECT py.status FROM payment py WHERE ma.app_id = py.app_id AND py.is_deleted = 0 AND py.dept_id = 12 ORDER BY pay_id DESC LIMIT 1) AS check_payment_status FROM mandap_applications ma) AS mandap_data WHERE 1 = 1".$condition;
+
 			if ($count == TRUE) {
 	    		return $this->db->query($sql_string)->num_rows();
 	    	} else {
@@ -262,6 +263,81 @@
 			$this->db->from('payment');
 			$this->db->where('app_id',$app_id);
 			return $this->db->get()->row();
+		}
+		public function getAllMandapType()
+		{
+			$this->db->select('*');
+			$this->db->from('mandap_types');
+			return $this->db->get()->result();
+		}
+		public function mandap_revolution($payload,$mandap_id = 0)
+    	{
+    		if ($mandap_id != 0) {
+    			return $this->db->where('id', $mandap_id)->update($this->table,$payload);
+    		} else {
+    			if ($this->db->insert($this->table,$payload)) {
+	    			return $this->db->insert_id();
+	    		} else {
+	    			return 0;
+	    		}
+    		}
+    	}
+    	public function insert_application_details($application_stack)
+		{
+			if ($this->db->insert('applications_details',$application_stack)) {
+				return $this->db->insert_id();
+			} else {
+				return 0;
+			}
+		}
+		public function storeMandapDocument($documentArray,$mandap_id)
+		{
+			foreach ($documentArray as $document) :
+				$mandap_field = $document['file_field'];unset($document['file_field']);
+				if ($this->db->insert('image_details',$document)) :
+					$this->db->set($mandap_field,$this->db->insert_id())->where('id',$mandap_id)->update($this->table);
+				endif ;
+			endforeach ;
+		}
+		public function getApplicationByID($application_id)
+		{
+			$this->db->select('*');
+			$this->db->from($this->table);
+			$this->db->where('id',$application_id);
+			return $this->db->get()->row();
+		}
+		public function getImageByApplication($app)
+		{
+			$this->db->select('*');
+			$this->db->from('image_details');
+			$this->db->where_in('image_id',[
+				$app->id_proof,
+				$app->traffic_police_noc,
+				$app->police_noc,
+			]);
+			return $this->db->get()->result();
+		}
+		public function getApplicationForUsers($count = FALSE , $postdata)
+		{
+			$condition = '';
+			$condition .= ' AND mandap_data.user_id = '.$this->authorised_user['user_id'];
+			// search conditions
+			if (!empty($postdata['search']) && $postdata['search']['value'] != '') {
+	    		if (substr($postdata['search']['value'], 0, 10) == 'MBMC-00000') : $postdata['search']['value'] = ltrim($postdata['search']['value'],"MBMC-00000"); endif;
+	    		$condition .= " AND (mandap_data.app_id LIKE '%".$postdata['search']['value']."%' OR mandap_data.applicant_name LIKE '%".$postdata['search']['value']."%' OR mandap_data.applicant_email_id LIKE '%".$postdata['search']['value']."%' OR mandap_data.applicant_mobile_no LIKE '%".$postdata['search']['value']."%')";
+	    	}
+	    	//start date to end date condition.
+	    	if ($postdata['fromDate'] !='' || $postdata['toDate'] !='') {
+	    		$condition .= " AND DATE(mandap_data.created_at)  >= '".DATE($postdata['fromDate'])."' AND DATE(mandap_data.created_at) <= '".DATE($postdata['toDate'])."'";
+	    	}
+
+			$sql_string = "SELECT mandap_data.* FROM (SELECT ma.*,(SELECT IF(ma.status = 0,'Awaiting',(SELECT status_title FROM app_status_level asl WHERE asl.status_id = ma.status))) AS application_status FROM mandap_applications ma) AS mandap_data WHERE 1 = 1".$condition;
+			if ($count == TRUE) {
+	    		return $this->db->query($sql_string)->num_rows();
+	    	} else {
+	    		$sql_string .= " LIMIT ".$postdata['length']." OFFSET ".$postdata['start'];
+	    		return $this->db->query($sql_string)->result();
+	    	}
 		}
 	}
 

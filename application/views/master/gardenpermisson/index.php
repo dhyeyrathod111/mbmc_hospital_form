@@ -25,16 +25,7 @@
                             </thead>
                             <tbody>
                             </tbody>
-                            <tfoot>
-                                <tr class = "text-center">
-                                    <th>Sr.No</th>
-                                    <th>Permisson type</th>
-                                    <th>Blueprint</th>
-                                    <th>Created date</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
+                             
                         </table>
                     </div>
                 </div>
