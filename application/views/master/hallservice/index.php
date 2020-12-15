@@ -38,6 +38,19 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                  <th>Sr No</th>
+                  <th>Service Id</th>
+                  <th>Service Title</th>
+                  <th>Sku Title</th>
+                  <th>Unit Title</th>
+                  <th>Service Unit cost</th>
+                  <th>Penalty Charges</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
                  

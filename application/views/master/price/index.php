@@ -33,6 +33,17 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                  <th>Sr No</th>
+                  <th>Price Id</th>
+                  <th>Sku Title</th>
+                  <th>Department Title</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
                  

@@ -37,6 +37,15 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr class = "text-center">
+                  <th>Sr.No</th>
+                  <th>Company Name</th>
+                  <th>Date Added</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
               </table>

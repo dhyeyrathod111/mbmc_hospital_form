@@ -34,6 +34,15 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                  <th>Sr No</th>
+                  <th>Designation Id</th>
+                  <th>Designation Title</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
                  

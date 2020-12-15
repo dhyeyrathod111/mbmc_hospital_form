@@ -32,6 +32,16 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                  <th>Sr No</th>
+                  <th>Sku Id</th>
+                  <th>Sku Title</th>
+                  <th>Department Name</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
                  

@@ -425,5 +425,12 @@
 
 			return json_decode(json_encode($unapprovereqforyear));
 		}
+		public function getDepartmentByName($dept_name)
+		{
+			$this->db->select('*');
+			$this->db->from('department_table');
+			$this->db->where('dept_title',$dept_name);
+			return $this->db->get()->row();
+		}
 	} 
 ?>

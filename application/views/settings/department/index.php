@@ -55,7 +55,15 @@
                 </thead>
                 <tbody>
                 </tbody>
-                 
+                 <tfoot>
+                <tr>
+                  <th>Sr No</th>
+                  <th>Department Id</th>
+                  <th>Department Title</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->

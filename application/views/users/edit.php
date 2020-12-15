@@ -101,8 +101,9 @@
                     <div class="card-footer">
                       <div class="row center">
                         <div class="col-12">
+                           
                           <a href="<?= base_url()?>users" class="btn btn-lg btn-info white">Cancel</a>
-                          <button type="submit" class="btn btn-lg btn-primary right">Submit</button>
+                          <button type="submit" class="btn btn-lg btn-primary right">Submit</button> 
                         </div>
                       </div>
                     </div>

@@ -42,6 +42,18 @@
                                     <th>Edit</th>
                                 </tr>
                             </thead>
+                            <tfoot>
+                                <tr class = "text-center">
+                                    <th>Sr.No</th>
+                                    <th>Department</th>
+                                    <th>User</th>
+                                    <th>Inspection fee</th>
+                                    <th>Deposit</th>
+                                    <th>From date</th>
+                                    <th>To date</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </tfoot>
                             <tbody>
                             </tbody>
                              

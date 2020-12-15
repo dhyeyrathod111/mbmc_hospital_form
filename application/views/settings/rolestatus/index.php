@@ -53,6 +53,15 @@
   										<th>Action</th>
   									</tr>
   								</thead>
+                  <tfoot>
+                    <tr class = 'text-center header'>
+                      <th>Sr No</th>
+                      <th>Department</th>
+                      <th>Role</th>
+                      <th>Status Title</th>
+                      <th>Action</th>
+                    </tr>
+                  </tfoot>
   								<tbody>
   								</tbody>
   							</table>

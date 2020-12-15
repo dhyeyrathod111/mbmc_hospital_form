@@ -51,6 +51,15 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                  <th>Sr No</th>
+                  <th>Role Id</th>
+                  <th>Role Title</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
                  

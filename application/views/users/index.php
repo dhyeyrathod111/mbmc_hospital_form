@@ -121,7 +121,19 @@
                 </thead>
                  <tbody>
                 </tbody>
-                
+                <tfoot>
+                <tr>
+                  <th>Sr No</th>
+                  <th>User Id</th>
+                  <th>User Name</th>
+                  <th>User Email</th>
+                  <th>User Mobile</th>
+                  <th>Role</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->

@@ -70,6 +70,17 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                  <th>Sr No</th>
+                  <th>Unit Id</th>
+                  <th>Unit Value</th>
+                  <th>Unit label</th>
+                  <!-- <th>Unit Cost</th> -->
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
                  

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2020 at 09:32 PM
+-- Generation Time: Dec 15, 2020 at 08:06 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -44,6 +44,26 @@ BEGIN
     
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `approvedYearlyDataForMandap` (IN `name_table` VARCHAR(30), IN `year_current` INT(11), IN `dept_id` INT(11), IN `role_id` INT(11), IN `ward_id` INT(11))  NO SQL
+BEGIN
+	SET @name_table = name_table;
+    SET @current_year = year_current;
+    SET @dept_id = dept_id;
+    SET @role_id = role_id;
+    
+    IF (@dept_id = '3') THEN
+        SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @name_table," WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE dept_id = ", concat("'", @dept_id, "'")," AND status = '1' GROUP BY app_id) AND role_id >= ", concat("'", @role_id,"'"),") AND is_deleted = '0' AND YEAR(created_at) = ", concat("'", @current_year,"'"));
+    ELSE
+        SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @name_table," WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE dept_id = ", concat("'", @dept_id, "'")," AND status = '1' GROUP BY app_id) AND role_id >= ", concat("'", @role_id,"'"),") AND is_deleted = '0' AND YEAR(created_at) = ", concat("'", @current_year,"'"));
+    END IF;
+    
+    
+    PREPARE statement_ FROM @site_code_;
+    EXECUTE statement_;
+    DEALLOCATE PREPARE statement_;
+    
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `dailyrequest` (IN `tab_name` VARCHAR(50), IN `today_date` VARCHAR(30))  BEGIN
  
  SET @site_code = CONCAT("SELECT COUNT(*) totalRequest FROM ", tab_name, " WHERE date(created_at) = ", CONCAT("'", today_date, "'"));
@@ -59,6 +79,19 @@ BEGIN
     SET @name_table = name_table;
     
     SET @site_code_ = concat("SELECT count(*) total_count FROM ", @name_table, " WHERE MONTH(created_at) = ", concat("'", @month_number, "'"), " AND is_deleted = '0'");
+    
+    PREPARE statement_ FROM @site_code_;
+ 	EXECUTE statement_;
+ 	DEALLOCATE PREPARE statement_;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gettotalreqmonthForMandap` (IN `month_number` INT, IN `name_table` VARCHAR(30), IN `ward_id` INT(11))  NO SQL
+BEGIN 
+	SET @month_number = month_number;
+    SET @name_table = name_table;
+    SET @ward_id = ward_id;
+    
+    SET @site_code_ = concat("SELECT count(*) total_count FROM ", @name_table, " WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND MONTH(created_at) = ", concat("'", @month_number, "'"), " AND is_deleted = '0'");
     
     PREPARE statement_ FROM @site_code_;
  	EXECUTE statement_;
@@ -97,16 +130,38 @@ BEGIN
     	
     ELSE
 
-        IF(@dept_id = '5') THEN
-
-            SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @table_name," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0'");
-
-        ELSE 
-
-            SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @table_name," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0'");
-
-        END IF;
+        SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @table_name," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0'");
     
+    	
+    END IF;
+    
+    PREPARE statement_ FROM @site_code_;
+    EXECUTE statement_;
+    DEALLOCATE PREPARE statement_;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pendingapprovalsforMandap` (IN `prevrole` INT(11), IN `deptid` INT(11), IN `roleid` INT(11), IN `today_date` VARCHAR(30), IN `name_table` VARCHAR(30), IN `ward_id` INT(11))  NO SQL
+BEGIN
+	SET @prevrole = prevrole;
+    SET @dept_id = deptid;
+    SET @role_id = roleid;
+    SET @table_name = name_table;
+    SET @ward_id = ward_id;
+    
+	IF (@prevrole = '0') THEN
+    
+    	IF (@dept_id = '3') THEN 
+        	
+        SET @site_code_ = concat("SELECT count(*) total_count FROM ",  @table_name," pa WHERE 1 = 1 AND pa.fk_ward_id = ", ward_id ," AND  date(pa.created_at) <= ", concat("'", today_date, "'"), " AND is_deleted = '0' AND pa.cutAppId NOT IN (", "SELECT distinct app_id FROM application_remarks WHERE dept_id = ", concat("'",@dept_id,"'"), " AND status = '1'", ")");
+        
+        ELSE
+        	
+            SET @site_code_ = concat("SELECT count(*) total_count FROM ",  @table_name," pa WHERE 1 = 1 AND pa.fk_ward_id = ", ward_id ," AND date(pa.created_at) <= ", concat("'", today_date, "'"), " AND is_deleted = '0' AND pa.app_id NOT IN (", "SELECT distinct app_id FROM application_remarks WHERE dept_id = ", concat("'",@dept_id,"'"), " AND status = '1'", ")");
+        END IF;
+    	
+    ELSE
+
+        SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @table_name," WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0'");
     
     	
     END IF;
@@ -135,6 +190,21 @@ BEGIN
     SET @dept_id = deptid;
     
     SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ",concat(@name_table)," WHERE app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM `application_remarks` WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'")," GROUP BY app_id) AND role_id >= ", concat("'", @role_id,"'"),") AND is_deleted = '0' AND MONTH(created_at) = ", concat("'", @month_number,"'"));
+    
+    PREPARE statement_ FROM @site_code_;
+ 	EXECUTE statement_;
+ 	DEALLOCATE PREPARE statement_;
+ 
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `totalapprovedByroleinmonthForMandap` (IN `month_number` INT(11), IN `name_table` VARCHAR(30), IN `roleid` INT(11), IN `deptid` INT(11), IN `ward_id` INT(11))  NO SQL
+BEGIN
+	SET @month_number = month_number;
+    SET @name_table = name_table;
+    SET @role_id = roleid;
+    SET @dept_id = deptid;
+    
+    SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ",concat(@name_table)," WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM `application_remarks` WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'")," GROUP BY app_id) AND role_id >= ", concat("'", @role_id,"'"),") AND is_deleted = '0' AND MONTH(created_at) = ", concat("'", @month_number,"'"));
     
     PREPARE statement_ FROM @site_code_;
  	EXECUTE statement_;
@@ -176,6 +246,29 @@ BEGIN
  	DEALLOCATE PREPARE statement_;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `totalunapprovedByroleinmonthForMandap` (IN `month_number` INT, IN `name_table` VARCHAR(255), IN `roleid` INT, IN `deptid` INT, IN `prevrole` INT, IN `ward_id` INT)  NO SQL
+BEGIN
+    SET @month_number = month_number;
+    SET @name_table = name_table;
+    SET @role_id = roleid;
+    SET @dept_id = deptid;
+    SET @prevrole = prevrole;
+    
+    IF (@prevrole = '0') THEN
+    
+    SET @site_code_ = concat("SELECT count(*) total_count FROM ",concat(@name_table)," WHERE 1 = 1 AND fk_ward_id = ",ward_id," AND app_id NOT IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM application_remarks WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'"), " GROUP BY app_id)" , ") AND MONTH(created_at) = ", concat("'", @month_number,"'"), " AND is_deleted = '0'");
+    
+    ELSE
+    
+    SET @site_code_ = concat("SELECT count(id) total_count FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE MONTH(created_at) = ", concat("'", @month_number, "'"), " AND status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'"));
+    
+    END IF;
+    
+    PREPARE statement_ FROM @site_code_;
+    EXECUTE statement_;
+    DEALLOCATE PREPARE statement_;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `unapprovedYearlyData` (IN `prevrole` INT(11), IN `name_table` VARCHAR(30), IN `deptid` INT(11), IN `roleid` INT(11), IN `year` INT(11))  NO SQL
 BEGIN
 	SET @prevrole = prevrole;
@@ -202,6 +295,35 @@ BEGIN
     PREPARE statement_ FROM @site_code_;
  	EXECUTE statement_;
  	DEALLOCATE PREPARE statement_;
+    
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `unapprovedYearlyDataForMandap` (IN `prevrole` INT(11), IN `name_table` VARCHAR(30), IN `deptid` INT(11), IN `roleid` INT(11), IN `year` INT(11), IN `ward_id` INT(11))  NO SQL
+BEGIN
+    SET @prevrole = prevrole;
+    SET @name_table = name_table;
+    SET @dept_id = deptid;
+    SET @role_id = roleid;
+    SET @year = year;
+    
+    if (@prevrole = '0') THEN
+        IF (@dept_id = '3') THEN
+        SET @site_code_ = concat("SELECT count(*) total_count FROM ", @name_table," WHERE cutAppId NOT IN (SELECT app_id FROM application_remarks where id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'")," GROUP BY app_id)", ") AND YEAR(created_at) = ", concat("'", @year,"'")," AND is_deleted = '0'");
+        ELSE
+        SET @site_code_ = concat("SELECT count(app_id) total_count FROM ", @name_table," WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND app_id NOT IN (SELECT app_id FROM application_remarks where id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'")," GROUP BY app_id)", ") AND YEAR(created_at) = ", concat("'", @year,"'")," AND is_deleted = '0'");
+        END IF;
+        
+    ELSE
+        IF (@dept_id = '3') THEN
+        SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @name_table," WHERE cutAppId IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0' AND YEAR(created_at) = ", concat("'", @year,"'"));
+        ELSE
+        SET @site_code_ = concat("SELECT COUNT(*) total_count FROM ", @name_table," WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND app_id IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'")," AND dept_id = ", concat("'", @dept_id,"'"),") AND is_deleted = '0' AND YEAR(created_at) = ", concat("'", @year,"'"));
+        END IF;
+    END IF;
+    
+    PREPARE statement_ FROM @site_code_;
+    EXECUTE statement_;
+    DEALLOCATE PREPARE statement_;
     
 END$$
 
@@ -450,7 +572,8 @@ INSERT INTO `applications_details` (`application_id`, `dept_id`, `sub_dept_id`, 
 (150, 12, 0, 1, 0, '2020-12-14 20:07:51', '2020-12-14 20:07:51'),
 (151, 12, 0, 1, 0, '2020-12-14 20:11:54', '2020-12-14 20:11:54'),
 (152, 12, 0, 1, 0, '2020-12-14 20:13:14', '2020-12-14 20:13:14'),
-(153, 12, 0, 1, 0, '2020-12-14 20:19:45', '2020-12-14 20:19:45');
+(153, 12, 0, 1, 0, '2020-12-14 20:19:45', '2020-12-14 20:19:45'),
+(154, 12, 0, 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15');
 
 -- --------------------------------------------------------
 
@@ -645,10 +768,7 @@ INSERT INTO `application_remarks` (`id`, `app_id`, `dept_id`, `sub_dept_id`, `us
 (173, 125, 5, 1, 26, 23, 'ukhjk', 0, 83, 1, 0, '2020-12-08 18:39:48', '2020-12-08 18:39:48'),
 (174, 125, 5, 1, 27, 24, 'jukyikyi', 0, 85, 1, 0, '2020-12-08 18:40:04', '2020-12-08 18:40:04'),
 (175, 125, 5, 1, 27, 24, 'jukyikyi', 0, 85, 1, 0, '2020-12-08 18:40:19', '2020-12-08 18:40:19'),
-(191, 130, 12, 0, 43, 3, 'asdasdsad', 0, 97, 1, 0, '2020-12-11 19:09:22', '2020-12-22 19:09:22'),
-(192, 130, 12, 0, 45, 10, 'asdasdadad', 0, 100, 1, 0, '2020-12-11 19:19:53', '0000-00-00 00:00:00'),
-(193, 135, 12, 0, 43, 3, 'adsasdasd', 0, 97, 1, 0, '2020-12-14 11:43:13', '2020-12-13 11:43:13'),
-(194, 135, 12, 0, 45, 10, 'adsadas sadas', 0, 100, 1, 0, '2020-12-14 11:44:03', '2020-12-03 11:44:03');
+(197, 150, 12, 0, 43, 3, 'asdasdsad', 0, 97, 1, 0, '2020-12-15 20:03:56', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -2123,7 +2243,28 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `token`, `login_time`, `ip_address
 (663, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-14 16:40:47'),
 (664, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-14 20:22:07'),
 (665, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-14 21:10:21'),
-(666, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-14 21:10:23');
+(666, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-14 21:10:23'),
+(667, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.102', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 09:46:04'),
+(668, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.102', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 09:56:21'),
+(669, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 10:54:49'),
+(670, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 11:22:21');
+INSERT INTO `auth_sessions` (`id`, `user_id`, `token`, `login_time`, `ip_address`, `browser`, `browser_version`, `os`, `created_at`) VALUES
+(671, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.135', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-15 11:42:51'),
+(672, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 11:52:03'),
+(673, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 12:02:50'),
+(674, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 12:17:38'),
+(675, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 12:25:07'),
+(676, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.135', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-15 14:52:48'),
+(677, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 15:41:14'),
+(678, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 16:03:23'),
+(679, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 16:03:51'),
+(680, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 16:07:15'),
+(681, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 16:12:01'),
+(682, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.135', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-15 18:25:56'),
+(683, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 19:15:09'),
+(684, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 19:25:57'),
+(685, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 19:33:38'),
+(686, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 20:03:33');
 
 -- --------------------------------------------------------
 
@@ -3954,7 +4095,9 @@ INSERT INTO `image_details` (`image_id`, `image_name`, `image_enc_name`, `image_
 (493, '100_14.jpg', '381b96a0f342ce546b408cc1f07c0e52.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/381b96a0f342ce546b408cc1f07c0e52.jpg', '16.85', 1, 0, '2020-12-14 20:19:45', '2020-12-14 20:19:45'),
 (494, '300_3.jpg', '74994b2d045e666d63ebc5004109644c.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/74994b2d045e666d63ebc5004109644c.jpg', '80.05', 1, 0, '2020-12-14 20:19:45', '2020-12-14 20:19:45'),
 (495, '300_4.jpg', '2094cd82da0721431bc2b759ab04f922.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/2094cd82da0721431bc2b759ab04f922.jpg', '63.73', 1, 0, '2020-12-14 20:19:45', '2020-12-14 20:19:45'),
-(496, '300_4.jpg', 'b7ca28821e6d3403a7ef20776bc3d33a.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/b7ca28821e6d3403a7ef20776bc3d33a.jpg', '63.73', 1, 0, '2020-12-14 21:03:59', '2020-12-14 21:03:59');
+(496, '300_4.jpg', 'b7ca28821e6d3403a7ef20776bc3d33a.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/b7ca28821e6d3403a7ef20776bc3d33a.jpg', '63.73', 1, 0, '2020-12-14 21:03:59', '2020-12-14 21:03:59'),
+(497, '300_12.jpg', '9639d2e58f3b7632c5092b78182b720e.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/9639d2e58f3b7632c5092b78182b720e.jpg', '80.58', 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15'),
+(498, '300_14.jpg', 'abc8a650dbeb54d0752b0998a3832822.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/abc8a650dbeb54d0752b0998a3832822.jpg', '87.93', 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15');
 
 -- --------------------------------------------------------
 
@@ -4227,10 +4370,11 @@ CREATE TABLE `mandap_applications` (
 --
 
 INSERT INTO `mandap_applications` (`id`, `app_id`, `fk_ward_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `booking_address`, `reason`, `no_of_days`, `to_date`, `booking_date`, `mandap_size`, `id_proof`, `traffic_police_noc`, `user_id`, `police_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `type`) VALUES
-(2, 150, 11, 'Macey Battle', 'palivib@yopmail.com', '7896541235', '7896541235', 'Labore voluptas cons', 'Ex quia rerum commod', 'Maiores qui eveniet', 2, '2020-12-24', '2020-12-22', 'Sit occaeca', 484, 485, 23, 486, 0, 0, '2020-12-14 14:37:51', '0000-00-00 00:00:00', 1),
-(3, 151, 11, 'Scarlett Obrien', 'xequv@yopmail.com', '7896541235', '7896541235', 'Est delectus veniam', 'Vel sunt anim et qu', 'Minus tempor archite', 5, '2020-12-17', '2020-12-24', 'Provident n', 487, 488, 23, 489, 0, 0, '2020-12-14 14:41:54', '0000-00-00 00:00:00', 2),
+(2, 150, 11, 'Macey Battle', 'palivib@yopmail.com', '7896541235', '7896541235', 'Labore voluptas cons', 'Ex quia rerum commod', 'Maiores qui eveniet', 2, '2020-12-24', '2020-12-22', 'Sit occaeca', 484, 485, 23, 486, 97, 0, '2020-12-14 14:37:51', '2020-12-15 20:03:56', 1),
+(3, 151, 11, 'Scarlett Obrien', 'xequv@yopmail.com', '7896541235', '7896541235', 'Est delectus veniam', 'Vel sunt anim et qu', 'Minus tempor archite', 5, '2020-12-17', '2020-12-24', 'Provident n', 487, 488, 23, 489, 0, 0, '2020-12-14 14:41:54', '2020-12-15 16:06:40', 2),
 (4, 152, 11, 'Hamish Swanson', 'romyry@yopmail.com', '7896543215', '7896543215', 'Ea ullamco et volupt', 'Velit aute enim dol', 'Quam ea id voluptatu', 7, '2020-12-22', '2020-12-15', 'Temporibus ', 490, 491, 23, 492, 0, 0, '2020-12-14 14:43:13', '0000-00-00 00:00:00', 2),
-(5, 153, 11, 'Kirby Evans 123', 'qajabutyw@yopmail.com', '7845123265', '7845123265', 'Lorem ipsum sint is', 'Dolor corrupti id a', 'Quae debitis duis te', 3, '2020-12-23', '2020-12-16', 'Qui aut ut ', 493, 496, 23, 495, 0, 0, '2020-12-14 14:49:45', '0000-00-00 00:00:00', 3);
+(5, 153, 11, 'Kirby Evans 123', 'qajabutyw@yopmail.com', '7845123265', '7845123265', 'Lorem ipsum sint is', 'Dolor corrupti id a', 'Quae debitis duis te', 3, '2020-12-23', '2020-12-16', 'Qui aut ut ', 493, 496, 23, 495, 0, 0, '2020-12-14 14:49:45', '0000-00-00 00:00:00', 3),
+(6, 154, 13, 'Cecilia Richmond', 'jezu@yopmail.com', '1236547895', '1236547895', 'Iste sed eaque tempo', 'Qui minima tempore ', 'Ullamco quo consequu', 3, '2020-12-23', '2020-12-20', 'Nam dolor o', 0, 497, 23, 498, 0, 0, '2020-12-15 06:56:15', '0000-00-00 00:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -4257,10 +4401,10 @@ CREATE TABLE `mandap_types` (
 --
 
 INSERT INTO `mandap_types` (`id`, `type_name`, `fk_unit_id`, `per_unit_charges`, `charges_per_day`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`, `status`) VALUES
-(1, 'mandap permission for sale', 1, 5, 1, '2020-12-14 16:24:47', 10, '2020-12-14 16:31:31', 0, 0, 1),
-(2, 'married / other events', 1, 1, 1, '2020-12-14 16:24:47', 10, '2020-12-14 16:31:31', 0, 0, 1),
-(3, 'Gate kamani banner', 6, 1000, 1, '2020-12-14 16:24:47', 10, '2020-12-14 16:31:31', 0, 0, 1),
-(4, 'gate kamani banner (other organization)', 6, 3000, 1, '2020-12-14 16:24:47', 10, '2020-12-14 16:31:31', 0, 0, 1);
+(1, 'Sales Activity ', 1, 5, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:22:47', 0, 0, 1),
+(2, 'Marriage/Other Events', 1, 1, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:23:54', 0, 0, 1),
+(3, 'Gate/Arch/Banner(Religious /Educational Organization)', 6, 1000, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:24:28', 0, 0, 1),
+(4, 'Gate/Arch/Banner(Other Organization)', 6, 3000, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:25:09', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -4323,8 +4467,7 @@ INSERT INTO `payment` (`pay_id`, `app_id`, `dept_id`, `remark_id`, `payment_sele
 (43, 122, 5, 0, 2, '850', '5d554fe7d9ff07d3a029136b88e1982d.docx', 0, 0, 2, '2020-12-08 11:35:41', '2020-12-08 11:37:52', '2020-12-08 17:05:41'),
 (44, 123, 5, 0, 0, '2450', NULL, 0, 0, 1, '2020-12-08 12:30:23', NULL, '2020-12-08 18:00:23'),
 (45, 124, 5, 0, 2, '3200', '87d273e8260fbef27cbe94215fda6a6b.docx', 0, 0, 2, '2020-12-08 12:50:28', '2020-12-08 12:52:34', '2020-12-08 18:20:28'),
-(46, 125, 5, 0, 2, '3200', 'cc660ae463d1da12254ad39bdc70520d.docx', 0, 0, 2, '2020-12-08 13:08:36', '2020-12-08 13:09:27', '2020-12-08 18:38:36'),
-(48, 135, 12, 0, 2, '10000', 'bfeb4742d8ad1b9a705825c9ac3b37dc.jpg', 0, 0, 2, '2020-12-14 07:09:52', '2020-12-14 07:13:43', '2020-12-14 12:39:52');
+(46, 125, 5, 0, 2, '3200', 'cc660ae463d1da12254ad39bdc70520d.docx', 0, 0, 2, '2020-12-08 13:08:36', '2020-12-08 13:09:27', '2020-12-08 18:38:36');
 
 -- --------------------------------------------------------
 
@@ -4854,7 +4997,8 @@ INSERT INTO `roles_table` (`role_id`, `role_title`, `is_superadmin`, `status`, `
 (23, 'junior doctor', 0, 1, 0, '2020-11-22 17:26:40', '2020-11-22 17:26:40'),
 (24, 'senior doctor', 0, 1, 0, '2020-11-22 17:27:00', '2020-11-22 17:27:00'),
 (25, 'Additional commissioner', 0, 1, 0, '2020-11-27 16:35:48', '2020-11-27 16:35:48'),
-(26, 'Test Role Medical ', 0, 1, 0, '2020-12-04 17:27:58', '2020-12-04 17:27:58');
+(26, 'Test Role Medical ', 0, 1, 0, '2020-12-04 17:27:58', '2020-12-04 17:27:58'),
+(27, 'Cle*k ', 0, 2, 0, '2020-12-15 13:13:46', '2020-12-15 13:13:58');
 
 -- --------------------------------------------------------
 
@@ -5182,7 +5326,8 @@ INSERT INTO `users_table` (`user_id`, `role_id`, `ward_id`, `email_id`, `user_na
 (43, 3, 11, 'mandapclerkw1@yopmail.com', 'mandapclerkw1', '9874563215', 12, '$2a$08$.E9zkqTLLuZqCH/LmEZBg.Qyy1U7Y6fh6Oy/utd3HYg1UO9X55Z.W', 0, 0, 1, NULL, 1, 0, '2020-12-11 12:19:57', '2020-12-11 12:19:57', 0),
 (44, 3, 12, 'mandapclerkw2@yopmail.com', 'mandapclerkw2', '7893214568', 12, '$2a$08$lRDcYAfUIDeBmWwQ0Elm7u2JKoGCJy9vBkJBHPZ6BuYY9xphevcOK', 0, 0, 1, NULL, 1, 0, '2020-12-11 12:20:52', '2020-12-11 12:20:52', 0),
 (45, 10, 11, 'mandapwardoffw1@yopmail.com', 'mandapwardoffw1', '7896541238', 12, '$2a$08$mbykT.2pnpWd0L1W0jG50eYshh2BAFyXgzp1NqnL5AjARZn.To2Y.', 0, 0, 1, NULL, 1, 0, '2020-12-11 12:21:43', '2020-12-11 12:21:43', 0),
-(46, 10, 12, 'mandapwardoffw2@yopmail.com', 'mandapwardoffw2', '9514567538', 12, '$2a$08$pzCRaSFjJjDqWdPNOmK3BePfNIEiAi8Io5Fmkj8Swo2UleHB/668e', 0, 0, 1, NULL, 1, 0, '2020-12-11 12:22:34', '2020-12-11 12:22:34', 0);
+(46, 10, 12, 'mandapwardoffw2@yopmail.com', 'mandapwardoffw2', '9514567538', 12, '$2a$08$pzCRaSFjJjDqWdPNOmK3BePfNIEiAi8Io5Fmkj8Swo2UleHB/668e', 0, 0, 1, NULL, 1, 0, '2020-12-11 12:22:34', '2020-12-11 12:22:34', 0),
+(47, 3, 11, 'rgy@gmail.com', '#%^W$^W$', '2423534645', 12, '$2a$08$7I7rp3.zbf/ZJ2LMdElireSfjeGP8/ZVzSjwyu75yLUfd5fdKXIlG', 0, 0, 1, NULL, 1, 0, '2020-12-15 14:42:35', '2020-12-15 14:43:02', 0);
 
 -- --------------------------------------------------------
 
@@ -5334,7 +5479,9 @@ INSERT INTO `ward` (`ward_id`, `dept_id`, `role_id`, `ward_title`, `status`, `cr
 (6, 5, 22, 'WARD 1995', 1, '2020-12-05 16:55:37', NULL, 0, 0),
 (11, 12, 0, 'mandap ward 1', 1, '2020-12-11 12:11:41', NULL, 0, 0),
 (12, 12, 0, 'mandap ward 2', 1, '2020-12-11 12:11:54', NULL, 0, 0),
-(13, 12, 0, 'mandap ward 3', 1, '2020-12-11 12:12:10', NULL, 0, 0);
+(13, 12, 0, 'mandap ward 3', 1, '2020-12-11 12:12:10', NULL, 0, 0),
+(14, 1, 3, 'testingaaa', 1, '2020-12-15 12:46:15', NULL, 0, 0),
+(15, 1, 3, 'testingaaa', 1, '2020-12-15 12:46:31', '2020-12-15 07:16:41', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -5799,12 +5946,12 @@ ALTER TABLE `adv_type`
 -- AUTO_INCREMENT for table `applications_details`
 --
 ALTER TABLE `applications_details`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 --
 -- AUTO_INCREMENT for table `application_remarks`
 --
 ALTER TABLE `application_remarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 --
 -- AUTO_INCREMENT for table `app_premssion`
 --
@@ -5819,7 +5966,7 @@ ALTER TABLE `app_status_level`
 -- AUTO_INCREMENT for table `auth_sessions`
 --
 ALTER TABLE `auth_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=687;
 --
 -- AUTO_INCREMENT for table `clinic_applications`
 --
@@ -5969,7 +6116,7 @@ ALTER TABLE `illuminate`
 -- AUTO_INCREMENT for table `image_details`
 --
 ALTER TABLE `image_details`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=497;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=499;
 --
 -- AUTO_INCREMENT for table `joint_visit_extentions`
 --
@@ -6009,7 +6156,7 @@ ALTER TABLE `lic_type`
 -- AUTO_INCREMENT for table `mandap_applications`
 --
 ALTER TABLE `mandap_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `mandap_types`
 --
@@ -6074,7 +6221,7 @@ ALTER TABLE `road_type_logs`
 -- AUTO_INCREMENT for table `roles_table`
 --
 ALTER TABLE `roles_table`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `service_charge_details`
 --
@@ -6124,7 +6271,7 @@ ALTER TABLE `unit_master`
 -- AUTO_INCREMENT for table `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `user_dept_table`
 --
@@ -6139,7 +6286,7 @@ ALTER TABLE `user_permissions`
 -- AUTO_INCREMENT for table `ward`
 --
 ALTER TABLE `ward`
-  MODIFY `ward_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ward_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

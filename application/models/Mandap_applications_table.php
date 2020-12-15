@@ -339,6 +339,153 @@
 	    		return $this->db->query($sql_string)->result();
 	    	}
 		}
+
+
+
+		// Dashboard data
+
+
+		public function deshboardData($role_id , $dept_id , $is_superadmin)
+		{
+			$prevrole = $this->db->query("SELECT * FROM `permission_access` WHERE access_id < (SELECT access_id from permission_access WHERE dept_id = '".$dept_id."' AND role_id = '".$role_id."' AND status = '1') AND dept_id = '".$dept_id."' AND status = '1' ORDER BY access_id DESC LIMIT 1")->result_array();
+			$previousroleid = (!empty($prevrole[0])) ? $prevrole[0]['role_id'] : 0 ;
+
+			$dailyRequest = $this->getDailyRequestCountOFMandap();
+			$data['dailyRequest'] = $dailyRequest->total_dailyrequest;
+
+			$approvalPending = $this->getApprovelPendingForMandap($previousroleid,$dept_id,$role_id);
+			$data['approvalPending'] = $approvalPending->total_pendingrequest;
+
+			$totalamountcollected = $this->totlaAmountCollectedforMandap($dept_id);
+			$data['totalamountcollected'] = $totalamountcollected->TotalCollectedAmount;
+
+			$totalamountpending = $this->totlaAmountPendingforMandap($dept_id);
+			$data['totalamountpending'] = $totalamountpending->TotalPendingAmount;
+
+			$tRequestArray = array();
+			for($i = 6; $i >= 0; $i--){
+				$year = date("Y") - $i;
+				$tRequestArray['labels'][] = $year;
+				$tRequestArray['data'][] = $this->getYearlyReqeustforMandap($year)->total_yearlyreqeust;
+			}
+			$data['yearlyRequest'] = $tRequestArray;
+
+			$approvedReqeustFortheyear = $this->approvedReqeustForTheYear($dept_id,$role_id);
+			$data['approvedForYear'] = $approvedReqeustFortheyear->total_approve_req_foryear;
+
+			$unapprovedReqeustFortheyear = $this->unapprovedReqeustForTheYear($previousroleid,$dept_id,$role_id);
+			$data['unapprovedForYear'] = $unapprovedReqeustFortheyear->total_unapprove_req_foryear;
+
+
+
+			$barGraphArray = array();
+				$lineGraphArray = array();
+				for($i = 1; $i <= 12; $i++){
+					if(strlen((string)$i) == 1){
+						$i = '0'.$i;
+					}
+
+					//total request
+					$gettotalrequestObj['mandap_gettotalrequestObj'] = $this->db->query("CALL gettotalreqmonthForMandap('".$i."', 'mandap_applications','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+
+
+					$gettotalrequestObj['total_gettotalrequestObj'] = $gettotalrequestObj['mandap_gettotalrequestObj'];
+
+
+					$gettotalapprovedObj['mandap_gettotalapprovedObj'] = $this->db->query("CALL totalapprovedByroleinmonthForMandap('".$i."','mandap_applications', '".$role_id."', '".$dept_id."','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalapprovedObj['total_gettotalapprovedObj'] = $gettotalapprovedObj['mandap_gettotalapprovedObj'];
+
+					$previousroleid = (!empty($prevrole)) ? $prevrole[0]['role_id'] : '0';
+
+					$gettotalunapprovedObj['mandap_gettotalunapprovedObj'] = $this->db->query("CALL totalunapprovedByroleinmonthForMandap('".$i."','mandap_applications', '".$role_id."', '".$dept_id."', '".$previousroleid."','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+
+					$gettotalunapprovedObj['total_gettotalunapprovedObj'] = $gettotalunapprovedObj['mandap_gettotalunapprovedObj'];
+
+					$lineGraphArray['approvedArray'][] = $gettotalapprovedObj['total_gettotalapprovedObj'];
+					$lineGraphArray['unapprovedArray'][] = $gettotalunapprovedObj['total_gettotalunapprovedObj'];
+					$lineGraphArray['totalRequest'][] = $gettotalrequestObj['total_gettotalrequestObj'];	
+					$barGraphArray['unapproved'][] = $gettotalunapprovedObj['total_gettotalunapprovedObj'];
+					$barGraphArray['approved'][] = $gettotalapprovedObj['total_gettotalapprovedObj'];
+				}
+
+				// echo "<pre>";
+				// print_r($barGraphArray);
+				// print_r($lineGraphArray);
+				// exit();
+
+
+				$data['ApprovedUnApproved'] = $barGraphArray;
+				$data['lineGraphArray'] = $lineGraphArray;
+
+			return $data;
+		}
+		private function unapprovedReqeustForTheYear($prevrole = 0 , $dept_id , $role_id)
+		{
+			$unapprovereqforyear['mandap_unapprove_req_foryear'] = $this->db->query("CALL unapprovedYearlyDataForMandap(".$prevrole.",'mandap_applications', '".$dept_id."', '".$role_id."', '".date('Y')."','". $this->authorised_user['ward_id'] ."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+			$unapprovereqforyear['total_unapprove_req_foryear'] = $unapprovereqforyear['mandap_unapprove_req_foryear'];
+			return json_decode(json_encode($unapprovereqforyear));
+		}
+
+		private function approvedReqeustForTheYear($dept_id,$role_id)
+		{
+			$approvereqforyear['mandap_approve_req_foryear'] = $this->db->query("CALL approvedYearlyDataForMandap('mandap_applications', '".date('Y')."', '".$dept_id."', '".$role_id."','". $this->authorised_user['ward_id'] ."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+			$approvereqforyear['total_approve_req_foryear'] = $approvereqforyear['mandap_approve_req_foryear'];
+			return json_decode(json_encode($approvereqforyear));
+		}
+		private function getDailyRequestCountOFMandap()
+		{
+			$sql_string = "SELECT COUNT(*) totalRequest FROM mandap_applications WHERE date(created_at) = '".date('Y-m-d')."' AND fk_ward_id = ".$this->authorised_user['ward_id'];
+			$dailyrequest['mandap_dailyrequest'] = $this->db->query($sql_string)->row()->totalRequest;	
+			$dailyrequest['total_dailyrequest'] = $dailyrequest['mandap_dailyrequest'];
+			return json_decode(json_encode($dailyrequest));
+		}
+		private function getApprovelPendingForMandap($prevrole = 0 , $dept_id , $role_id)
+		{
+			$roleStacWardOfficer = $this->getRoleByName('ward officer');
+
+			$pendingrequest['mandap_pendingrequest'] = $this->db->query("CALL pendingapprovalsforMandap(".$prevrole." , ".$dept_id.", ".$role_id.", '".date('Y-m-d')."', '".'mandap_applications'."','". $this->authorised_user['ward_id'] ."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+			$mandap_readyforPaymentapps = $this->db->query('SELECT COUNT(*) AS readyforPayment FROM mandap_applications WHERE app_id NOT IN (SELECT app_id FROM payment) AND status IN (100,101)')->row()->readyforPayment;
+
+			if ($this->authorised_user['role_id'] == $roleStacWardOfficer->role_id) {
+
+				$total_pendingrequest = $pendingrequest['mandap_pendingrequest'];
+
+				$totalreadyforpaymentApps = $mandap_readyforPaymentapps;
+				$this->db->select('COUNT(*) + '.$totalreadyforpaymentApps.' pendingPaymentReqeust')->from('payment');
+				$this->db->where(['dept_id'=>$dept_id,'status'=>1,'is_deleted'=>0]);
+				$unpaidApplication = $this->db->get()->row()->pendingPaymentReqeust;
+				$pendingrequest['total_pendingrequest'] = $total_pendingrequest - $unpaidApplication;
+			} else {
+				$pendingrequest['total_pendingrequest'] = $pendingrequest['mandap_pendingrequest'];
+			}
+			return json_decode(json_encode($pendingrequest));
+		}
+		private function totlaAmountCollectedforMandap($dept_id)
+		{
+			$this->db->select('SUM(amount) AS TotalCollectedAmount');
+			$this->db->from('payment');
+			$this->db->where(['dept_id'=>$dept_id,'status'=>2,'is_deleted'=>0]);
+			$this->db->where('DATE(created_at)',date('Y-m-d'));
+			return $this->db->get()->row();
+		}
+		private function totlaAmountPendingforMandap($dept_id)
+		{
+			$this->db->select('SUM(amount) AS TotalPendingAmount');
+			$this->db->from('payment');
+			$this->db->where(['dept_id'=>$dept_id,'status'=>1,'is_deleted'=>0]);
+			return $this->db->get()->row();
+		}
+		public function getYearlyReqeustforMandap($year)
+		{
+			$roleStacWardOfficer = $this->getRoleByName('ward officer');
+			$final_role_id = $this->db->query("SELECT role_id FROM permission_access where dept_id = ".$this->authorised_user['dept_id']." AND status = 1 ORDER BY access_id DESC LIMIT 1")->row()->role_id;
+			$mandap_yearlyreqeust_sql = "SELECT COUNT(*) AS reqeusts_this_year FROM (SELECT ma.id ,ma.app_id , ma.applicant_name , (SELECT role_id FROM application_remarks WHERE application_remarks.app_id = ma.app_id ORDER BY id DESC LIMIT 1) AS last_approved_role_id FROM mandap_applications ma WHERE is_deleted = '0' AND YEAR(ma.created_at) = ".$year.") AS mandap_data WHERE last_approved_role_id = ".$final_role_id;
+			$yearlyreqeust['total_yearlyreqeust'] = $this->db->query($mandap_yearlyreqeust_sql)->row()->reqeusts_this_year;
+			return json_decode(json_encode($yearlyreqeust));
+		}
+
 	}
 
 ?>

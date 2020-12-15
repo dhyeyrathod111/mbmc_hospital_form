@@ -60,6 +60,18 @@
   									<th>Action</th>
   								</tr>
   							</thead>
+                <tfoot>
+                  <tr class = "text-center">
+                    <th>Sr NO</th>
+                    <th>Application Id</th>
+                    <th>Department</th>
+                    <th>Final Approval</th>
+                    <th>Remarks</th>
+                    <th>Status</th>
+                    <th>Approved Date</th>
+                    <th>Action</th>
+                  </tr>
+                </tfoot>
   						</table>	
   					</div>
   				</div>

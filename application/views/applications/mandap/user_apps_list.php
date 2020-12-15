@@ -49,9 +49,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>/assets/dist/js/validate.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>/assets/custom/js/mandap.js" id = "createMandap" is_user = "<?= $this->authorised_user['is_user']; ?>"></script>
 <script type="text/javascript">
-    $( document ).ready(function() {
-        load_user_apps_datatable();
-    });
+    $( document ).ready(() => load_user_apps_datatable());
 </script>
 </body>
 </html>

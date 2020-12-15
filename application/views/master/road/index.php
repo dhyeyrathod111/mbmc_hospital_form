@@ -33,6 +33,18 @@
                   <th>Action</th>
                 </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                  <th>Sr No</th>
+                  <th>Road Id</th>
+                  <th>Road Title</th>
+                  <th>Road Rate</th>
+                  <th>Date From</th>
+                  <th>Date Till</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 </tbody>
               </table>
