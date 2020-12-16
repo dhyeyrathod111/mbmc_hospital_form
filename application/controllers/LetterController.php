@@ -106,8 +106,7 @@
 				    $this->load->view('letters/medical_certificate_renewal',$this->data);
 				endif ;
 			} else {
-				$this->response['status'] = FALSE;
-				$this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+				return redirect('login');
 			}
 		}
 		public function medical_certificate_for_clinic()
@@ -131,8 +130,7 @@
 				    $this->load->view('letters/clinic_certificate_renewal',$this->data);
 				endif ;
 			} else {
-				$this->response['status'] = FALSE;
-				$this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+				return redirect('login');
 			}
 		}
 		public function medical_certificate_for_lab()
@@ -153,15 +151,20 @@
 				    $this->load->view('letters/lab_certificate_renewal',$this->data);
 				endif ;
 			} else {
-				$this->response['status'] = FALSE;
-				$this->response['message'] = "Sorry, we have to face some technical issues please try again later.";
+				return redirect('login');
 			}
 		}
 		public function madap_license()
 		{
 			$app_id = base64_decode($this->input->get('app_id'));
 			$application = $this->mandap_applications_table->getApplicationByAppID($app_id);
-			echo "<pre>";print_r($application);exit();
+			if (!empty($application)) {
+				$this->data['application'] = $application;
+				$this->load->view('letters/madap_license',$this->data);
+			} else {
+				return redirect('login');
+			}
+			
 		}
 		
 	}

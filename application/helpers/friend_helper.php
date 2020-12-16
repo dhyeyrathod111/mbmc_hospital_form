@@ -329,3 +329,14 @@ function image_formate_in_array_mandap($application_images , $application)
 		return FALSE;
 	}
 }
+function getNumdupCalculationByapplicationAndType($mandapTypeData,$application){
+	if ($mandapTypeData->unti_type_capture == 1) {
+		$retrunArray['grossAmount'] = ($application->mandap_size * $mandapTypeData->per_unit_charges) * $application->no_of_days;
+	} else {
+		$retrunArray['grossAmount'] = ($application->no_of_gates * $mandapTypeData->per_unit_charges) * $application->no_of_days;
+	}
+	$retrunArray['gstAmount'] = ( $retrunArray['grossAmount'] * 18 ) / 100 ;
+	$retrunArray['netAmount'] = $retrunArray['grossAmount'] + $retrunArray['gstAmount'] ;
+	return json_decode(json_encode($retrunArray));
+
+}

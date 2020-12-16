@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="form-group">
             <label for="name_of_road">Payment amount:<span class="red">*</span></label>
-            <input type="text" name="amount" value="<?= $payment ?>" readonly class="form-control" autocomplete="off">
+            <input type="text" name="amount" value="<?= $payment->netAmount ?>" readonly class="form-control" autocomplete="off">
         </div>
     </div>
     <div class="col-12">

@@ -110,10 +110,18 @@
                                     </div>
                                 </div>
 
-                                <div class="col-4">
+
+                                <div class="col-4 mandapsizecontainer" style="display: none;">
                                     <div class="form-group">
-                                        <label for="mandap_size">Mandap Size<span class="red">*</span></label>
-                                        <input type="text" class="form-control" name="mandap_size" id="mandap_size" placeholder="Enter mandap size">
+                                        <label>Mandap Size (sq.ft.)<span class="red">*</span></label>
+                                        <input type="number" class="form-control" name="mandap_size" id="mandap_size" placeholder="Enter mandap size">
+                                    </div>
+                                </div>
+
+                                <div class="col-4 noofgatecontainer" style="display: none;">
+                                    <div class="form-group">
+                                        <label>Number of gates<span class="red">*</span></label>
+                                        <input type="number" class="form-control" name="no_of_gates" id="no_of_gates" placeholder="Enter mandap size">
                                     </div>
                                 </div>
 
@@ -134,6 +142,13 @@
                                     <div class="form-group">
                                         <label for="booking_date">To date</label>
                                         <input type="text" readonly autocomplete="off" class="form-control" name="to_date" id="to_date">
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Mandap landmark<span class="red">*</span></label>
+                                        <input type="text" autocomplete="off" class="form-control" name="mandap_landmark" id="mandap_landmark" placeholder="Enter the mandap landmark">
                                     </div>
                                 </div>
                                 

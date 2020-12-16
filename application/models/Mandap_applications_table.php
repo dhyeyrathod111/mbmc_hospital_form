@@ -339,6 +339,17 @@
 	    		return $this->db->query($sql_string)->result();
 	    	}
 		}
+		public function getLettersByKey($key)
+		{
+			$this->db->select('*');
+			$this->db->from('latter_table');
+			$this->db->where('latter_key',$key);
+			return $this->db->get()->row();
+		}
+		public function createPermissionLetter($payload)
+		{
+			return $this->db->insert('latter_generation',$payload);
+		}
 
 
 
@@ -376,7 +387,9 @@
 			$unapprovedReqeustFortheyear = $this->unapprovedReqeustForTheYear($previousroleid,$dept_id,$role_id);
 			$data['unapprovedForYear'] = $unapprovedReqeustFortheyear->total_unapprove_req_foryear;
 
+			$finalRoleStack = $this->getRoleByName('ward officer');
 
+			// echo "<pre>";print_r($roleStacWardOfficer);exit();
 
 			$barGraphArray = array();
 				$lineGraphArray = array();
@@ -385,23 +398,38 @@
 						$i = '0'.$i;
 					}
 
-					//total request
-					$gettotalrequestObj['mandap_gettotalrequestObj'] = $this->db->query("CALL gettotalreqmonthForMandap('".$i."', 'mandap_applications','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+					if ($previousroleid != 0) {
+						$totalReqeustForMonth_sql = "SELECT COUNT(*) as totalReqeustForMonth FROM mandap_applications WHERE fk_ward_id = ".$this->authorised_user['ward_id']." AND MONTH(created_at) = ".$i." AND app_id IN (SELECT app_id FROM application_remarks ar WHERE ar.dept_id = ".$dept_id." AND ar.role_id = ".$previousroleid.");";
+						$gettotalrequestObj['mandap_gettotalrequestObj'] = $this->db->query($totalReqeustForMonth_sql)->row()->totalReqeustForMonth;
+						$gettotalrequestObj['total_gettotalrequestObj'] = $gettotalrequestObj['mandap_gettotalrequestObj'];
+					} else {
+						$gettotalrequestObj['mandap_gettotalrequestObj'] = $this->db->query("CALL gettotalreqmonthForMandap('".$i."', 'mandap_applications','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+						$gettotalrequestObj['total_gettotalrequestObj'] = $gettotalrequestObj['mandap_gettotalrequestObj'];
+					}
+					
 
 
 
-					$gettotalrequestObj['total_gettotalrequestObj'] = $gettotalrequestObj['mandap_gettotalrequestObj'];
+					if ($previousroleid != 0) {
 
+						$totalApprovedReqeustForMonth_sql = "SELECT COUNT(*) as totalApprovedReqeustForMonth FROM mandap_applications WHERE fk_ward_id = ".$this->authorised_user['ward_id']." AND MONTH(created_at) = ".$i." AND app_id IN (SELECT app_id FROM application_remarks ar WHERE ar.dept_id = ".$dept_id." AND ar.role_id = ".$finalRoleStack->role_id.");";
+						$gettotalapprovedObj['mandap_gettotalapprovedObj'] = $this->db->query($totalApprovedReqeustForMonth_sql)->row()->totalApprovedReqeustForMonth;
+						$gettotalapprovedObj['total_gettotalapprovedObj'] = $gettotalapprovedObj['mandap_gettotalapprovedObj'];
 
-					$gettotalapprovedObj['mandap_gettotalapprovedObj'] = $this->db->query("CALL totalapprovedByroleinmonthForMandap('".$i."','mandap_applications', '".$role_id."', '".$dept_id."','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
-
-					$gettotalapprovedObj['total_gettotalapprovedObj'] = $gettotalapprovedObj['mandap_gettotalapprovedObj'];
+					} else {
+						$gettotalapprovedObj['mandap_gettotalapprovedObj'] = $this->db->query("CALL totalapprovedByroleinmonthForMandap('".$i."','mandap_applications', '".$role_id."', '".$dept_id."','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+						$gettotalapprovedObj['total_gettotalapprovedObj'] = $gettotalapprovedObj['mandap_gettotalapprovedObj'];
+					}
 
 					$previousroleid = (!empty($prevrole)) ? $prevrole[0]['role_id'] : '0';
 
-					$gettotalunapprovedObj['mandap_gettotalunapprovedObj'] = $this->db->query("CALL totalunapprovedByroleinmonthForMandap('".$i."','mandap_applications', '".$role_id."', '".$dept_id."', '".$previousroleid."','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
-
-					$gettotalunapprovedObj['total_gettotalunapprovedObj'] = $gettotalunapprovedObj['mandap_gettotalunapprovedObj'];
+					if ($previousroleid != 0) {
+						 $gettotalunapprovedObj_sql = "SELECT COUNT(*) as totalunApprovedReqeustForMonth FROM mandap_applications WHERE fk_ward_id = ".$this->authorised_user['ward_id']." AND MONTH(created_at) = ".$i." AND status IN (SELECT status_id FROM app_status_level WHERE dept_id = ".$i." AND role_id = 3 AND is_deleted = 0);";
+						 $gettotalunapprovedObj['total_gettotalunapprovedObj'] = $this->db->query($gettotalunapprovedObj_sql)->row()->totalunApprovedReqeustForMonth;
+					} else {
+						$gettotalunapprovedObj['mandap_gettotalunapprovedObj'] = $this->db->query("CALL totalunapprovedByroleinmonthForMandap('".$i."','mandap_applications', '".$role_id."', '".$dept_id."', '".$previousroleid."','".$this->authorised_user['ward_id']."')")->row()->total_count;mysqli_next_result($this->db->conn_id);
+						$gettotalunapprovedObj['total_gettotalunapprovedObj'] = $gettotalunapprovedObj['mandap_gettotalunapprovedObj'];
+					}
 
 					$lineGraphArray['approvedArray'][] = $gettotalapprovedObj['total_gettotalapprovedObj'];
 					$lineGraphArray['unapprovedArray'][] = $gettotalunapprovedObj['total_gettotalunapprovedObj'];
@@ -409,11 +437,6 @@
 					$barGraphArray['unapproved'][] = $gettotalunapprovedObj['total_gettotalunapprovedObj'];
 					$barGraphArray['approved'][] = $gettotalapprovedObj['total_gettotalapprovedObj'];
 				}
-
-				// echo "<pre>";
-				// print_r($barGraphArray);
-				// print_r($lineGraphArray);
-				// exit();
 
 
 				$data['ApprovedUnApproved'] = $barGraphArray;
@@ -485,7 +508,20 @@
 			$yearlyreqeust['total_yearlyreqeust'] = $this->db->query($mandap_yearlyreqeust_sql)->row()->reqeusts_this_year;
 			return json_decode(json_encode($yearlyreqeust));
 		}
-
+		public function getMandapTypeDataByID($mandap_type_id)
+		{
+			$this->db->select('*');
+			$this->db->from('mandap_types');
+			$this->db->where(['id'=>$mandap_type_id,'is_deleted'=>0]);
+			return $this->db->get()->row();
+		}
+		public function getPaymentSackByAppID($app_id)
+		{
+			$this->db->select('*');
+			$this->db->from('payment');
+			$this->db->where(['app_id'=>$app_id,'is_deleted'=>0]);
+			return $this->db->get()->row();
+		}
 	}
 
 ?>

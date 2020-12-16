@@ -24,11 +24,18 @@
     }
     $(document).on('change', '#fromDate,#toDate', ()=>load_user_apps_datatable());
 
+    $(document).on('change', '#mandap_type', event => { event.preventDefault();
+        if ($.inArray(event.target.value,['1','2']) == 1) {
+            $('.mandapsizecontainer').show();$('.noofgatecontainer').hide();
+        } else {
+            $('.noofgatecontainer').show();$('.mandapsizecontainer').hide();
+        }
+    });
+
       
     
     $(document).on("change","#no_of_days",event => { event.preventDefault();
-        let mandap_type_select = event.target.value;
-        if (mandap_type_select > 1) {
+        if (event.target.value > 1) {
             $('.multydate_event_container').show();
         } else {
             $('.multydate_event_container').hide();

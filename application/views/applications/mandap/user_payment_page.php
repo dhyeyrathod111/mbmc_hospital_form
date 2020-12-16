@@ -34,7 +34,7 @@
 
                         <div class="mb-3 form-group">
                             <label for="email_id" class="text-info" placeholder="Email">Amount:</label><br>
-                            <input readonly type="text" value="<?= $payment ?>" class="form-control" name="payment_amount">
+                            <input readonly type="text" value="<?= $payment->amount ?>" class="form-control" name="payment_amount">
                         </div>
 
                         <div class="form-group mb-3">

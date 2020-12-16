@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2020 at 08:06 PM
+-- Generation Time: Dec 16, 2020 at 09:01 PM
 -- Server version: 5.7.20-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -91,7 +91,9 @@ BEGIN
     SET @name_table = name_table;
     SET @ward_id = ward_id;
     
-    SET @site_code_ = concat("SELECT count(*) total_count FROM ", @name_table, " WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND MONTH(created_at) = ", concat("'", @month_number, "'"), " AND is_deleted = '0'");
+    
+     SET @site_code_ = concat("SELECT count(*) total_count FROM ", @name_table, " WHERE 1 = 1 AND fk_ward_id = ", ward_id ," AND MONTH(created_at) = ", concat("'", @month_number, "'"), " AND is_deleted = '0'");
+    
     
     PREPARE statement_ FROM @site_code_;
  	EXECUTE statement_;
@@ -260,7 +262,7 @@ BEGIN
     
     ELSE
     
-    SET @site_code_ = concat("SELECT count(id) total_count FROM application_remarks WHERE id IN (SELECT MAX(id) FROM application_remarks WHERE MONTH(created_at) = ", concat("'", @month_number, "'"), " AND status = '1' GROUP BY app_id) AND role_id = ", concat("'", @prevrole,"'"));
+    SET @site_code_ = concat("SELECT count(*) total_count FROM ",concat(@name_table)," WHERE 1 = 1 AND fk_ward_id = ",ward_id," AND app_id NOT IN (SELECT app_id FROM application_remarks WHERE id IN (SELECT max(id) FROM application_remarks WHERE status = '1' AND dept_id = ", concat("'", @dept_id,"'"), " GROUP BY app_id)" , ") AND MONTH(created_at) = ", concat("'", @month_number,"'"), " AND is_deleted = '0'");
     
     END IF;
     
@@ -573,7 +575,9 @@ INSERT INTO `applications_details` (`application_id`, `dept_id`, `sub_dept_id`, 
 (151, 12, 0, 1, 0, '2020-12-14 20:11:54', '2020-12-14 20:11:54'),
 (152, 12, 0, 1, 0, '2020-12-14 20:13:14', '2020-12-14 20:13:14'),
 (153, 12, 0, 1, 0, '2020-12-14 20:19:45', '2020-12-14 20:19:45'),
-(154, 12, 0, 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15');
+(154, 12, 0, 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15'),
+(155, 12, 0, 1, 0, '2020-12-16 12:26:56', '2020-12-16 12:26:56'),
+(156, 12, 0, 1, 0, '2020-12-16 19:27:31', '2020-12-16 19:27:31');
 
 -- --------------------------------------------------------
 
@@ -768,7 +772,12 @@ INSERT INTO `application_remarks` (`id`, `app_id`, `dept_id`, `sub_dept_id`, `us
 (173, 125, 5, 1, 26, 23, 'ukhjk', 0, 83, 1, 0, '2020-12-08 18:39:48', '2020-12-08 18:39:48'),
 (174, 125, 5, 1, 27, 24, 'jukyikyi', 0, 85, 1, 0, '2020-12-08 18:40:04', '2020-12-08 18:40:04'),
 (175, 125, 5, 1, 27, 24, 'jukyikyi', 0, 85, 1, 0, '2020-12-08 18:40:19', '2020-12-08 18:40:19'),
-(197, 150, 12, 0, 43, 3, 'asdasdsad', 0, 97, 1, 0, '2020-12-15 20:03:56', '0000-00-00 00:00:00');
+(197, 150, 12, 0, 43, 3, 'asdasdsad', 0, 97, 1, 0, '2020-12-15 20:03:56', '0000-00-00 00:00:00'),
+(198, 151, 12, 0, 43, 3, 'asd asdas  sadsadasd', 0, 97, 1, 0, '2020-12-16 11:00:04', '2020-12-04 11:00:04'),
+(199, 150, 12, 0, 45, 10, 'asdadasd', 0, 100, 1, 0, '2020-12-16 11:01:09', '2020-12-09 11:01:09'),
+(200, 152, 12, 0, 43, 3, 'dasdasda', 0, 97, 1, 0, '2020-12-16 11:27:56', '0000-00-00 00:00:00'),
+(201, 156, 12, 0, 44, 3, 'Approved snehas document by cleark', 0, 97, 1, 0, '2020-12-16 19:31:41', '0000-00-00 00:00:00'),
+(202, 156, 12, 0, 46, 10, 'asdsadsdsd', 0, 100, 1, 0, '2020-12-16 19:43:53', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1547,7 +1556,7 @@ INSERT INTO `app_status_level` (`status_id`, `dept_id`, `role_id`, `status_title
 (96, 15, 26, '                                                                    ', 1, 0, 1, 0, 0, '2020-12-04 18:10:28', '2020-12-04 18:10:28'),
 (97, 12, 3, 'Approved by the Clerk', 1, 0, 1, 0, 0, '2020-12-08 10:37:39', '2020-12-08 10:37:39'),
 (98, 0, 0, 'Rejected by the Clerk', 1, 0, 1, 0, 0, '2020-12-08 10:37:51', '2020-12-08 10:37:51'),
-(99, 12, 3, 'Approved y the Clerk', 1, 0, 1, 0, 0, '2020-12-10 17:40:11', '2020-12-10 17:40:11'),
+(99, 12, 3, 'Rejected by the Clerk', 1, 1, 1, 0, 0, '2020-12-10 17:40:11', '2020-12-10 17:40:11'),
 (100, 12, 10, 'Approve by ward officer.', 1, 0, 1, 0, 0, '2020-12-11 19:18:27', '2020-12-11 19:18:27'),
 (101, 12, 10, 'Rejected by ward officer.', 1, 1, 1, 0, 0, '2020-12-11 19:18:27', '2020-12-11 19:18:27');
 
@@ -2264,7 +2273,43 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `token`, `login_time`, `ip_address
 (683, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 19:15:09'),
 (684, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 19:25:57'),
 (685, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 19:33:38'),
-(686, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 20:03:33');
+(686, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-15 20:03:33'),
+(687, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 10:21:28'),
+(688, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 10:24:29'),
+(689, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.102', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 10:51:03'),
+(690, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.102', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 10:51:41'),
+(691, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 10:59:35'),
+(692, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 11:00:55'),
+(693, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 11:27:33'),
+(694, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 11:49:56'),
+(695, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 11:49:58'),
+(696, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 12:08:54'),
+(697, 22, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIyIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoic21uMTAxMjk2QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6Im5pY2siLCJ1c2VyX21vYmlsZSI6Ijc4OTQ1NjEyMzgiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIjoiJDJhJDA4JHFEdDMuei', '2020-11-10 08:28:47', '192.168.1.135', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-16 12:37:41'),
+(698, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 12:50:19'),
+(699, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 13:19:22'),
+(700, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 13:25:52'),
+(701, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 13:26:27'),
+(702, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 13:28:52'),
+(703, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 13:35:54'),
+(704, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.102', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 14:46:26'),
+(705, 6, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjYiLCJyb2xlX2lkIjoiMSIsIndhcmRfaWQiOiIwIiwiZW1haWxfaWQiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfbmFtZSI6InRlc3QiLCJ1c2VyX21vYmlsZSI6Ijk4NzU2NDEyMzIiLCJkZXB0X2lkIjoiMjIiLCJwYXNzd29yZCI6IiQyYSQwOCR3dWEwWlh3YzhhMk', '2020-09-16 07:24:09', '192.168.1.102', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 16:17:58'),
+(706, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 16:20:02'),
+(707, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 16:47:07'),
+(708, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 16:56:52'),
+(709, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 17:00:19'),
+(710, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 17:13:25'),
+(711, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 18:01:07'),
+(712, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 18:02:32'),
+(713, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.135', 'Chrome', '87.0.4280.88', 'Windows 10', '2020-12-16 18:41:43'),
+(714, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 18:51:46'),
+(715, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:19:46'),
+(716, 45, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ1Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjExIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzEiLCJ1c2VyX21vYmlsZSI6Ijc4OTY1NDEyMzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:21:43', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:20:09'),
+(717, 23, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjIzIiwicm9sZV9pZCI6IjAiLCJ3YXJkX2lkIjoiMCIsImVtYWlsX2lkIjoiZGh5ZXlyYXRob2QxMTFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJkaHlleSByYXRob2QiLCJ1c2VyX21vYmlsZSI6IjEyMzY1NDc4OTUiLCJkZXB0X2lkIjoiMCIsInBhc3N3b3JkIj', '2020-11-18 05:55:03', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:25:59'),
+(718, 43, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQzIiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTEiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzFAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cxIiwidXNlcl9tb2JpbGUiOiI5ODc0NTYzMjE1IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:19:57', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:29:22'),
+(719, 44, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTIiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzJAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cyIiwidXNlcl9tb2JpbGUiOiI3ODkzMjE0NTY4IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:20:52', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:29:55'),
+(720, 44, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTIiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzJAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cyIiwidXNlcl9tb2JpbGUiOiI3ODkzMjE0NTY4IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:20:52', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:30:48'),
+(721, 46, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ2Iiwicm9sZV9pZCI6IjEwIiwid2FyZF9pZCI6IjEyIiwiZW1haWxfaWQiOiJtYW5kYXB3YXJkb2ZmdzJAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXB3YXJkb2ZmdzIiLCJ1c2VyX21vYmlsZSI6Ijk1MTQ1Njc1MzgiLCJkZXB0X2lkIjoiMTIiLCJwYX', '2020-12-11 12:22:34', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:32:46'),
+(722, 44, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3sidXNlcl9pZCI6IjQ0Iiwicm9sZV9pZCI6IjMiLCJ3YXJkX2lkIjoiMTIiLCJlbWFpbF9pZCI6Im1hbmRhcGNsZXJrdzJAeW9wbWFpbC5jb20iLCJ1c2VyX25hbWUiOiJtYW5kYXBjbGVya3cyIiwidXNlcl9tb2JpbGUiOiI3ODkzMjE0NTY4IiwiZGVwdF9pZCI6IjEyIiwicGFzc3dvcm', '2020-12-11 12:20:52', '192.168.1.63', 'Chrome', '87.0.4280.88', 'Windows 8.1', '2020-12-16 19:44:11');
 
 -- --------------------------------------------------------
 
@@ -4097,7 +4142,13 @@ INSERT INTO `image_details` (`image_id`, `image_name`, `image_enc_name`, `image_
 (495, '300_4.jpg', '2094cd82da0721431bc2b759ab04f922.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/2094cd82da0721431bc2b759ab04f922.jpg', '63.73', 1, 0, '2020-12-14 20:19:45', '2020-12-14 20:19:45'),
 (496, '300_4.jpg', 'b7ca28821e6d3403a7ef20776bc3d33a.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/b7ca28821e6d3403a7ef20776bc3d33a.jpg', '63.73', 1, 0, '2020-12-14 21:03:59', '2020-12-14 21:03:59'),
 (497, '300_12.jpg', '9639d2e58f3b7632c5092b78182b720e.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/9639d2e58f3b7632c5092b78182b720e.jpg', '80.58', 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15'),
-(498, '300_14.jpg', 'abc8a650dbeb54d0752b0998a3832822.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/abc8a650dbeb54d0752b0998a3832822.jpg', '87.93', 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15');
+(498, '300_14.jpg', 'abc8a650dbeb54d0752b0998a3832822.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/abc8a650dbeb54d0752b0998a3832822.jpg', '87.93', 1, 0, '2020-12-15 12:26:15', '2020-12-15 12:26:15'),
+(499, '300_11.jpg', 'd604bf94ffba52fd5a5cbbf368ed3fee.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/d604bf94ffba52fd5a5cbbf368ed3fee.jpg', '80.46', 1, 0, '2020-12-16 12:26:56', '2020-12-16 12:26:56'),
+(500, '100_1.jpg', '87a57293233c29c1405e27f8b11ba9dd.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/87a57293233c29c1405e27f8b11ba9dd.jpg', '15.17', 1, 0, '2020-12-16 12:26:56', '2020-12-16 12:26:56'),
+(501, '100_7.jpg', 'f6877cea5fff1f9866c115945b72532a.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/f6877cea5fff1f9866c115945b72532a.jpg', '13.36', 1, 0, '2020-12-16 12:26:56', '2020-12-16 12:26:56'),
+(502, '300_11.jpg', '0276f7ac081fbe26da63d2e472c475b4.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/0276f7ac081fbe26da63d2e472c475b4.jpg', '80.46', 1, 0, '2020-12-16 19:27:31', '2020-12-16 19:27:31'),
+(503, '300_13.jpg', '93c692b238c85dd8e9afc2ff8adc0a75.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/93c692b238c85dd8e9afc2ff8adc0a75.jpg', '108.11', 1, 0, '2020-12-16 19:27:31', '2020-12-16 19:27:31'),
+(504, '300_15.jpg', '7de7ddee8a85cfd98fc175965e5a9c9a.jpg', 'http://192.168.1.59/mbmc/uploads/mandap/7de7ddee8a85cfd98fc175965e5a9c9a.jpg', '84.15', 1, 0, '2020-12-16 19:27:31', '2020-12-16 19:27:31');
 
 -- --------------------------------------------------------
 
@@ -4225,7 +4276,7 @@ CREATE TABLE `latter_generation` (
   `app_id` int(11) NOT NULL,
   `latter_type_id` int(11) NOT NULL COMMENT 'latter type id is forgin key of latter table',
   `status` int(11) NOT NULL DEFAULT '1',
-  `file_name` int(11) NOT NULL,
+  `file_name` varchar(500) NOT NULL,
   `is_deleted` int(11) NOT NULL DEFAULT '0',
   `created_by` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_by` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
@@ -4236,24 +4287,25 @@ CREATE TABLE `latter_generation` (
 --
 
 INSERT INTO `latter_generation` (`letter_id`, `dept_id`, `app_id`, `latter_type_id`, `status`, `file_name`, `is_deleted`, `created_by`, `updated_by`) VALUES
-(1, 1, 9, 1, 1, 0, 0, '2020-11-10 08:21:39', NULL),
-(2, 1, 10, 1, 1, 0, 0, '2020-11-10 08:34:57', NULL),
-(3, 1, 9, 1, 1, 0, 0, '2020-11-10 08:52:45', NULL),
-(4, 1, 9, 1, 1, 0, 0, '2020-11-10 08:56:16', NULL),
-(5, 1, 9, 1, 1, 0, 0, '2020-11-10 09:23:55', NULL),
-(6, 1, 9, 2, 1, 0, 0, '2020-11-10 09:37:44', NULL),
-(7, 1, 9, 1, 1, 0, 0, '2020-11-10 09:46:49', NULL),
-(8, 1, 9, 2, 1, 0, 0, '2020-11-10 09:50:09', NULL),
-(9, 1, 12, 1, 1, 0, 0, '2020-11-18 07:39:59', NULL),
-(10, 1, 12, 2, 1, 0, 0, '2020-11-18 07:53:47', NULL),
-(11, 1, 13, 1, 1, 0, 0, '2020-11-18 09:47:31', NULL),
-(12, 1, 13, 2, 1, 0, 0, '2020-11-18 09:53:37', NULL),
-(13, 1, 13, 5, 1, 0, 0, '2020-11-18 10:02:38', NULL),
-(14, 1, 14, 1, 1, 0, 0, '2020-11-18 10:14:44', NULL),
-(15, 1, 14, 2, 1, 0, 0, '2020-11-18 10:16:45', NULL),
-(16, 1, 14, 2, 1, 0, 0, '2020-11-18 10:20:03', NULL),
-(17, 1, 15, 1, 1, 0, 0, '2020-11-18 10:42:57', NULL),
-(18, 1, 15, 2, 1, 0, 0, '2020-11-18 10:51:21', NULL);
+(1, 1, 9, 1, 1, '0', 0, '2020-11-10 08:21:39', NULL),
+(2, 1, 10, 1, 1, '0', 0, '2020-11-10 08:34:57', NULL),
+(3, 1, 9, 1, 1, '0', 0, '2020-11-10 08:52:45', NULL),
+(4, 1, 9, 1, 1, '0', 0, '2020-11-10 08:56:16', NULL),
+(5, 1, 9, 1, 1, '0', 0, '2020-11-10 09:23:55', NULL),
+(6, 1, 9, 2, 1, '0', 0, '2020-11-10 09:37:44', NULL),
+(7, 1, 9, 1, 1, '0', 0, '2020-11-10 09:46:49', NULL),
+(8, 1, 9, 2, 1, '0', 0, '2020-11-10 09:50:09', NULL),
+(9, 1, 12, 1, 1, '0', 0, '2020-11-18 07:39:59', NULL),
+(10, 1, 12, 2, 1, '0', 0, '2020-11-18 07:53:47', NULL),
+(11, 1, 13, 1, 1, '0', 0, '2020-11-18 09:47:31', NULL),
+(12, 1, 13, 2, 1, '0', 0, '2020-11-18 09:53:37', NULL),
+(13, 1, 13, 5, 1, '0', 0, '2020-11-18 10:02:38', NULL),
+(14, 1, 14, 1, 1, '0', 0, '2020-11-18 10:14:44', NULL),
+(15, 1, 14, 2, 1, '0', 0, '2020-11-18 10:16:45', NULL),
+(16, 1, 14, 2, 1, '0', 0, '2020-11-18 10:20:03', NULL),
+(17, 1, 15, 1, 1, '0', 0, '2020-11-18 10:42:57', NULL),
+(18, 1, 15, 2, 1, '0', 0, '2020-11-18 10:51:21', NULL),
+(19, 12, 156, 7, 1, 'http://192.168.1.59/mbmc/letter/madap_license?app_id=MTU2', 0, '2020-12-16 14:56:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -4277,8 +4329,9 @@ CREATE TABLE `latter_table` (
 INSERT INTO `latter_table` (`id`, `latter_name`, `latter_key`, `status`, `created_at`, `updated_by`) VALUES
 (1, 'Demand Note Letter\n', NULL, 1, '2020-10-12 11:29:34', '2020-10-12 11:30:35'),
 (2, 'Permission Letter\n', 'permission_letter', 1, '2020-10-12 11:29:58', '2020-10-14 12:36:23'),
-(5, 'Joint Visit Format Letter', 'joint_visit', 1, '2020-10-12 11:31:11', '2020-10-15 07:15:57'),
-(6, 'Extension request Approval Letter', 'extension_approvel', 1, '2020-10-12 11:31:11', '2020-10-16 06:20:08');
+(5, 'Joint Visit Format Letter', 'joint_visit', 1, '2020-10-12 11:31:11', '2020-12-16 14:30:55'),
+(6, 'Extension request Approval Letter', 'extension_approvel', 1, '2020-10-12 11:31:11', '2020-12-16 14:30:58'),
+(7, 'Mandap permission letter', 'mandap_permission', 1, '2020-12-16 14:32:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -4349,8 +4402,9 @@ CREATE TABLE `mandap_applications` (
   `applicant_alternate_no` varchar(11) NOT NULL,
   `applicant_address` longtext NOT NULL,
   `booking_address` text NOT NULL,
+  `mandap_landmark` text,
   `reason` text NOT NULL,
-  `no_of_days` int(11) DEFAULT NULL,
+  `no_of_days` int(11) DEFAULT '0',
   `to_date` date DEFAULT NULL,
   `booking_date` date NOT NULL,
   `mandap_size` varchar(11) NOT NULL,
@@ -4362,19 +4416,22 @@ CREATE TABLE `mandap_applications` (
   `is_deleted` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL,
-  `type` int(11) NOT NULL DEFAULT '0'
+  `type` int(11) NOT NULL DEFAULT '0',
+  `no_of_gates` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mandap_applications`
 --
 
-INSERT INTO `mandap_applications` (`id`, `app_id`, `fk_ward_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `booking_address`, `reason`, `no_of_days`, `to_date`, `booking_date`, `mandap_size`, `id_proof`, `traffic_police_noc`, `user_id`, `police_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `type`) VALUES
-(2, 150, 11, 'Macey Battle', 'palivib@yopmail.com', '7896541235', '7896541235', 'Labore voluptas cons', 'Ex quia rerum commod', 'Maiores qui eveniet', 2, '2020-12-24', '2020-12-22', 'Sit occaeca', 484, 485, 23, 486, 97, 0, '2020-12-14 14:37:51', '2020-12-15 20:03:56', 1),
-(3, 151, 11, 'Scarlett Obrien', 'xequv@yopmail.com', '7896541235', '7896541235', 'Est delectus veniam', 'Vel sunt anim et qu', 'Minus tempor archite', 5, '2020-12-17', '2020-12-24', 'Provident n', 487, 488, 23, 489, 0, 0, '2020-12-14 14:41:54', '2020-12-15 16:06:40', 2),
-(4, 152, 11, 'Hamish Swanson', 'romyry@yopmail.com', '7896543215', '7896543215', 'Ea ullamco et volupt', 'Velit aute enim dol', 'Quam ea id voluptatu', 7, '2020-12-22', '2020-12-15', 'Temporibus ', 490, 491, 23, 492, 0, 0, '2020-12-14 14:43:13', '0000-00-00 00:00:00', 2),
-(5, 153, 11, 'Kirby Evans 123', 'qajabutyw@yopmail.com', '7845123265', '7845123265', 'Lorem ipsum sint is', 'Dolor corrupti id a', 'Quae debitis duis te', 3, '2020-12-23', '2020-12-16', 'Qui aut ut ', 493, 496, 23, 495, 0, 0, '2020-12-14 14:49:45', '0000-00-00 00:00:00', 3),
-(6, 154, 13, 'Cecilia Richmond', 'jezu@yopmail.com', '1236547895', '1236547895', 'Iste sed eaque tempo', 'Qui minima tempore ', 'Ullamco quo consequu', 3, '2020-12-23', '2020-12-20', 'Nam dolor o', 0, 497, 23, 498, 0, 0, '2020-12-15 06:56:15', '0000-00-00 00:00:00', 3);
+INSERT INTO `mandap_applications` (`id`, `app_id`, `fk_ward_id`, `applicant_name`, `applicant_email_id`, `applicant_mobile_no`, `applicant_alternate_no`, `applicant_address`, `booking_address`, `mandap_landmark`, `reason`, `no_of_days`, `to_date`, `booking_date`, `mandap_size`, `id_proof`, `traffic_police_noc`, `user_id`, `police_noc`, `status`, `is_deleted`, `created_at`, `updated_at`, `type`, `no_of_gates`) VALUES
+(2, 150, 11, 'Macey Battle', 'palivib@yopmail.com', '7896541235', '7896541235', 'Labore voluptas cons', 'Ex quia rerum commod', NULL, 'Maiores qui eveniet', 2, '2020-12-24', '2020-12-22', '10', 484, 485, 23, 486, 100, 0, '2020-12-14 14:37:51', '2020-12-16 11:01:09', 1, 0),
+(3, 151, 11, 'Scarlett Obrien', 'xequv@yopmail.com', '7896541235', '7896541235', 'Est delectus veniam', 'Vel sunt anim et qu', NULL, 'Minus tempor archite', 5, '2020-12-17', '2020-12-24', '5', 487, 488, 23, 489, 97, 0, '2020-12-14 14:41:54', '2020-12-16 11:00:04', 2, 0),
+(4, 152, 11, 'Hamish Swanson', 'romyry@yopmail.com', '7896543215', '7896543215', 'Ea ullamco et volupt', 'Velit aute enim dol', NULL, 'Quam ea id voluptatu', 7, '2020-12-22', '2020-12-15', '7', 490, 491, 23, 492, 97, 0, '2020-12-14 14:43:13', '2020-12-16 11:27:56', 2, 0),
+(5, 153, 11, 'Kirby Evans 123', 'qajabutyw@yopmail.com', '7845123265', '7845123265', 'Lorem ipsum sint is', 'Dolor corrupti id a', NULL, 'Quae debitis duis te', 3, '2020-12-23', '2020-12-16', '8', 493, 496, 23, 495, 0, 0, '2020-12-14 14:49:45', '0000-00-00 00:00:00', 3, 0),
+(6, 154, 13, 'Cecilia Richmond', 'jezu@yopmail.com', '1236547895', '1236547895', 'Iste sed eaque tempo', 'Qui minima tempore ', NULL, 'Ullamco quo consequu', 3, '2020-12-23', '2020-12-20', '9', 0, 497, 23, 498, 0, 0, '2020-12-15 06:56:15', '0000-00-00 00:00:00', 3, 0),
+(7, 155, 12, 'New test', 'newtest@yopmail.com', '7898456515', '7898456515', 'Ullam et aut quaerat', 'Officiis modi lorem ', NULL, 'Minus et praesentium', 11, '2020-12-18', '2020-12-22', '5', 499, 500, 23, 501, 0, 0, '2020-12-16 06:56:56', '0000-00-00 00:00:00', 2, 0),
+(8, 156, 12, 'Sneha patel', 'snehapatel@yopmail.com', '7896541235', '7896541235', 'Eu quaerat architect Eu quaerat architect Eu quaerat architect Eu quaerat architect Eu quaerat architect Eu quaerat architect ', 'Ut ipsum ex eum rer', 'Blanditiis consequat', 'Mollitia esse ex ve', 5, '2020-12-25', '2020-12-23', '', 502, 503, 23, 504, 100, 0, '2020-12-16 13:57:31', '2020-12-16 19:43:53', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -4393,18 +4450,19 @@ CREATE TABLE `mandap_types` (
   `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int(11) DEFAULT NULL,
   `is_deleted` int(11) DEFAULT '0',
-  `status` int(11) DEFAULT '1'
+  `status` int(11) DEFAULT '1',
+  `unti_type_capture` int(11) NOT NULL DEFAULT '0' COMMENT '1 = area , 2 = gates'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mandap_types`
 --
 
-INSERT INTO `mandap_types` (`id`, `type_name`, `fk_unit_id`, `per_unit_charges`, `charges_per_day`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`, `status`) VALUES
-(1, 'Sales Activity ', 1, 5, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:22:47', 0, 0, 1),
-(2, 'Marriage/Other Events', 1, 1, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:23:54', 0, 0, 1),
-(3, 'Gate/Arch/Banner(Religious /Educational Organization)', 6, 1000, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:24:28', 0, 0, 1),
-(4, 'Gate/Arch/Banner(Other Organization)', 6, 3000, 1, '2020-12-14 16:24:47', 10, '2020-12-15 18:25:09', 0, 0, 1);
+INSERT INTO `mandap_types` (`id`, `type_name`, `fk_unit_id`, `per_unit_charges`, `charges_per_day`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_deleted`, `status`, `unti_type_capture`) VALUES
+(1, 'Sales Activity ', 1, 5, 1, '2020-12-14 16:24:47', 10, '2020-12-16 12:46:28', 0, 0, 1, 1),
+(2, 'Marriage/Other Events', 1, 1, 1, '2020-12-14 16:24:47', 10, '2020-12-16 12:46:36', 0, 0, 1, 1),
+(3, 'Gate/Arch/Banner(Religious /Educational Organization)', 6, 1000, 1, '2020-12-14 16:24:47', 10, '2020-12-16 12:46:40', 0, 0, 1, 2),
+(4, 'Gate/Arch/Banner(Other Organization)', 6, 3000, 1, '2020-12-14 16:24:47', 10, '2020-12-16 19:50:08', 0, 0, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -4467,7 +4525,9 @@ INSERT INTO `payment` (`pay_id`, `app_id`, `dept_id`, `remark_id`, `payment_sele
 (43, 122, 5, 0, 2, '850', '5d554fe7d9ff07d3a029136b88e1982d.docx', 0, 0, 2, '2020-12-08 11:35:41', '2020-12-08 11:37:52', '2020-12-08 17:05:41'),
 (44, 123, 5, 0, 0, '2450', NULL, 0, 0, 1, '2020-12-08 12:30:23', NULL, '2020-12-08 18:00:23'),
 (45, 124, 5, 0, 2, '3200', '87d273e8260fbef27cbe94215fda6a6b.docx', 0, 0, 2, '2020-12-08 12:50:28', '2020-12-08 12:52:34', '2020-12-08 18:20:28'),
-(46, 125, 5, 0, 2, '3200', 'cc660ae463d1da12254ad39bdc70520d.docx', 0, 0, 2, '2020-12-08 13:08:36', '2020-12-08 13:09:27', '2020-12-08 18:38:36');
+(46, 125, 5, 0, 2, '3200', 'cc660ae463d1da12254ad39bdc70520d.docx', 0, 0, 2, '2020-12-08 13:08:36', '2020-12-08 13:09:27', '2020-12-08 18:38:36'),
+(49, 150, 12, 0, 2, '118', '760d5fee14e335261bd6b80b6a6c8130.jpg', 0, 0, 2, '2020-12-16 07:40:29', '2020-12-16 07:46:38', '2020-12-16 13:10:29'),
+(51, 156, 12, 0, 2, '35400', 'dd3872f2d132af766851f48503ba8b61.jpg', 0, 0, 2, '2020-12-16 14:54:32', '2020-12-16 14:56:32', '2020-12-16 20:24:32');
 
 -- --------------------------------------------------------
 
@@ -5754,6 +5814,12 @@ ALTER TABLE `latter_generation`
   ADD PRIMARY KEY (`letter_id`);
 
 --
+-- Indexes for table `latter_table`
+--
+ALTER TABLE `latter_table`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `licdates`
 --
 ALTER TABLE `licdates`
@@ -5946,12 +6012,12 @@ ALTER TABLE `adv_type`
 -- AUTO_INCREMENT for table `applications_details`
 --
 ALTER TABLE `applications_details`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 --
 -- AUTO_INCREMENT for table `application_remarks`
 --
 ALTER TABLE `application_remarks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 --
 -- AUTO_INCREMENT for table `app_premssion`
 --
@@ -5966,7 +6032,7 @@ ALTER TABLE `app_status_level`
 -- AUTO_INCREMENT for table `auth_sessions`
 --
 ALTER TABLE `auth_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=687;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=723;
 --
 -- AUTO_INCREMENT for table `clinic_applications`
 --
@@ -6116,7 +6182,7 @@ ALTER TABLE `illuminate`
 -- AUTO_INCREMENT for table `image_details`
 --
 ALTER TABLE `image_details`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=499;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=505;
 --
 -- AUTO_INCREMENT for table `joint_visit_extentions`
 --
@@ -6136,7 +6202,12 @@ ALTER TABLE `lab_staff`
 -- AUTO_INCREMENT for table `latter_generation`
 --
 ALTER TABLE `latter_generation`
-  MODIFY `letter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `letter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `latter_table`
+--
+ALTER TABLE `latter_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `licdates`
 --
@@ -6156,7 +6227,7 @@ ALTER TABLE `lic_type`
 -- AUTO_INCREMENT for table `mandap_applications`
 --
 ALTER TABLE `mandap_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `mandap_types`
 --
@@ -6166,7 +6237,7 @@ ALTER TABLE `mandap_types`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `permission_access`
 --

@@ -65,6 +65,7 @@ class MandapController extends Common {
                 'applicant_address' => $this->security->xss_clean($this->input->post('applicant_address')),
                 'fk_ward_id' => $this->security->xss_clean($this->input->post('fk_ward_id')),
                 'booking_address' => $this->security->xss_clean($this->input->post('booking_address')),
+                'mandap_landmark' => $this->security->xss_clean($this->input->post('mandap_landmark')),
                 'reason' => $this->security->xss_clean($this->input->post('reason')),
                 'type' => $this->security->xss_clean($this->input->post('mandap_type')),
                 'mandap_size' => $this->security->xss_clean($this->input->post('mandap_size')),
@@ -72,6 +73,7 @@ class MandapController extends Common {
                 'booking_date' => $this->security->xss_clean($this->input->post('booking_date')),
                 'to_date' => $this->security->xss_clean($this->input->post('to_date')),
                 'user_id' => $this->authorised_user['user_id'],
+                'no_of_gates' => $this->security->xss_clean($this->input->post('no_of_gates')),
             );
             $image_upload_error = '';$document_data_stack = [];
             foreach ($_FILES as $key => $oneImage) {
@@ -290,8 +292,8 @@ class MandapController extends Common {
         $app_id = $this->input->post('app_id');
         $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
         if (!empty($application)) {
-            $this->data['application'] = $application;
-            $this->data['payment'] = 10000;
+            $this->data['application'] = $application;$mandapTypeData = $this->mandap_applications_table->getMandapTypeDataByID($application->type);    
+            $this->data['payment'] = getNumdupCalculationByapplicationAndType($mandapTypeData,$application);
             $this->response['status'] = TRUE;
             $this->response['html_str'] = $this->load->view('applications/mandap/modal/payment_reqeust_popup',$this->data,TRUE);
         } else {
@@ -338,7 +340,7 @@ class MandapController extends Common {
         $application = $this->mandap_applications_table->getApplicationByAppID($app_id);
         if (!empty($application)) {
             $this->data['application'] = $application;
-            $this->data['payment'] = 10000;
+            $this->data['payment'] = $this->mandap_applications_table->getPaymentSackByAppID($application->app_id);
             $this->load->view('applications/mandap/user_payment_page',$this->data);
         } else {
             return redirect('');
@@ -406,6 +408,17 @@ class MandapController extends Common {
                     'subject' => "Application MBMC-00000".$application->app_id." license.",
                 );
                 if ($this->email_trigger->codeigniter_mail($email_stack) != TRUE) $this->email_trigger->sendMail($email_stack);
+                $letterStack = $this->mandap_applications_table->getLettersByKey('mandap_permission');
+
+                $latterGenrationStack = array(
+                    'dept_id' => $this->dept_id,
+                    'app_id' => $application->app_id,
+                    'latter_type_id' => $letterStack->id,
+                    'file_name' => base_url('letter/madap_license?app_id='.base64_encode($application->app_id)),
+                    'status' => 1,
+                    'is_deleted'=>0
+                );
+                $this->mandap_applications_table->createPermissionLetter($latterGenrationStack);
                 $this->response['status'] = TRUE; 
                 $this->response['message'] = 'Payment has been approved and licence has been send successfully.';
             } else {
