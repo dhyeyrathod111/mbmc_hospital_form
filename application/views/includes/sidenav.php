@@ -144,17 +144,10 @@
                 </li>
                 
                 <?php if($session_data[0]['is_user'] == '0') {?>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="<?php echo base_url() ?>reports" class="nav-link <?php echo ($first_segment === 'reports') ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-chart-bar"></i>
                         <p>Reports</p>
-                        <i class="fas fa-angle-right right"></i>
-                    </a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a href="<?php echo base_url()?>mis" class="nav-link <?php echo ($first_segment === 'mis') ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-file-invoice"></i>
-                        <p>MIS</p>
                         <i class="fas fa-angle-right right"></i>
                     </a>
                 </li> -->

@@ -45,8 +45,10 @@ class HomeController extends Common {
             	}
         	    $this->load->view('Home', $dashboarData);   
             }else{
-                $getAppRoutes = $this->db->query("SELECT dept_id, slug, controller, method, grp_index,sub_slug FROM `app_routes` WHERE slug LIKE 'create%' AND status = '1' AND dept_id != '0' AND grp_index != '0' ORDER BY dept_id asc limit 1")->result_array();
-                redirect(base_url().$getAppRoutes[0]['sub_slug'].'/'.$getAppRoutes[0]['slug']);
+                // $getAppRoutes = $this->db->query("SELECT dept_id, slug, controller, method, grp_index,sub_slug FROM `app_routes` WHERE slug LIKE 'create%' AND status = '1' AND dept_id != '0' AND grp_index != '0' ORDER BY dept_id asc limit 1")->result_array();
+                // redirect(base_url().$getAppRoutes[0]['sub_slug'].'/'.$getAppRoutes[0]['slug']);
+
+                return redirect('welcome/users','',301);
             }
         }else{
         	$this->load->view('auth/login');
@@ -57,5 +59,9 @@ class HomeController extends Common {
 	{
 		$data['designation'] = $this->designation_master_table->getAllDesignation();
 		echo json_encode($data);
+	}
+	public function userWelcomePage()
+	{
+		$this->load->view('auth/user_welcome_page');
 	}
 }

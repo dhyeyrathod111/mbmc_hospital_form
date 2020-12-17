@@ -25,7 +25,7 @@
     $(document).on('change', '#fromDate,#toDate', ()=>load_user_apps_datatable());
 
     $(document).on('change', '#mandap_type', event => { event.preventDefault();
-        if ($.inArray(event.target.value,['1','2']) == 1) {
+        if (event.target.value == 1 || event.target.value == 2) {
             $('.mandapsizecontainer').show();$('.noofgatecontainer').hide();
         } else {
             $('.noofgatecontainer').show();$('.mandapsizecontainer').hide();

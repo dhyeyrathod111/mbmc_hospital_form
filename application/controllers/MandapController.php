@@ -33,6 +33,7 @@ class MandapController extends Common {
         $this->data['app_id'] = $this->get_last_app_id();
         $this->data['wards'] = $this->mandap_applications_table->getWardFromDeptID($this->dept_id);
         $this->data['allmandaptype'] = $this->mandap_applications_table->getAllMandapType();
+        $this->data['roleStacClerk'] = $this->mandap_applications_table->getRoleByName('Clerk');
         $this->load->view('applications/mandap/create',$this->data);
     }
 
@@ -43,10 +44,10 @@ class MandapController extends Common {
         if (!empty($application)) :
             $this->data['wards'] = $this->mandap_applications_table->getWardFromDeptID($this->dept_id);
             $this->data['allmandaptype'] = $this->mandap_applications_table->getAllMandapType();
-
             $application_images = $this->mandap_applications_table->getImageByApplication($application);
             $this->data['application'] = $application;
             $this->data['appimages'] = image_formate_in_array_mandap($application_images,$application);
+            $this->data['roleStacClerk'] = $this->mandap_applications_table->getRoleByName('Clerk');
             $this->load->view('applications/mandap/edit',$this->data);
         else :
             return redirect('mandap/user_apps_list');
@@ -74,6 +75,8 @@ class MandapController extends Common {
                 'to_date' => $this->security->xss_clean($this->input->post('to_date')),
                 'user_id' => $this->authorised_user['user_id'],
                 'no_of_gates' => $this->security->xss_clean($this->input->post('no_of_gates')),
+                'date_police_of_noc' => $this->security->xss_clean($this->input->post('date_police_of_noc')),
+                'date_traffic_of_noc' => $this->security->xss_clean($this->input->post('date_traffic_of_noc')),
             );
             $image_upload_error = '';$document_data_stack = [];
             foreach ($_FILES as $key => $oneImage) {
@@ -401,7 +404,7 @@ class MandapController extends Common {
         if (!empty($application)) {
             if ($this->mandap_applications_table->update_payment_by_appID(['status'=>2],$app_id)) {
                 $this->data['application'] = $application;
-                $this->data['certificate_url'] = base_url('letter/madap_license?app_id='.base64_encode($this->data['application']->app_id));
+                $this->data['certificate_url'] = base_url('letters/madap_license?app_id='.base64_encode($this->data['application']->app_id));
                 $email_stack = array(
                     'to' => $application->applicant_email_id,
                     'body' => $this->load->view('applications/mandap/email_templates/madap_license_email',$this->data,TRUE),
@@ -414,7 +417,7 @@ class MandapController extends Common {
                     'dept_id' => $this->dept_id,
                     'app_id' => $application->app_id,
                     'latter_type_id' => $letterStack->id,
-                    'file_name' => base_url('letter/madap_license?app_id='.base64_encode($application->app_id)),
+                    'file_name' => base_url('letters/madap_license?app_id='.base64_encode($application->app_id)),
                     'status' => 1,
                     'is_deleted'=>0
                 );

@@ -140,7 +140,23 @@
                                         <input type="text" value="<?= $application->mandap_landmark ?>" autocomplete="off" class="form-control" name="mandap_landmark" id="mandap_landmark" placeholder="Enter the mandap landmark">
                                     </div>
                                 </div>
-                                
+
+                                <?php if ($roleStacClerk->role_id == $this->authorised_user['role_id']) : ?>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label class="font-italic">Date of police NOC</label>
+                                            <input type="text" readonly class="form-control datepicker" name="date_police_of_noc" id="date_police_of_noc" value="<?= $application->date_police_of_noc ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-4"></div>
+                                    <div class="col-4"></div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label class="font-italic">Date of traffic police NOC</label>
+                                            <input type="text" readonly class="form-control datepicker" name="date_traffic_of_noc" id="date_traffic_of_noc" value="<?= $application->date_traffic_of_noc ?>">
+                                        </div>
+                                    </div>
+                                <?php endif ; ?>
                             </div>
                         </div>
                         <div class="card-header">
@@ -276,5 +292,9 @@
         $('#ward_select,#mandap_type').selectpicker('destroy');
         $("#to_date").datepicker({dateFormat: 'yy-mm-dd'});
         $('#no_of_days').change();$('#mandap_type').change();
+        $("#date_police_of_noc").datepicker({dateFormat: 'yy-mm-dd'});
+        $("#date_traffic_of_noc").datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
     });
 </script>

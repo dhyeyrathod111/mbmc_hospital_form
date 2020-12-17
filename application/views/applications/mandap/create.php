@@ -151,6 +151,26 @@
                                         <input type="text" autocomplete="off" class="form-control" name="mandap_landmark" id="mandap_landmark" placeholder="Enter the mandap landmark">
                                     </div>
                                 </div>
+
+
+                                <?php if ($roleStacClerk->role_id == $this->authorised_user['role_id']) : ?>
+
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label class="font-italic">Date of police NOC</label>
+                                            <input type="text" readonly class="form-control datepicker" name="date_police_of_noc" id="date_police_of_noc" placeholder="Enter date of police noc">
+                                        </div>
+                                    </div>
+                                    <div class="col-4"></div>
+                                    <div class="col-4"></div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label class="font-italic">Date of traffic police NOC</label>
+                                            <input type="text" readonly class="form-control datepicker" name="date_traffic_of_noc" id="date_traffic_of_noc" placeholder="Enter date traffic of police noc">
+                                        </div>
+                                    </div>
+
+                                <?php endif ; ?>
                                 
                             </div>
                         </div>
@@ -175,7 +195,6 @@
                                 <div class="col-6">
                                     <h3 class="card-title link-margin">
                                         <label for="" id="id_proof_name" class="text-info"> Please select a document</label>
-                                        <!-- <input type="hidden" name="id_proof_name" id="id_proof_name_id"> -->
                                     </h3>
                                 </div>
                             </div>
@@ -195,7 +214,6 @@
                                 <div class="col-6" style="">
                                     <h3 class="card-title link-margin">
                                         <label id="traffic_police_noc_name" class="text-info"> Please select a document </label>
-                                        <!-- <input type="hidden" name="traffic_police_noc" id="traffic_police_noc_id"> -->
                                     </h3>
                                 </div>
                             </div>
@@ -214,10 +232,7 @@
                                 </div>
                                 <div class="col-6" style="">
                                     <h3 class="card-title link-margin">
-                                        <label for="" id="police_noc_name"  class="text-info"> 
-                                        Please select a document 
-                                        </label>
-                                        <!-- <input type="hidden" name="police_noc_name" id="police_noc_name_id"> -->
+                                        <label for="" id="police_noc_name"  class="text-info">Please select a document</label>
                                     </h3>
                                 </div>
                             </div>
@@ -266,5 +281,7 @@
     $( document ).ready(() => {
         $('#ward_select,#mandap_type').selectpicker('destroy');
         $("#to_date").datepicker({dateFormat: 'yy-mm-dd'});
+        $("#date_police_of_noc").datepicker({dateFormat: 'yy-mm-dd'});
+        $("#date_traffic_of_noc").datepicker({dateFormat: 'yy-mm-dd'});
     });
 </script>

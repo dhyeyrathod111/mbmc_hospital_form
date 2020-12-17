@@ -53,6 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route[ 'default_controller' ]  = 'homeController';
 $route[ '404_override' ]        = 'myerrorController/not_found';
 
+$route['welcome/users'] = 'homeController/userWelcomePage';
+
 $route['depositinspection/create'] = 'Deposit_inspection/create';
 $route['depositinspection_form_process_create'] = 'Deposit_inspection/create_form_process';
 $route['depositinspection'] = 'Deposit_inspection/depositinspection';
@@ -162,7 +164,7 @@ $route['payment/mandap'] = 'MandapController/user_payment_form';
 $route['payment/user_payment_process'] = 'MandapController/user_payment_process';
 $route['mandap/payment_approvel_modal'] = 'MandapController/payment_approvel_modal';
 $route['mandap/payment_approvel_process'] = 'MandapController/payment_approvel_process';
-$route['letter/madap_license'] = 'LetterController/madap_license';
+$route['letters/madap_license'] = 'LetterController/madap_license';
 $route['mandap/user_apps_list'] = 'MandapController/user_apps_list';
 $route['mandap/datatable_userapplist'] = 'MandapController/datatable_userapplist';
 

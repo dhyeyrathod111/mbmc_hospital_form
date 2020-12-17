@@ -160,6 +160,8 @@
 			$application = $this->mandap_applications_table->getApplicationByAppID($app_id);
 			if (!empty($application)) {
 				$this->data['application'] = $application;
+				$this->data['payment_stack'] = $this->mandap_applications_table->getPaymentSackByAppID($application->app_id);
+				// echo "<pre>";print_r($this->data['payment_stack']);exit();
 				$this->load->view('letters/madap_license',$this->data);
 			} else {
 				return redirect('login');
